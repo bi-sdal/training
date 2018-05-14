@@ -1,0 +1,14 @@
+# Build Details {-}
+
+```{r}
+Sys.time()
+```
+
+
+```{r}
+sessionInfo()
+```
+
+```{r}
+devtools::session_info()
+```

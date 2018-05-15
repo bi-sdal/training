@@ -12,7 +12,7 @@ plot(pressure, type = 'b', pch = 19)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="01-syllabus_files/figure-html/nice-fig-1.png" alt="Here is a nice figure!" width="80%" />
+<img src="00-20-syllabus_files/figure-html/nice-fig-1.png" alt="Here is a nice figure!" width="80%" />
 <p class="caption">(\#fig:nice-fig)Here is a nice figure!</p>
 </div>
 

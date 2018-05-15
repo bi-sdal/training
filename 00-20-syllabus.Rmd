@@ -1,4 +1,4 @@
-# Syllabus {#syllabus}
+# Syllabus {-}
 
 <!--
 You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter 
@@ -20,7 +20,7 @@ knitr::kable(
 ```
 
 You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
--->
+
 
 Here you will find the schedule and the topics that will be covered in each lesson.
 
@@ -51,10 +51,18 @@ Here you will find the schedule and the topics that will be covered in each less
 ### July {-}
 
 ### August {-}
+-->
 
-## Lesson Breakdown
+## Lesson Breakdown {-}
 
-### Lesson 1
+### Lesson 1 {-}
+
+Goals:
+
+1. Get up and running in the lab
+2. Know what bits of infrastructure we have
+3. Introduction to R through visualization
+4. How to load your own data into R
 
 - Getting setup
   - Getting the shell
@@ -63,55 +71,131 @@ Here you will find the schedule and the topics that will be covered in each less
   - RStudio
   - The other tools availiable
 - Shell (Bash)
-- The "Tidyverse"
+- The "Tidyverse" ecosystem
+- Scripts and running R code
 - Exploring your data through visualizations (ggplot2)
+  - Creating a plot
+  - Aesthetic mappings
+  - Facets
+  - Geometric objects
 - Loading a dataset (readr)
+  - Parsing a vector
+  - Parsing a file
+  - Writing to a file
+  - Other types of data
 
-### Lesson 2
+### Lesson 2 {-}
+
+Goals:
+
+1. Introduction to Markdown and Knitr
+  - Take "pretty" notes with "simple" notation
+  - Learn how to create basic reports with your code
+2. What the code projects look like
+3. Working with git locally
 
 - Markdown
 - Knitr
 - The project template
+  - Workflow basics
 - Projects
 - Git (locally)
 
-### Lesson 3
+### Lesson 3 {-}
+
+Goals:
+
+1. Git with an eye towards collaboration
+2. Working with remotes (GitHub and GitLab)
+3. Collaborating with branches
 
 - Git (remotes)
 - Git (branches)
 - Git (collaboration)
 
-### Lesson 4
+### Lesson 4 {-}
 
-- Workflow Basics
-- Transformations
-- Scripts
+Goals:
 
-### Lesson 5
+1. Start the process of manipulating data
+2. Perform data subsetting and aggregations
+3. Explore data with basic statistics and visualizations
+4. Reshaping data and fixing common data problems through the tidying process
 
+- Transform data with dplyr
+- Pipes
 - EDA
-- Tibbles
-- Tidy
+- Tibbles, the tidyverse "dataframe"
+- Tidying data with tidyr
 
-### Lesson 6
+### Lesson 5 {-}
 
-- Relational Data
+Goals:
+
+1. Understanding relational data
+2. Merging datasets together
+3. Work with relational data in a database
+4. Writing SQL code and how to run them from within R
+
+- Relational Data in R
+- Working with databases
+  - SQLite
+  - PostgreSQL
 - SQL
+- Working with SQL in your R code
 
-### Lesson 7
+### Lesson 6 {-}
+
+Goals:
+
+1. Work with strings, factors, and date time values in R
 
 - Strings
 - Factors
 - Dates and Times
 
-### Lesson 8
 
-- Pipes
+### Lesson 7 {-}
+
+1. Programming "fundamentals"
+  - Functions
+  - Vectors
+  - Loops
+
 - Functions
 - Vectors
 - Iteration
+  - purrr
+  - for loops
 
-### Lesson 9
+### Lesson 8 {-}
+
+Goals:
+
+1. The dialects of R
+2. Review of tidyverse functions
+3. How tidyverse relates to base R
+  - The base R data.frame object
+  - apply family of functions
+4. How data.table playes a role in the R ecosystem
+
+- Base R
+- data.table
+- tidyverse
+
+### Lesson 9 {-}
+
+- Working with geospatial data with `sf`
+
+### Lesson 10 {-}
+
+Goals:
+
+1. Web scraping
+  - API
+  - Scrape
+
+### Lesson 11 {-}
 
 - Communication
   - R Markdown
@@ -119,4 +203,4 @@ Here you will find the schedule and the topics that will be covered in each less
 - R Markdown formats
 - Shiny
 
-### Lesson 10
+

@@ -6,7 +6,7 @@ Sys.time()
 ```
 
 ```
-## [1] "2018-05-13 23:45:43 EDT"
+## [1] "2018-05-15 08:41:44 EDT"
 ```
 
 
@@ -59,7 +59,7 @@ devtools::session_info()
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-05-13
+##  date     2018-05-15
 ```
 
 ```

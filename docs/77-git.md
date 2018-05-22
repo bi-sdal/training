@@ -7,6 +7,14 @@ DataCamp Courses:
 - [Introduction to Git for Data Science][1]
 - [Working with the RStudio IDE (Part 2) -- Chapter 2: Version Control][2]
 
+Quick References:
+
+1. [Software-Carpentry Reference][5]
+2. [Git Cheat Sheet (by Github)][4]
+3. [Jenny Bryan's "Happy Git and GitHub for the useR"][6]
+4. [Git interaction from NDP Software][7]
+5. [Learn Git Branching][8]
+
 ## Git on your own
 
 <div class="figure" style="text-align: center">
@@ -24,3 +32,8 @@ How not to write commit messages:
 [1]: https://www.datacamp.com/courses/introduction-to-git-for-data-science
 [2]: https://www.datacamp.com/courses/working-with-the-rstudio-ide-part-2
 [3]: http://swcarpentry.github.io/git-novice/
+[4]: https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf
+[5]: http://swcarpentry.github.io/git-novice/reference/
+[6]: http://happygitwithr.com/
+[7]: http://ndpsoftware.com/git-cheatsheet.html
+[8]: https://learngitbranching.js.org/

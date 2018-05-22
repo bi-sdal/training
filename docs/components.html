@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="setup.html">
-<link rel="next" href="git.html">
+<link rel="prev" href="infrastructure.html">
+<link rel="next" href="accessing-servers.html">
 <script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -221,53 +221,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-bash-shell" class="section level2 unnumbered">
-<h2>The Bash Shell</h2>
-<p>Bash is a commonly-used shell that gives you the power to do simple tasks more quickly.</p>
-<div id="windows" class="section level3 unnumbered">
-<h3>Windows</h3>
-<p><a href="https://www.youtube.com/watch?v=339AEqk9c-8">Video Tutorial</a></p>
-<ol style="list-style-type: decimal">
-<li>Download the Git for Windows installer: <a href="https://git-for-windows.github.io/" class="uri">https://git-for-windows.github.io/</a>.</li>
-<li>Run the installer and follow the steps bellow:
-<ol style="list-style-type: decimal">
-<li>Click on “Next”.</li>
-<li>Click on “Next”.</li>
-<li><strong>Keep “Use Git from the Windows Command Prompt” selected and click on “Next”.</strong>
-If you forgot to do this programs that you need for the workshop will not work properly.
-If this happens rerun the installer and select the appropriate option.</li>
-<li>Click on “Next”.</li>
-<li>Keep “Checkout Windows-style, commit Unix-style line endings” selected and click on “Next”.</li>
-<li><strong>Keep “Use Windows’ default console window” selected and click on “Next”.</strong></li>
-<li>Click on “Install”.</li>
-<li>Click on “Finish”.</li>
-</ol></li>
-<li>If your “HOME” environment variable is not set (or you don’t know what this is):
-<ol style="list-style-type: decimal">
-<li>Open command prompt (Open Start Menu then type cmd and press [Enter])</li>
-<li>Type the following line into the command prompt window exactly as shown: <code>setx HOME &quot;%USERPROFILE%&quot;</code></li>
-<li>Press [Enter], you should see <code>SUCCESS: Specified value was saved.</code></li>
-<li>Quit command prompt by typing exit then pressing [Enter]</li>
-</ol></li>
-</ol>
-<p>This will provide you with both Git and Bash in the Git Bash program.</p>
+<div id="components" class="section level2">
+<h2><span class="header-section-number">1.1</span> Components</h2>
+<p>We use <a href="https://www.docker.com/">Docker</a> in our lab.
+This allows us to install various components without affecting the underlying server.
+A brief history of how we settled on docker and why is in this blog post on <a href="https://chendaniely.github.io/sdal/2017/07/07/vm_lxc_docker/">From VMs to LXC Containers to Docker Containers</a>.</p>
+<p>Figure <a href="components.html#fig:docker-lightfoot">1.1</a> depicts what conatiners we have on <code>lightfoot</code>.
+You can think of each ‘container’ as an ‘application’ just like one you are running on your laptop.
+But the behvaior of each ‘container’ is more like a separate server you connect to.</p>
+<div class="figure" style="text-align: center"><span id="fig:docker-lightfoot"></span>
+<img src="figs/sdal_docker_lightfoot.png" alt="The Docker infrastructure used in SDAL" width="100%" />
+<p class="caption">
+Figure 1.1: The Docker infrastructure used in SDAL
+</p>
 </div>
-<div id="macos" class="section level3 unnumbered">
-<h3>macOS</h3>
-<p>The default shell in all versions of macOS is Bash, so no need to install anything. You access Bash from the Terminal (found in /Applications/Utilities). See the Git installation video tutorial for an example on how to open the Terminal. You may want to keep Terminal in your dock for this workshop.</p>
-</div>
-<div id="linux" class="section level3 unnumbered">
-<h3>Linux</h3>
-<p>The default shell is usually Bash, but if your machine is set up differently you can run it by opening a terminal and typing bash. There is no need to install anything.</p>
-</div>
+<p>The primary conatiners you will be using are the RStudio, Adminer, and Django/Wagtail containers.
+They all exist on <code>lightfoot</code> and can all be reached in a browser with <a href="https://analytics.bi.vt.edu"><code>https://analytics.bi.vt.edu</code></a> and an appropriate suffix (e.g., <a href="https://analytics.bi.vt.edu/rstudio"><code>/rstudio</code></a>, <a href="https://analytics.bi.vt.edu/db"><code>/db</code></a>).</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="setup.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="git.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="infrastructure.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="accessing-servers.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
@@ -297,7 +274,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/bi-sdal/training/edit/master/00-10-setup.Rmd",
+"link": "https://github.com/bi-sdal/training/edit/master/01-infrastructure.Rmd",
 "text": "Edit"
 },
 "download": ["sdal-training.pdf", "sdal-training.epub"],

@@ -107,22 +107,14 @@ Goals:
 - Shell (Bash)
 - The "Tidyverse" ecosystem
 - Scripts and running R code
-- Exploring your data through visualizations (ggplot2)
-  - Creating a plot
-  - Aesthetic mappings
-  - Facets
-  - Geometric objects
-- Loading a dataset (readr)
-  - Parsing a vector
-  - Parsing a file
-  - Writing to a file
-  - Other types of data
+- Exploring your data through visualizations (`ggplot2`)
+- Loading and saving a datasets (`readr`, `haven`)
 
 ### Lesson 2 {-}
 
 Goals:
 
-1. Introduction to Markdown and Knitr
+1. Introduction to Markdown (`rmarkdown`) and `knitr`
   - Take "pretty" notes with "simple" notation
   - Learn how to create basic reports with your code
 2. What the code projects look like
@@ -156,11 +148,11 @@ Goals:
 3. Explore data with basic statistics and visualizations
 4. Reshaping data and fixing common data problems through the tidying process
 
-- Transform data with dplyr
-- Pipes
-- EDA
-- Tibbles, the tidyverse "dataframe"
-- Tidying data with tidyr
+- Transform data with (`dplyr`)
+- Pipes (`%>%`)
+- Exploratory Data Analysis (EDA)
+- `tibble`, the tidyverse "dataframe"
+- Tidying data (`tidyr`)
 
 ### Lesson 5 {-}
 
@@ -171,7 +163,7 @@ Goals:
 3. Work with relational data in a database
 4. Writing SQL code and how to run them from within R
 
-- Relational Data in R
+- Relational Data in R (`dplyr`)
 - Working with databases
   - SQLite
   - PostgreSQL
@@ -179,13 +171,13 @@ Goals:
 - Working with SQL in your R code
 
 ### Lesson 6 {-}
-
+  
 Goals:
 
 1. Work with strings, factors, and date time values in R
 
 - Strings
-- Factors
+- Factors (`forcats`)
 - Dates and Times
 
 
@@ -199,7 +191,7 @@ Goals:
 - Functions
 - Vectors
 - Iteration
-  - purrr
+  - `purrr`
   - for loops
 
 ### Lesson 8 {-}
@@ -213,9 +205,9 @@ Goals:
   - apply family of functions
 4. How data.table playes a role in the R ecosystem
 
-- Base R
-- data.table
-- tidyverse
+- `base` R
+- `data.table`
+- `tidyverse`
 
 ### Lesson 9 {-}
 
@@ -236,5 +228,3 @@ Goals:
   - Graphics
 - R Markdown formats
 - Shiny
-
-

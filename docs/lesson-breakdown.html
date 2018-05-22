@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="syllabus.html">
-<link rel="next" href="build-details.html">
+<link rel="next" href="infrastructure.html">
 <script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -192,6 +192,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="lesson-breakdown.html"><a href="lesson-breakdown.html#lesson-11"><i class="fa fa-check"></i>Lesson 11</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="1" data-path="infrastructure.html"><a href="infrastructure.html"><i class="fa fa-check"></i><b>1</b> Infrastructure</a><ul>
+<li class="chapter" data-level="1.1" data-path="components.html"><a href="components.html"><i class="fa fa-check"></i><b>1.1</b> Components</a></li>
+<li class="chapter" data-level="1.2" data-path="accessing-servers.html"><a href="accessing-servers.html"><i class="fa fa-check"></i><b>1.2</b> Accessing Servers</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2</b> Git</a><ul>
+<li class="chapter" data-level="2.1" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.1</b> Git on your own</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="build-details.html"><a href="build-details.html"><i class="fa fa-check"></i>Build Details</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -239,27 +246,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Shell (Bash)</li>
 <li>The “Tidyverse” ecosystem</li>
 <li>Scripts and running R code</li>
-<li>Exploring your data through visualizations (ggplot2)
-<ul>
-<li>Creating a plot</li>
-<li>Aesthetic mappings</li>
-<li>Facets</li>
-<li>Geometric objects</li>
-</ul></li>
-<li>Loading a dataset (readr)
-<ul>
-<li>Parsing a vector</li>
-<li>Parsing a file</li>
-<li>Writing to a file</li>
-<li>Other types of data</li>
-</ul></li>
+<li>Exploring your data through visualizations (<code>ggplot2</code>)</li>
+<li>Loading and saving a datasets (<code>readr</code>, <code>haven</code>)</li>
 </ul>
 </div>
 <div id="lesson-2" class="section level3 unnumbered">
 <h3>Lesson 2</h3>
 <p>Goals:</p>
 <ol style="list-style-type: decimal">
-<li>Introduction to Markdown and Knitr</li>
+<li>Introduction to Markdown (<code>rmarkdown</code>) and <code>knitr</code></li>
 </ol>
 <ul>
 <li>Take “pretty” notes with “simple” notation</li>
@@ -304,11 +299,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Reshaping data and fixing common data problems through the tidying process</li>
 </ol>
 <ul>
-<li>Transform data with dplyr</li>
-<li>Pipes</li>
-<li>EDA</li>
-<li>Tibbles, the tidyverse “dataframe”</li>
-<li>Tidying data with tidyr</li>
+<li>Transform data with (<code>dplyr</code>)</li>
+<li>Pipes (<code>%&gt;%</code>)</li>
+<li>Exploratory Data Analysis (EDA)</li>
+<li><code>tibble</code>, the tidyverse “dataframe”</li>
+<li>Tidying data (<code>tidyr</code>)</li>
 </ul>
 </div>
 <div id="lesson-5" class="section level3 unnumbered">
@@ -321,7 +316,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Writing SQL code and how to run them from within R</li>
 </ol>
 <ul>
-<li>Relational Data in R</li>
+<li>Relational Data in R (<code>dplyr</code>)</li>
 <li>Working with databases
 <ul>
 <li>SQLite</li>
@@ -339,7 +334,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <ul>
 <li>Strings</li>
-<li>Factors</li>
+<li>Factors (<code>forcats</code>)</li>
 <li>Dates and Times</li>
 </ul>
 </div>
@@ -356,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Vectors</li>
 <li>Iteration
 <ul>
-<li>purrr</li>
+<li><code>purrr</code></li>
 <li>for loops</li>
 </ul></li>
 </ul>
@@ -377,9 +372,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>How data.table playes a role in the R ecosystem</li>
 </ol>
 <ul>
-<li>Base R</li>
-<li>data.table</li>
-<li>tidyverse</li>
+<li><code>base</code> R</li>
+<li><code>data.table</code></li>
+<li><code>tidyverse</code></li>
 </ul>
 </div>
 <div id="lesson-9" class="section level3 unnumbered">
@@ -420,7 +415,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="syllabus.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="build-details.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="infrastructure.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>

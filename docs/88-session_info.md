@@ -6,7 +6,7 @@ Sys.time()
 ```
 
 ```
-## [1] "2018-05-15 08:41:44 EDT"
+## [1] "2018-05-22 14:00:04 EDT"
 ```
 
 
@@ -21,7 +21,7 @@ sessionInfo()
 ## Running under: Arch Linux
 ## 
 ## Matrix products: default
-## BLAS: /usr/lib/libblas_haswellp-r0.2.20.so
+## BLAS: /usr/lib/libblasp-r0.2.20.so
 ## LAPACK: /usr/lib/liblapack.so.3.8.0
 ## 
 ## locale:
@@ -59,7 +59,7 @@ devtools::session_info()
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-05-15
+##  date     2018-05-22
 ```
 
 ```

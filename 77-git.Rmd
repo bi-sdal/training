@@ -9,7 +9,7 @@ DataCamp Courses:
 
 ## Git on your own
 
-```{r, echo=FALSE, fig.cap="R for Data Science Cover", dpi = 300, fig.align='center'}
+```{r, echo=FALSE, fig.cap="Diagram of Git commands and how they relate to one another.", dpi = 300, fig.align='center'}
 knitr::include_graphics(path = "./figs/git_dspg2018-fellows-1.jpg")
 ```
 

@@ -10,8 +10,8 @@ DataCamp Courses:
 ## Git on your own
 
 <div class="figure" style="text-align: center">
-<img src="./figs/git_dspg2018-fellows-1.jpg" alt="R for Data Science Cover"  />
-<p class="caption">(\#fig:unnamed-chunk-1)R for Data Science Cover</p>
+<img src="./figs/git_dspg2018-fellows-1.jpg" alt="Diagram of Git commands and how they relate to one another."  />
+<p class="caption">(\#fig:unnamed-chunk-1)Diagram of Git commands and how they relate to one another.</p>
 </div>
 
 

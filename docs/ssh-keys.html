@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="r.html">
-<link rel="next" href="ssh-keys.html">
+<link rel="prev" href="sqlite.html">
+<link rel="next" href="syllabus.html">
 <script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -237,29 +237,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sqlite" class="section level2 unnumbered">
-<h2>SQLite</h2>
-<p>SQL is a specialized programming language used with databases. We use a simple database manager called SQLite in our lessons.</p>
-<div id="windows-4" class="section level3 unnumbered">
-<h3>Windows</h3>
-<p>The Windows Installer installs SQLite for Windows. If you used the installer to configure nano, you don’t need to run it again.</p>
+<div id="ssh-keys" class="section level2 unnumbered">
+<h2>SSH Keys</h2>
+<p>It’ll be a good idea to first check and see if you already have any SSH keys: <a href="https://help.github.com/articles/checking-for-existing-ssh-keys/" class="uri">https://help.github.com/articles/checking-for-existing-ssh-keys/</a></p>
+<p>GitHub has a set of instructions on how to create SSH keys: <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#generating-a-new-ssh-key" class="uri">https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#generating-a-new-ssh-key</a></p>
+<p>The below is an adapted form of the GiHub instructions</p>
+<ol style="list-style-type: decimal">
+<li>Open Terminal.</li>
+<li>run <code>ssh-keygen</code>, this creates a new ssh key</li>
+</ol>
+<pre><code>Generating public/private rsa key pair.</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>When you’re prompted to “Enter a file in which to save the key,” press Enter. This accepts the default file location.</li>
+</ol>
+<pre><code>Enter a file in which to save the key (/home/you/.ssh/id_rsa): [Press enter]</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>At the prompt, when it asks for a password, just leave it blank and [Press enter].
+Otherwise, for more information, see “Working with SSH key passphrases”.</li>
+</ol>
+<pre><code>Enter passphrase (empty for no passphrase): [Type a passphrase]
+Enter same passphrase again: [Type passphrase again]</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>If you look at the contents of <code>~/.ssh</code>, you should see the <code>id_rsa</code> and <code>id_rsa.pub</code> files.</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" data-line-number="1">$ <span class="fu">ls</span> ~/.ssh</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="ex">id_rsa</span>  id_rsa.pub</a></code></pre></div>
+<ol start="6" style="list-style-type: decimal">
+<li>Copy the <strong>public</strong> key (<code>is_rsa.pub</code>)</li>
+</ol>
+<pre><code>$ cat ~/.ssh/id_rsa.pub</code></pre>
+<p>This is the public key you will use to paste into the system that asks for an SSH key</p>
+<div id="github" class="section level3 unnumbered">
+<h3>GitHub</h3>
+<p>Once you have your ssh key copied, you can add the key to your GitHub account by following the GitHub instructions:</p>
+<p><a href="https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/" class="uri">https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/</a></p>
 </div>
-<div id="macos-4" class="section level3 unnumbered">
-<h3>macOS</h3>
-<p>SQLite comes pre-installed on macOS.</p>
+<div id="lightfoot" class="section level3 unnumbered">
+<h3>Lightfoot</h3>
+<p>If you have an SSH key on your laptop, you can use it so you don’t have to type your password when logging into lightfoot</p>
+<ol style="list-style-type: decimal">
+<li>run <code>ssh-copy-id</code></li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" data-line-number="1">$ <span class="ex">ssh-copy-id</span> YOUR_PID@lightfoot.vbi.vt.edu</a></code></pre></div>
+<p>It will prompt you for your password, and if it’s your first time connecting to the server also ask you to confirm the connection by typing <code>yes</code></p>
+<p>Once you ran <code>ssh-copy-id</code>, you can connect directly to lightfoot</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" data-line-number="1">$ <span class="fu">ssh</span> YOUR_PID@lightfoot.vbi.vt.edu</a></code></pre></div>
 </div>
-<div id="linux-4" class="section level3 unnumbered">
-<h3>Linux</h3>
-<p>SQLite comes pre-installed on Linux.</p>
+<div id="gitlab-devlab" class="section level3 unnumbered">
+<h3>GitLab (devlab)</h3>
+<p>The process of adding a key to GitLab is similar to the GitHub instuctions: <a href="https://docs.gitlab.com/ee/gitlab-basics/create-your-ssh-keys.html" class="uri">https://docs.gitlab.com/ee/gitlab-basics/create-your-ssh-keys.html</a></p>
+
 </div>
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ssh-keys.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sqlite.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="syllabus.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>

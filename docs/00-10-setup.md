@@ -100,3 +100,65 @@ SQLite comes pre-installed on macOS.
 
 ### Linux {-}
 SQLite comes pre-installed on Linux.
+
+## SSH Keys {-}
+
+It'll be a good idea to first check and see if you already have any SSH keys: https://help.github.com/articles/checking-for-existing-ssh-keys/
+
+GitHub has a set of instructions on how to create SSH keys: https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#generating-a-new-ssh-key
+
+The below is an adapted form of the GiHub instructions
+
+1. Open Terminal.
+2. run `ssh-keygen`, this creates a new ssh key
+```
+Generating public/private rsa key pair.
+```
+3. When you're prompted to "Enter a file in which to save the key," press Enter. This accepts the default file location.
+```
+Enter a file in which to save the key (/home/you/.ssh/id_rsa): [Press enter]
+```
+4. At the prompt, when it asks for a password, just leave it blank and [Press enter].
+Otherwise, for more information, see "Working with SSH key passphrases".
+```
+Enter passphrase (empty for no passphrase): [Type a passphrase]
+Enter same passphrase again: [Type passphrase again]
+```
+5. If you look at the contents of `~/.ssh`, you should see the `id_rsa` and `id_rsa.pub` files.
+```bash
+$ ls ~/.ssh
+id_rsa  id_rsa.pub
+```
+6. Copy the **public** key (`is_rsa.pub`)
+```
+$ cat ~/.ssh/id_rsa.pub
+```
+This is the public key you will use to paste into the system that asks for an SSH key
+
+### GitHub {-}
+
+Once you have your ssh key copied, you can add the key to your GitHub account by following the GitHub instructions:
+
+https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
+
+### Lightfoot {-}
+
+If you have an SSH key on your laptop, you can use it so you don't have to type your password when logging into lightfoot
+
+1. run `ssh-copy-id`
+
+```bash
+$ ssh-copy-id YOUR_PID@lightfoot.vbi.vt.edu
+```
+
+It will prompt you for your password, and if it's your first time connecting to the server also ask you to confirm the connection by typing `yes`
+
+Once you ran `ssh-copy-id`, you can connect directly to lightfoot
+
+```bash
+$ ssh YOUR_PID@lightfoot.vbi.vt.edu
+```
+
+### GitLab (devlab) {-}
+
+The process of adding a key to GitLab is similar to the GitHub instuctions: https://docs.gitlab.com/ee/gitlab-basics/create-your-ssh-keys.html

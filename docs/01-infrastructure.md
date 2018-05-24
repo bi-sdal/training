@@ -23,3 +23,15 @@ They all exist on `lightfoot` and can all be reached in a browser with [`https:/
 
 ## Accessing Servers
 
+Your main point of contact will be using RStudio on `lightfoot`.
+There's a few things that can be setup so you don't have to type your password all the time.
+This involves creating "SSH keys".
+Aside from creating keys, below is a set of links you'll probably be using all the time:
+
+- Rstudio
+    - Your own container: https://analytics.bi.vt.edu/YOUR_PID/rstudio
+        - It's suggested you use the container assigned to yourself, since your work and crashed code is isolated from everyone else
+    - Generic RStudio container: https://analytics.bi.vt.edu/rstudio
+        - There is a generic container that can be used as well,
+        it's availiable to you, but if you have an individual conatiner,
+        it's better to use that one instead

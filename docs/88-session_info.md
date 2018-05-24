@@ -6,7 +6,7 @@ Sys.time()
 ```
 
 ```
-## [1] "2018-05-22 19:35:26 EDT"
+## [1] "2018-05-24 10:37:02 EDT"
 ```
 
 
@@ -38,8 +38,8 @@ sessionInfo()
 ## loaded via a namespace (and not attached):
 ##  [1] compiler_3.5.0  backports_1.1.2 bookdown_0.7    magrittr_1.5   
 ##  [5] rprojroot_1.3-2 tools_3.5.0     htmltools_0.3.6 yaml_2.1.19    
-##  [9] Rcpp_0.12.16    stringi_1.2.2   rmarkdown_1.9   knitr_1.20     
-## [13] xfun_0.1        stringr_1.3.0   digest_0.6.15   evaluate_0.10.1
+##  [9] Rcpp_0.12.17    stringi_1.2.2   rmarkdown_1.9   knitr_1.20     
+## [13] xfun_0.1        stringr_1.3.1   digest_0.6.15   evaluate_0.10.1
 ```
 
 
@@ -59,7 +59,7 @@ devtools::session_info()
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-05-22
+##  date     2018-05-24
 ```
 
 ```
@@ -83,12 +83,12 @@ devtools::session_info()
 ##  magrittr    1.5     2014-11-22 CRAN (R 3.5.0)
 ##  memoise     1.1.0   2017-04-21 CRAN (R 3.5.0)
 ##  methods   * 3.5.0   2018-04-23 local         
-##  Rcpp        0.12.16 2018-03-13 CRAN (R 3.5.0)
+##  Rcpp        0.12.17 2018-05-18 CRAN (R 3.5.0)
 ##  rmarkdown   1.9     2018-03-01 CRAN (R 3.5.0)
 ##  rprojroot   1.3-2   2018-01-03 CRAN (R 3.5.0)
 ##  stats     * 3.5.0   2018-04-23 local         
 ##  stringi     1.2.2   2018-05-02 CRAN (R 3.5.0)
-##  stringr     1.3.0   2018-02-19 CRAN (R 3.5.0)
+##  stringr     1.3.1   2018-05-10 CRAN (R 3.5.0)
 ##  tools       3.5.0   2018-04-23 local         
 ##  utils     * 3.5.0   2018-04-23 local         
 ##  withr       2.1.2   2018-03-15 CRAN (R 3.5.0)

@@ -21,6 +21,25 @@ Quick References:
 knitr::include_graphics(path = "./figs/git_dspg2018-fellows-1.jpg")
 ```
 
+## Git with branches
+
+```{r, echo=FALSE, fig.cap="Review of Git", dpi = 300, fig.align='center'}
+knitr::include_graphics(path = "./figs/git_dspg2018-fellows-self_review.jpg")
+```
+
+```{r, echo=FALSE, fig.cap="What branching looks like in the Git world", dpi = 300, fig.align='center'}
+knitr::include_graphics(path = "./figs/git_dspg2018-fellows-branching.jpg")
+```
+
+## Collaborating with Git
+
+```{r, echo=FALSE, fig.cap="The 'forking' model of Git workflows", dpi = 300, fig.align='center'}
+knitr::include_graphics(path = "./figs/git_dspg2018-fellows-model_fork.jpg")
+```
+
+```{r, echo=FALSE, fig.cap="Git with branches", dpi = 300, fig.align='center'}
+knitr::include_graphics(path = "./figs/git_dspg2018-fellows-2.jpg")
+```
 
 How not to write commit messages:
 

@@ -22,6 +22,29 @@ Quick References:
 <p class="caption">(\#fig:unnamed-chunk-1)Diagram of Git commands and how they relate to one another.</p>
 </div>
 
+## Git with branches
+
+<div class="figure" style="text-align: center">
+<img src="./figs/git_dspg2018-fellows-self_review.jpg" alt="Review of Git"  />
+<p class="caption">(\#fig:unnamed-chunk-2)Review of Git</p>
+</div>
+
+<div class="figure" style="text-align: center">
+<img src="./figs/git_dspg2018-fellows-branching.jpg" alt="What branching looks like in the Git world"  />
+<p class="caption">(\#fig:unnamed-chunk-3)What branching looks like in the Git world</p>
+</div>
+
+## Collaborating with Git
+
+<div class="figure" style="text-align: center">
+<img src="./figs/git_dspg2018-fellows-model_fork.jpg" alt="The 'forking' model of Git workflows"  />
+<p class="caption">(\#fig:unnamed-chunk-4)The 'forking' model of Git workflows</p>
+</div>
+
+<div class="figure" style="text-align: center">
+<img src="./figs/git_dspg2018-fellows-2.jpg" alt="Git with branches"  />
+<p class="caption">(\#fig:unnamed-chunk-5)Git with branches</p>
+</div>
 
 How not to write commit messages:
 

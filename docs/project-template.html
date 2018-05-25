@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="setup.html">
-<link rel="next" href="git.html">
+<link rel="prev" href="accessing-servers.html">
+<link rel="next" href="git-1.html">
 <script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -239,53 +239,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-bash-shell" class="section level2 unnumbered">
-<h2>The Bash Shell</h2>
-<p>Bash is a commonly-used shell that gives you the power to do simple tasks more quickly.</p>
-<div id="windows" class="section level3 unnumbered">
-<h3>Windows</h3>
-<p><a href="https://www.youtube.com/watch?v=339AEqk9c-8">Video Tutorial</a></p>
-<ol style="list-style-type: decimal">
-<li>Download the Git for Windows installer: <a href="https://git-for-windows.github.io/" class="uri">https://git-for-windows.github.io/</a>.</li>
-<li>Run the installer and follow the steps bellow:
-<ol style="list-style-type: decimal">
-<li>Click on “Next”.</li>
-<li>Click on “Next”.</li>
-<li><strong>Keep “Use Git from the Windows Command Prompt” selected and click on “Next”.</strong>
-If you forgot to do this programs that you need for the workshop will not work properly.
-If this happens rerun the installer and select the appropriate option.</li>
-<li>Click on “Next”.</li>
-<li>Keep “Checkout Windows-style, commit Unix-style line endings” selected and click on “Next”.</li>
-<li><strong>Keep “Use Windows’ default console window” selected and click on “Next”.</strong></li>
-<li>Click on “Install”.</li>
-<li>Click on “Finish”.</li>
-</ol></li>
-<li>If your “HOME” environment variable is not set (or you don’t know what this is):
-<ol style="list-style-type: decimal">
-<li>Open command prompt (Open Start Menu then type cmd and press [Enter])</li>
-<li>Type the following line into the command prompt window exactly as shown: <code>setx HOME &quot;%USERPROFILE%&quot;</code></li>
-<li>Press [Enter], you should see <code>SUCCESS: Specified value was saved.</code></li>
-<li>Quit command prompt by typing exit then pressing [Enter]</li>
-</ol></li>
-</ol>
-<p>This will provide you with both Git and Bash in the Git Bash program.</p>
+<div id="project-template" class="section level2">
+<h2><span class="header-section-number">1.3</span> Project Template</h2>
+<p>Why project templates: <a href="https://chendaniely.github.io/sdal/2017/05/30/project_templates/" class="uri">https://chendaniely.github.io/sdal/2017/05/30/project_templates/</a></p>
+<p>Other resources:</p>
+<ul>
+<li><a href="https://github.com/ropensci/rrrpkg" class="uri">https://github.com/ropensci/rrrpkg</a></li>
+<li><a href="https://github.com/benmarwick/rrtools" class="uri">https://github.com/benmarwick/rrtools</a></li>
+<li>A template for research projects structured as R packages: <a href="https://github.com/Pakillo/template" class="uri">https://github.com/Pakillo/template</a></li>
+</ul>
+<pre><code>project/            # the project/code repository
+|
+|- data/            # raw and primary data, are not changed once created
+|  |
+|  +- project_data/ # subfolder that links to an encrypted data storage container
+|  |  |
+|  |  |- original/  # raw data, will not be altered
+|  |  |- working/   # intermediate datasets from src code
+|  |  +- final/     # datasets used in analysis
+|  |
+|  +- more_data/    # some projects will need multiple links
+|
+|- src/             # any programmatic code
+|  |- analysis1/    # user1 assigned to the project
+|  +- analysis2/    # user2 assigned to the project
+|
+|- R/               # functions
+|
+|- tests/           # unit tests
+|
+|- output           # all output and results from workflows and analyses
+|  |- figures/      # graphs, likely designated for manuscript figures
+|  |- pictures/     # diagrams, images, and other non-graph graphics
+|  +- analysis/     # generated reports for (e.g. rmarkdown output)
+|
+|- README.md        # the top level description of content
+|
+|- .gitignore       # git ignore file
+|- project.Rproj    # RStudio project
+|
+|- DESCRIPTION      # Description file to repo into R package, if applicable
++- Makefile         # Makefile, if applicable</code></pre>
+<p>Notes:</p>
+<ul>
+<li>you can find our project template <code>.gitignore</code> file here: <a href="https://github.com/bi-sdal/project_template/blob/master/gitignore" class="uri">https://github.com/bi-sdal/project_template/blob/master/gitignore</a></li>
+</ul>
+
 </div>
-<div id="macos" class="section level3 unnumbered">
-<h3>macOS</h3>
-<p>The default shell in all versions of macOS is Bash, so no need to install anything. You access Bash from the Terminal (found in /Applications/Utilities). See the Git installation video tutorial for an example on how to open the Terminal. You may want to keep Terminal in your dock for this workshop.</p>
-</div>
-<div id="linux" class="section level3 unnumbered">
-<h3>Linux</h3>
-<p>The default shell is usually Bash, but if your machine is set up differently you can run it by opening a terminal and typing bash. There is no need to install anything.</p>
-</div>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="setup.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="git.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="accessing-servers.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="git-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
@@ -315,7 +323,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/bi-sdal/training/edit/master/00-10-setup.Rmd",
+"link": "https://github.com/bi-sdal/training/edit/master/01-infrastructure.Rmd",
 "text": "Edit"
 },
 "download": ["sdal-training.pdf", "sdal-training.epub"],

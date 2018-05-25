@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="components.html">
-<link rel="next" href="git-1.html">
+<link rel="prev" href="collaborating-with-git.html">
+<link rel="next" href="build-details.html">
 <script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -238,27 +238,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="accessing-servers" class="section level2">
-<h2><span class="header-section-number">1.2</span> Accessing Servers</h2>
-<p>Your main point of contact will be using RStudio on <code>lightfoot</code>.
-There’s a few things that can be setup so you don’t have to type your password all the time.
-This involves creating “SSH keys”.
-Aside from creating keys, below is a set of links you’ll probably be using all the time:</p>
+<div id="protecting-branches" class="section level2">
+<h2><span class="header-section-number">2.4</span> Protecting branches</h2>
+<p><a href="https://docs.gitlab.com/ee/user/project/protected_branches.html" class="uri">https://docs.gitlab.com/ee/user/project/protected_branches.html</a></p>
+<p>In a repository go to settings &gt; repository &gt; protected branches</p>
+<p>set</p>
 <ul>
-<li>Rstudio
-<ul>
-<li>Your own container: <a href="https://analytics.bi.vt.edu/YOUR_PID/rstudio" class="uri">https://analytics.bi.vt.edu/YOUR_PID/rstudio</a>
-<ul>
-<li>It’s suggested you use the container assigned to yourself, since your work and crashed code is isolated from everyone else</li>
-</ul></li>
-<li>Generic RStudio container: <a href="https://analytics.bi.vt.edu/rstudio" class="uri">https://analytics.bi.vt.edu/rstudio</a>
-<ul>
-<li>There is a generic container that can be used as well,
-it’s availiable to you, but if you have an individual conatiner,
-it’s better to use that one instead</li>
-</ul></li>
-</ul></li>
+<li>“allowed to merge”: masters</li>
+<li><p>“allowed to push”: no one</p></li>
+<li><p>If you accidently did work on <code>master</code>:</p></li>
 </ul>
+<ol style="list-style-type: decimal">
+<li>create a branch where you are now: <code>git branch BRANCH_NAME</code></li>
+<li>reset master to where you were: <code>git reset --hard COMMIT_HASH_FOR_MASTER</code> (make sure you do this on the <code>master</code> branch)</li>
+<li>go to your branch: <code>git checkout BRANCH_NAME</code></li>
+<li>push your branch: <code>git push origin BRANCH_NAME</code></li>
+<li>create and merge the pull/merge request</li>
+</ol>
 
 </div>
 <!-- </div> -->
@@ -267,8 +263,8 @@ it’s better to use that one instead</li>
           </div>
         </div>
       </div>
-<a href="components.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="git-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="collaborating-with-git.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="build-details.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
@@ -298,7 +294,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/bi-sdal/training/edit/master/01-infrastructure.Rmd",
+"link": "https://github.com/bi-sdal/training/edit/master/77-git.Rmd",
 "text": "Edit"
 },
 "download": ["sdal-training.pdf", "sdal-training.epub"],

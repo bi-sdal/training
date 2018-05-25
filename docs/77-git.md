@@ -51,6 +51,26 @@ How not to write commit messages:
 <p class="caption">(\#fig:unnamed-chunk-5)Git with branches</p>
 </div>
 
+## Protecting branches
+
+https://docs.gitlab.com/ee/user/project/protected_branches.html
+
+In a repository go to settings > repository > protected branches
+
+set
+
+- "allowed to merge": masters
+- "allowed to push": no one
+
+
+- If you accidently did work on `master`:
+
+1. create a branch where you are now: `git branch BRANCH_NAME`
+2. reset master to where you were: `git reset --hard COMMIT_HASH_FOR_MASTER` (make sure you do this on the `master` branch)
+3. go to your branch: `git checkout BRANCH_NAME`
+4. push your branch: `git push origin BRANCH_NAME`
+5. create and merge the pull/merge request
+
 [1]: https://www.datacamp.com/courses/introduction-to-git-for-data-science
 [2]: https://www.datacamp.com/courses/working-with-the-rstudio-ide-part-2
 [3]: http://swcarpentry.github.io/git-novice/

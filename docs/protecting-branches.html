@@ -251,7 +251,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <ol style="list-style-type: decimal">
 <li>create a branch where you are now: <code>git branch BRANCH_NAME</code></li>
-<li>reset master to where you were: <code>git reset --hard COMMIT_HASH_FOR_MASTER</code> (make sure you do this on the <code>master</code> branch)</li>
+<li>reset master to where you were: <code>git reset --hard COMMIT_HASH_FOR_MASTER</code>
+<ul>
+<li>make sure you do this on the <code>master</code> branch</li>
+</ul></li>
 <li>go to your branch: <code>git checkout BRANCH_NAME</code></li>
 <li>push your branch: <code>git push origin BRANCH_NAME</code></li>
 <li>create and merge the pull/merge request</li>

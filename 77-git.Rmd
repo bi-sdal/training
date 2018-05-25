@@ -61,7 +61,8 @@ set
 - If you accidently did work on `master`:
 
 1. create a branch where you are now: `git branch BRANCH_NAME`
-2. reset master to where you were: `git reset --hard COMMIT_HASH_FOR_MASTER` (make sure you do this on the `master` branch)
+2. reset master to where you were: `git reset --hard COMMIT_HASH_FOR_MASTER`
+    - make sure you do this on the `master` branch
 3. go to your branch: `git checkout BRANCH_NAME`
 4. push your branch: `git push origin BRANCH_NAME`
 5. create and merge the pull/merge request

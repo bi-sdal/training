@@ -14,8 +14,8 @@ You can think of each 'container' as an 'application' just like one you are runn
 But the behvaior of each 'container' is more like a separate server you connect to.
 
 <div class="figure" style="text-align: center">
-<img src="./figs/sdal_docker_lightfoot.png" alt="The Docker infrastructure used in SDAL" width="100%" />
-<p class="caption">(\#fig:docker-lightfoot)The Docker infrastructure used in SDAL</p>
+<img src="./figs/sdal_docker_lightfoot.png" alt="The Docker infrastructure used in SDAL. The containers on the top row are the parts of the system lab members will be connecting to and working on." width="100%" />
+<p class="caption">(\#fig:docker-lightfoot)The Docker infrastructure used in SDAL. The containers on the top row are the parts of the system lab members will be connecting to and working on.</p>
 </div>
 
 The primary conatiners you will be using are the RStudio, Adminer, and Django/Wagtail containers.

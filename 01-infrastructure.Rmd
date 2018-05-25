@@ -13,7 +13,7 @@ Figure \@ref(fig:docker-lightfoot) depicts what conatiners we have on `lightfoot
 You can think of each 'container' as an 'application' just like one you are running on your laptop.
 But the behvaior of each 'container' is more like a separate server you connect to.
 
-```{r docker-lightfoot, echo=FALSE, fig.cap='The Docker infrastructure used in SDAL', fig.align='center', out.width='100%'}
+```{r docker-lightfoot, echo=FALSE, fig.cap='The Docker infrastructure used in SDAL. The containers on the top row are the parts of the system lab members will be connecting to and working on.', fig.align='center', out.width='100%'}
 knitr::include_graphics(path = "./figs/sdal_docker_lightfoot.png")
 ```
 

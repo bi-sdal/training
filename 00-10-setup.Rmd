@@ -83,6 +83,8 @@ Others editors that you can use are Gedit, Kate or Sublime Text.
 ## R {-}
 R is a programming language that is especially powerful for data exploration, visualization, and statistical analysis. To interact with R, we use RStudio.
 
+RStudio IDE: https://www.rstudio.com/products/rstudio/download/preview/
+
 ### Windows {-}
 Video Tutorial
 Install R by downloading and running this .exe file from CRAN. Also, please install the RStudio IDE. Note that if you have separate user and admin accounts, you should run the installers as administrator (right-click on .exe file and select "Run as administrator" instead of double-clicking). Otherwise problems may occur later, for example when installing R packages.
@@ -98,7 +100,7 @@ You can download the binary files for your distribution from CRAN. Or you can us
 SQL is a specialized programming language used with databases. We use a simple database manager called SQLite in our lessons.
 
 ### Windows {-}
-The Windows Installer installs SQLite for Windows. If you used the installer to configure nano, you don't need to run it again.
+The [Windows Installer](https://github.com/swcarpentry/windows-installer/releases/download/v0.3/SWCarpentryInstaller.exe) installs SQLite for Windows. If you used the installer to configure nano, you don't need to run it again.
 
 ### macOS {-}
 SQLite comes pre-installed on macOS.
@@ -107,6 +109,9 @@ SQLite comes pre-installed on macOS.
 SQLite comes pre-installed on Linux.
 
 ## SSH Keys {-}
+
+Typically we'll be going over this step together as a class.
+As long as you have Bash installed you'll be okay.
 
 It'll be a good idea to first check and see if you already have any SSH keys: https://help.github.com/articles/checking-for-existing-ssh-keys/
 

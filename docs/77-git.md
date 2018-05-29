@@ -15,6 +15,21 @@ Quick References:
 4. [Git interaction from NDP Software][7]
 5. [Learn Git Branching][8]
 
+Git and the "final" version problem
+
+If these comics bring back haunting memories, then version control is for you!
+
+![](http://www.phdcomics.com/comics/archive/phd101212s.gif)
+
+![](http://www.phdcomics.com/comics/archive/phd052810s.gif)
+
+Technically, renaming copies of files is a form of version control.
+It allows you to go back to a specific state of a file.
+As the two comics point out, this usually ends up in a cacophony of files with similar names.
+
+What about files and programs that know how to track changes already.
+I'm mainly thinking about Word documents.
+
 ## Git on your own
 
 <div class="figure" style="text-align: center">

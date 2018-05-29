@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="setup.html">
-<link rel="next" href="git.html">
+<link rel="prev" href="coordinate-systems.html">
+<link rel="next" href="writing-to-a-files.html">
 <script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -251,53 +251,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-bash-shell" class="section level2 unnumbered">
-<h2>The Bash Shell</h2>
-<p>Bash is a commonly-used shell that gives you the power to do simple tasks more quickly.</p>
-<div id="windows" class="section level3 unnumbered">
-<h3>Windows</h3>
-<p><a href="https://www.youtube.com/watch?v=339AEqk9c-8">Video Tutorial</a></p>
-<ol style="list-style-type: decimal">
-<li>Download the Git for Windows installer: <a href="https://git-for-windows.github.io/" class="uri">https://git-for-windows.github.io/</a>.</li>
-<li>Run the installer and follow the steps bellow:
-<ol style="list-style-type: decimal">
-<li>Click on “Next”.</li>
-<li>Click on “Next”.</li>
-<li><strong>Keep “Use Git from the Windows Command Prompt” selected and click on “Next”.</strong>
-If you forgot to do this programs that you need for the workshop will not work properly.
-If this happens rerun the installer and select the appropriate option.</li>
-<li>Click on “Next”.</li>
-<li>Keep “Checkout Windows-style, commit Unix-style line endings” selected and click on “Next”.</li>
-<li><strong>Keep “Use Windows’ default console window” selected and click on “Next”.</strong></li>
-<li>Click on “Install”.</li>
-<li>Click on “Finish”.</li>
-</ol></li>
-<li>If your “HOME” environment variable is not set (or you don’t know what this is):
-<ol style="list-style-type: decimal">
-<li>Open command prompt (Open Start Menu then type cmd and press [Enter])</li>
-<li>Type the following line into the command prompt window exactly as shown: <code>setx HOME &quot;%USERPROFILE%&quot;</code></li>
-<li>Press [Enter], you should see <code>SUCCESS: Specified value was saved.</code></li>
-<li>Quit command prompt by typing exit then pressing [Enter]</li>
-</ol></li>
-</ol>
-<p>This will provide you with both Git and Bash in the Git Bash program.</p>
-</div>
-<div id="macos" class="section level3 unnumbered">
-<h3>macOS</h3>
-<p>The default shell in all versions of macOS is Bash, so no need to install anything. You access Bash from the Terminal (found in /Applications/Utilities). See the Git installation video tutorial for an example on how to open the Terminal. You may want to keep Terminal in your dock for this workshop.</p>
-</div>
-<div id="linux" class="section level3 unnumbered">
-<h3>Linux</h3>
-<p>The default shell is usually Bash, but if your machine is set up differently you can run it by opening a terminal and typing bash. There is no need to install anything.</p>
-</div>
+<div id="importing-data" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Importing Data</h1>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">library</span>(readr)</a></code></pre></div>
+<p>look at <code>read_</code> set of functions</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1">heights =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;data/heights.csv&#39;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   earn = col_double(),
+##   height = col_double(),
+##   sex = col_character(),
+##   ed = col_integer(),
+##   age = col_integer(),
+##   race = col_character()
+## )</code></pre>
+<ul>
+<li>skip number of rows</li>
+<li>comments can be skipped</li>
+<li>col_names for no column names
+<ul>
+<li>manually pass in column names</li>
+</ul></li>
+<li>na specifies what is “missing”</li>
+</ul>
+<p>in base R, <code>read_csv</code>, <code>data.table::fread()</code></p>
+<p>string as factors! useing <code>readr</code> compared to base R</p> 
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="setup.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="git.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="coordinate-systems.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="writing-to-a-files.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
@@ -327,7 +313,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/bi-sdal/training/edit/master/00-10-setup.Rmd",
+"link": "https://github.com/bi-sdal/training/edit/master/020-data_import.Rmd",
 "text": "Edit"
 },
 "download": ["sdal-training.pdf", "sdal-training.epub"],

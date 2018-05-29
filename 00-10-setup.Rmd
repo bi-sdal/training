@@ -59,6 +59,11 @@ If Git is not already available on your machine you can try to install it via yo
 ## Text Editor {-}
 When you're writing code, it's nice to have a text editor that is optimized for writing code, with features like automatic color-coding of key words. The default text editor on macOS and Linux is usually set to Vim, which is not famous for being intuitive. If you accidentally find yourself stuck in it, try typing the escape key, followed by :q! (colon, lower-case 'q', exclamation mark), then hitting Return to return to the shell.
 
+- Atom: https://flight-manual.atom.io/getting-started/sections/installing-atom/
+- Sublime Text: https://www.sublimetext.com/3
+- Emacs
+- VIM
+
 ### Windows {-}
 Video Tutorial
 nano is a basic editor and the default that instructors use in the workshop. To install it, download the Windows installer and double click on the file to run it. This installer requires an active internet connection.

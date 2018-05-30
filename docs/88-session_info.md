@@ -6,7 +6,7 @@ Sys.time()
 ```
 
 ```
-## [1] "2018-05-30 12:28:50 EDT"
+## [1] "2018-05-30 15:37:03 EDT"
 ```
 
 
@@ -95,3 +95,5 @@ devtools::session_info()
 ##  xfun        0.1     2018-01-22 CRAN (R 3.5.0)
 ##  yaml        2.1.19  2018-05-01 CRAN (R 3.5.0)
 ```
+
+<marquee>The all data revolution!</marquee>

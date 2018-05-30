@@ -12,3 +12,5 @@ sessionInfo()
 ```{r}
 devtools::session_info()
 ```
+
+<marquee>The all data revolution!</marquee>

@@ -1,5 +1,9 @@
 # Importing Data
 
+Data import chapter in r4ds
+
+- http://r4ds.had.co.nz/data-import.html
+
 DataCamp Courses:
 
 - https://www.datacamp.com/courses/importing-data-in-r-part-1

@@ -1,5 +1,9 @@
 # Data Visualization
 
+Data visualization Chapter in r4ds
+
+- http://r4ds.had.co.nz/data-visualisation.html
+
 Datacamp Courses:
 
 - The `ggplot2` stack

@@ -1,5 +1,14 @@
 # Data Visualization
 
+Datacamp Courses:
+
+- The `ggplot2` stack
+    - https://www.datacamp.com/courses/data-visualization-with-ggplot2-1
+    - https://www.datacamp.com/courses/data-visualization-with-ggplot2-2
+    - https://www.datacamp.com/courses/data-visualization-with-ggplot2-part-3
+
+## Loading ggplot2
+
 ```{r}
 library(ggplot2)
 ```

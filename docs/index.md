@@ -1,7 +1,7 @@
 --- 
 title: "Training Manual for SDAL"
 #author: "Daniel Chen"
-#date: "2018-05-29"
+#date: "2018-05-30"
 site: bookdown::bookdown_site
 output:
   bookdown::gitbook:

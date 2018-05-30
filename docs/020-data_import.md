@@ -1,5 +1,12 @@
 # Importing Data
 
+DataCamp Courses:
+
+- https://www.datacamp.com/courses/importing-data-in-r-part-1
+- https://www.datacamp.com/courses/importing-data-in-r-part-2
+
+## Loading datasets
+
 
 ```r
 library(readr)

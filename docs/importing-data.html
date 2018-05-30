@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="coordinate-systems.html">
-<link rel="next" href="writing-to-a-files.html">
+<link rel="next" href="loading-datasets.html">
 <script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -222,7 +222,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.8" data-path="coordinate-systems.html"><a href="coordinate-systems.html"><i class="fa fa-check"></i><b>2.8</b> Coordinate Systems</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="importing-data.html"><a href="importing-data.html"><i class="fa fa-check"></i><b>3</b> Importing Data</a><ul>
-<li class="chapter" data-level="3.1" data-path="writing-to-a-files.html"><a href="writing-to-a-files.html"><i class="fa fa-check"></i><b>3.1</b> Writing to a files</a></li>
+<li class="chapter" data-level="3.1" data-path="loading-datasets.html"><a href="loading-datasets.html"><i class="fa fa-check"></i><b>3.1</b> Loading datasets</a></li>
+<li class="chapter" data-level="3.2" data-path="writing-to-a-files.html"><a href="writing-to-a-files.html"><i class="fa fa-check"></i><b>3.2</b> Writing to a files</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>4</b> Git</a><ul>
 <li class="chapter" data-level="4.1" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>4.1</b> Git on your own</a></li>
@@ -254,29 +255,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="importing-data" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> Importing Data</h1>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">library</span>(readr)</a></code></pre></div>
-<p>look at <code>read_</code> set of functions</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1">heights =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;data/heights.csv&#39;</span>)</a></code></pre></div>
-<pre><code>## Parsed with column specification:
-## cols(
-##   earn = col_double(),
-##   height = col_double(),
-##   sex = col_character(),
-##   ed = col_integer(),
-##   age = col_integer(),
-##   race = col_character()
-## )</code></pre>
+<p>DataCamp Courses:</p>
 <ul>
-<li>skip number of rows</li>
-<li>comments can be skipped</li>
-<li>col_names for no column names
-<ul>
-<li>manually pass in column names</li>
-</ul></li>
-<li>na specifies what is “missing”</li>
-</ul>
-<p>in base R, <code>read_csv</code>, <code>data.table::fread()</code></p>
-<p>string as factors! useing <code>readr</code> compared to base R</p> 
+<li><a href="https://www.datacamp.com/courses/importing-data-in-r-part-1" class="uri">https://www.datacamp.com/courses/importing-data-in-r-part-1</a></li>
+<li><a href="https://www.datacamp.com/courses/importing-data-in-r-part-2" class="uri">https://www.datacamp.com/courses/importing-data-in-r-part-2</a></li>
+</ul> 
 </div>
             </section>
 
@@ -284,7 +267,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="coordinate-systems.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="writing-to-a-files.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="loading-datasets.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>

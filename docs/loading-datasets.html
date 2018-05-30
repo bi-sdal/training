@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="r.html">
-<link rel="next" href="ssh-keys.html">
+<link rel="prev" href="importing-data.html">
+<link rel="next" href="writing-to-a-files.html">
 <script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -253,29 +253,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sqlite" class="section level2 unnumbered">
-<h2>SQLite</h2>
-<p>SQL is a specialized programming language used with databases. We use a simple database manager called SQLite in our lessons.</p>
-<div id="windows-4" class="section level3 unnumbered">
-<h3>Windows</h3>
-<p>The <a href="https://github.com/swcarpentry/windows-installer/releases/download/v0.3/SWCarpentryInstaller.exe">Windows Installer</a> installs SQLite for Windows. If you used the installer to configure nano, you don’t need to run it again.</p>
-</div>
-<div id="macos-4" class="section level3 unnumbered">
-<h3>macOS</h3>
-<p>SQLite comes pre-installed on macOS.</p>
-</div>
-<div id="linux-4" class="section level3 unnumbered">
-<h3>Linux</h3>
-<p>SQLite comes pre-installed on Linux.</p>
-</div>
+<div id="loading-datasets" class="section level2">
+<h2><span class="header-section-number">3.1</span> Loading datasets</h2>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">library</span>(readr)</a></code></pre></div>
+<p>look at <code>read_</code> set of functions</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1">heights =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;data/heights.csv&#39;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   earn = col_double(),
+##   height = col_double(),
+##   sex = col_character(),
+##   ed = col_integer(),
+##   age = col_integer(),
+##   race = col_character()
+## )</code></pre>
+<ul>
+<li>skip number of rows</li>
+<li>comments can be skipped</li>
+<li>col_names for no column names
+<ul>
+<li>manually pass in column names</li>
+</ul></li>
+<li>na specifies what is “missing”</li>
+</ul>
+<p>in base R, <code>read_csv</code>, <code>data.table::fread()</code></p>
+<p>string as factors! useing <code>readr</code> compared to base R</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ssh-keys.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="importing-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="writing-to-a-files.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
@@ -305,7 +315,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/bi-sdal/training/edit/master/00-10-setup.Rmd",
+"link": "https://github.com/bi-sdal/training/edit/master/020-data_import.Rmd",
 "text": "Edit"
 },
 "download": ["sdal-training.pdf", "sdal-training.epub"],

@@ -172,3 +172,14 @@ $ ssh YOUR_PID@lightfoot.vbi.vt.edu
 ### GitLab (devlab) {-}
 
 The process of adding a key to GitLab is similar to the GitHub instuctions: https://docs.gitlab.com/ee/gitlab-basics/create-your-ssh-keys.html
+
+## LaTeX {-}
+
+Please go to https://www.latex-project.org/get/ to find the LaTeX distribution for your operating system.
+If you can, you should try to install the "full" version of TeX, but it is a very large install.
+The upside of installing everything is usually you'll never have a problem in the future with loading TeX or LaTeX packages.
+
+There's also a very good LaTeX IDE called TeXstudio: https://www.texstudio.org/.
+It's a fork of Texmaker (http://www.xm1math.net/texmaker/),
+but I find that TeXstudio has better autocompletes.
+You can try both of them, they're pretty much the same (in both function and visuals)

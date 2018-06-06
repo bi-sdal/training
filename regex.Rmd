@@ -122,7 +122,12 @@ By looping through all the years above and combining the results, we can get a f
 ### Lookaround Examples
 
 ```{r}
-naicsAndCompanies = read.csv("./data/regexClips/exampleNaicsScraping.csv", stringsAsFactors = FALSE)$Company
+naicsAndCompanies = c("Name: Herbalife Ltd; NAICS: 325411, 325412, 424490",                                    
+"Name: Sanofi-Aventis SA; NAICS: 325412",                      
+"Name: Abbott Laboratories; NAICS: 325411, 325412, 325413, 325620, 334516, 339112",  
+"Name: Alexion Pharmaceuticals Inc; NAICS: 325412",    
+"Name: Purdue Pharma LP; NAICS: 325412; Name: Transcept Pharmaceuticals Inc; NAICS: 325412",
+"Name: Sanofi-Aventis SA; NAICS: 325412")
 naicsAndCompanies
 ```
 We want a table with company names in one column and NAICS codes in another column. Since some companies have multiple NAICS codes, we'll need company names to repeat. How can we extract the components we want?

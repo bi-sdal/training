@@ -1,0 +1,229 @@
+# Data Transformations
+
+Data Transformation chapter in r4ds
+
+- http://r4ds.had.co.nz/transform.html
+
+DataCamp Courses:
+
+- https://www.datacamp.com/courses/dplyr-data-manipulation-r-tutorial
+- https://www.datacamp.com/courses/introduction-to-the-tidyverse
+- https://www.datacamp.com/courses/cleaning-data-in-r
+
+References:
+
+- https://dplyr.tidyverse.org/
+- [Rstudio Data Transformation Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
+- [Tidyverse for beginners DataCamp Cheatsheet](http://datacamp-community.s3.amazonaws.com/e63a8f6b-2aa3-4006-89e0-badc294b179c)
+- 
+
+## `dplyr` library
+
+```{r}
+library(dplyr)
+library(nycflights13)
+```
+
+```{r}
+flights
+```
+
+The basic verbs in `dplyr`
+
+- `filter()`: selects rows
+- `arrange()`: reorders rows
+- `select()`: selects (and re-order) columns
+- `mutate()`: create new variables (columns) based on existing variables (columns)
+- `summarise()`: collapses multiple values into a single value (e.g., mean, standard deviation, etc)
+
+## Filter
+
+```{r}
+filter(flights, month == 1)
+```
+
+```{r}
+filter(flights, month == 1, day == 1)
+```
+
+
+```{r}
+jan1 <- filter(flights, month == 1, day == 1)
+# jan1 = filter(flights, month == 1, day == 1)
+```
+
+
+```{r}
+(jan1 <- filter(flights, month == 1, day == 1))
+```
+
+## comparisons
+
+```
+> >= < <= != ==
+```
+
+
+```{r}
+sqrt(2)^2 == 2
+```
+
+
+```{r}
+near(sqrt(2)^2, 2)
+```
+
+## logical operators
+
+```
+| &
+```
+
+```{r}
+filter(flights, month == 11 | month == 12)
+
+# filter(flights, month == 11 | 12)  ## this is wrong and will not work like you expect
+```
+
+
+```{r}
+filter(flights, month == 11 | 12)
+```
+
+
+```{r}
+filter(flights, month %in% c(11, 12))
+```
+
+```{r}
+filter(flights, arr_delay <= 120, dep_delay <= 12)
+```
+
+by default filter will also drop missing values.
+See the r4ds chapter for this.
+
+## Arrange
+
+```{r}
+arrange(flights, year, month, day)
+```
+
+
+```{r}
+arrange(flights, year, month, desc(day))
+```
+
+```{r}
+arrange(flights, year, desc(month), day)
+```
+
+## Select
+
+```{r}
+select(flights, year, month, day)
+```
+
+
+```{r}
+select(flights, year:day, arr_delay)
+```
+
+```{r}
+select(flights, -year)
+```
+
+```{r}
+select(flights, -(year:day))
+```
+
+Other functions you can use within select:
+
+```
+starts_with
+ends_with
+contains
+matches
+num_range # for example to create x1, x2, x3
+```
+
+```{r}
+rename(flights, "tail_num" = tailnum, 'y' = year)
+```
+
+```{r}
+select(flights, time_hour, air_time, everything())
+```
+
+## Mutate
+
+```{r}
+(flights_sml <- select(flights,
+                      year:day,
+                      ends_with('delay'),
+                      distance,
+                      air_time))
+```
+
+```{r}
+mutate(flights_sml,
+       gain = arr_delay - dep_delay,
+       speed = distance / air_time * 60)
+```
+
+```{r}
+mutate(flights_sml,
+       gain = arr_delay - dep_delay,
+       speed = distance / air_time * 60,
+       hours = air_time / 60,
+       gain_per_hour = gain / hours
+       )
+```
+
+## Summarize (summarise)
+
+```{r}
+summarize(flights, delay = mean(dep_delay, na.rm = TRUE))
+```
+
+## Groupby
+
+```{r}
+by_day <- group_by(flights,
+                   year, month, day)
+```
+
+```{r}
+summarize(by_day, delay = mean(dep_delay, na.rm = TRUE))
+```
+
+Do a group by and perform multiple summarizations
+
+```{r}
+by_month <- group_by(flights,
+                   year, month)
+by_month <- summarize(by_month,
+          delay = mean(dep_delay, na.rm = TRUE),
+          delay_std = sd(dep_delay, na.rm = TRUE)
+          )
+by_month
+```
+
+The above code can be re-written using the pipe, `%>%`
+
+```{r}
+# i'm pretty sure this is easier to read and understand
+by_month <- group_by(flights,
+                     year, month) %>%
+    summarize(delay = mean(dep_delay, na.rm = TRUE),
+              delay_std = sd(dep_delay, na.rm = TRUE))
+by_month
+```
+
+Otherwise you will have to create a temp variable,
+or write a nested expression
+
+```{r}
+summarize(group_by(flights, year, month),
+          delay = mean(dep_delay, na.rm = TRUE),
+          delay_std = sd(dep_delay, na.rm = TRUE))
+```

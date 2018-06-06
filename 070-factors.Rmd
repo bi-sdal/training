@@ -1,0 +1,112 @@
+# Factors
+
+Factors chapter in r4ds
+
+- http://r4ds.had.co.nz/factors.html
+
+
+DataCamp Courses
+
+Resources
+
+- http://forcats.tidyverse.org/
+- https://github.com/tidyverse/forcats
+
+```{r}
+library(forcats)
+```
+
+```{r}
+x1 <- c("M", "T", "W", "R", "F", "S", "U")
+x2 <- c("Sa", "Su")
+```
+
+```{r}
+sort(x1)
+```
+
+```{r}
+proper_order <- x1
+```
+
+```{r}
+cat1 <- factor(x1, levels = proper_order)
+cat1
+```
+
+```{r}
+sort(cat1)
+```
+
+
+```{r}
+gss_cat
+```
+
+```{r}
+gss_cat$marital
+```
+
+```{r}
+gss_cat %>%
+    dplyr::count(marital)
+```
+
+## re-ording factors
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+relig_summary <- gss_cat %>%
+    dplyr::group_by(relig) %>%
+    dplyr::summarize(
+        tvhours = mean(tvhours, na.rm = TRUE),
+        age = mean(age, na.rm = TRUE),
+        n = n()
+    )
+relig_summary
+```
+
+```{r}
+ggplot(relig_summary, aes(x = tvhours, y = relig)) +
+    geom_point()
+```
+
+```{r}
+ggplot(relig_summary, aes(x = tvhours,
+                          y = fct_reorder(relig, tvhours))) +
+    geom_point()
+```
+
+## Modifying factor values
+
+```{r}
+gss_cat %>% count(partyid)
+```
+
+```{r}
+# same as below
+#forcats::fct_recode(gss_cat$partyid)
+```
+
+
+```{r}
+forcats::fct_recode(gss_cat$partyid,
+                        "Rep, Strong" = "Strong republican",
+                        "Dem, Strong" = "Strong democrat")
+```
+
+```{r}
+gss_cat_recoded <- gss_cat %>%
+    mutate(party_id_recode = fct_recode(
+        partyid,
+        "Rep, Strong" = "Strong republican",
+        "Dem, Strong" = "Strong democrat"))
+```
+
+```{r}
+# do a cross tab in R
+table(gss_cat_recoded$partyid, gss_cat_recoded$party_id_recode, useNA = 'always')
+```
+

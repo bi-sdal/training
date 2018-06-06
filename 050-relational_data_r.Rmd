@@ -1,0 +1,137 @@
+# Relational Data in R
+
+Relational data chapter in r4ds
+
+- http://r4ds.had.co.nz/relational-data.html
+
+DataCamp Courses:
+
+- https://www.datacamp.com/courses/joining-data-in-r-with-dplyr
+
+
+Resources:
+
+- [Rstudio dplyr Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
+- dplyr join reference: https://dplyr.tidyverse.org/reference/join.html
+
+
+## dplyr
+
+```{r}
+library(tibble)
+library(dplyr)
+```
+
+```{r}
+x <- tribble(
+    ~key, ~val_x,
+    1, "x1",
+    2, "x2",
+    3, "x3"
+)
+x
+```
+
+```{r}
+y <- tribble(
+    ~key, ~val_y,
+    1, "y1",
+    2, "y2",
+    4, "y3"
+)
+y
+```
+
+
+```{r}
+x %>% 
+    inner_join(y, by = 'key')
+```
+
+
+```{r}
+x %>% 
+    left_join(y, by = 'key')
+```
+
+```{r}
+x %>% 
+    right_join(y, by = 'key')
+```
+
+```{r}
+x %>% 
+    full_join(y, by = 'key')
+```
+
+# many to one OR one to many
+```{r}
+(x <- tribble(
+    ~key, ~val_x,
+    1, "x1",
+    2, "x2",
+    3, "x3",
+    1, "x4",
+    1, "x5",
+    1, "x6"
+))
+
+(y <- tribble(
+    ~key, ~val_y,
+    1, "y1",
+    2, "y2",
+    4, "y3"
+))
+```
+
+```{r}
+x %>%
+    left_join(y, by = 'key')
+```
+
+
+
+# many to many
+
+```{r}
+(x <- tribble(
+    ~key, ~val_x,
+    1, "x1",
+    2, "x2",
+    3, "x3",
+    1, "x4",
+    1, "x5",
+    1, "x6"
+))
+
+(y <- tribble(
+    ~key, ~val_y,
+    1, "y1",
+    2, "y2",
+    4, "y3",
+    1, "y4",
+    1, "y5"
+))
+```
+
+a many to many join creates a cartesian product
+
+```{r}
+x %>%
+    left_join(y, by = 'key')
+```
+
+
+The below code won't work, but it's to show you that you can join by multiple keys
+
+```r
+x %>%
+    left_join(y, by = c('key', 'col2', 'col3'))
+```
+
+as well as do joins when columns do not share the same name
+
+```r
+x %>%
+    left_join(y, by = c('key' = 'key2', 'col2' = 'other', 'col3'))
+```

@@ -3,12 +3,14 @@ Regular expressions are very useful in the context of web scraping. This example
 ```{r}
 library(XML)
 rooturl = "http://www.pulaskicounty.org/Board-of-Supervisors.html"
-bosMainPaige = htmlParse(rooturl)
-links = xpathSApply(bosMainPaige, "//a/@href")
+bosMainPage = htmlParse(rooturl)
+bosMainPage
+links = xpathSApply(bosMainPage, "//a/@href")
 links
 ```
 
-The above code downloads the html for the Board's website and saves it in bosMainPaige. The next line extracts all the links leading away from that page. It looks like a promising place to look is in the links such as 'Board-of-Supervisors-Minutes-1992.html'. We can get just those links with the following
+
+The above code downloads the html for the Board's website and saves it in bosMainPage. The next line extracts all the links leading away from that page. It looks like a promising place to look is in the links such as 'Board-of-Supervisors-Minutes-1992.html'. We can get just those links with the following:
 
 
 ```{r}
@@ -16,6 +18,8 @@ minutesLinks = grep("Minutes", links, value = T)
 fullMinutesUrl = paste0("http://www.pulaskicounty.org/", minutesLinks)
 fullMinutesUrl
 ```
+The function grep is a base r function that returns strings which contain a pattern. We used it above to take all the urls on the main page and extract only the ones which contain 'Minutes', since those are the ones that contain links to the meeting minutes.
+
 Now we have all the urls to the pages where the minutes are kept. To work with all of them we could use a loop or an apply function, but we'll just do one for illustration. We want to go to the page, find all the pdf's with the minutes, and download them. A natural idea is to find everything with '.pdf', but observe:
 ```{r}
 minutePage2016 = htmlParse(fullMinutesUrl[2])

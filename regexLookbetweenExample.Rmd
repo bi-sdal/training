@@ -2,18 +2,20 @@
 ```{r}
 library(stringr)
 naicsAndCompanies = read.csv("./data/regexClips/exampleNaicsScraping.csv", stringsAsFactors = FALSE)$Company
+naicsAndCompanies
 ```
 We want a table with company names in one column and NAICS codes in another column. Since some companies have multiple NAICS codes, we'll need company names to repeat. How can we extract the components we want?
 
 Let's focus on the first entry for now. Notice that a semicolon separates the name from the NAICS codes. We can use that to split the string using lookarounds.
+
+(?=X) is the lookahead operator. It looks AHEAD for the pattern X; that is, it matches things that come BEFORE it
+(?<=X) is the lookbehind operator. It looks BEHIND for the pattern X; that is, it matches things that come AFTER it
+(X) contains the pattern X that comes before the look ahead or after the lookbehind
+'.\*' means match the wildcard '.' any number of times '*'.
+
 ```{r}
 firstRegexCase = naicsAndCompanies[[1]]
-
-# (?=X) is the lookahead operator. It looks AHEAD for the pattern X; that is, it matches things that come BEFORE it
-# (?<=X) is the lookbehind operator. It looks BEHIND for the pattern X; that is, it matches things that come AFTER it
-# (X) contains the pattern X that comes before the look ahead or after the lookbehind
-# .* means match the wildcard '.' any number of times '*'.
-
+firstRegexCase
 company = str_extract(firstRegexCase, "(.*?)(?=;)")
 naicsCodes = str_extract(firstRegexCase, "(?<=NAICS: )(.*)")
 company

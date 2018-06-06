@@ -21,12 +21,14 @@ naicsCodes = str_extract(firstRegexCase, "(?<=NAICS: )(.*)")
 company
 naicsCodes
 ```
-We're getting there, but not quite. We don't want that annoying 'Name: ' in front of the company, and it'd be nice to have the NAICS codes as separate entires in a vector. We can achieve that with the following.
+We're getting there, but not quite. We don't want that annoying 'Name: ' in front of the company. We can achieve that with the following. The lookbehind '(?<=Name: )' will find a place in the string that matches the pattern 'Name: ' and then match what comes next, which in this case is anything (.*).
 ```{r}
 cleanerCompany = str_extract(company, "(?<=Name: )(.*)")
-naicsVector = str_split(naicsCodes, ",", simplify = TRUE)
 cleanerCompany
-naicsVector
+```
+Note that we could have removed the 'Name: ' directly using a function called gsub, but the lookbehind will be useful later. gsub replaces the pattern in the first argument with the pattern in the second wherever it finds it in the third argument.
+```{r}
+gsub("Name: ", "", company)
 ```
 
 Now we can tackle the whole vector. We'll use the same idea of separating names from codes using semicolons, but with two new challenges. 

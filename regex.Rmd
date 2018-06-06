@@ -53,7 +53,7 @@ More succinctly we can use a quantifier to match a given number of times: {n} wi
 ```{r}
 str_extract_all(exampleText, '\\d{10}')
 ```
-Other useful quantifiers are * to match at least 0 times, + to match at least once, and {n,m} to match between n and m times. We can use + to get the first two numbers. 
+Other useful quantifiers are \* to match at least 0 times, + to match at least once, and {n,m} to match between n and m times. We can use \* to get the first two numbers. 
 ```{r}
 str_extract_all(exampleText, '\\d{3}-*\\d{3}-*\\d{4}')
 ```
@@ -81,7 +81,6 @@ str_extract_all(exampleText, '\\(*\\d{3}\\)*[-\\.\\s]*\\d{3}[-\\.\\s]*\\d{4}')
 
 ### Basic Web Scraping Example
 
-
 Regular expressions are very useful in the context of web scraping. This example is from a small scraping job we did on the Pulaski Board of Supervisors website to extract their meeting minutes. First, we should have a look at their website to get a lay of the land. It's at: http://www.pulaskicounty.org/Board-of-Supervisors.html
 ```{r}
 library(XML)
@@ -92,9 +91,7 @@ links = xpathSApply(bosMainPage, "//a/@href")
 links
 ```
 
-
 The above code downloads the html for the Board's website and saves it in bosMainPage. The next line extracts all the links leading away from that page. It looks like a promising place to look is in the links such as 'Board-of-Supervisors-Minutes-1992.html'. We can get just those links with the following:
-
 
 ```{r}
 minutesLinks = grep("Minutes", links, value = T)
@@ -130,7 +127,7 @@ naicsAndCompanies = c("Name: Herbalife Ltd; NAICS: 325411, 325412, 424490",
 "Name: Sanofi-Aventis SA; NAICS: 325412")
 naicsAndCompanies
 ```
-We want a table with company names in one column and NAICS codes in another column. Since some companies have multiple NAICS codes, we'll need company names to repeat. How can we extract the components we want?
+We want a table with company names in one column and NAICS codes in another column. How can we extract the components we want?
 
 Let's focus on the first entry for now. Notice that a semicolon separates the name from the NAICS codes. We can use that to split the string using lookarounds.
 

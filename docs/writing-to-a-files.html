@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="loading-datasets.html">
-<link rel="next" href="git-1.html">
+<link rel="next" href="data-transformations.html">
 <script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -190,6 +190,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="ssh-keys.html"><a href="ssh-keys.html#lightfoot"><i class="fa fa-check"></i>Lightfoot</a></li>
 <li class="chapter" data-level="" data-path="ssh-keys.html"><a href="ssh-keys.html#gitlab-devlab"><i class="fa fa-check"></i>GitLab (devlab)</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i>LaTeX</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="syllabus.html"><a href="syllabus.html"><i class="fa fa-check"></i>Syllabus</a><ul>
 <li class="chapter" data-level="" data-path="lesson-breakdown.html"><a href="lesson-breakdown.html"><i class="fa fa-check"></i>Lesson Breakdown</a><ul>
@@ -225,11 +226,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="loading-datasets.html"><a href="loading-datasets.html"><i class="fa fa-check"></i><b>3.1</b> Loading datasets</a></li>
 <li class="chapter" data-level="3.2" data-path="writing-to-a-files.html"><a href="writing-to-a-files.html"><i class="fa fa-check"></i><b>3.2</b> Writing to a files</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>4</b> Git</a><ul>
-<li class="chapter" data-level="4.1" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>4.1</b> Git on your own</a></li>
-<li class="chapter" data-level="4.2" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>4.2</b> Git with branches</a></li>
-<li class="chapter" data-level="4.3" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>4.3</b> Collaborating with Git</a></li>
-<li class="chapter" data-level="4.4" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>4.4</b> Protecting branches</a></li>
+<li class="chapter" data-level="4" data-path="data-transformations.html"><a href="data-transformations.html"><i class="fa fa-check"></i><b>4</b> Data Transformations</a><ul>
+<li class="chapter" data-level="4.1" data-path="dplyr-library.html"><a href="dplyr-library.html"><i class="fa fa-check"></i><b>4.1</b> <code>dplyr</code> library</a></li>
+<li class="chapter" data-level="4.2" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>4.2</b> Filter</a></li>
+<li class="chapter" data-level="4.3" data-path="comparison-operators.html"><a href="comparison-operators.html"><i class="fa fa-check"></i><b>4.3</b> Comparison (operators)</a></li>
+<li class="chapter" data-level="4.4" data-path="logical-operators.html"><a href="logical-operators.html"><i class="fa fa-check"></i><b>4.4</b> Logical operators</a></li>
+<li class="chapter" data-level="4.5" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>4.5</b> Arrange</a></li>
+<li class="chapter" data-level="4.6" data-path="select.html"><a href="select.html"><i class="fa fa-check"></i><b>4.6</b> Select</a></li>
+<li class="chapter" data-level="4.7" data-path="mutate.html"><a href="mutate.html"><i class="fa fa-check"></i><b>4.7</b> Mutate</a></li>
+<li class="chapter" data-level="4.8" data-path="summarize-summarise.html"><a href="summarize-summarise.html"><i class="fa fa-check"></i><b>4.8</b> Summarize (summarise)</a></li>
+<li class="chapter" data-level="4.9" data-path="groupby.html"><a href="groupby.html"><i class="fa fa-check"></i><b>4.9</b> Groupby</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>5</b> Tidy data</a><ul>
+<li class="chapter" data-level="5.1" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>5.1</b> tidyr</a></li>
+<li class="chapter" data-level="5.2" data-path="gather.html"><a href="gather.html"><i class="fa fa-check"></i><b>5.2</b> Gather</a></li>
+<li class="chapter" data-level="5.3" data-path="primer-to-joins.html"><a href="primer-to-joins.html"><i class="fa fa-check"></i><b>5.3</b> Primer to joins</a></li>
+<li class="chapter" data-level="5.4" data-path="spread.html"><a href="spread.html"><i class="fa fa-check"></i><b>5.4</b> Spread</a></li>
+<li class="chapter" data-level="5.5" data-path="separate.html"><a href="separate.html"><i class="fa fa-check"></i><b>5.5</b> Separate</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="relational-data-in-r.html"><a href="relational-data-in-r.html"><i class="fa fa-check"></i><b>6</b> Relational Data in R</a><ul>
+<li class="chapter" data-level="6.1" data-path="create-simple-datasets.html"><a href="create-simple-datasets.html"><i class="fa fa-check"></i><b>6.1</b> Create simple datasets</a></li>
+<li class="chapter" data-level="6.2" data-path="one-to-one.html"><a href="one-to-one.html"><i class="fa fa-check"></i><b>6.2</b> one-to-one</a></li>
+<li class="chapter" data-level="6.3" data-path="many-to-one-or-one-to-many.html"><a href="many-to-one-or-one-to-many.html"><i class="fa fa-check"></i><b>6.3</b> many to one OR one to many</a></li>
+<li class="chapter" data-level="6.4" data-path="many-to-many.html"><a href="many-to-many.html"><i class="fa fa-check"></i><b>6.4</b> many to many</a></li>
+<li class="chapter" data-level="6.5" data-path="multiple-keys.html"><a href="multiple-keys.html"><i class="fa fa-check"></i><b>6.5</b> Multiple keys</a></li>
+<li class="chapter" data-level="6.6" data-path="different-column-names.html"><a href="different-column-names.html"><i class="fa fa-check"></i><b>6.6</b> Different column names</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>7</b> Factors</a><ul>
+<li class="chapter" data-level="7.1" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>7.1</b> forcats</a></li>
+<li class="chapter" data-level="7.2" data-path="sorting.html"><a href="sorting.html"><i class="fa fa-check"></i><b>7.2</b> Sorting</a></li>
+<li class="chapter" data-level="7.3" data-path="counting.html"><a href="counting.html"><i class="fa fa-check"></i><b>7.3</b> Counting</a></li>
+<li class="chapter" data-level="7.4" data-path="re-ording-factors.html"><a href="re-ording-factors.html"><i class="fa fa-check"></i><b>7.4</b> Re-ording factors</a></li>
+<li class="chapter" data-level="7.5" data-path="modifying-factor-values.html"><a href="modifying-factor-values.html"><i class="fa fa-check"></i><b>7.5</b> Modifying factor values</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="modifying-factor-values.html"><a href="modifying-factor-values.html#double-check-your-work"><i class="fa fa-check"></i><b>7.5.1</b> Double check your work</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>8</b> Dates and Times</a><ul>
+<li class="chapter" data-level="8.1" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>8.1</b> lubridate</a></li>
+<li class="chapter" data-level="8.2" data-path="making-datetimes-from-data.html"><a href="making-datetimes-from-data.html"><i class="fa fa-check"></i><b>8.2</b> Making datetimes from data</a></li>
+<li class="chapter" data-level="8.3" data-path="non-standard-date-formatting.html"><a href="non-standard-date-formatting.html"><i class="fa fa-check"></i><b>8.3</b> Non-standard date formatting</a></li>
+<li class="chapter" data-level="8.4" data-path="strptime-format-variables.html"><a href="strptime-format-variables.html"><i class="fa fa-check"></i><b>8.4</b> strptime format variables</a></li>
+<li class="chapter" data-level="8.5" data-path="datetime-arithmetic.html"><a href="datetime-arithmetic.html"><i class="fa fa-check"></i><b>8.5</b> Datetime arithmetic</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>9</b> Git</a><ul>
+<li class="chapter" data-level="9.1" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>9.1</b> Git on your own</a></li>
+<li class="chapter" data-level="9.2" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>9.2</b> Git with branches</a></li>
+<li class="chapter" data-level="9.3" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>9.3</b> Collaborating with Git</a></li>
+<li class="chapter" data-level="9.4" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>9.4</b> Protecting branches</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="build-details.html"><a href="build-details.html"><i class="fa fa-check"></i>Build Details</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -275,7 +318,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="loading-datasets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="git-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-transformations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>

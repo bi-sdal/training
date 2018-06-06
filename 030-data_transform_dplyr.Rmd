@@ -12,6 +12,7 @@ DataCamp Courses:
 
 References:
 
+- dplyr vignette: https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html
 - https://dplyr.tidyverse.org/
 - [Rstudio Data Transformation Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
 - [Tidyverse for beginners DataCamp Cheatsheet](http://datacamp-community.s3.amazonaws.com/e63a8f6b-2aa3-4006-89e0-badc294b179c)
@@ -57,43 +58,61 @@ jan1 <- filter(flights, month == 1, day == 1)
 (jan1 <- filter(flights, month == 1, day == 1))
 ```
 
-## comparisons
+## Comparison (operators)
 
-```
-> >= < <= != ==
-```
+Comparison operators are used to compare 2 values to one another
 
+- `>`: greater than
+- `>=`: greater than or equal to
+- `<`: less than
+- `<=`: less than or equal to
+- `!=`: not equal
+- `==`: used to compare if two things are equal
+
+
+Be careful when trying to compare things that are calculations that lead to a decimal value.
 
 ```{r}
 sqrt(2)^2 == 2
 ```
 
+If two things you expect to be equal are not showing up as being `TRUE` and the values
+you are comparing are decimal values, you should use the `near` function instead.
 
 ```{r}
 near(sqrt(2)^2, 2)
 ```
 
-## logical operators
+## Logical operators
 
-```
-| &
-```
+Logical operators allow you to build more complex boolean conditions.
 
+- `|`: or
+- `&`: and
+
+
+Filter the month from the flights dataset where the month is 11 (November) or 12 (December)
 ```{r}
 filter(flights, month == 11 | month == 12)
-
-# filter(flights, month == 11 | 12)  ## this is wrong and will not work like you expect
 ```
 
+The below code will not run like you would expect (even though this is how you would say it in your head)
+
+```{r}
+# filter(flights, month == 11 | 12)  ## this is wrong and will not work like you expect
+```
 
 ```{r}
 filter(flights, month == 11 | 12)
 ```
 
+Instead of writing out each boolean statment separately using `|`, you can use the `%in%` operator
 
 ```{r}
 filter(flights, month %in% c(11, 12))
 ```
+
+WIth `filter`, you can also specify multiple condition (like an `&`)
 
 ```{r}
 filter(flights, arr_delay <= 120, dep_delay <= 12)
@@ -108,6 +127,7 @@ See the r4ds chapter for this.
 arrange(flights, year, month, day)
 ```
 
+use `desc` to sort things in decending order
 
 ```{r}
 arrange(flights, year, month, desc(day))

@@ -15,7 +15,7 @@ Resources:
 - dplyr join reference: https://dplyr.tidyverse.org/reference/join.html
 
 
-## dplyr
+## Create simple datasets
 
 ```{r}
 library(tibble)
@@ -42,6 +42,14 @@ y <- tribble(
 y
 ```
 
+## one-to-one
+
+When you perform a join, the function and code do not change.
+The output of the join will be determined by whether or not you have duplicate values in your keys,
+and whether or not both tables you are joining have duplicate values in the keys.
+
+In a one-to-one merge, there are no duplicate keys in both tables.
+
 
 ```{r}
 x %>% 
@@ -64,7 +72,10 @@ x %>%
     full_join(y, by = 'key')
 ```
 
-# many to one OR one to many
+## many to one OR one to many
+
+In a many-to-one merge, one of the tables have duplicate keys
+
 ```{r}
 (x <- tribble(
     ~key, ~val_x,
@@ -89,9 +100,10 @@ x %>%
     left_join(y, by = 'key')
 ```
 
+## many to many
 
-
-# many to many
+In a many to many join, both tables will have duplicate keys in them.
+You end up with what's known as a cartesian product of the keys.
 
 ```{r}
 (x <- tribble(
@@ -114,13 +126,16 @@ x %>%
 ))
 ```
 
-a many to many join creates a cartesian product
+A many to many join creates a cartesian product
 
 ```{r}
 x %>%
     left_join(y, by = 'key')
 ```
 
+
+
+## Multiple keys
 
 The below code won't work, but it's to show you that you can join by multiple keys
 
@@ -129,7 +144,9 @@ x %>%
     left_join(y, by = c('key', 'col2', 'col3'))
 ```
 
-as well as do joins when columns do not share the same name
+## Different column names
+
+You can also join tables when columns do not share the same name
 
 ```r
 x %>%

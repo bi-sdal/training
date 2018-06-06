@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Factors
 
 Factors chapter in r4ds
@@ -12,14 +17,20 @@ Resources
 - http://forcats.tidyverse.org/
 - https://github.com/tidyverse/forcats
 
+## forcats
+
 ```{r}
 library(forcats)
+library(dplyr)
+library(ggplot2)
 ```
 
 ```{r}
 x1 <- c("M", "T", "W", "R", "F", "S", "U")
 x2 <- c("Sa", "Su")
 ```
+
+## Sorting
 
 ```{r}
 sort(x1)
@@ -39,12 +50,14 @@ sort(cat1)
 ```
 
 
+## Counting
+
 ```{r}
-gss_cat
+head(gss_cat)
 ```
 
 ```{r}
-gss_cat$marital
+dplyr::count(gss_cat, marital)
 ```
 
 ```{r}
@@ -52,7 +65,7 @@ gss_cat %>%
     dplyr::count(marital)
 ```
 
-## re-ording factors
+## Re-ording factors
 
 ```{r}
 library(ggplot2)
@@ -94,7 +107,8 @@ gss_cat %>% count(partyid)
 ```{r}
 forcats::fct_recode(gss_cat$partyid,
                         "Rep, Strong" = "Strong republican",
-                        "Dem, Strong" = "Strong democrat")
+                        "Dem, Strong" = "Strong democrat") %>%
+    head(30)
 ```
 
 ```{r}
@@ -105,8 +119,11 @@ gss_cat_recoded <- gss_cat %>%
         "Dem, Strong" = "Strong democrat"))
 ```
 
+### Double check your work
+
+https://gist.github.com/jennybc/04b71bfaaf0f88d9d2eb
+
 ```{r}
 # do a cross tab in R
 table(gss_cat_recoded$partyid, gss_cat_recoded$party_id_recode, useNA = 'always')
 ```
-

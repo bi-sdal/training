@@ -1,0 +1,60 @@
+
+```{r}
+library(stringr)
+naicsAndCompanies = read.csv("./data/regexClips/exampleNaicsScraping.csv", stringsAsFactors = FALSE)$Company
+```
+We want a table with company names in one column and NAICS codes in another column. Since some companies have multiple NAICS codes, we'll need company names to repeat. How can we extract the components we want?
+
+Let's focus on the first entry for now. Notice that a semicolon separates the name from the NAICS codes. We can use that to split the string using lookarounds.
+```{r}
+firstRegexCase = naicsAndCompanies[[1]]
+
+# (?=X) is the lookahead operator. It looks AHEAD for the pattern X; that is, it matches things that come BEFORE it
+# (?<=X) is the lookbehind operator. It looks BEHIND for the pattern X; that is, it matches things that come AFTER it
+# (X) contains the pattern X that comes before the look ahead or after the lookbehind
+# .* means match the wildcard '.' any number of times '*'.
+
+company = str_extract(firstRegexCase, "(.*?)(?=;)")
+naicsCodes = str_extract(firstRegexCase, "(?<=NAICS: )(.*)")
+company
+naicsCodes
+```
+We're getting there, but not quite. We don't want that annoying 'Name: ' in front of the company, and it'd be nice to have the NAICS codes as separate entires in a vector. We can achieve that with the following.
+```{r}
+cleanerCompany = str_extract(company, "(?<=Name: )(.*)")
+naicsVector = str_split(naicsCodes, ",", simplify = TRUE)
+cleanerCompany
+naicsVector
+```
+
+Now we can tackle the whole vector. We'll use the same idea of separating names from codes using semicolons, but with two new challenges. 
+```{r}
+naicsAndCompanies[[5]]
+```
+This entry has multiple companies in the same line. To get at both of them, we need to use str_extract_all() instead of just str_extract().
+```{r}
+str_extract_all(naicsAndCompanies, "(?<=Name: )(.*)(?=;)")
+```
+Whoops, looks like we didn't split the 5th string at the right place! This is because the regular expression by default tries to match the longest string possible. This is called greedy matching. We can disable it by adding '?' after the wild card
+```{r}
+companies = str_extract_all(naicsAndCompanies, "(?<=Name: )(.*?)(?=;)")
+companies
+```
+
+Now let's do the same for the NAICS codes.
+
+```{r}
+str_extract_all(paste0(naicsAndCompanies), "(?<=NAICS: )(.*?)(?=;)")
+```
+What's going on here? This code looks for stuff between 'NAICS: ' and ';', but except for the 5th line there's never a ';' after 'NAICS: '. To get around this, we can use a logical OR operator, along with a special symbol meaning 'end of the string'. Here, the expression '(;|$)' means 'match either ; OR the end of the line;.
+
+```{r}
+allNaics = str_extract_all(paste0(naicsAndCompanies), "(?<=NAICS: )(.*?)(?=(;|$))")
+allNaics
+```
+
+Finally, we can put it all together and we have a clean company by naics table:
+```{r}
+companyNaicsList = data.frame(company = unlist(companies), naicsCodes = unlist(allNaics))
+companyNaicsList
+```

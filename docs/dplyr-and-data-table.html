@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Training Manual for SDAL</title>
+  <meta name="description" content="This is a training manual for The Social and Decision Analytics Laboratory.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Training Manual for SDAL" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a training manual for The Social and Decision Analytics Laboratory." />
+  <meta name="github-repo" content="bi-sdal/training" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Training Manual for SDAL" />
+  
+  <meta name="twitter:description" content="This is a training manual for The Social and Decision Analytics Laboratory." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="joins.html">
+<link rel="next" href="git-1.html">
+<script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="book_assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119721925-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-119721925-1');
+</script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Training Manual for SDAL</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="the-social-and-decision-analytics-laboratory.html"><a href="the-social-and-decision-analytics-laboratory.html"><i class="fa fa-check"></i>The Social and Decision Analytics Laboratory</a><ul>
+<li class="chapter" data-level="" data-path="the-social-and-decision-analytics-laboratory.html"><a href="the-social-and-decision-analytics-laboratory.html#overview-our-mission-methods"><i class="fa fa-check"></i>Overview: Our Mission &amp; Methods</a></li>
+<li class="chapter" data-level="" data-path="the-social-and-decision-analytics-laboratory.html"><a href="the-social-and-decision-analytics-laboratory.html#innovation-our-research-focus-areas"><i class="fa fa-check"></i>Innovation: Our Research Focus Areas</a></li>
+<li class="chapter" data-level="" data-path="the-social-and-decision-analytics-laboratory.html"><a href="the-social-and-decision-analytics-laboratory.html#collaboration-our-research-partnerships"><i class="fa fa-check"></i>Collaboration: Our Research Partnerships</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-science-for-the-public-good-program.html"><a href="data-science-for-the-public-good-program.html"><i class="fa fa-check"></i>Data Science for the Public Good Program</a><ul>
+<li class="chapter" data-level="" data-path="data-science-for-the-public-good-program.html"><a href="data-science-for-the-public-good-program.html#problem"><i class="fa fa-check"></i>Problem</a></li>
+<li class="chapter" data-level="" data-path="data-science-for-the-public-good-program.html"><a href="data-science-for-the-public-good-program.html#methods"><i class="fa fa-check"></i>Methods</a></li>
+<li class="chapter" data-level="" data-path="data-science-for-the-public-good-program.html"><a href="data-science-for-the-public-good-program.html#impact"><i class="fa fa-check"></i>Impact</a></li>
+<li class="chapter" data-level="" data-path="data-science-for-the-public-good-program.html"><a href="data-science-for-the-public-good-program.html#program-sponsors-who-we-work-with"><i class="fa fa-check"></i>Program Sponsors: Who We Work With</a></li>
+<li class="chapter" data-level="" data-path="data-science-for-the-public-good-program.html"><a href="data-science-for-the-public-good-program.html#previous-projects"><i class="fa fa-check"></i>Previous Projects</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lesson-materials.html"><a href="lesson-materials.html"><i class="fa fa-check"></i>Lesson Materials</a><ul>
+<li class="chapter" data-level="" data-path="lesson-materials.html"><a href="lesson-materials.html#software-carpenty"><i class="fa fa-check"></i>Software-Carpenty</a></li>
+<li class="chapter" data-level="" data-path="lesson-materials.html"><a href="lesson-materials.html#data-carpentry"><i class="fa fa-check"></i>Data-Carpentry</a></li>
+<li class="chapter" data-level="" data-path="lesson-materials.html"><a href="lesson-materials.html#the-carpentries"><i class="fa fa-check"></i>The Carpentries</a></li>
+<li class="chapter" data-level="" data-path="lesson-materials.html"><a href="lesson-materials.html#datacamp"><i class="fa fa-check"></i>DataCamp</a></li>
+<li class="chapter" data-level="" data-path="lesson-materials.html"><a href="lesson-materials.html#r-for-data-science"><i class="fa fa-check"></i>R for Data Science</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i>Setup</a><ul>
+<li class="chapter" data-level="" data-path="the-bash-shell.html"><a href="the-bash-shell.html"><i class="fa fa-check"></i>The Bash Shell</a><ul>
+<li class="chapter" data-level="" data-path="the-bash-shell.html"><a href="the-bash-shell.html#windows"><i class="fa fa-check"></i>Windows</a></li>
+<li class="chapter" data-level="" data-path="the-bash-shell.html"><a href="the-bash-shell.html#macos"><i class="fa fa-check"></i>macOS</a></li>
+<li class="chapter" data-level="" data-path="the-bash-shell.html"><a href="the-bash-shell.html#linux"><i class="fa fa-check"></i>Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="git.html"><a href="git.html"><i class="fa fa-check"></i>Git</a><ul>
+<li class="chapter" data-level="" data-path="git.html"><a href="git.html#windows-1"><i class="fa fa-check"></i>Windows</a></li>
+<li class="chapter" data-level="" data-path="git.html"><a href="git.html#macos-1"><i class="fa fa-check"></i>macOS</a></li>
+<li class="chapter" data-level="" data-path="git.html"><a href="git.html#linux-1"><i class="fa fa-check"></i>Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="text-editor.html"><a href="text-editor.html"><i class="fa fa-check"></i>Text Editor</a><ul>
+<li class="chapter" data-level="" data-path="text-editor.html"><a href="text-editor.html#windows-2"><i class="fa fa-check"></i>Windows</a></li>
+<li class="chapter" data-level="" data-path="text-editor.html"><a href="text-editor.html#macos-2"><i class="fa fa-check"></i>macOS</a></li>
+<li class="chapter" data-level="" data-path="text-editor.html"><a href="text-editor.html#linux-2"><i class="fa fa-check"></i>Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i>R</a><ul>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
+<li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
+<li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#macos-4"><i class="fa fa-check"></i>macOS</a></li>
+<li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#linux-4"><i class="fa fa-check"></i>Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ssh-keys.html"><a href="ssh-keys.html"><i class="fa fa-check"></i>SSH Keys</a><ul>
+<li class="chapter" data-level="" data-path="ssh-keys.html"><a href="ssh-keys.html#github"><i class="fa fa-check"></i>GitHub</a></li>
+<li class="chapter" data-level="" data-path="ssh-keys.html"><a href="ssh-keys.html#lightfoot"><i class="fa fa-check"></i>Lightfoot</a></li>
+<li class="chapter" data-level="" data-path="ssh-keys.html"><a href="ssh-keys.html#gitlab-devlab"><i class="fa fa-check"></i>GitLab (devlab)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i>LaTeX</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="syllabus.html"><a href="syllabus.html"><i class="fa fa-check"></i>Syllabus</a><ul>
+<li class="chapter" data-level="" data-path="lesson-breakdown.html"><a href="lesson-breakdown.html"><i class="fa fa-check"></i>Lesson Breakdown</a><ul>
+<li class="chapter" data-level="" data-path="lesson-breakdown.html"><a href="lesson-breakdown.html#lesson-1"><i class="fa fa-check"></i>Lesson 1</a></li>
+<li class="chapter" data-level="" data-path="lesson-breakdown.html"><a href="lesson-breakdown.html#lesson-2"><i class="fa fa-check"></i>Lesson 2</a></li>
+<li class="chapter" data-level="" data-path="lesson-breakdown.html"><a href="lesson-breakdown.html#lesson-3"><i class="fa fa-check"></i>Lesson 3</a></li>
+<li class="chapter" data-level="" data-path="lesson-breakdown.html"><a href="lesson-breakdown.html#lesson-4"><i class="fa fa-check"></i>Lesson 4</a></li>
+<li class="chapter" data-level="" data-path="lesson-breakdown.html"><a href="lesson-breakdown.html#lesson-5"><i class="fa fa-check"></i>Lesson 5</a></li>
+<li class="chapter" data-level="" data-path="lesson-breakdown.html"><a href="lesson-breakdown.html#lesson-6"><i class="fa fa-check"></i>Lesson 6</a></li>
+<li class="chapter" data-level="" data-path="lesson-breakdown.html"><a href="lesson-breakdown.html#lesson-7"><i class="fa fa-check"></i>Lesson 7</a></li>
+<li class="chapter" data-level="" data-path="lesson-breakdown.html"><a href="lesson-breakdown.html#lesson-8"><i class="fa fa-check"></i>Lesson 8</a></li>
+<li class="chapter" data-level="" data-path="lesson-breakdown.html"><a href="lesson-breakdown.html#lesson-9"><i class="fa fa-check"></i>Lesson 9</a></li>
+<li class="chapter" data-level="" data-path="lesson-breakdown.html"><a href="lesson-breakdown.html#lesson-10"><i class="fa fa-check"></i>Lesson 10</a></li>
+<li class="chapter" data-level="" data-path="lesson-breakdown.html"><a href="lesson-breakdown.html#lesson-11"><i class="fa fa-check"></i>Lesson 11</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="infrastructure.html"><a href="infrastructure.html"><i class="fa fa-check"></i><b>1</b> Infrastructure</a><ul>
+<li class="chapter" data-level="1.1" data-path="components.html"><a href="components.html"><i class="fa fa-check"></i><b>1.1</b> Components</a></li>
+<li class="chapter" data-level="1.2" data-path="accessing-servers.html"><a href="accessing-servers.html"><i class="fa fa-check"></i><b>1.2</b> Accessing Servers</a></li>
+<li class="chapter" data-level="1.3" data-path="project-template.html"><a href="project-template.html"><i class="fa fa-check"></i><b>1.3</b> Project Template</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>2</b> Data Visualization</a><ul>
+<li class="chapter" data-level="2.1" data-path="loading-ggplot2.html"><a href="loading-ggplot2.html"><i class="fa fa-check"></i><b>2.1</b> Loading ggplot2</a></li>
+<li class="chapter" data-level="2.2" data-path="creating-a-ggplot.html"><a href="creating-a-ggplot.html"><i class="fa fa-check"></i><b>2.2</b> Creating a ggplot</a></li>
+<li class="chapter" data-level="2.3" data-path="aesthetic-mapings.html"><a href="aesthetic-mapings.html"><i class="fa fa-check"></i><b>2.3</b> Aesthetic Mapings</a></li>
+<li class="chapter" data-level="2.4" data-path="facets.html"><a href="facets.html"><i class="fa fa-check"></i><b>2.4</b> Facets</a></li>
+<li class="chapter" data-level="2.5" data-path="geometic-objects.html"><a href="geometic-objects.html"><i class="fa fa-check"></i><b>2.5</b> Geometic Objects</a></li>
+<li class="chapter" data-level="2.6" data-path="statistical-transformations.html"><a href="statistical-transformations.html"><i class="fa fa-check"></i><b>2.6</b> Statistical Transformations</a></li>
+<li class="chapter" data-level="2.7" data-path="position-adjustments.html"><a href="position-adjustments.html"><i class="fa fa-check"></i><b>2.7</b> Position Adjustments</a></li>
+<li class="chapter" data-level="2.8" data-path="coordinate-systems.html"><a href="coordinate-systems.html"><i class="fa fa-check"></i><b>2.8</b> Coordinate Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="importing-data.html"><a href="importing-data.html"><i class="fa fa-check"></i><b>3</b> Importing Data</a><ul>
+<li class="chapter" data-level="3.1" data-path="loading-datasets.html"><a href="loading-datasets.html"><i class="fa fa-check"></i><b>3.1</b> Loading datasets</a></li>
+<li class="chapter" data-level="3.2" data-path="writing-to-a-files.html"><a href="writing-to-a-files.html"><i class="fa fa-check"></i><b>3.2</b> Writing to a files</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-transformations.html"><a href="data-transformations.html"><i class="fa fa-check"></i><b>4</b> Data Transformations</a><ul>
+<li class="chapter" data-level="4.1" data-path="dplyr-library.html"><a href="dplyr-library.html"><i class="fa fa-check"></i><b>4.1</b> <code>dplyr</code> library</a></li>
+<li class="chapter" data-level="4.2" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>4.2</b> Filter</a></li>
+<li class="chapter" data-level="4.3" data-path="comparison-operators.html"><a href="comparison-operators.html"><i class="fa fa-check"></i><b>4.3</b> Comparison (operators)</a></li>
+<li class="chapter" data-level="4.4" data-path="logical-operators.html"><a href="logical-operators.html"><i class="fa fa-check"></i><b>4.4</b> Logical operators</a></li>
+<li class="chapter" data-level="4.5" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>4.5</b> Arrange</a></li>
+<li class="chapter" data-level="4.6" data-path="select.html"><a href="select.html"><i class="fa fa-check"></i><b>4.6</b> Select</a></li>
+<li class="chapter" data-level="4.7" data-path="mutate.html"><a href="mutate.html"><i class="fa fa-check"></i><b>4.7</b> Mutate</a></li>
+<li class="chapter" data-level="4.8" data-path="summarize-summarise.html"><a href="summarize-summarise.html"><i class="fa fa-check"></i><b>4.8</b> Summarize (summarise)</a></li>
+<li class="chapter" data-level="4.9" data-path="groupby.html"><a href="groupby.html"><i class="fa fa-check"></i><b>4.9</b> Groupby</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>5</b> Tidy data</a><ul>
+<li class="chapter" data-level="5.1" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>5.1</b> tidyr</a></li>
+<li class="chapter" data-level="5.2" data-path="gather.html"><a href="gather.html"><i class="fa fa-check"></i><b>5.2</b> Gather</a></li>
+<li class="chapter" data-level="5.3" data-path="primer-to-joins.html"><a href="primer-to-joins.html"><i class="fa fa-check"></i><b>5.3</b> Primer to joins</a></li>
+<li class="chapter" data-level="5.4" data-path="spread.html"><a href="spread.html"><i class="fa fa-check"></i><b>5.4</b> Spread</a></li>
+<li class="chapter" data-level="5.5" data-path="separate.html"><a href="separate.html"><i class="fa fa-check"></i><b>5.5</b> Separate</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="relational-data-in-r.html"><a href="relational-data-in-r.html"><i class="fa fa-check"></i><b>6</b> Relational Data in R</a><ul>
+<li class="chapter" data-level="6.1" data-path="create-simple-datasets.html"><a href="create-simple-datasets.html"><i class="fa fa-check"></i><b>6.1</b> Create simple datasets</a></li>
+<li class="chapter" data-level="6.2" data-path="one-to-one.html"><a href="one-to-one.html"><i class="fa fa-check"></i><b>6.2</b> one-to-one</a></li>
+<li class="chapter" data-level="6.3" data-path="many-to-one-or-one-to-many.html"><a href="many-to-one-or-one-to-many.html"><i class="fa fa-check"></i><b>6.3</b> many to one OR one to many</a></li>
+<li class="chapter" data-level="6.4" data-path="many-to-many.html"><a href="many-to-many.html"><i class="fa fa-check"></i><b>6.4</b> many to many</a></li>
+<li class="chapter" data-level="6.5" data-path="multiple-keys.html"><a href="multiple-keys.html"><i class="fa fa-check"></i><b>6.5</b> Multiple keys</a></li>
+<li class="chapter" data-level="6.6" data-path="different-column-names.html"><a href="different-column-names.html"><i class="fa fa-check"></i><b>6.6</b> Different column names</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>7</b> Factors</a><ul>
+<li class="chapter" data-level="7.1" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>7.1</b> forcats</a></li>
+<li class="chapter" data-level="7.2" data-path="sorting.html"><a href="sorting.html"><i class="fa fa-check"></i><b>7.2</b> Sorting</a></li>
+<li class="chapter" data-level="7.3" data-path="counting.html"><a href="counting.html"><i class="fa fa-check"></i><b>7.3</b> Counting</a></li>
+<li class="chapter" data-level="7.4" data-path="re-ording-factors.html"><a href="re-ording-factors.html"><i class="fa fa-check"></i><b>7.4</b> Re-ording factors</a></li>
+<li class="chapter" data-level="7.5" data-path="modifying-factor-values.html"><a href="modifying-factor-values.html"><i class="fa fa-check"></i><b>7.5</b> Modifying factor values</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="modifying-factor-values.html"><a href="modifying-factor-values.html#double-check-your-work"><i class="fa fa-check"></i><b>7.5.1</b> Double check your work</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>8</b> Dates and Times</a><ul>
+<li class="chapter" data-level="8.1" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>8.1</b> lubridate</a></li>
+<li class="chapter" data-level="8.2" data-path="making-datetimes-from-data.html"><a href="making-datetimes-from-data.html"><i class="fa fa-check"></i><b>8.2</b> Making datetimes from data</a></li>
+<li class="chapter" data-level="8.3" data-path="non-standard-date-formatting.html"><a href="non-standard-date-formatting.html"><i class="fa fa-check"></i><b>8.3</b> Non-standard date formatting</a></li>
+<li class="chapter" data-level="8.4" data-path="strptime-format-variables.html"><a href="strptime-format-variables.html"><i class="fa fa-check"></i><b>8.4</b> strptime format variables</a></li>
+<li class="chapter" data-level="8.5" data-path="datetime-arithmetic.html"><a href="datetime-arithmetic.html"><i class="fa fa-check"></i><b>8.5</b> Datetime arithmetic</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="sql-databases.html"><a href="sql-databases.html"><i class="fa fa-check"></i><b>9</b> SQL Databases</a><ul>
+<li class="chapter" data-level="9.1" data-path="databases-in-r.html"><a href="databases-in-r.html"><i class="fa fa-check"></i><b>9.1</b> Databases in R</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="databases-in-r.html"><a href="databases-in-r.html#create-reusable-connection-to-database"><i class="fa fa-check"></i><b>9.1.1</b> CREATE REUSABLE CONNECTION TO DATABASE</a></li>
+<li class="chapter" data-level="9.1.2" data-path="databases-in-r.html"><a href="databases-in-r.html#write-data-to-database-tables"><i class="fa fa-check"></i><b>9.1.2</b> WRITE DATA TO DATABASE TABLES</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="joins.html"><a href="joins.html"><i class="fa fa-check"></i><b>9.2</b> Joins</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="joins.html"><a href="joins.html#join-tables-in-sql-with-dbi"><i class="fa fa-check"></i><b>9.2.1</b> JOIN TABLES IN SQL WITH DBI</a></li>
+<li class="chapter" data-level="9.2.2" data-path="joins.html"><a href="joins.html#join-tables-in-sql-in-sql-chunk"><i class="fa fa-check"></i><b>9.2.2</b> JOIN TABLES IN SQL IN SQL CHUNK</a></li>
+<li class="chapter" data-level="9.2.3" data-path="joins.html"><a href="joins.html#join-tables-in-sql-in-sql-chunk-with-output-variable"><i class="fa fa-check"></i><b>9.2.3</b> JOIN TABLES IN SQL IN SQL CHUNK WITH OUTPUT VARIABLE</a></li>
+<li class="chapter" data-level="9.2.4" data-path="joins.html"><a href="joins.html#join-tables-in-sql-in-sql-chunk-apply-where-clause-and-fuzzy-search"><i class="fa fa-check"></i><b>9.2.4</b> JOIN TABLES IN SQL IN SQL CHUNK APPLY WHERE CLAUSE AND FUZZY SEARCH</a></li>
+<li class="chapter" data-level="9.2.5" data-path="joins.html"><a href="joins.html#join-tables-in-sql-in-sql-chunk-apply-where-clause-with-and-and-fuzzy-search"><i class="fa fa-check"></i><b>9.2.5</b> JOIN TABLES IN SQL IN SQL CHUNK APPLY WHERE CLAUSE WITH ‘AND’ AND FUZZY SEARCH</a></li>
+<li class="chapter" data-level="9.2.6" data-path="joins.html"><a href="joins.html#join-tables-in-sql-in-sql-chunk-apply-select-and-where-clause-with-and-and-fuzzy-search-and-order"><i class="fa fa-check"></i><b>9.2.6</b> JOIN TABLES IN SQL IN SQL CHUNK APPLY SELECT AND WHERE CLAUSE WITH ‘AND’ AND FUZZY SEARCH AND ORDER</a></li>
+<li class="chapter" data-level="9.2.7" data-path="joins.html"><a href="joins.html#join-tables-in-sql-in-sql-chunk-apply-select-and-where-clause-and-fuzzy-search-and-order-and-group-by-with-aggregate-function"><i class="fa fa-check"></i><b>9.2.7</b> JOIN TABLES IN SQL IN SQL CHUNK APPLY SELECT AND WHERE CLAUSE AND FUZZY SEARCH AND ORDER AND GROUP BY WITH AGGREGATE FUNCTION</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="dplyr-and-data-table.html"><a href="dplyr-and-data-table.html"><i class="fa fa-check"></i><b>9.3</b> dplyr and data.table</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>10</b> Git</a><ul>
+<li class="chapter" data-level="10.1" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>10.1</b> Git on your own</a></li>
+<li class="chapter" data-level="10.2" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>10.2</b> Git with branches</a></li>
+<li class="chapter" data-level="10.3" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>10.3</b> Collaborating with Git</a></li>
+<li class="chapter" data-level="10.4" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>10.4</b> Protecting branches</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="build-details.html"><a href="build-details.html"><i class="fa fa-check"></i>Build Details</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Training Manual for SDAL</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dplyr-and-data.table" class="section level2">
+<h2><span class="header-section-number">9.3</span> dplyr and data.table</h2>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1"><span class="kw">library</span>(data.table)</a></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;data.table&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     between, first, last</code></pre>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb289-1" data-line-number="1">rap_chart_artists &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;data/Rap_Charts.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Artists&quot;</span>)</a>
+<a class="sourceLine" id="cb289-2" data-line-number="2">rap_chart_singles &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;data/Rap_Charts.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Singles&quot;</span>)</a>
+<a class="sourceLine" id="cb289-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb289-4" data-line-number="4">(rap_artist_singles &lt;-<span class="st"> </span>rap_chart_artists <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb289-5" data-line-number="5"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">full_join</span>(rap_chart_singles, <span class="dt">by =</span> <span class="st">&quot;Artist_ID&quot;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 167 x 8
+##    Artist_ID First_Name Last_Name Psuedonym  Year Single  Top_US_Rap_Chart
+##        &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
+##  1         4 O&#39;Shea     Jackson   Ice Cube   1990 &quot;\&quot;Who…               NA
+##  2         4 O&#39;Shea     Jackson   Ice Cube   1990 &quot;\&quot;Ame…                1
+##  3         4 O&#39;Shea     Jackson   Ice Cube   1990 &quot;\&quot;End…               NA
+##  4         4 O&#39;Shea     Jackson   Ice Cube   1990 &quot;\&quot;Dea…               NA
+##  5         4 O&#39;Shea     Jackson   Ice Cube   1990 &quot;\&quot;Jac…               NA
+##  6         4 O&#39;Shea     Jackson   Ice Cube   1991 &quot;\&quot;Ste…                3
+##  7         4 O&#39;Shea     Jackson   Ice Cube   1992 &quot;\&quot;Tru…               NA
+##  8         4 O&#39;Shea     Jackson   Ice Cube   1992 &quot;\&quot;Wic…               NA
+##  9         4 O&#39;Shea     Jackson   Ice Cube   1993 &quot;\&quot;It …                1
+## 10         4 O&#39;Shea     Jackson   Ice Cube   1993 &quot;\&quot;Che…                1
+## # ... with 157 more rows, and 1 more variable: Album &lt;chr&gt;</code></pre>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" data-line-number="1">rap_artist_singles_dt &lt;-<span class="st"> </span><span class="kw">setDT</span>(rap_artist_singles)</a></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" data-line-number="1">rap_artist_singles_dt[Psuedonym <span class="op">%like%</span><span class="st"> &quot;LL&quot;</span>]</a></code></pre></div>
+<pre><code>##     Artist_ID First_Name Last_Name Psuedonym Year
+##  1:         1      James     Smith LL Cool J 1984
+##  2:         1      James     Smith LL Cool J 1985
+##  3:         1      James     Smith LL Cool J 1986
+##  4:         1      James     Smith LL Cool J 1986
+##  5:         1      James     Smith LL Cool J 1986
+##  6:         1      James     Smith LL Cool J 1987
+##  7:         1      James     Smith LL Cool J 1987
+##  8:         1      James     Smith LL Cool J 1987
+##  9:         1      James     Smith LL Cool J 1988
+## 10:         1      James     Smith LL Cool J 1989
+## 11:         1      James     Smith LL Cool J 1989
+## 12:         1      James     Smith LL Cool J 1989
+## 13:         1      James     Smith LL Cool J 1990
+## 14:         1      James     Smith LL Cool J 1990
+## 15:         1      James     Smith LL Cool J 1990
+## 16:         1      James     Smith LL Cool J 1990
+## 17:         1      James     Smith LL Cool J 1991
+## 18:         1      James     Smith LL Cool J 1991
+## 19:         1      James     Smith LL Cool J 1991
+## 20:         1      James     Smith LL Cool J 1991
+## 21:         1      James     Smith LL Cool J 1991
+## 22:         1      James     Smith LL Cool J 1993
+## 23:         1      James     Smith LL Cool J 1993
+## 24:         1      James     Smith LL Cool J 1993
+## 25:         1      James     Smith LL Cool J 1993
+## 26:         1      James     Smith LL Cool J 1995
+## 27:         1      James     Smith LL Cool J 1996
+## 28:         1      James     Smith LL Cool J 1996
+## 29:         1      James     Smith LL Cool J 1996
+## 30:         1      James     Smith LL Cool J 1997
+## 31:         1      James     Smith LL Cool J 1997
+## 32:         1      James     Smith LL Cool J 1997
+## 33:         1      James     Smith LL Cool J 1998
+## 34:         1      James     Smith LL Cool J 1998
+## 35:         1      James     Smith LL Cool J 1998
+## 36:         1      James     Smith LL Cool J 1999
+## 37:         1      James     Smith LL Cool J 2000
+## 38:         1      James     Smith LL Cool J 2000
+## 39:         1      James     Smith LL Cool J 2000
+## 40:         1      James     Smith LL Cool J 2000
+## 41:         1      James     Smith LL Cool J 2002
+## 42:         1      James     Smith LL Cool J 2003
+## 43:         1      James     Smith LL Cool J 2003
+## 44:         1      James     Smith LL Cool J 2004
+## 45:         1      James     Smith LL Cool J 2005
+## 46:         1      James     Smith LL Cool J 2006
+## 47:         1      James     Smith LL Cool J 2006
+## 48:         1      James     Smith LL Cool J 2006
+## 49:         1      James     Smith LL Cool J 2008
+## 50:         1      James     Smith LL Cool J 2008
+## 51:         1      James     Smith LL Cool J 2009
+## 52:         1      James     Smith LL Cool J 2011
+## 53:         1      James     Smith LL Cool J 2012
+## 54:         1      James     Smith LL Cool J 2012
+## 55:         1      James     Smith LL Cool J 2013
+## 56:         1      James     Smith LL Cool J 2013
+## 57:         1      James     Smith LL Cool J 2013
+## 58:         1      James     Smith LL Cool J 2013
+## 59:         1      James     Smith LL Cool J 2014
+## 60:         1      James     Smith LL Cool J 2016
+##     Artist_ID First_Name Last_Name Psuedonym Year
+##                                                                                       Single
+##  1:                                                                          &quot;I Need a Beat&quot;
+##  2:                                                          &quot;I Can&#39;t Live Without My Radio&quot;
+##  3:                                                                         &quot;Rock the Bells&quot;
+##  4:                                                                    &quot;I Can Give You More&quot;
+##  5:                                                                            &quot;You&#39;ll Rock&quot;
+##  6:                                                                                &quot;I&#39;m Bad&quot;
+##  7:                                                                            &quot;I Need Love&quot;
+##  8:                                                                      &quot;Go Cut Creator Go&quot;
+##  9:                                                                     &quot;Going Back to Cali&quot;
+## 10:                                                                   &quot;I&#39;m That Type of Guy&quot;
+## 11:                                                                           &quot;Big Ole Butt&quot;
+## 12:                                                                       &quot;One Shot at Love&quot;
+## 13:                                                                          &quot;Jingling Baby&quot;
+## 14:                                                                    &quot;To da Break of Dawn&quot;
+## 15:                                                                     &quot;The Boomin&#39; System&quot;
+## 16:                                                                    &quot;Around the Way Girl&quot;
+## 17:                                                                &quot;Mama Said Knock You Out&quot;
+## 18:                                                            &quot;Around the Way Girl&quot; (remix)
+## 19:                                                                  &quot;6 Minutes of Pleasure&quot;
+## 20:                                                      &quot;Who&#39;s Afraid of the Big Bad Wolf?&quot;
+## 21:                                                                      &quot;Strictly Business&quot;
+## 22:                                                                         &quot;How I&#39;m Comin&#39;&quot;
+## 23:                                                                 &quot;Back Seat (Of My Jeep)&quot;
+## 24:                             &quot;Pink Cookies In a Plastic Bag Getting Crushed by Buildings&quot;
+## 25:                                                                      &quot;Stand By Your Man&quot;
+## 26:                                                      &quot;Hey Lover&quot; (featuring Boyz II Men)
+## 27:                                                           &quot;Doin&#39; It&quot; (featuring LeShaun)
+## 28:                                                              &quot;Loungin&quot; (featuring Total)
+## 29:                                                                           &quot;Ain&#39;t Nobody&quot;
+## 30: &quot;Hit &#39;Em High (The Monstars&#39; Anthem)&quot; (with B-Real, Busta Rhymes, Coolio and Method Man)
+## 31:                                                                             &quot;Phenomenon&quot;
+## 32:                              &quot;4, 3, 2, 1&quot; (featuring Method Man, Redman, Canibusand DMX)
+## 33:                                                                                 &quot;Father&quot;
+## 34:                                                                            &quot;Hot Hot Hot&quot;
+## 35:                                                                    &quot;Zoom&quot; (with Dr. Dre)
+## 36:                                                                         &quot;Deepest Bluest&quot;
+## 37:                                                                           &quot;Imagine That&quot;
+## 38:                                                                            &quot;Take it Off&quot;
+## 39:                                                     &quot;You and Me&quot; (featuring Kelly Price)
+## 40:                                                                          &quot;Shut &#39;Em Down&quot;
+## 41:                                                                           &quot;Luv U Better&quot;
+## 42:                                                           &quot;Paradise&quot; (featuring Ameriie)
+## 43:                                                                                &quot;Amazin&#39;&quot;
+## 44:                                                                             &quot;Headsprung&quot;
+## 45:                                                            &quot;Hush&quot; (featuring 7 Aurelius)
+## 46:                                          &quot;It&#39;s LL and Santana&quot; (featuring Juelz Santana)
+## 47:                                              &quot;Control Myself&quot; (featuring Jennifer Lopez)
+## 48:                                                       &quot;Freeze&quot; (featuring Lyfe Jennings)
+## 49:                                                                &quot;Cry&quot; (featuring Lil&#39; Mo)
+## 50:                                                             &quot;Baby&quot; (featuring The-Dream)
+## 51:                                                              &quot;NCIS: No Crew Is Superior&quot;
+## 52:                                                              &quot;No More&quot; (featuring Ne-Yo)
+## 53:                                                                                &quot;Ratchet&quot;
+## 54:                                                                &quot;Take It&quot; (featuring Joe)
+## 55:                  &quot;Whaddup&quot; (featuring Chuck D, Travis Barker, Tom Morello and DJ Z-Trip)
+## 56:                                &quot;We Came to Party&quot; (featuring Snoop Dogg andFatman Scoop)
+## 57:                                                  &quot;Live for You&quot; (featuring Brad Paisley)
+## 58:           &quot;Not Leaving You Tonight&quot; (featuring Fitz &amp; The Tantrums with Eddie Van Halen)
+## 59:                                                         &quot;The Hustler&quot; (featuring Mavado)
+## 60:                                                       &quot;You Already&quot; (featuring Troy Ave)
+##                                                                                       Single
+##     Top_US_Rap_Chart                                      Album
+##  1:               NA                           Non-album single
+##  2:               NA                                      Radio
+##  3:               NA                                      Radio
+##  4:               NA                                      Radio
+##  5:               NA                                      Radio
+##  6:               NA                          Bigger and Deffer
+##  7:               NA                          Bigger and Deffer
+##  8:               NA                          Bigger and Deffer
+##  9:               NA                     Walking with a Panther
+## 10:                1                     Walking with a Panther
+## 11:               13                     Walking with a Panther
+## 12:               NA                     Walking with a Panther
+## 13:                6                     Walking with a Panther
+## 14:               17                    Mama Said Knock You Out
+## 15:                1                    Mama Said Knock You Out
+## 16:                1                    Mama Said Knock You Out
+## 17:                1                    Mama Said Knock You Out
+## 18:               NA                    Mama Said Knock You Out
+## 19:                7                    Mama Said Knock You Out
+## 20:               NA                 Simply Mad About the Mouse
+## 21:               NA               Strictly Business soundtrack
+## 22:                1                       14 Shots to the Dome
+## 23:                2                       14 Shots to the Dome
+## 24:               NA                       14 Shots to the Dome
+## 25:               24                       14 Shots to the Dome
+## 26:                1                                  Mr. Smith
+## 27:                2                                  Mr. Smith
+## 28:                1                                  Mr. Smith
+## 29:               23 Beavis and Butt-Head Do America soundtrack
+## 30:               NA                       Space Jam soundtrack
+## 31:               14                                 Phenomenon
+## 32:               10                                 Phenomenon
+## 33:                1                                 Phenomenon
+## 34:               NA                                 Phenomenon
+## 35:               NA                        Bulworth soundtrack
+## 36:               NA                   Deep Blue Sea soundtrack
+## 37:               16                                   G.O.A.T.
+## 38:               35                                   G.O.A.T.
+## 39:               44                                   G.O.A.T.
+## 40:               31                Any Given Sunday soundtrack
+## 41:                2                                         10
+## 42:               10                                         10
+## 43:               NA                                         10
+## 44:                4                             The DEFinition
+## 45:               11                             The DEFinition
+## 46:               NA                                 Todd Smith
+## 47:                9                                 Todd Smith
+## 48:               NA                                 Todd Smith
+## 49:               NA                                    Exit 13
+## 50:               10                                    Exit 13
+## 51:               NA                           Non-album single
+## 52:               NA                           Non-album single
+## 53:               NA                           Non-album single
+## 54:               NA                                  Authentic
+## 55:               NA                                  Authentic
+## 56:               NA                                  Authentic
+## 57:               NA                                  Authentic
+## 58:               NA                                  Authentic
+## 59:               NA                                 G.O.A.T. 2
+## 60:               NA                                        TBA
+##     Top_US_Rap_Chart                                      Album</code></pre>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" data-line-number="1">rap_artist_singles_dt[Psuedonym <span class="op">%like%</span><span class="st"> &quot;LL&quot;</span>, .(Psuedonym, Single, Top_US_Rap_Chart)]</a></code></pre></div>
+<pre><code>##     Psuedonym
+##  1: LL Cool J
+##  2: LL Cool J
+##  3: LL Cool J
+##  4: LL Cool J
+##  5: LL Cool J
+##  6: LL Cool J
+##  7: LL Cool J
+##  8: LL Cool J
+##  9: LL Cool J
+## 10: LL Cool J
+## 11: LL Cool J
+## 12: LL Cool J
+## 13: LL Cool J
+## 14: LL Cool J
+## 15: LL Cool J
+## 16: LL Cool J
+## 17: LL Cool J
+## 18: LL Cool J
+## 19: LL Cool J
+## 20: LL Cool J
+## 21: LL Cool J
+## 22: LL Cool J
+## 23: LL Cool J
+## 24: LL Cool J
+## 25: LL Cool J
+## 26: LL Cool J
+## 27: LL Cool J
+## 28: LL Cool J
+## 29: LL Cool J
+## 30: LL Cool J
+## 31: LL Cool J
+## 32: LL Cool J
+## 33: LL Cool J
+## 34: LL Cool J
+## 35: LL Cool J
+## 36: LL Cool J
+## 37: LL Cool J
+## 38: LL Cool J
+## 39: LL Cool J
+## 40: LL Cool J
+## 41: LL Cool J
+## 42: LL Cool J
+## 43: LL Cool J
+## 44: LL Cool J
+## 45: LL Cool J
+## 46: LL Cool J
+## 47: LL Cool J
+## 48: LL Cool J
+## 49: LL Cool J
+## 50: LL Cool J
+## 51: LL Cool J
+## 52: LL Cool J
+## 53: LL Cool J
+## 54: LL Cool J
+## 55: LL Cool J
+## 56: LL Cool J
+## 57: LL Cool J
+## 58: LL Cool J
+## 59: LL Cool J
+## 60: LL Cool J
+##     Psuedonym
+##                                                                                       Single
+##  1:                                                                          &quot;I Need a Beat&quot;
+##  2:                                                          &quot;I Can&#39;t Live Without My Radio&quot;
+##  3:                                                                         &quot;Rock the Bells&quot;
+##  4:                                                                    &quot;I Can Give You More&quot;
+##  5:                                                                            &quot;You&#39;ll Rock&quot;
+##  6:                                                                                &quot;I&#39;m Bad&quot;
+##  7:                                                                            &quot;I Need Love&quot;
+##  8:                                                                      &quot;Go Cut Creator Go&quot;
+##  9:                                                                     &quot;Going Back to Cali&quot;
+## 10:                                                                   &quot;I&#39;m That Type of Guy&quot;
+## 11:                                                                           &quot;Big Ole Butt&quot;
+## 12:                                                                       &quot;One Shot at Love&quot;
+## 13:                                                                          &quot;Jingling Baby&quot;
+## 14:                                                                    &quot;To da Break of Dawn&quot;
+## 15:                                                                     &quot;The Boomin&#39; System&quot;
+## 16:                                                                    &quot;Around the Way Girl&quot;
+## 17:                                                                &quot;Mama Said Knock You Out&quot;
+## 18:                                                            &quot;Around the Way Girl&quot; (remix)
+## 19:                                                                  &quot;6 Minutes of Pleasure&quot;
+## 20:                                                      &quot;Who&#39;s Afraid of the Big Bad Wolf?&quot;
+## 21:                                                                      &quot;Strictly Business&quot;
+## 22:                                                                         &quot;How I&#39;m Comin&#39;&quot;
+## 23:                                                                 &quot;Back Seat (Of My Jeep)&quot;
+## 24:                             &quot;Pink Cookies In a Plastic Bag Getting Crushed by Buildings&quot;
+## 25:                                                                      &quot;Stand By Your Man&quot;
+## 26:                                                      &quot;Hey Lover&quot; (featuring Boyz II Men)
+## 27:                                                           &quot;Doin&#39; It&quot; (featuring LeShaun)
+## 28:                                                              &quot;Loungin&quot; (featuring Total)
+## 29:                                                                           &quot;Ain&#39;t Nobody&quot;
+## 30: &quot;Hit &#39;Em High (The Monstars&#39; Anthem)&quot; (with B-Real, Busta Rhymes, Coolio and Method Man)
+## 31:                                                                             &quot;Phenomenon&quot;
+## 32:                              &quot;4, 3, 2, 1&quot; (featuring Method Man, Redman, Canibusand DMX)
+## 33:                                                                                 &quot;Father&quot;
+## 34:                                                                            &quot;Hot Hot Hot&quot;
+## 35:                                                                    &quot;Zoom&quot; (with Dr. Dre)
+## 36:                                                                         &quot;Deepest Bluest&quot;
+## 37:                                                                           &quot;Imagine That&quot;
+## 38:                                                                            &quot;Take it Off&quot;
+## 39:                                                     &quot;You and Me&quot; (featuring Kelly Price)
+## 40:                                                                          &quot;Shut &#39;Em Down&quot;
+## 41:                                                                           &quot;Luv U Better&quot;
+## 42:                                                           &quot;Paradise&quot; (featuring Ameriie)
+## 43:                                                                                &quot;Amazin&#39;&quot;
+## 44:                                                                             &quot;Headsprung&quot;
+## 45:                                                            &quot;Hush&quot; (featuring 7 Aurelius)
+## 46:                                          &quot;It&#39;s LL and Santana&quot; (featuring Juelz Santana)
+## 47:                                              &quot;Control Myself&quot; (featuring Jennifer Lopez)
+## 48:                                                       &quot;Freeze&quot; (featuring Lyfe Jennings)
+## 49:                                                                &quot;Cry&quot; (featuring Lil&#39; Mo)
+## 50:                                                             &quot;Baby&quot; (featuring The-Dream)
+## 51:                                                              &quot;NCIS: No Crew Is Superior&quot;
+## 52:                                                              &quot;No More&quot; (featuring Ne-Yo)
+## 53:                                                                                &quot;Ratchet&quot;
+## 54:                                                                &quot;Take It&quot; (featuring Joe)
+## 55:                  &quot;Whaddup&quot; (featuring Chuck D, Travis Barker, Tom Morello and DJ Z-Trip)
+## 56:                                &quot;We Came to Party&quot; (featuring Snoop Dogg andFatman Scoop)
+## 57:                                                  &quot;Live for You&quot; (featuring Brad Paisley)
+## 58:           &quot;Not Leaving You Tonight&quot; (featuring Fitz &amp; The Tantrums with Eddie Van Halen)
+## 59:                                                         &quot;The Hustler&quot; (featuring Mavado)
+## 60:                                                       &quot;You Already&quot; (featuring Troy Ave)
+##                                                                                       Single
+##     Top_US_Rap_Chart
+##  1:               NA
+##  2:               NA
+##  3:               NA
+##  4:               NA
+##  5:               NA
+##  6:               NA
+##  7:               NA
+##  8:               NA
+##  9:               NA
+## 10:                1
+## 11:               13
+## 12:               NA
+## 13:                6
+## 14:               17
+## 15:                1
+## 16:                1
+## 17:                1
+## 18:               NA
+## 19:                7
+## 20:               NA
+## 21:               NA
+## 22:                1
+## 23:                2
+## 24:               NA
+## 25:               24
+## 26:                1
+## 27:                2
+## 28:                1
+## 29:               23
+## 30:               NA
+## 31:               14
+## 32:               10
+## 33:                1
+## 34:               NA
+## 35:               NA
+## 36:               NA
+## 37:               16
+## 38:               35
+## 39:               44
+## 40:               31
+## 41:                2
+## 42:               10
+## 43:               NA
+## 44:                4
+## 45:               11
+## 46:               NA
+## 47:                9
+## 48:               NA
+## 49:               NA
+## 50:               10
+## 51:               NA
+## 52:               NA
+## 53:               NA
+## 54:               NA
+## 55:               NA
+## 56:               NA
+## 57:               NA
+## 58:               NA
+## 59:               NA
+## 60:               NA
+##     Top_US_Rap_Chart</code></pre>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" data-line-number="1">rap_artist_singles_dt[Psuedonym <span class="op">%like%</span><span class="st"> &quot;LL&quot;</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(Top_US_Rap_Chart), .(Psuedonym, Single, Top_US_Rap_Chart)]</a></code></pre></div>
+<pre><code>##     Psuedonym                                                      Single
+##  1: LL Cool J                                      &quot;I&#39;m That Type of Guy&quot;
+##  2: LL Cool J                                              &quot;Big Ole Butt&quot;
+##  3: LL Cool J                                             &quot;Jingling Baby&quot;
+##  4: LL Cool J                                       &quot;To da Break of Dawn&quot;
+##  5: LL Cool J                                        &quot;The Boomin&#39; System&quot;
+##  6: LL Cool J                                       &quot;Around the Way Girl&quot;
+##  7: LL Cool J                                   &quot;Mama Said Knock You Out&quot;
+##  8: LL Cool J                                     &quot;6 Minutes of Pleasure&quot;
+##  9: LL Cool J                                            &quot;How I&#39;m Comin&#39;&quot;
+## 10: LL Cool J                                    &quot;Back Seat (Of My Jeep)&quot;
+## 11: LL Cool J                                         &quot;Stand By Your Man&quot;
+## 12: LL Cool J                         &quot;Hey Lover&quot; (featuring Boyz II Men)
+## 13: LL Cool J                              &quot;Doin&#39; It&quot; (featuring LeShaun)
+## 14: LL Cool J                                 &quot;Loungin&quot; (featuring Total)
+## 15: LL Cool J                                              &quot;Ain&#39;t Nobody&quot;
+## 16: LL Cool J                                                &quot;Phenomenon&quot;
+## 17: LL Cool J &quot;4, 3, 2, 1&quot; (featuring Method Man, Redman, Canibusand DMX)
+## 18: LL Cool J                                                    &quot;Father&quot;
+## 19: LL Cool J                                              &quot;Imagine That&quot;
+## 20: LL Cool J                                               &quot;Take it Off&quot;
+## 21: LL Cool J                        &quot;You and Me&quot; (featuring Kelly Price)
+## 22: LL Cool J                                             &quot;Shut &#39;Em Down&quot;
+## 23: LL Cool J                                              &quot;Luv U Better&quot;
+## 24: LL Cool J                              &quot;Paradise&quot; (featuring Ameriie)
+## 25: LL Cool J                                                &quot;Headsprung&quot;
+## 26: LL Cool J                               &quot;Hush&quot; (featuring 7 Aurelius)
+## 27: LL Cool J                 &quot;Control Myself&quot; (featuring Jennifer Lopez)
+## 28: LL Cool J                                &quot;Baby&quot; (featuring The-Dream)
+##     Psuedonym                                                      Single
+##     Top_US_Rap_Chart
+##  1:                1
+##  2:               13
+##  3:                6
+##  4:               17
+##  5:                1
+##  6:                1
+##  7:                1
+##  8:                7
+##  9:                1
+## 10:                2
+## 11:               24
+## 12:                1
+## 13:                2
+## 14:                1
+## 15:               23
+## 16:               14
+## 17:               10
+## 18:                1
+## 19:               16
+## 20:               35
+## 21:               44
+## 22:               31
+## 23:                2
+## 24:               10
+## 25:                4
+## 26:               11
+## 27:                9
+## 28:               10
+##     Top_US_Rap_Chart</code></pre>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" data-line-number="1">rap_artist_singles_dt[Psuedonym <span class="op">%like%</span><span class="st"> &quot;LL&quot;</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(Top_US_Rap_Chart), .(.N), <span class="kw">c</span>(<span class="st">&quot;Psuedonym&quot;</span>, <span class="st">&quot;Top_US_Rap_Chart&quot;</span>)]</a></code></pre></div>
+<pre><code>##     Psuedonym Top_US_Rap_Chart N
+##  1: LL Cool J                1 8
+##  2: LL Cool J               13 1
+##  3: LL Cool J                6 1
+##  4: LL Cool J               17 1
+##  5: LL Cool J                7 1
+##  6: LL Cool J                2 3
+##  7: LL Cool J               24 1
+##  8: LL Cool J               23 1
+##  9: LL Cool J               14 1
+## 10: LL Cool J               10 3
+## 11: LL Cool J               16 1
+## 12: LL Cool J               35 1
+## 13: LL Cool J               44 1
+## 14: LL Cool J               31 1
+## 15: LL Cool J                4 1
+## 16: LL Cool J               11 1
+## 17: LL Cool J                9 1</code></pre>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" data-line-number="1">rap_artist_singles_dt[Psuedonym <span class="op">%like%</span><span class="st"> &quot;LL&quot;</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(Top_US_Rap_Chart), .(.N), <span class="kw">c</span>(<span class="st">&quot;Psuedonym&quot;</span>, <span class="st">&quot;Top_US_Rap_Chart&quot;</span>)][<span class="kw">order</span>(Top_US_Rap_Chart)]</a></code></pre></div>
+<pre><code>##     Psuedonym Top_US_Rap_Chart N
+##  1: LL Cool J                1 8
+##  2: LL Cool J                2 3
+##  3: LL Cool J                4 1
+##  4: LL Cool J                6 1
+##  5: LL Cool J                7 1
+##  6: LL Cool J                9 1
+##  7: LL Cool J               10 3
+##  8: LL Cool J               11 1
+##  9: LL Cool J               13 1
+## 10: LL Cool J               14 1
+## 11: LL Cool J               16 1
+## 12: LL Cool J               17 1
+## 13: LL Cool J               23 1
+## 14: LL Cool J               24 1
+## 15: LL Cool J               31 1
+## 16: LL Cool J               35 1
+## 17: LL Cool J               44 1</code></pre>
+
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="joins.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="git-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="book_assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/bi-sdal/training/edit/master/090-sql_rap_charts.Rmd",
+"text": "Edit"
+},
+"download": ["sdal-training.pdf", "sdal-training.epub"],
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="filter.html">
-<link rel="next" href="logical-operators.html">
+<link rel="prev" href="sql-databases.html">
+<link rel="next" href="joins.html">
 <script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -190,6 +190,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="ssh-keys.html"><a href="ssh-keys.html#lightfoot"><i class="fa fa-check"></i>Lightfoot</a></li>
 <li class="chapter" data-level="" data-path="ssh-keys.html"><a href="ssh-keys.html#gitlab-devlab"><i class="fa fa-check"></i>GitLab (devlab)</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="latex.html"><a href="latex.html"><i class="fa fa-check"></i>LaTeX</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="syllabus.html"><a href="syllabus.html"><i class="fa fa-check"></i>Syllabus</a><ul>
 <li class="chapter" data-level="" data-path="lesson-breakdown.html"><a href="lesson-breakdown.html"><i class="fa fa-check"></i>Lesson Breakdown</a><ul>
@@ -228,8 +229,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="data-transformations.html"><a href="data-transformations.html"><i class="fa fa-check"></i><b>4</b> Data Transformations</a><ul>
 <li class="chapter" data-level="4.1" data-path="dplyr-library.html"><a href="dplyr-library.html"><i class="fa fa-check"></i><b>4.1</b> <code>dplyr</code> library</a></li>
 <li class="chapter" data-level="4.2" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>4.2</b> Filter</a></li>
-<li class="chapter" data-level="4.3" data-path="comparisons.html"><a href="comparisons.html"><i class="fa fa-check"></i><b>4.3</b> comparisons</a></li>
-<li class="chapter" data-level="4.4" data-path="logical-operators.html"><a href="logical-operators.html"><i class="fa fa-check"></i><b>4.4</b> logical operators</a></li>
+<li class="chapter" data-level="4.3" data-path="comparison-operators.html"><a href="comparison-operators.html"><i class="fa fa-check"></i><b>4.3</b> Comparison (operators)</a></li>
+<li class="chapter" data-level="4.4" data-path="logical-operators.html"><a href="logical-operators.html"><i class="fa fa-check"></i><b>4.4</b> Logical operators</a></li>
 <li class="chapter" data-level="4.5" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>4.5</b> Arrange</a></li>
 <li class="chapter" data-level="4.6" data-path="select.html"><a href="select.html"><i class="fa fa-check"></i><b>4.6</b> Select</a></li>
 <li class="chapter" data-level="4.7" data-path="mutate.html"><a href="mutate.html"><i class="fa fa-check"></i><b>4.7</b> Mutate</a></li>
@@ -238,23 +239,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>5</b> Tidy data</a><ul>
 <li class="chapter" data-level="5.1" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>5.1</b> tidyr</a></li>
-<li class="chapter" data-level="5.2" data-path="primer-to-relational-data.html"><a href="primer-to-relational-data.html"><i class="fa fa-check"></i><b>5.2</b> Primer to relational data</a></li>
+<li class="chapter" data-level="5.2" data-path="gather.html"><a href="gather.html"><i class="fa fa-check"></i><b>5.2</b> Gather</a></li>
+<li class="chapter" data-level="5.3" data-path="primer-to-joins.html"><a href="primer-to-joins.html"><i class="fa fa-check"></i><b>5.3</b> Primer to joins</a></li>
+<li class="chapter" data-level="5.4" data-path="spread.html"><a href="spread.html"><i class="fa fa-check"></i><b>5.4</b> Spread</a></li>
+<li class="chapter" data-level="5.5" data-path="separate.html"><a href="separate.html"><i class="fa fa-check"></i><b>5.5</b> Separate</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="relational-data-in-r.html"><a href="relational-data-in-r.html"><i class="fa fa-check"></i><b>6</b> Relational Data in R</a><ul>
-<li class="chapter" data-level="6.1" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>6.1</b> dplyr</a></li>
-<li class="chapter" data-level="6.2" data-path="many-to-one-or-one-to-many.html"><a href="many-to-one-or-one-to-many.html"><i class="fa fa-check"></i><b>6.2</b> many to one OR one to many</a></li>
-<li class="chapter" data-level="6.3" data-path="many-to-many.html"><a href="many-to-many.html"><i class="fa fa-check"></i><b>6.3</b> many to many</a></li>
+<li class="chapter" data-level="6.1" data-path="create-simple-datasets.html"><a href="create-simple-datasets.html"><i class="fa fa-check"></i><b>6.1</b> Create simple datasets</a></li>
+<li class="chapter" data-level="6.2" data-path="one-to-one.html"><a href="one-to-one.html"><i class="fa fa-check"></i><b>6.2</b> one-to-one</a></li>
+<li class="chapter" data-level="6.3" data-path="many-to-one-or-one-to-many.html"><a href="many-to-one-or-one-to-many.html"><i class="fa fa-check"></i><b>6.3</b> many to one OR one to many</a></li>
+<li class="chapter" data-level="6.4" data-path="many-to-many.html"><a href="many-to-many.html"><i class="fa fa-check"></i><b>6.4</b> many to many</a></li>
+<li class="chapter" data-level="6.5" data-path="multiple-keys.html"><a href="multiple-keys.html"><i class="fa fa-check"></i><b>6.5</b> Multiple keys</a></li>
+<li class="chapter" data-level="6.6" data-path="different-column-names.html"><a href="different-column-names.html"><i class="fa fa-check"></i><b>6.6</b> Different column names</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>7</b> Factors</a><ul>
-<li class="chapter" data-level="7.1" data-path="re-ording-factors.html"><a href="re-ording-factors.html"><i class="fa fa-check"></i><b>7.1</b> re-ording factors</a></li>
-<li class="chapter" data-level="7.2" data-path="modifying-factor-values.html"><a href="modifying-factor-values.html"><i class="fa fa-check"></i><b>7.2</b> Modifying factor values</a></li>
+<li class="chapter" data-level="7.1" data-path="forcats.html"><a href="forcats.html"><i class="fa fa-check"></i><b>7.1</b> forcats</a></li>
+<li class="chapter" data-level="7.2" data-path="sorting.html"><a href="sorting.html"><i class="fa fa-check"></i><b>7.2</b> Sorting</a></li>
+<li class="chapter" data-level="7.3" data-path="counting.html"><a href="counting.html"><i class="fa fa-check"></i><b>7.3</b> Counting</a></li>
+<li class="chapter" data-level="7.4" data-path="re-ording-factors.html"><a href="re-ording-factors.html"><i class="fa fa-check"></i><b>7.4</b> Re-ording factors</a></li>
+<li class="chapter" data-level="7.5" data-path="modifying-factor-values.html"><a href="modifying-factor-values.html"><i class="fa fa-check"></i><b>7.5</b> Modifying factor values</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="modifying-factor-values.html"><a href="modifying-factor-values.html#double-check-your-work"><i class="fa fa-check"></i><b>7.5.1</b> Double check your work</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>8</b> Dates and Times</a></li>
-<li class="chapter" data-level="9" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>9</b> Git</a><ul>
-<li class="chapter" data-level="9.1" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>9.1</b> Git on your own</a></li>
-<li class="chapter" data-level="9.2" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>9.2</b> Git with branches</a></li>
-<li class="chapter" data-level="9.3" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>9.3</b> Collaborating with Git</a></li>
-<li class="chapter" data-level="9.4" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>9.4</b> Protecting branches</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>8</b> Dates and Times</a><ul>
+<li class="chapter" data-level="8.1" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>8.1</b> lubridate</a></li>
+<li class="chapter" data-level="8.2" data-path="making-datetimes-from-data.html"><a href="making-datetimes-from-data.html"><i class="fa fa-check"></i><b>8.2</b> Making datetimes from data</a></li>
+<li class="chapter" data-level="8.3" data-path="non-standard-date-formatting.html"><a href="non-standard-date-formatting.html"><i class="fa fa-check"></i><b>8.3</b> Non-standard date formatting</a></li>
+<li class="chapter" data-level="8.4" data-path="strptime-format-variables.html"><a href="strptime-format-variables.html"><i class="fa fa-check"></i><b>8.4</b> strptime format variables</a></li>
+<li class="chapter" data-level="8.5" data-path="datetime-arithmetic.html"><a href="datetime-arithmetic.html"><i class="fa fa-check"></i><b>8.5</b> Datetime arithmetic</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="sql-databases.html"><a href="sql-databases.html"><i class="fa fa-check"></i><b>9</b> SQL Databases</a><ul>
+<li class="chapter" data-level="9.1" data-path="databases-in-r.html"><a href="databases-in-r.html"><i class="fa fa-check"></i><b>9.1</b> Databases in R</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="databases-in-r.html"><a href="databases-in-r.html#create-reusable-connection-to-database"><i class="fa fa-check"></i><b>9.1.1</b> CREATE REUSABLE CONNECTION TO DATABASE</a></li>
+<li class="chapter" data-level="9.1.2" data-path="databases-in-r.html"><a href="databases-in-r.html#write-data-to-database-tables"><i class="fa fa-check"></i><b>9.1.2</b> WRITE DATA TO DATABASE TABLES</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="joins.html"><a href="joins.html"><i class="fa fa-check"></i><b>9.2</b> Joins</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="joins.html"><a href="joins.html#join-tables-in-sql-with-dbi"><i class="fa fa-check"></i><b>9.2.1</b> JOIN TABLES IN SQL WITH DBI</a></li>
+<li class="chapter" data-level="9.2.2" data-path="joins.html"><a href="joins.html#join-tables-in-sql-in-sql-chunk"><i class="fa fa-check"></i><b>9.2.2</b> JOIN TABLES IN SQL IN SQL CHUNK</a></li>
+<li class="chapter" data-level="9.2.3" data-path="joins.html"><a href="joins.html#join-tables-in-sql-in-sql-chunk-with-output-variable"><i class="fa fa-check"></i><b>9.2.3</b> JOIN TABLES IN SQL IN SQL CHUNK WITH OUTPUT VARIABLE</a></li>
+<li class="chapter" data-level="9.2.4" data-path="joins.html"><a href="joins.html#join-tables-in-sql-in-sql-chunk-apply-where-clause-and-fuzzy-search"><i class="fa fa-check"></i><b>9.2.4</b> JOIN TABLES IN SQL IN SQL CHUNK APPLY WHERE CLAUSE AND FUZZY SEARCH</a></li>
+<li class="chapter" data-level="9.2.5" data-path="joins.html"><a href="joins.html#join-tables-in-sql-in-sql-chunk-apply-where-clause-with-and-and-fuzzy-search"><i class="fa fa-check"></i><b>9.2.5</b> JOIN TABLES IN SQL IN SQL CHUNK APPLY WHERE CLAUSE WITH ‘AND’ AND FUZZY SEARCH</a></li>
+<li class="chapter" data-level="9.2.6" data-path="joins.html"><a href="joins.html#join-tables-in-sql-in-sql-chunk-apply-select-and-where-clause-with-and-and-fuzzy-search-and-order"><i class="fa fa-check"></i><b>9.2.6</b> JOIN TABLES IN SQL IN SQL CHUNK APPLY SELECT AND WHERE CLAUSE WITH ‘AND’ AND FUZZY SEARCH AND ORDER</a></li>
+<li class="chapter" data-level="9.2.7" data-path="joins.html"><a href="joins.html#join-tables-in-sql-in-sql-chunk-apply-select-and-where-clause-and-fuzzy-search-and-order-and-group-by-with-aggregate-function"><i class="fa fa-check"></i><b>9.2.7</b> JOIN TABLES IN SQL IN SQL CHUNK APPLY SELECT AND WHERE CLAUSE AND FUZZY SEARCH AND ORDER AND GROUP BY WITH AGGREGATE FUNCTION</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="dplyr-and-data-table.html"><a href="dplyr-and-data-table.html"><i class="fa fa-check"></i><b>9.3</b> dplyr and data.table</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>10</b> Git</a><ul>
+<li class="chapter" data-level="10.1" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>10.1</b> Git on your own</a></li>
+<li class="chapter" data-level="10.2" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>10.2</b> Git with branches</a></li>
+<li class="chapter" data-level="10.3" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>10.3</b> Collaborating with Git</a></li>
+<li class="chapter" data-level="10.4" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>10.4</b> Protecting branches</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="build-details.html"><a href="build-details.html"><i class="fa fa-check"></i>Build Details</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -278,21 +312,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="comparisons" class="section level2">
-<h2><span class="header-section-number">4.3</span> comparisons</h2>
-<pre><code>&gt; &gt;= &lt; &lt;= != ==</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="kw">sqrt</span>(<span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
-<pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1"><span class="kw">near</span>(<span class="kw">sqrt</span>(<span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span>, <span class="dv">2</span>)</a></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
+<div id="databases-in-r" class="section level2">
+<h2><span class="header-section-number">9.1</span> Databases in R</h2>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" data-line-number="1">rap_chart_artists &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;data/Rap_Charts.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Artists&quot;</span>)</a>
+<a class="sourceLine" id="cb273-2" data-line-number="2">rap_chart_singles &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;data/Rap_Charts.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Singles&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" data-line-number="1"><span class="kw">head</span>(rap_chart_artists)</a></code></pre></div>
+<pre><code>## # A tibble: 4 x 4
+##   Artist_ID First_Name Last_Name Psuedonym  
+##       &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;      
+## 1         4 O&#39;Shea     Jackson   Ice Cube   
+## 2         3 Marvin     Young     Young M.C. 
+## 3         2 Stanley    Burrell   M.C. Hammer
+## 4         1 James      Smith     LL Cool J</code></pre>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" data-line-number="1"><span class="kw">head</span>(rap_chart_singles)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##   Artist_ID  Year Single                     Top_US_Rap_Chart Album       
+##       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;                                 &lt;dbl&gt; &lt;chr&gt;       
+## 1         1  1984 &quot;\&quot;I Need a Beat\&quot;&quot;                      NA Non-album s…
+## 2         1  1985 &quot;\&quot;I Can&#39;t Live Without M…               NA Radio       
+## 3         1  1986 &quot;\&quot;Rock the Bells\&quot;&quot;                     NA Radio       
+## 4         1  1986 &quot;\&quot;I Can Give You More\&quot;&quot;                NA Radio       
+## 5         1  1986 &quot;\&quot;You&#39;ll Rock\&quot;&quot;                        NA Radio       
+## 6         1  1987 &quot;\&quot;I&#39;m Bad\&quot;&quot;                            NA Bigger and …</code></pre>
+<div id="create-reusable-connection-to-database" class="section level3">
+<h3><span class="header-section-number">9.1.1</span> CREATE REUSABLE CONNECTION TO DATABASE</h3>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1"><span class="co"># by default this will open up your own database (e.g., aschroed)</span></a>
+<a class="sourceLine" id="cb278-2" data-line-number="2">my_db_con &lt;-<span class="st"> </span>sdalr<span class="op">::</span><span class="kw">con_db</span>(<span class="dt">pass =</span> sdalr<span class="op">::</span><span class="kw">get_my_password</span>())</a></code></pre></div>
+</div>
+<div id="write-data-to-database-tables" class="section level3">
+<h3><span class="header-section-number">9.1.2</span> WRITE DATA TO DATABASE TABLES</h3>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" data-line-number="1">DBI<span class="op">::</span><span class="kw">dbWriteTable</span>(my_db_con, <span class="st">&quot;rap_chart_artists&quot;</span>, rap_chart_artists, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb279-2" data-line-number="2">DBI<span class="op">::</span><span class="kw">dbWriteTable</span>(my_db_con, <span class="st">&quot;rap_chart_singles&quot;</span>, rap_chart_singles, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="filter.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="logical-operators.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sql-databases.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="joins.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
@@ -322,7 +381,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/bi-sdal/training/edit/master/030-data_transform_dplyr.Rmd",
+"link": "https://github.com/bi-sdal/training/edit/master/090-sql_rap_charts.Rmd",
 "text": "Edit"
 },
 "download": ["sdal-training.pdf", "sdal-training.epub"],

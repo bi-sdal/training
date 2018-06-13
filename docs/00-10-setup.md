@@ -145,6 +145,10 @@ $ cat ~/.ssh/id_rsa.pub
 ```
 This is the public key you will use to paste into the system that asks for an SSH key
 
+Other resources:
+
+- https://www.rosehosting.com/blog/ssh-login-without-password-using-ssh-keys/
+
 ### GitHub {-}
 
 Once you have your ssh key copied, you can add the key to your GitHub account by following the GitHub instructions:

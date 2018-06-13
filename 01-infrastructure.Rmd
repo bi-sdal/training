@@ -83,3 +83,51 @@ project/            # the project/code repository
 Notes:
 
 - you can find our project template `.gitignore` file here: https://github.com/bi-sdal/project_template/blob/master/gitignore
+
+## Getting a project repository
+
+All of our code exist on a GitLab server (https://devlab.vbi.vt.edu)
+
+### Using Terminal
+
+Find the link to the repository
+
+```{r, echo=FALSE}
+knitr::include_graphics(path = "./figs/get_repo/010-gitlab.png")
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics(path = "./figs/get_repo/020-get_repo_url.png")
+```
+
+You can then `git clone` the project into a directory (e.g., `~/git/`)
+
+### Using RStudio
+
+```{r, echo=FALSE}
+knitr::include_graphics(path = "./figs/get_repo/010-gitlab.png")
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics(path = "./figs/get_repo/020-get_repo_url.png")
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics(path = "./figs/get_repo/030-new_project.png")
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics(path = "./figs/get_repo/040-version_control.png")
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics(path = "./figs/get_repo/050-git.png")
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics(path = "./figs/get_repo/060-paste_screen.png")
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics(path = "./figs/get_repo/070-check_project.png")
+```

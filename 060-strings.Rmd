@@ -1,6 +1,7 @@
 # Strings
 
 ## Regular Expressions
+
 ### Intro
 
 Resources:

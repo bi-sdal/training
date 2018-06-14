@@ -96,6 +96,31 @@ Install R by downloading and running this .pkg file from CRAN. Also, please inst
 ### Linux {-}
 You can download the binary files for your distribution from CRAN. Or you can use your package manager (e.g. for Debian/Ubuntu run sudo apt-get install r-base and for Fedora run sudo dnf install R). Also, please install the RStudio IDE.
 
+### Post installation settings {-}
+
+**Open up global options**
+
+You can do this by going to `Tools > Global Options` on the top menu bar.
+```{r echo=FALSE}
+knitr::include_graphics(path = "./figs/rstudio_setup/01-global_options.png")
+```
+
+**Setup startup defaults**
+
+Make sure:
+
+- "Restore .RData into workspace at startup" box is unchecked
+- "Save workspace to .RData on exit" is set to "Never"
+
+It's also advised to uncheck the top two options as well:
+
+- Restore most recently opened project at startup
+- Restore previously open source documents at startup
+
+```{r echo=FALSE}
+knitr::include_graphics(path = "./figs/rstudio_setup/02-options.png")
+```
+
 ## SQLite {-}
 SQL is a specialized programming language used with databases. We use a simple database manager called SQLite in our lessons.
 

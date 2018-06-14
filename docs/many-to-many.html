@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#post-installation-settings"><i class="fa fa-check"></i>Post installation settings</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
@@ -325,15 +326,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.4</span> many to many</h2>
 <p>In a many to many join, both tables will have duplicate keys in them.
 You end up with what’s known as a cartesian product of the keys.</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" data-line-number="1">(x &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
-<a class="sourceLine" id="cb195-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_x,</a>
-<a class="sourceLine" id="cb195-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</a>
-<a class="sourceLine" id="cb195-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</a>
-<a class="sourceLine" id="cb195-5" data-line-number="5">    <span class="dv">3</span>, <span class="st">&quot;x3&quot;</span>,</a>
-<a class="sourceLine" id="cb195-6" data-line-number="6">    <span class="dv">1</span>, <span class="st">&quot;x4&quot;</span>,</a>
-<a class="sourceLine" id="cb195-7" data-line-number="7">    <span class="dv">1</span>, <span class="st">&quot;x5&quot;</span>,</a>
-<a class="sourceLine" id="cb195-8" data-line-number="8">    <span class="dv">1</span>, <span class="st">&quot;x6&quot;</span></a>
-<a class="sourceLine" id="cb195-9" data-line-number="9">))</a></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1">(x &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb196-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_x,</a>
+<a class="sourceLine" id="cb196-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</a>
+<a class="sourceLine" id="cb196-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</a>
+<a class="sourceLine" id="cb196-5" data-line-number="5">    <span class="dv">3</span>, <span class="st">&quot;x3&quot;</span>,</a>
+<a class="sourceLine" id="cb196-6" data-line-number="6">    <span class="dv">1</span>, <span class="st">&quot;x4&quot;</span>,</a>
+<a class="sourceLine" id="cb196-7" data-line-number="7">    <span class="dv">1</span>, <span class="st">&quot;x5&quot;</span>,</a>
+<a class="sourceLine" id="cb196-8" data-line-number="8">    <span class="dv">1</span>, <span class="st">&quot;x6&quot;</span></a>
+<a class="sourceLine" id="cb196-9" data-line-number="9">))</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##     key val_x
 ##   &lt;dbl&gt; &lt;chr&gt;
@@ -343,14 +344,14 @@ You end up with what’s known as a cartesian product of the keys.</p>
 ## 4     1 x4   
 ## 5     1 x5   
 ## 6     1 x6</code></pre>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" data-line-number="1">(y &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
-<a class="sourceLine" id="cb197-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_y,</a>
-<a class="sourceLine" id="cb197-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</a>
-<a class="sourceLine" id="cb197-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</a>
-<a class="sourceLine" id="cb197-5" data-line-number="5">    <span class="dv">4</span>, <span class="st">&quot;y3&quot;</span>,</a>
-<a class="sourceLine" id="cb197-6" data-line-number="6">    <span class="dv">1</span>, <span class="st">&quot;y4&quot;</span>,</a>
-<a class="sourceLine" id="cb197-7" data-line-number="7">    <span class="dv">1</span>, <span class="st">&quot;y5&quot;</span></a>
-<a class="sourceLine" id="cb197-8" data-line-number="8">))</a></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1">(y &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb198-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_y,</a>
+<a class="sourceLine" id="cb198-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</a>
+<a class="sourceLine" id="cb198-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</a>
+<a class="sourceLine" id="cb198-5" data-line-number="5">    <span class="dv">4</span>, <span class="st">&quot;y3&quot;</span>,</a>
+<a class="sourceLine" id="cb198-6" data-line-number="6">    <span class="dv">1</span>, <span class="st">&quot;y4&quot;</span>,</a>
+<a class="sourceLine" id="cb198-7" data-line-number="7">    <span class="dv">1</span>, <span class="st">&quot;y5&quot;</span></a>
+<a class="sourceLine" id="cb198-8" data-line-number="8">))</a></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##     key val_y
 ##   &lt;dbl&gt; &lt;chr&gt;
@@ -360,8 +361,8 @@ You end up with what’s known as a cartesian product of the keys.</p>
 ## 4     1 y4   
 ## 5     1 y5</code></pre>
 <p>A many to many join creates a cartesian product</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" data-line-number="1">x <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb199-2" data-line-number="2"><span class="st">    </span><span class="kw">left_join</span>(y, <span class="dt">by =</span> <span class="st">&#39;key&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1">x <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb200-2" data-line-number="2"><span class="st">    </span><span class="kw">left_join</span>(y, <span class="dt">by =</span> <span class="st">&#39;key&#39;</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 14 x 3
 ##      key val_x val_y
 ##    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;

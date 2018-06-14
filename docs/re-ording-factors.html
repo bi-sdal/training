@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#post-installation-settings"><i class="fa fa-check"></i>Post installation settings</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
@@ -323,17 +324,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="re-ording-factors" class="section level2">
 <h2><span class="header-section-number">8.4</span> Re-ording factors</h2>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb294-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb294-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb294-4" data-line-number="4">relig_summary &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb294-5" data-line-number="5"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">group_by</span>(relig) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb294-6" data-line-number="6"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">summarize</span>(</a>
-<a class="sourceLine" id="cb294-7" data-line-number="7">        <span class="dt">tvhours =</span> <span class="kw">mean</span>(tvhours, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb294-8" data-line-number="8">        <span class="dt">age =</span> <span class="kw">mean</span>(age, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb294-9" data-line-number="9">        <span class="dt">n =</span> <span class="kw">n</span>()</a>
-<a class="sourceLine" id="cb294-10" data-line-number="10">    )</a>
-<a class="sourceLine" id="cb294-11" data-line-number="11">relig_summary</a></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb295-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb295-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb295-4" data-line-number="4">relig_summary &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb295-5" data-line-number="5"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">group_by</span>(relig) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb295-6" data-line-number="6"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">summarize</span>(</a>
+<a class="sourceLine" id="cb295-7" data-line-number="7">        <span class="dt">tvhours =</span> <span class="kw">mean</span>(tvhours, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb295-8" data-line-number="8">        <span class="dt">age =</span> <span class="kw">mean</span>(age, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb295-9" data-line-number="9">        <span class="dt">n =</span> <span class="kw">n</span>()</a>
+<a class="sourceLine" id="cb295-10" data-line-number="10">    )</a>
+<a class="sourceLine" id="cb295-11" data-line-number="11">relig_summary</a></code></pre></div>
 <pre><code>## # A tibble: 15 x 4
 ##    relig                   tvhours   age     n
 ##    &lt;fct&gt;                     &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
@@ -352,12 +353,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 13 Jewish                     2.52  52.4   388
 ## 14 Catholic                   2.96  46.9  5124
 ## 15 Protestant                 3.15  49.9 10846</code></pre>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" data-line-number="1"><span class="kw">ggplot</span>(relig_summary, <span class="kw">aes</span>(<span class="dt">x =</span> tvhours, <span class="dt">y =</span> relig)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb296-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" data-line-number="1"><span class="kw">ggplot</span>(relig_summary, <span class="kw">aes</span>(<span class="dt">x =</span> tvhours, <span class="dt">y =</span> relig)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb297-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="070-factors_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" data-line-number="1"><span class="kw">ggplot</span>(relig_summary, <span class="kw">aes</span>(<span class="dt">x =</span> tvhours,</a>
-<a class="sourceLine" id="cb297-2" data-line-number="2">                          <span class="dt">y =</span> <span class="kw">fct_reorder</span>(relig, tvhours))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb297-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" data-line-number="1"><span class="kw">ggplot</span>(relig_summary, <span class="kw">aes</span>(<span class="dt">x =</span> tvhours,</a>
+<a class="sourceLine" id="cb298-2" data-line-number="2">                          <span class="dt">y =</span> <span class="kw">fct_reorder</span>(relig, tvhours))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb298-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="070-factors_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
             </section>

@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#post-installation-settings"><i class="fa fa-check"></i>Post installation settings</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
@@ -323,15 +324,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="gather" class="section level2">
 <h2><span class="header-section-number">5.2</span> Gather</h2>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1">table4a_tidy &lt;-<span class="st"> </span><span class="kw">gather</span>(table4a, <span class="st">&#39;2000&#39;</span>, <span class="st">&#39;1999&#39;</span>, <span class="dt">key =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">value =</span> <span class="st">&#39;cases&#39;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb142-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb142-3" data-line-number="3"><span class="kw">ggplot</span>(table4a_tidy) <span class="op">+</span></a>
-<a class="sourceLine" id="cb142-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cases, <span class="dt">fill =</span> country))</a></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1">table4a_tidy &lt;-<span class="st"> </span><span class="kw">gather</span>(table4a, <span class="st">&#39;2000&#39;</span>, <span class="st">&#39;1999&#39;</span>, <span class="dt">key =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">value =</span> <span class="st">&#39;cases&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb143-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb143-3" data-line-number="3"><span class="kw">ggplot</span>(table4a_tidy) <span class="op">+</span></a>
+<a class="sourceLine" id="cb143-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cases, <span class="dt">fill =</span> country))</a></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="040-tidy_data_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1">(table4a_tidy &lt;-<span class="st"> </span>table4a <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb144-2" data-line-number="2"><span class="st">    </span><span class="kw">gather</span>(<span class="st">&#39;2000&#39;</span>, <span class="st">&#39;1999&#39;</span>, <span class="dt">key =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">value =</span> <span class="st">&#39;cases&#39;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1">(table4a_tidy &lt;-<span class="st"> </span>table4a <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb145-2" data-line-number="2"><span class="st">    </span><span class="kw">gather</span>(<span class="st">&#39;2000&#39;</span>, <span class="st">&#39;1999&#39;</span>, <span class="dt">key =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">value =</span> <span class="st">&#39;cases&#39;</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   country     year   cases
 ##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;
@@ -341,14 +342,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 Afghanistan 1999     745
 ## 5 Brazil      1999   37737
 ## 6 China       1999  212258</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="kw">library</span>(magrittr) <span class="co"># this is what actuallly gives you the pipe</span></a></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1"><span class="kw">library</span>(magrittr) <span class="co"># this is what actuallly gives you the pipe</span></a></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;magrittr&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:tidyr&#39;:
 ## 
 ##     extract</code></pre>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1">(table4b_tidy &lt;-<span class="st"> </span>table4b <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb149-2" data-line-number="2"><span class="st">    </span><span class="kw">gather</span>(<span class="st">&#39;1999&#39;</span><span class="op">:</span><span class="st">&#39;2000&#39;</span>, <span class="dt">key =</span> <span class="st">&#39;year&#39;</span>, <span class="dt">value =</span> <span class="st">&#39;population&#39;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1">(table4b_tidy &lt;-<span class="st"> </span>table4b <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb150-2" data-line-number="2"><span class="st">    </span><span class="kw">gather</span>(<span class="st">&#39;1999&#39;</span><span class="op">:</span><span class="st">&#39;2000&#39;</span>, <span class="dt">key =</span> <span class="st">&#39;year&#39;</span>, <span class="dt">value =</span> <span class="st">&#39;population&#39;</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   country     year  population
 ##   &lt;chr&gt;       &lt;chr&gt;      &lt;int&gt;

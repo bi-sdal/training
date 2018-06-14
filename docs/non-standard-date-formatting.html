@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#post-installation-settings"><i class="fa fa-check"></i>Post installation settings</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
@@ -323,18 +324,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="non-standard-date-formatting" class="section level2">
 <h2><span class="header-section-number">9.3</span> Non-standard date formatting</h2>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" data-line-number="1"><span class="co"># an example of a non-standard date format</span></a>
-<a class="sourceLine" id="cb336-2" data-line-number="2"><span class="st">&#39;WED 06-JUNE-18 10:47:30 AM&#39;</span></a></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" data-line-number="1"><span class="co"># an example of a non-standard date format</span></a>
+<a class="sourceLine" id="cb337-2" data-line-number="2"><span class="st">&#39;WED 06-JUNE-18 10:47:30 AM&#39;</span></a></code></pre></div>
 <pre><code>## [1] &quot;WED 06-JUNE-18 10:47:30 AM&quot;</code></pre>
 <p>If you look at the <code>as_datetime</code> function, under the ‘format’ section there is a link to the <code>strptime</code> documentation</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" data-line-number="1">?lubridate<span class="op">::</span>as_datetime</a></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" data-line-number="1">?lubridate<span class="op">::</span>as_datetime</a></code></pre></div>
 <p>If you look at the <code>strptime</code> documentation, you will get a nice table of codes you can use to create your own datetime pattern</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" data-line-number="1">?strptime</a></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" data-line-number="1">?strptime</a></code></pre></div>
 <p>You can now use these variables to create a pattern for your custom datetime string</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" data-line-number="1">curr_time &lt;-<span class="st"> </span>lubridate<span class="op">::</span><span class="kw">as_datetime</span>(<span class="st">&#39;WED 06-JUNE-18 10:47:30 AM&#39;</span>,</a>
-<a class="sourceLine" id="cb340-2" data-line-number="2">                       <span class="dt">format =</span> <span class="st">&#39;%a %d-%B-%y %I:%M:%S %p&#39;</span>,</a>
-<a class="sourceLine" id="cb340-3" data-line-number="3">                       <span class="dt">tz =</span> <span class="st">&quot;EST&quot;</span>)</a>
-<a class="sourceLine" id="cb340-4" data-line-number="4">curr_time</a></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1">curr_time &lt;-<span class="st"> </span>lubridate<span class="op">::</span><span class="kw">as_datetime</span>(<span class="st">&#39;WED 06-JUNE-18 10:47:30 AM&#39;</span>,</a>
+<a class="sourceLine" id="cb341-2" data-line-number="2">                       <span class="dt">format =</span> <span class="st">&#39;%a %d-%B-%y %I:%M:%S %p&#39;</span>,</a>
+<a class="sourceLine" id="cb341-3" data-line-number="3">                       <span class="dt">tz =</span> <span class="st">&quot;EST&quot;</span>)</a>
+<a class="sourceLine" id="cb341-4" data-line-number="4">curr_time</a></code></pre></div>
 <pre><code>## [1] &quot;2018-06-06 10:47:30 EST&quot;</code></pre>
 </div>
             </section>

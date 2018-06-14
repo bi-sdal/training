@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#post-installation-settings"><i class="fa fa-check"></i>Post installation settings</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
@@ -323,7 +324,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="dplyr-and-data.table" class="section level2">
 <h2><span class="header-section-number">10.3</span> dplyr and data.table</h2>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb355-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
@@ -332,17 +333,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" data-line-number="1"><span class="kw">library</span>(data.table)</a></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb359-1" data-line-number="1"><span class="kw">library</span>(data.table)</a></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;data.table&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
 ## 
 ##     between, first, last</code></pre>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb361-1" data-line-number="1">rap_chart_artists &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;data/Rap_Charts.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Artists&quot;</span>)</a>
-<a class="sourceLine" id="cb361-2" data-line-number="2">rap_chart_singles &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;data/Rap_Charts.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Singles&quot;</span>)</a>
-<a class="sourceLine" id="cb361-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb361-4" data-line-number="4">(rap_artist_singles &lt;-<span class="st"> </span>rap_chart_artists <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb361-5" data-line-number="5"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">full_join</span>(rap_chart_singles, <span class="dt">by =</span> <span class="st">&quot;Artist_ID&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" data-line-number="1">rap_chart_artists &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;data/Rap_Charts.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Artists&quot;</span>)</a>
+<a class="sourceLine" id="cb362-2" data-line-number="2">rap_chart_singles &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;data/Rap_Charts.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Singles&quot;</span>)</a>
+<a class="sourceLine" id="cb362-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb362-4" data-line-number="4">(rap_artist_singles &lt;-<span class="st"> </span>rap_chart_artists <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb362-5" data-line-number="5"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">full_join</span>(rap_chart_singles, <span class="dt">by =</span> <span class="st">&quot;Artist_ID&quot;</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 167 x 8
 ##    Artist_ID First_Name Last_Name Psuedonym  Year Single  Top_US_Rap_Chart
 ##        &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
@@ -357,8 +358,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9         4 O&#39;Shea     Jackson   Ice Cube   1993 &quot;\&quot;It …                1
 ## 10         4 O&#39;Shea     Jackson   Ice Cube   1993 &quot;\&quot;Che…                1
 ## # ... with 157 more rows, and 1 more variable: Album &lt;chr&gt;</code></pre>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb363-1" data-line-number="1">rap_artist_singles_dt &lt;-<span class="st"> </span><span class="kw">setDT</span>(rap_artist_singles)</a></code></pre></div>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" data-line-number="1">rap_artist_singles_dt[Psuedonym <span class="op">%like%</span><span class="st"> &quot;LL&quot;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" data-line-number="1">rap_artist_singles_dt &lt;-<span class="st"> </span><span class="kw">setDT</span>(rap_artist_singles)</a></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" data-line-number="1">rap_artist_singles_dt[Psuedonym <span class="op">%like%</span><span class="st"> &quot;LL&quot;</span>]</a></code></pre></div>
 <pre><code>##     Artist_ID First_Name Last_Name Psuedonym Year
 ##  1:         1      James     Smith LL Cool J 1984
 ##  2:         1      James     Smith LL Cool J 1985
@@ -545,7 +546,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 59:               NA                                 G.O.A.T. 2
 ## 60:               NA                                        TBA
 ##     Top_US_Rap_Chart                                      Album</code></pre>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" data-line-number="1">rap_artist_singles_dt[Psuedonym <span class="op">%like%</span><span class="st"> &quot;LL&quot;</span>, .(Psuedonym, Single, Top_US_Rap_Chart)]</a></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb367-1" data-line-number="1">rap_artist_singles_dt[Psuedonym <span class="op">%like%</span><span class="st"> &quot;LL&quot;</span>, .(Psuedonym, Single, Top_US_Rap_Chart)]</a></code></pre></div>
 <pre><code>##     Psuedonym
 ##  1: LL Cool J
 ##  2: LL Cool J
@@ -732,7 +733,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 59:               NA
 ## 60:               NA
 ##     Top_US_Rap_Chart</code></pre>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" data-line-number="1">rap_artist_singles_dt[Psuedonym <span class="op">%like%</span><span class="st"> &quot;LL&quot;</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(Top_US_Rap_Chart), .(Psuedonym, Single, Top_US_Rap_Chart)]</a></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb369-1" data-line-number="1">rap_artist_singles_dt[Psuedonym <span class="op">%like%</span><span class="st"> &quot;LL&quot;</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(Top_US_Rap_Chart), .(Psuedonym, Single, Top_US_Rap_Chart)]</a></code></pre></div>
 <pre><code>##     Psuedonym                                                      Single
 ##  1: LL Cool J                                      &quot;I&#39;m That Type of Guy&quot;
 ##  2: LL Cool J                                              &quot;Big Ole Butt&quot;
@@ -793,7 +794,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 27:                9
 ## 28:               10
 ##     Top_US_Rap_Chart</code></pre>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" data-line-number="1">rap_artist_singles_dt[Psuedonym <span class="op">%like%</span><span class="st"> &quot;LL&quot;</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(Top_US_Rap_Chart), .(.N), <span class="kw">c</span>(<span class="st">&quot;Psuedonym&quot;</span>, <span class="st">&quot;Top_US_Rap_Chart&quot;</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb371-1" data-line-number="1">rap_artist_singles_dt[Psuedonym <span class="op">%like%</span><span class="st"> &quot;LL&quot;</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(Top_US_Rap_Chart), .(.N), <span class="kw">c</span>(<span class="st">&quot;Psuedonym&quot;</span>, <span class="st">&quot;Top_US_Rap_Chart&quot;</span>)]</a></code></pre></div>
 <pre><code>##     Psuedonym Top_US_Rap_Chart N
 ##  1: LL Cool J                1 8
 ##  2: LL Cool J               13 1
@@ -812,7 +813,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 15: LL Cool J                4 1
 ## 16: LL Cool J               11 1
 ## 17: LL Cool J                9 1</code></pre>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb372-1" data-line-number="1">rap_artist_singles_dt[Psuedonym <span class="op">%like%</span><span class="st"> &quot;LL&quot;</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(Top_US_Rap_Chart), .(.N), <span class="kw">c</span>(<span class="st">&quot;Psuedonym&quot;</span>, <span class="st">&quot;Top_US_Rap_Chart&quot;</span>)][<span class="kw">order</span>(Top_US_Rap_Chart)]</a></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb373-1" data-line-number="1">rap_artist_singles_dt[Psuedonym <span class="op">%like%</span><span class="st"> &quot;LL&quot;</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(Top_US_Rap_Chart), .(.N), <span class="kw">c</span>(<span class="st">&quot;Psuedonym&quot;</span>, <span class="st">&quot;Top_US_Rap_Chart&quot;</span>)][<span class="kw">order</span>(Top_US_Rap_Chart)]</a></code></pre></div>
 <pre><code>##     Psuedonym Top_US_Rap_Chart N
 ##  1: LL Cool J                1 8
 ##  2: LL Cool J                2 3

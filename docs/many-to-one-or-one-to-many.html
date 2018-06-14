@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#post-installation-settings"><i class="fa fa-check"></i>Post installation settings</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
@@ -324,15 +325,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="many-to-one-or-one-to-many" class="section level2">
 <h2><span class="header-section-number">6.3</span> many to one OR one to many</h2>
 <p>In a many-to-one merge, one of the tables have duplicate keys</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" data-line-number="1">(x &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
-<a class="sourceLine" id="cb189-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_x,</a>
-<a class="sourceLine" id="cb189-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</a>
-<a class="sourceLine" id="cb189-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</a>
-<a class="sourceLine" id="cb189-5" data-line-number="5">    <span class="dv">3</span>, <span class="st">&quot;x3&quot;</span>,</a>
-<a class="sourceLine" id="cb189-6" data-line-number="6">    <span class="dv">1</span>, <span class="st">&quot;x4&quot;</span>,</a>
-<a class="sourceLine" id="cb189-7" data-line-number="7">    <span class="dv">1</span>, <span class="st">&quot;x5&quot;</span>,</a>
-<a class="sourceLine" id="cb189-8" data-line-number="8">    <span class="dv">1</span>, <span class="st">&quot;x6&quot;</span></a>
-<a class="sourceLine" id="cb189-9" data-line-number="9">))</a></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1">(x &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb190-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_x,</a>
+<a class="sourceLine" id="cb190-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</a>
+<a class="sourceLine" id="cb190-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</a>
+<a class="sourceLine" id="cb190-5" data-line-number="5">    <span class="dv">3</span>, <span class="st">&quot;x3&quot;</span>,</a>
+<a class="sourceLine" id="cb190-6" data-line-number="6">    <span class="dv">1</span>, <span class="st">&quot;x4&quot;</span>,</a>
+<a class="sourceLine" id="cb190-7" data-line-number="7">    <span class="dv">1</span>, <span class="st">&quot;x5&quot;</span>,</a>
+<a class="sourceLine" id="cb190-8" data-line-number="8">    <span class="dv">1</span>, <span class="st">&quot;x6&quot;</span></a>
+<a class="sourceLine" id="cb190-9" data-line-number="9">))</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##     key val_x
 ##   &lt;dbl&gt; &lt;chr&gt;
@@ -342,20 +343,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4     1 x4   
 ## 5     1 x5   
 ## 6     1 x6</code></pre>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" data-line-number="1">(y &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
-<a class="sourceLine" id="cb191-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_y,</a>
-<a class="sourceLine" id="cb191-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</a>
-<a class="sourceLine" id="cb191-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</a>
-<a class="sourceLine" id="cb191-5" data-line-number="5">    <span class="dv">4</span>, <span class="st">&quot;y3&quot;</span></a>
-<a class="sourceLine" id="cb191-6" data-line-number="6">))</a></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1">(y &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb192-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_y,</a>
+<a class="sourceLine" id="cb192-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</a>
+<a class="sourceLine" id="cb192-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</a>
+<a class="sourceLine" id="cb192-5" data-line-number="5">    <span class="dv">4</span>, <span class="st">&quot;y3&quot;</span></a>
+<a class="sourceLine" id="cb192-6" data-line-number="6">))</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##     key val_y
 ##   &lt;dbl&gt; &lt;chr&gt;
 ## 1     1 y1   
 ## 2     2 y2   
 ## 3     4 y3</code></pre>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" data-line-number="1">x <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb193-2" data-line-number="2"><span class="st">    </span><span class="kw">left_join</span>(y, <span class="dt">by =</span> <span class="st">&#39;key&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1">x <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb194-2" data-line-number="2"><span class="st">    </span><span class="kw">left_join</span>(y, <span class="dt">by =</span> <span class="st">&#39;key&#39;</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##     key val_x val_y
 ##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;

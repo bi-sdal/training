@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#post-installation-settings"><i class="fa fa-check"></i>Post installation settings</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
@@ -330,29 +331,29 @@ More detailed phone number example: <a href="https://stackoverflow.com/questions
 Excellent cheat sheet: <a href="https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf" class="uri">https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf</a>
 More than you ever wanted: <a href="https://www.regular-expressions.info/tutorial.html" class="uri">https://www.regular-expressions.info/tutorial.html</a></p>
 <p>A great package for regex in r is Hadley Wickham’s ‘stringr’ package. We’ll be using this often.</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1"><span class="kw">library</span>(stringr)</a></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1"><span class="kw">library</span>(stringr)</a></code></pre></div>
 <p>The main idea behind regular expressions (or regex) is to find blocks of text that match a certain pattern. This pattern can be as simple as a single letter or number, or as complicated as an entire address. Some simple examples.</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1">allchars =<span class="st"> &#39;1234567890abcdefghijklmnopqrstuvwxyz&#39;</span></a>
-<a class="sourceLine" id="cb204-2" data-line-number="2"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;1&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1">allchars =<span class="st"> &#39;1234567890abcdefghijklmnopqrstuvwxyz&#39;</span></a>
+<a class="sourceLine" id="cb205-2" data-line-number="2"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;1&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;1&quot;</code></pre>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;12&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;12&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;12&quot;</code></pre>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;13&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;13&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## character(0)</code></pre>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;a&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;a&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;a&quot;</code></pre>
 <p>A character class is a set of characters, any one of which will match.</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;[12345]&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;[12345]&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot;</code></pre>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;[abcde]&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;[abcde]&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot;</code></pre>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;[[:digit:]]&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;[[:digit:]]&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ##  [1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot; &quot;6&quot; &quot;7&quot; &quot;8&quot; &quot;9&quot; &quot;0&quot;</code></pre>
 <p>What if you wanted all numbers? There are a number of built in classes to save on typing:
@@ -360,48 +361,48 @@ More than you ever wanted: <a href="https://www.regular-expressions.info/tutoria
 ‘[[:lower:]]’ is all lower case letters
 ‘\s’ is all white space
 ‘.’ is anything at all and is known as the wildcard</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;[[:digit:]]&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;[[:digit:]]&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ##  [1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot; &quot;6&quot; &quot;7&quot; &quot;8&quot; &quot;9&quot; &quot;0&quot;</code></pre>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;[[:lower:]]&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;[[:lower:]]&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot;
 ## [18] &quot;r&quot; &quot;s&quot; &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">s&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1"><span class="kw">str_extract_all</span>(allchars, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">s&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## character(0)</code></pre>
 <p>We’ll use a motivating example to introduce some other thing you can do with regular expressions. Let’s say you wanted to extract all the phone numbers in a body of text.</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1">exampleText =<span class="st"> &quot;Some phone numbers are 7608675309, perhaps also 403-596-4038. Some people use periods in their numbers, so 402.367.5039. We can also have things like 304 385 1029 or (760)-581-3957. How can we extract all of these?&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">exampleText =<span class="st"> &quot;Some phone numbers are 7608675309, perhaps also 403-596-4038. Some people use periods in their numbers, so 402.367.5039. We can also have things like 304 385 1029 or (760)-581-3957. How can we extract all of these?&quot;</span></a></code></pre></div>
 <p>We’ll start simple and try to build expressions that are general enough to get all the numbers in the above paragraph. The first number is the easiest, how can we match on any 10 numbers?</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1"><span class="kw">str_extract_all</span>(exampleText, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1"><span class="kw">str_extract_all</span>(exampleText, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;7608675309&quot;</code></pre>
 <p>More succinctly we can use a quantifier to match a given number of times: {n} will match what it preceedes it n times.</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1"><span class="kw">str_extract_all</span>(exampleText, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">d{10}&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1"><span class="kw">str_extract_all</span>(exampleText, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">d{10}&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;7608675309&quot;</code></pre>
 <p>Other useful quantifiers are * to match at least 0 times, + to match at least once, and {n,m} to match between n and m times. We can use * to get the first two numbers.</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1"><span class="kw">str_extract_all</span>(exampleText, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">d{3}-*</span><span class="ch">\\</span><span class="st">d{3}-*</span><span class="ch">\\</span><span class="st">d{4}&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1"><span class="kw">str_extract_all</span>(exampleText, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">d{3}-*</span><span class="ch">\\</span><span class="st">d{3}-*</span><span class="ch">\\</span><span class="st">d{4}&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;7608675309&quot;   &quot;403-596-4038&quot;</code></pre>
 <p>Sometimes the number groups are separated by -, sometimes by ‘.’. What happens if we try to get the number separated by periods?</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" data-line-number="1"><span class="kw">str_extract_all</span>(exampleText, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">d{3}.*</span><span class="ch">\\</span><span class="st">d{3}.*</span><span class="ch">\\</span><span class="st">d{4}&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1"><span class="kw">str_extract_all</span>(exampleText, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">d{3}.*</span><span class="ch">\\</span><span class="st">d{3}.*</span><span class="ch">\\</span><span class="st">d{4}&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;7608675309, perhaps also 403-596-4038. Some people use periods in their numbers, so 402.367.5039. We can also have things like 304 385 1029 or (760)-581-3957&quot;</code></pre>
 <p>What happened? Since the period is the wildcard it matched all kinds of things. If we want to treat the period literally, instead of as a special character, we need to escape it with double backslashes:</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1"><span class="kw">str_extract_all</span>(exampleText, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">d{3}</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d{3}</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d{4}&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1"><span class="kw">str_extract_all</span>(exampleText, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">d{3}</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d{3}</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d{4}&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;7608675309&quot;   &quot;402.367.5039&quot;</code></pre>
 <p>Now it’s treating period as a literal character. We can combine the expression matching period to the one matching - using character classes:</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1"><span class="kw">str_extract_all</span>(exampleText, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">d{3}[-</span><span class="ch">\\</span><span class="st">.]*</span><span class="ch">\\</span><span class="st">d{3}[-</span><span class="ch">\\</span><span class="st">.]*</span><span class="ch">\\</span><span class="st">d{4}&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1"><span class="kw">str_extract_all</span>(exampleText, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">d{3}[-</span><span class="ch">\\</span><span class="st">.]*</span><span class="ch">\\</span><span class="st">d{3}[-</span><span class="ch">\\</span><span class="st">.]*</span><span class="ch">\\</span><span class="st">d{4}&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;7608675309&quot;   &quot;403-596-4038&quot; &quot;402.367.5039&quot;</code></pre>
 <p>The pattern ’[-\.]*’ will match either - or period at least 0 times. If you epect phone numbers with some other delimiter, you can toss it in that character class just the same. We can use the same idea to capture the space separated one.</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" data-line-number="1"><span class="kw">str_extract_all</span>(exampleText, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">d{3}[-</span><span class="ch">\\</span><span class="st">.</span><span class="ch">\\</span><span class="st">s]*</span><span class="ch">\\</span><span class="st">d{3}[-</span><span class="ch">\\</span><span class="st">.</span><span class="ch">\\</span><span class="st">s]*</span><span class="ch">\\</span><span class="st">d{4}&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1"><span class="kw">str_extract_all</span>(exampleText, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">d{3}[-</span><span class="ch">\\</span><span class="st">.</span><span class="ch">\\</span><span class="st">s]*</span><span class="ch">\\</span><span class="st">d{3}[-</span><span class="ch">\\</span><span class="st">.</span><span class="ch">\\</span><span class="st">s]*</span><span class="ch">\\</span><span class="st">d{4}&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;7608675309&quot;   &quot;403-596-4038&quot; &quot;402.367.5039&quot; &quot;304 385 1029&quot;</code></pre>
 <p>The last challenge is getting the number with the parentheses. We can use the same idea. Note that since parenthese are a special character we need to escape them.</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" data-line-number="1"><span class="kw">str_extract_all</span>(exampleText, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">(*</span><span class="ch">\\</span><span class="st">d{3}</span><span class="ch">\\</span><span class="st">)*[-</span><span class="ch">\\</span><span class="st">.</span><span class="ch">\\</span><span class="st">s]*</span><span class="ch">\\</span><span class="st">d{3}[-</span><span class="ch">\\</span><span class="st">.</span><span class="ch">\\</span><span class="st">s]*</span><span class="ch">\\</span><span class="st">d{4}&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1"><span class="kw">str_extract_all</span>(exampleText, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">(*</span><span class="ch">\\</span><span class="st">d{3}</span><span class="ch">\\</span><span class="st">)*[-</span><span class="ch">\\</span><span class="st">.</span><span class="ch">\\</span><span class="st">s]*</span><span class="ch">\\</span><span class="st">d{3}[-</span><span class="ch">\\</span><span class="st">.</span><span class="ch">\\</span><span class="st">s]*</span><span class="ch">\\</span><span class="st">d{4}&#39;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;7608675309&quot;     &quot;403-596-4038&quot;   &quot;402.367.5039&quot;   &quot;304 385 1029&quot;  
 ## [5] &quot;(760)-581-3957&quot;</code></pre>
@@ -409,10 +410,10 @@ More than you ever wanted: <a href="https://www.regular-expressions.info/tutoria
 <div id="basic-web-scraping-example" class="section level3">
 <h3><span class="header-section-number">7.1.2</span> Basic Web Scraping Example</h3>
 <p>Regular expressions are very useful in the context of web scraping. This example is from a small scraping job we did on the Pulaski Board of Supervisors website to extract their meeting minutes. First, we should have a look at their website to get a lay of the land. It’s at: <a href="http://www.pulaskicounty.org/Board-of-Supervisors.html" class="uri">http://www.pulaskicounty.org/Board-of-Supervisors.html</a></p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1"><span class="kw">library</span>(XML)</a>
-<a class="sourceLine" id="cb241-2" data-line-number="2">rooturl =<span class="st"> &quot;http://www.pulaskicounty.org/Board-of-Supervisors.html&quot;</span></a>
-<a class="sourceLine" id="cb241-3" data-line-number="3">bosMainPage =<span class="st"> </span><span class="kw">htmlParse</span>(rooturl)</a>
-<a class="sourceLine" id="cb241-4" data-line-number="4">bosMainPage</a></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" data-line-number="1"><span class="kw">library</span>(XML)</a>
+<a class="sourceLine" id="cb242-2" data-line-number="2">rooturl =<span class="st"> &quot;http://www.pulaskicounty.org/Board-of-Supervisors.html&quot;</span></a>
+<a class="sourceLine" id="cb242-3" data-line-number="3">bosMainPage =<span class="st"> </span><span class="kw">htmlParse</span>(rooturl)</a>
+<a class="sourceLine" id="cb242-4" data-line-number="4">bosMainPage</a></code></pre></div>
 <pre><code>## &lt;!DOCTYPE html&gt;
 ## &lt;html lang=&quot;en&quot;&gt;
 ## &lt;head&gt;
@@ -626,8 +627,8 @@ More than you ever wanted: <a href="https://www.regular-expressions.info/tutoria
 ## &lt;/body&gt;
 ## &lt;/html&gt;
 ## </code></pre>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1">links =<span class="st"> </span><span class="kw">xpathSApply</span>(bosMainPage, <span class="st">&quot;//a/@href&quot;</span>)</a>
-<a class="sourceLine" id="cb243-2" data-line-number="2">links</a></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" data-line-number="1">links =<span class="st"> </span><span class="kw">xpathSApply</span>(bosMainPage, <span class="st">&quot;//a/@href&quot;</span>)</a>
+<a class="sourceLine" id="cb244-2" data-line-number="2">links</a></code></pre></div>
 <pre><code>##                                                                  href 
 ##                                                          &quot;index.html&quot; 
 ##                                                                  href 
@@ -839,9 +840,9 @@ More than you ever wanted: <a href="https://www.regular-expressions.info/tutoria
 ##                                                                  href 
 ##                                         &quot;http://www.pulaskitown.org/&quot;</code></pre>
 <p>The above code downloads the html for the Board’s website and saves it in bosMainPage. The next line extracts all the links leading away from that page. It looks like a promising place to look is in the links such as ‘Board-of-Supervisors-Minutes-1992.html’. We can get just those links with the following:</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1">minutesLinks =<span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;Minutes&quot;</span>, links, <span class="dt">value =</span> T)</a>
-<a class="sourceLine" id="cb245-2" data-line-number="2">fullMinutesUrl =<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;http://www.pulaskicounty.org/&quot;</span>, minutesLinks)</a>
-<a class="sourceLine" id="cb245-3" data-line-number="3">fullMinutesUrl</a></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" data-line-number="1">minutesLinks =<span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;Minutes&quot;</span>, links, <span class="dt">value =</span> T)</a>
+<a class="sourceLine" id="cb246-2" data-line-number="2">fullMinutesUrl =<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;http://www.pulaskicounty.org/&quot;</span>, minutesLinks)</a>
+<a class="sourceLine" id="cb246-3" data-line-number="3">fullMinutesUrl</a></code></pre></div>
 <pre><code>##  [1] &quot;http://www.pulaskicounty.org/Board-of-Supervisors-Minutes-2017.html&quot;
 ##  [2] &quot;http://www.pulaskicounty.org/Board-of-Supervisors-Minutes-2016.html&quot;
 ##  [3] &quot;http://www.pulaskicounty.org/Board-of-Supervisors-Minutes-2015.html&quot;
@@ -871,9 +872,9 @@ More than you ever wanted: <a href="https://www.regular-expressions.info/tutoria
 ## [27] &quot;http://www.pulaskicounty.org/Board-of-Supervisors-Minutes-1991.html&quot;</code></pre>
 <p>The function grep is a base r function that returns strings which contain a pattern. We used it above to take all the urls on the main page and extract only the ones which contain ‘Minutes’, since those are the ones that contain links to the meeting minutes.</p>
 <p>Now we have all the urls to the pages where the minutes are kept. To work with all of them we could use a loop or an apply function, but we’ll just do one for illustration. We want to go to the page, find all the pdf’s with the minutes, and download them. A natural idea is to find everything with ‘.pdf’, but observe:</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1">minutePage2016 =<span class="st"> </span><span class="kw">htmlParse</span>(fullMinutesUrl[<span class="dv">2</span>])</a>
-<a class="sourceLine" id="cb247-2" data-line-number="2">pdfLinks =<span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;.pdf&quot;</span>, <span class="kw">xpathSApply</span>(minutePage2016, <span class="st">&quot;//a/@href&quot;</span>), <span class="dt">value =</span> T)</a>
-<a class="sourceLine" id="cb247-3" data-line-number="3">pdfLinks</a></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1">minutePage2016 =<span class="st"> </span><span class="kw">htmlParse</span>(fullMinutesUrl[<span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb248-2" data-line-number="2">pdfLinks =<span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;.pdf&quot;</span>, <span class="kw">xpathSApply</span>(minutePage2016, <span class="st">&quot;//a/@href&quot;</span>), <span class="dt">value =</span> T)</a>
+<a class="sourceLine" id="cb248-3" data-line-number="3">pdfLinks</a></code></pre></div>
 <pre><code>##                                                             href 
 ##                                             &quot;files/Churches.pdf&quot; 
 ##                                                             href 
@@ -937,9 +938,9 @@ More than you ever wanted: <a href="https://www.regular-expressions.info/tutoria
 ##                                                             href 
 ##                                             &quot;files/Churches.pdf&quot;</code></pre>
 <p>It’s always wise to make sure your expressions are getting you the things you want. Here, we have all the meeting pdfs, but also some extra page images. In this case, we can match like so:</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1">pdfLinks =<span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;Minutes and Agendas&quot;</span>, <span class="kw">xpathSApply</span>(minutePage2016, <span class="st">&quot;//a/@href&quot;</span>), <span class="dt">value =</span> T)</a>
-<a class="sourceLine" id="cb249-2" data-line-number="2">fullPdfUrl =<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;http://www.pulaskicounty.org/&quot;</span>, pdfLinks)</a>
-<a class="sourceLine" id="cb249-3" data-line-number="3">fullPdfUrl</a></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" data-line-number="1">pdfLinks =<span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;Minutes and Agendas&quot;</span>, <span class="kw">xpathSApply</span>(minutePage2016, <span class="st">&quot;//a/@href&quot;</span>), <span class="dt">value =</span> T)</a>
+<a class="sourceLine" id="cb250-2" data-line-number="2">fullPdfUrl =<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;http://www.pulaskicounty.org/&quot;</span>, pdfLinks)</a>
+<a class="sourceLine" id="cb250-3" data-line-number="3">fullPdfUrl</a></code></pre></div>
 <pre><code>##  [1] &quot;http://www.pulaskicounty.org/bos/Minutes and Agendas/2016/01 18 minutes organizational.pdf&quot; 
 ##  [2] &quot;http://www.pulaskicounty.org/bos/Minutes and Agendas/2016/01 25 minutes regular.pdf&quot;        
 ##  [3] &quot;http://www.pulaskicounty.org/bos/Minutes and Agendas/2016/02 16 minutes budget.pdf&quot;         
@@ -972,13 +973,13 @@ More than you ever wanted: <a href="https://www.regular-expressions.info/tutoria
 </div>
 <div id="lookaround-examples" class="section level3">
 <h3><span class="header-section-number">7.1.3</span> Lookaround Examples</h3>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1">naicsAndCompanies =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Name: Herbalife Ltd; NAICS: 325411, 325412, 424490&quot;</span>,                                    </a>
-<a class="sourceLine" id="cb251-2" data-line-number="2"><span class="st">&quot;Name: Sanofi-Aventis SA; NAICS: 325412&quot;</span>,                      </a>
-<a class="sourceLine" id="cb251-3" data-line-number="3"><span class="st">&quot;Name: Abbott Laboratories; NAICS: 325411, 325412, 325413, 325620, 334516, 339112&quot;</span>,  </a>
-<a class="sourceLine" id="cb251-4" data-line-number="4"><span class="st">&quot;Name: Alexion Pharmaceuticals Inc; NAICS: 325412&quot;</span>,    </a>
-<a class="sourceLine" id="cb251-5" data-line-number="5"><span class="st">&quot;Name: Purdue Pharma LP; NAICS: 325412; Name: Transcept Pharmaceuticals Inc; NAICS: 325412&quot;</span>,</a>
-<a class="sourceLine" id="cb251-6" data-line-number="6"><span class="st">&quot;Name: Sanofi-Aventis SA; NAICS: 325412&quot;</span>)</a>
-<a class="sourceLine" id="cb251-7" data-line-number="7">naicsAndCompanies</a></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" data-line-number="1">naicsAndCompanies =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Name: Herbalife Ltd; NAICS: 325411, 325412, 424490&quot;</span>,                                    </a>
+<a class="sourceLine" id="cb252-2" data-line-number="2"><span class="st">&quot;Name: Sanofi-Aventis SA; NAICS: 325412&quot;</span>,                      </a>
+<a class="sourceLine" id="cb252-3" data-line-number="3"><span class="st">&quot;Name: Abbott Laboratories; NAICS: 325411, 325412, 325413, 325620, 334516, 339112&quot;</span>,  </a>
+<a class="sourceLine" id="cb252-4" data-line-number="4"><span class="st">&quot;Name: Alexion Pharmaceuticals Inc; NAICS: 325412&quot;</span>,    </a>
+<a class="sourceLine" id="cb252-5" data-line-number="5"><span class="st">&quot;Name: Purdue Pharma LP; NAICS: 325412; Name: Transcept Pharmaceuticals Inc; NAICS: 325412&quot;</span>,</a>
+<a class="sourceLine" id="cb252-6" data-line-number="6"><span class="st">&quot;Name: Sanofi-Aventis SA; NAICS: 325412&quot;</span>)</a>
+<a class="sourceLine" id="cb252-7" data-line-number="7">naicsAndCompanies</a></code></pre></div>
 <pre><code>## [1] &quot;Name: Herbalife Ltd; NAICS: 325411, 325412, 424490&quot;                                       
 ## [2] &quot;Name: Sanofi-Aventis SA; NAICS: 325412&quot;                                                   
 ## [3] &quot;Name: Abbott Laboratories; NAICS: 325411, 325412, 325413, 325620, 334516, 339112&quot;         
@@ -991,27 +992,27 @@ More than you ever wanted: <a href="https://www.regular-expressions.info/tutoria
 (?&lt;=X) is the lookbehind operator. It looks BEHIND for the pattern X; that is, it matches things that come AFTER it
 (X) contains the pattern X that comes before the look ahead or after the lookbehind
 ‘.*’ means match the wildcard ‘.’ any number of times ’*’.</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1">firstRegexCase =<span class="st"> </span>naicsAndCompanies[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb253-2" data-line-number="2">firstRegexCase</a></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1">firstRegexCase =<span class="st"> </span>naicsAndCompanies[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb254-2" data-line-number="2">firstRegexCase</a></code></pre></div>
 <pre><code>## [1] &quot;Name: Herbalife Ltd; NAICS: 325411, 325412, 424490&quot;</code></pre>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" data-line-number="1">company =<span class="st"> </span><span class="kw">str_extract</span>(firstRegexCase, <span class="st">&quot;(.*?)(?=;)&quot;</span>)</a>
-<a class="sourceLine" id="cb255-2" data-line-number="2">naicsCodes =<span class="st"> </span><span class="kw">str_extract</span>(firstRegexCase, <span class="st">&quot;(?&lt;=NAICS: )(.*)&quot;</span>)</a>
-<a class="sourceLine" id="cb255-3" data-line-number="3">company</a></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" data-line-number="1">company =<span class="st"> </span><span class="kw">str_extract</span>(firstRegexCase, <span class="st">&quot;(.*?)(?=;)&quot;</span>)</a>
+<a class="sourceLine" id="cb256-2" data-line-number="2">naicsCodes =<span class="st"> </span><span class="kw">str_extract</span>(firstRegexCase, <span class="st">&quot;(?&lt;=NAICS: )(.*)&quot;</span>)</a>
+<a class="sourceLine" id="cb256-3" data-line-number="3">company</a></code></pre></div>
 <pre><code>## [1] &quot;Name: Herbalife Ltd&quot;</code></pre>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1">naicsCodes</a></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1">naicsCodes</a></code></pre></div>
 <pre><code>## [1] &quot;325411, 325412, 424490&quot;</code></pre>
 <p>We’re getting there, but not quite. We don’t want that annoying ‘Name:’ in front of the company. We can achieve that with the following. The lookbehind ‘(?&lt;=Name: )’ will find a place in the string that matches the pattern ‘Name:’ and then match what comes next, which in this case is anything (.*).</p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" data-line-number="1">cleanerCompany =<span class="st"> </span><span class="kw">str_extract</span>(company, <span class="st">&quot;(?&lt;=Name: )(.*)&quot;</span>)</a>
-<a class="sourceLine" id="cb259-2" data-line-number="2">cleanerCompany</a></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1">cleanerCompany =<span class="st"> </span><span class="kw">str_extract</span>(company, <span class="st">&quot;(?&lt;=Name: )(.*)&quot;</span>)</a>
+<a class="sourceLine" id="cb260-2" data-line-number="2">cleanerCompany</a></code></pre></div>
 <pre><code>## [1] &quot;Herbalife Ltd&quot;</code></pre>
 <p>Note that we could have removed the ‘Name:’ directly using a function called gsub, but the lookbehind will be useful later. gsub replaces the pattern in the first argument with the pattern in the second wherever it finds it in the third argument.</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" data-line-number="1"><span class="kw">gsub</span>(<span class="st">&quot;Name: &quot;</span>, <span class="st">&quot;&quot;</span>, company)</a></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1"><span class="kw">gsub</span>(<span class="st">&quot;Name: &quot;</span>, <span class="st">&quot;&quot;</span>, company)</a></code></pre></div>
 <pre><code>## [1] &quot;Herbalife Ltd&quot;</code></pre>
 <p>Now we can tackle the whole vector. We’ll use the same idea of separating names from codes using semicolons, but with two new challenges.</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1">naicsAndCompanies[[<span class="dv">5</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" data-line-number="1">naicsAndCompanies[[<span class="dv">5</span>]]</a></code></pre></div>
 <pre><code>## [1] &quot;Name: Purdue Pharma LP; NAICS: 325412; Name: Transcept Pharmaceuticals Inc; NAICS: 325412&quot;</code></pre>
 <p>This entry has multiple companies in the same line. To get at both of them, we need to use str_extract_all() instead of just str_extract().</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1"><span class="kw">str_extract_all</span>(naicsAndCompanies, <span class="st">&quot;(?&lt;=Name: )(.*)(?=;)&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" data-line-number="1"><span class="kw">str_extract_all</span>(naicsAndCompanies, <span class="st">&quot;(?&lt;=Name: )(.*)(?=;)&quot;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;Herbalife Ltd&quot;
 ## 
@@ -1030,8 +1031,8 @@ More than you ever wanted: <a href="https://www.regular-expressions.info/tutoria
 ## [[6]]
 ## [1] &quot;Sanofi-Aventis SA&quot;</code></pre>
 <p>Whoops, looks like we didn’t split the 5th string at the right place! This is because the regular expression by default tries to match the longest string possible. This is called greedy matching. We can disable it by adding ‘?’ after the wild card</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" data-line-number="1">companies =<span class="st"> </span><span class="kw">str_extract_all</span>(naicsAndCompanies, <span class="st">&quot;(?&lt;=Name: )(.*?)(?=;)&quot;</span>)</a>
-<a class="sourceLine" id="cb267-2" data-line-number="2">companies</a></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb268-1" data-line-number="1">companies =<span class="st"> </span><span class="kw">str_extract_all</span>(naicsAndCompanies, <span class="st">&quot;(?&lt;=Name: )(.*?)(?=;)&quot;</span>)</a>
+<a class="sourceLine" id="cb268-2" data-line-number="2">companies</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;Herbalife Ltd&quot;
 ## 
@@ -1050,7 +1051,7 @@ More than you ever wanted: <a href="https://www.regular-expressions.info/tutoria
 ## [[6]]
 ## [1] &quot;Sanofi-Aventis SA&quot;</code></pre>
 <p>Now let’s do the same for the NAICS codes.</p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1"><span class="kw">str_extract_all</span>(<span class="kw">paste0</span>(naicsAndCompanies), <span class="st">&quot;(?&lt;=NAICS: )(.*?)(?=;)&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb270-1" data-line-number="1"><span class="kw">str_extract_all</span>(<span class="kw">paste0</span>(naicsAndCompanies), <span class="st">&quot;(?&lt;=NAICS: )(.*?)(?=;)&quot;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## character(0)
 ## 
@@ -1069,8 +1070,8 @@ More than you ever wanted: <a href="https://www.regular-expressions.info/tutoria
 ## [[6]]
 ## character(0)</code></pre>
 <p>What’s going on here? This code looks for stuff between ‘NAICS:’ and ‘;’, but except for the 5th line there’s never a ‘;’ after ‘NAICS:’. To get around this, we can use a logical OR operator, along with a special symbol meaning ‘end of the string’. Here, the expression ‘(;|$)’ means ’match either ; OR the end of the line;.</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" data-line-number="1">allNaics =<span class="st"> </span><span class="kw">str_extract_all</span>(<span class="kw">paste0</span>(naicsAndCompanies), <span class="st">&quot;(?&lt;=NAICS: )(.*?)(?=(;|$))&quot;</span>)</a>
-<a class="sourceLine" id="cb271-2" data-line-number="2">allNaics</a></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb272-1" data-line-number="1">allNaics =<span class="st"> </span><span class="kw">str_extract_all</span>(<span class="kw">paste0</span>(naicsAndCompanies), <span class="st">&quot;(?&lt;=NAICS: )(.*?)(?=(;|$))&quot;</span>)</a>
+<a class="sourceLine" id="cb272-2" data-line-number="2">allNaics</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;325411, 325412, 424490&quot;
 ## 
@@ -1089,8 +1090,8 @@ More than you ever wanted: <a href="https://www.regular-expressions.info/tutoria
 ## [[6]]
 ## [1] &quot;325412&quot;</code></pre>
 <p>Finally, we can put it all together and we have a clean company by naics table:</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" data-line-number="1">companyNaicsList =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">company =</span> <span class="kw">unlist</span>(companies), <span class="dt">naicsCodes =</span> <span class="kw">unlist</span>(allNaics))</a>
-<a class="sourceLine" id="cb273-2" data-line-number="2">companyNaicsList</a></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" data-line-number="1">companyNaicsList =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">company =</span> <span class="kw">unlist</span>(companies), <span class="dt">naicsCodes =</span> <span class="kw">unlist</span>(allNaics))</a>
+<a class="sourceLine" id="cb274-2" data-line-number="2">companyNaicsList</a></code></pre></div>
 <pre><code>##                         company
 ## 1                 Herbalife Ltd
 ## 2             Sanofi-Aventis SA

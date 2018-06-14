@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#post-installation-settings"><i class="fa fa-check"></i>Post installation settings</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
@@ -323,9 +324,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="statistical-transformations" class="section level2">
 <h2><span class="header-section-number">2.6</span> Statistical Transformations</h2>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">dim</span>(diamonds)</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">dim</span>(diamonds)</a></code></pre></div>
 <pre><code>## [1] 53940    10</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="kw">head</span>(diamonds)</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">head</span>(diamonds)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 10
 ##   carat cut       color clarity depth table price     x     y     z
 ##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -335,26 +336,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
 ## 5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75
 ## 6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut))</a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut))</a></code></pre></div>
 <p><img src="010-data_vis_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>Use a <em>stat</em> to calculate a new value.
 diamonds data gets “transformed” into a frequency table that get’s plotted by the bar plot.</p>
 <p>Look at the geom_bar documentation, you will see the <code>stat</code> will be <code>count</code> (i.e., <code>stat_count()</code>).</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span><span class="kw">stat_count</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut))</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span><span class="kw">stat_count</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut))</a></code></pre></div>
 <p><img src="010-data_vis_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <p>You can set stat to ‘identity’ if you have already calculated a frequency table</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">pre_counted &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw">as.tibble</span>(<span class="kw">table</span>(diamonds<span class="op">$</span>cut))</a></code></pre></div>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> pre_counted) <span class="op">+</span></a>
-<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(</a>
-<a class="sourceLine" id="cb53-3" data-line-number="3">    <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> n), <span class="dt">stat =</span> <span class="st">&#39;identity&#39;</span></a>
-<a class="sourceLine" id="cb53-4" data-line-number="4">  )</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">pre_counted &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw">as.tibble</span>(<span class="kw">table</span>(diamonds<span class="op">$</span>cut))</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> pre_counted) <span class="op">+</span></a>
+<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(</a>
+<a class="sourceLine" id="cb54-3" data-line-number="3">    <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> n), <span class="dt">stat =</span> <span class="st">&#39;identity&#39;</span></a>
+<a class="sourceLine" id="cb54-4" data-line-number="4">  )</a></code></pre></div>
 <p><img src="010-data_vis_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="co"># overwrite default stat</span></a>
-<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="co"># proportion instead of count</span></a>
-<a class="sourceLine" id="cb54-3" data-line-number="3"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span></a>
-<a class="sourceLine" id="cb54-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_bar</span>(</a>
-<a class="sourceLine" id="cb54-5" data-line-number="5">    <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">y =</span> ..prop.., <span class="dt">group =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb54-6" data-line-number="6">  )</a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="co"># overwrite default stat</span></a>
+<a class="sourceLine" id="cb55-2" data-line-number="2"><span class="co"># proportion instead of count</span></a>
+<a class="sourceLine" id="cb55-3" data-line-number="3"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span></a>
+<a class="sourceLine" id="cb55-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_bar</span>(</a>
+<a class="sourceLine" id="cb55-5" data-line-number="5">    <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut, <span class="dt">y =</span> ..prop.., <span class="dt">group =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb55-6" data-line-number="6">  )</a></code></pre></div>
 <p><img src="010-data_vis_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <p>grouping: <a href="http://ggplot2.tidyverse.org/reference/aes_group_order.html" class="uri">http://ggplot2.tidyverse.org/reference/aes_group_order.html</a></p>
 <p>By default, the group is set to the interaction of all discrete variables in the

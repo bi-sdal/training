@@ -85,6 +85,8 @@ R is a programming language that is especially powerful for data exploration, vi
 
 RStudio IDE: https://www.rstudio.com/products/rstudio/download/preview/
 
+
+
 ### Windows {-}
 Video Tutorial
 Install R by downloading and running this .exe file from CRAN. Also, please install the RStudio IDE. Note that if you have separate user and admin accounts, you should run the installers as administrator (right-click on .exe file and select "Run as administrator" instead of double-clicking). Otherwise problems may occur later, for example when installing R packages.
@@ -95,6 +97,27 @@ Install R by downloading and running this .pkg file from CRAN. Also, please inst
 
 ### Linux {-}
 You can download the binary files for your distribution from CRAN. Or you can use your package manager (e.g. for Debian/Ubuntu run sudo apt-get install r-base and for Fedora run sudo dnf install R). Also, please install the RStudio IDE.
+
+### Post installation settings {-}
+
+**Open up global options**
+
+You can do this by going to `Tools > Global Options` on the top menu bar.
+![](./figs/rstudio_setup/01-global_options.png)<!-- -->
+
+**Setup startup defaults**
+
+Make sure:
+
+- "Restore .RData into workspace at startup" box is unchecked
+- "Save workspace to .RData on exit" is set to "Never"
+
+It's also advised to uncheck the top two options as well:
+
+- Restore most recently opened project at startup
+- Restore previously open source documents at startup
+
+![](./figs/rstudio_setup/02-options.png)<!-- -->
 
 ## SQLite {-}
 SQL is a specialized programming language used with databases. We use a simple database manager called SQLite in our lessons.

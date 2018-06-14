@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#post-installation-settings"><i class="fa fa-check"></i>Post installation settings</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
@@ -325,10 +326,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.2</span> Joins</h2>
 <div id="join-tables-in-sql-with-dbi" class="section level3">
 <h3><span class="header-section-number">10.2.1</span> JOIN TABLES IN SQL WITH DBI</h3>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" data-line-number="1">DBI<span class="op">::</span><span class="kw">dbGetQuery</span>(my_db_con, </a>
-<a class="sourceLine" id="cb352-2" data-line-number="2">                <span class="st">&quot;SELECT * </span></a>
-<a class="sourceLine" id="cb352-3" data-line-number="3"><span class="st">                 FROM rap_chart_artists a </span></a>
-<a class="sourceLine" id="cb352-4" data-line-number="4"><span class="st">                 JOIN rap_chart_singles b ON a.</span><span class="ch">\&quot;</span><span class="st">Artist_ID</span><span class="ch">\&quot;</span><span class="st"> = b.</span><span class="ch">\&quot;</span><span class="st">Artist_ID</span><span class="ch">\&quot;</span><span class="st">&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb353-1" data-line-number="1">DBI<span class="op">::</span><span class="kw">dbGetQuery</span>(my_db_con, </a>
+<a class="sourceLine" id="cb353-2" data-line-number="2">                <span class="st">&quot;SELECT * </span></a>
+<a class="sourceLine" id="cb353-3" data-line-number="3"><span class="st">                 FROM rap_chart_artists a </span></a>
+<a class="sourceLine" id="cb353-4" data-line-number="4"><span class="st">                 JOIN rap_chart_singles b ON a.</span><span class="ch">\&quot;</span><span class="st">Artist_ID</span><span class="ch">\&quot;</span><span class="st"> = b.</span><span class="ch">\&quot;</span><span class="st">Artist_ID</span><span class="ch">\&quot;</span><span class="st">&quot;</span>)</a></code></pre></div>
 </div>
 <div id="join-tables-in-sql-in-sql-chunk" class="section level3">
 <h3><span class="header-section-number">10.2.2</span> JOIN TABLES IN SQL IN SQL CHUNK</h3>
@@ -345,7 +346,7 @@ SELECT *
 FROM rap_chart_artists a
 JOIN rap_chart_singles s ON a."Artist_ID" = s."Artist_ID"
 ```</code></pre>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb353-1" data-line-number="1">rap_artist_singles[, <span class="kw">c</span>(<span class="st">&quot;First_Name&quot;</span>, <span class="st">&quot;Last_Name&quot;</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" data-line-number="1">rap_artist_singles[, <span class="kw">c</span>(<span class="st">&quot;First_Name&quot;</span>, <span class="st">&quot;Last_Name&quot;</span>)]</a></code></pre></div>
 </div>
 <div id="join-tables-in-sql-in-sql-chunk-apply-where-clause-and-fuzzy-search" class="section level3">
 <h3><span class="header-section-number">10.2.4</span> JOIN TABLES IN SQL IN SQL CHUNK APPLY WHERE CLAUSE AND FUZZY SEARCH</h3>

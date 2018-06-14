@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#post-installation-settings"><i class="fa fa-check"></i>Post installation settings</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
@@ -323,8 +324,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="create-simple-datasets" class="section level2">
 <h2><span class="header-section-number">6.1</span> Create simple datasets</h2>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" data-line-number="1"><span class="kw">library</span>(tibble)</a>
-<a class="sourceLine" id="cb173-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1"><span class="kw">library</span>(tibble)</a>
+<a class="sourceLine" id="cb174-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
@@ -333,26 +334,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
-<a class="sourceLine" id="cb177-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_x,</a>
-<a class="sourceLine" id="cb177-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</a>
-<a class="sourceLine" id="cb177-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</a>
-<a class="sourceLine" id="cb177-5" data-line-number="5">    <span class="dv">3</span>, <span class="st">&quot;x3&quot;</span></a>
-<a class="sourceLine" id="cb177-6" data-line-number="6">)</a>
-<a class="sourceLine" id="cb177-7" data-line-number="7">x</a></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb178-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_x,</a>
+<a class="sourceLine" id="cb178-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</a>
+<a class="sourceLine" id="cb178-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</a>
+<a class="sourceLine" id="cb178-5" data-line-number="5">    <span class="dv">3</span>, <span class="st">&quot;x3&quot;</span></a>
+<a class="sourceLine" id="cb178-6" data-line-number="6">)</a>
+<a class="sourceLine" id="cb178-7" data-line-number="7">x</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##     key val_x
 ##   &lt;dbl&gt; &lt;chr&gt;
 ## 1     1 x1   
 ## 2     2 x2   
 ## 3     3 x3</code></pre>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
-<a class="sourceLine" id="cb179-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_y,</a>
-<a class="sourceLine" id="cb179-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</a>
-<a class="sourceLine" id="cb179-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</a>
-<a class="sourceLine" id="cb179-5" data-line-number="5">    <span class="dv">4</span>, <span class="st">&quot;y3&quot;</span></a>
-<a class="sourceLine" id="cb179-6" data-line-number="6">)</a>
-<a class="sourceLine" id="cb179-7" data-line-number="7">y</a></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb180-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_y,</a>
+<a class="sourceLine" id="cb180-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</a>
+<a class="sourceLine" id="cb180-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</a>
+<a class="sourceLine" id="cb180-5" data-line-number="5">    <span class="dv">4</span>, <span class="st">&quot;y3&quot;</span></a>
+<a class="sourceLine" id="cb180-6" data-line-number="6">)</a>
+<a class="sourceLine" id="cb180-7" data-line-number="7">y</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##     key val_y
 ##   &lt;dbl&gt; &lt;chr&gt;

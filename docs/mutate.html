@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#post-installation-settings"><i class="fa fa-check"></i>Post installation settings</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
@@ -323,11 +324,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="mutate" class="section level2">
 <h2><span class="header-section-number">4.7</span> Mutate</h2>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1">(flights_sml &lt;-<span class="st"> </span><span class="kw">select</span>(flights,</a>
-<a class="sourceLine" id="cb121-2" data-line-number="2">                      year<span class="op">:</span>day,</a>
-<a class="sourceLine" id="cb121-3" data-line-number="3">                      <span class="kw">ends_with</span>(<span class="st">&#39;delay&#39;</span>),</a>
-<a class="sourceLine" id="cb121-4" data-line-number="4">                      distance,</a>
-<a class="sourceLine" id="cb121-5" data-line-number="5">                      air_time))</a></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">(flights_sml &lt;-<span class="st"> </span><span class="kw">select</span>(flights,</a>
+<a class="sourceLine" id="cb122-2" data-line-number="2">                      year<span class="op">:</span>day,</a>
+<a class="sourceLine" id="cb122-3" data-line-number="3">                      <span class="kw">ends_with</span>(<span class="st">&#39;delay&#39;</span>),</a>
+<a class="sourceLine" id="cb122-4" data-line-number="4">                      distance,</a>
+<a class="sourceLine" id="cb122-5" data-line-number="5">                      air_time))</a></code></pre></div>
 <pre><code>## # A tibble: 336,776 x 7
 ##     year month   day dep_delay arr_delay distance air_time
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
@@ -342,9 +343,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9  2013     1     1        -3        -8      944      140
 ## 10  2013     1     1        -2         8      733      138
 ## # ... with 336,766 more rows</code></pre>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="kw">mutate</span>(flights_sml,</a>
-<a class="sourceLine" id="cb123-2" data-line-number="2">       <span class="dt">gain =</span> arr_delay <span class="op">-</span><span class="st"> </span>dep_delay,</a>
-<a class="sourceLine" id="cb123-3" data-line-number="3">       <span class="dt">speed =</span> distance <span class="op">/</span><span class="st"> </span>air_time <span class="op">*</span><span class="st"> </span><span class="dv">60</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1"><span class="kw">mutate</span>(flights_sml,</a>
+<a class="sourceLine" id="cb124-2" data-line-number="2">       <span class="dt">gain =</span> arr_delay <span class="op">-</span><span class="st"> </span>dep_delay,</a>
+<a class="sourceLine" id="cb124-3" data-line-number="3">       <span class="dt">speed =</span> distance <span class="op">/</span><span class="st"> </span>air_time <span class="op">*</span><span class="st"> </span><span class="dv">60</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 336,776 x 9
 ##     year month   day dep_delay arr_delay distance air_time  gain speed
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -359,12 +360,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9  2013     1     1        -3        -8      944      140    -5  405.
 ## 10  2013     1     1        -2         8      733      138    10  319.
 ## # ... with 336,766 more rows</code></pre>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1"><span class="kw">mutate</span>(flights_sml,</a>
-<a class="sourceLine" id="cb125-2" data-line-number="2">       <span class="dt">gain =</span> arr_delay <span class="op">-</span><span class="st"> </span>dep_delay,</a>
-<a class="sourceLine" id="cb125-3" data-line-number="3">       <span class="dt">speed =</span> distance <span class="op">/</span><span class="st"> </span>air_time <span class="op">*</span><span class="st"> </span><span class="dv">60</span>,</a>
-<a class="sourceLine" id="cb125-4" data-line-number="4">       <span class="dt">hours =</span> air_time <span class="op">/</span><span class="st"> </span><span class="dv">60</span>,</a>
-<a class="sourceLine" id="cb125-5" data-line-number="5">       <span class="dt">gain_per_hour =</span> gain <span class="op">/</span><span class="st"> </span>hours</a>
-<a class="sourceLine" id="cb125-6" data-line-number="6">       )</a></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="kw">mutate</span>(flights_sml,</a>
+<a class="sourceLine" id="cb126-2" data-line-number="2">       <span class="dt">gain =</span> arr_delay <span class="op">-</span><span class="st"> </span>dep_delay,</a>
+<a class="sourceLine" id="cb126-3" data-line-number="3">       <span class="dt">speed =</span> distance <span class="op">/</span><span class="st"> </span>air_time <span class="op">*</span><span class="st"> </span><span class="dv">60</span>,</a>
+<a class="sourceLine" id="cb126-4" data-line-number="4">       <span class="dt">hours =</span> air_time <span class="op">/</span><span class="st"> </span><span class="dv">60</span>,</a>
+<a class="sourceLine" id="cb126-5" data-line-number="5">       <span class="dt">gain_per_hour =</span> gain <span class="op">/</span><span class="st"> </span>hours</a>
+<a class="sourceLine" id="cb126-6" data-line-number="6">       )</a></code></pre></div>
 <pre><code>## # A tibble: 336,776 x 11
 ##     year month   day dep_delay arr_delay distance air_time  gain speed
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;

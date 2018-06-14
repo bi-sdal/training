@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#post-installation-settings"><i class="fa fa-check"></i>Post installation settings</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
@@ -324,8 +325,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="different-column-names" class="section level2">
 <h2><span class="header-section-number">6.6</span> Different column names</h2>
 <p>You can also join tables when columns do not share the same name</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" data-line-number="1">x <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb202-2" data-line-number="2"><span class="st">    </span><span class="kw">left_join</span>(y, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&#39;key&#39;</span> =<span class="st"> &#39;key2&#39;</span>, <span class="st">&#39;col2&#39;</span> =<span class="st"> &#39;other&#39;</span>, <span class="st">&#39;col3&#39;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1">x <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb203-2" data-line-number="2"><span class="st">    </span><span class="kw">left_join</span>(y, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&#39;key&#39;</span> =<span class="st"> &#39;key2&#39;</span>, <span class="st">&#39;col2&#39;</span> =<span class="st"> &#39;other&#39;</span>, <span class="st">&#39;col3&#39;</span>))</a></code></pre></div>
 
 </div>
 <!-- </div> -->

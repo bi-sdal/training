@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#post-installation-settings"><i class="fa fa-check"></i>Post installation settings</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
@@ -323,9 +324,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="groupby" class="section level2">
 <h2><span class="header-section-number">4.9</span> Groupby</h2>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1">by_day &lt;-<span class="st"> </span><span class="kw">group_by</span>(flights,</a>
-<a class="sourceLine" id="cb129-2" data-line-number="2">                   year, month, day)</a></code></pre></div>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1"><span class="kw">summarize</span>(by_day, <span class="dt">delay =</span> <span class="kw">mean</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">by_day &lt;-<span class="st"> </span><span class="kw">group_by</span>(flights,</a>
+<a class="sourceLine" id="cb130-2" data-line-number="2">                   year, month, day)</a></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1"><span class="kw">summarize</span>(by_day, <span class="dt">delay =</span> <span class="kw">mean</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 365 x 4
 ## # Groups:   year, month [?]
 ##     year month   day delay
@@ -342,13 +343,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10  2013     1    10  2.84
 ## # ... with 355 more rows</code></pre>
 <p>Do a group by and perform multiple summarizations</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1">by_month &lt;-<span class="st"> </span><span class="kw">group_by</span>(flights,</a>
-<a class="sourceLine" id="cb132-2" data-line-number="2">                   year, month)</a>
-<a class="sourceLine" id="cb132-3" data-line-number="3">by_month &lt;-<span class="st"> </span><span class="kw">summarize</span>(by_month,</a>
-<a class="sourceLine" id="cb132-4" data-line-number="4">          <span class="dt">delay =</span> <span class="kw">mean</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb132-5" data-line-number="5">          <span class="dt">delay_std =</span> <span class="kw">sd</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb132-6" data-line-number="6">          )</a>
-<a class="sourceLine" id="cb132-7" data-line-number="7">by_month</a></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1">by_month &lt;-<span class="st"> </span><span class="kw">group_by</span>(flights,</a>
+<a class="sourceLine" id="cb133-2" data-line-number="2">                   year, month)</a>
+<a class="sourceLine" id="cb133-3" data-line-number="3">by_month &lt;-<span class="st"> </span><span class="kw">summarize</span>(by_month,</a>
+<a class="sourceLine" id="cb133-4" data-line-number="4">          <span class="dt">delay =</span> <span class="kw">mean</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb133-5" data-line-number="5">          <span class="dt">delay_std =</span> <span class="kw">sd</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb133-6" data-line-number="6">          )</a>
+<a class="sourceLine" id="cb133-7" data-line-number="7">by_month</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 4
 ## # Groups:   year [?]
 ##     year month delay delay_std
@@ -366,12 +367,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 11  2013    11  5.44      27.6
 ## 12  2013    12 16.6       41.9</code></pre>
 <p>The above code can be re-written using the pipe, <code>%&gt;%</code></p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1"><span class="co"># i&#39;m pretty sure this is easier to read and understand</span></a>
-<a class="sourceLine" id="cb134-2" data-line-number="2">by_month &lt;-<span class="st"> </span><span class="kw">group_by</span>(flights,</a>
-<a class="sourceLine" id="cb134-3" data-line-number="3">                     year, month) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb134-4" data-line-number="4"><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">delay =</span> <span class="kw">mean</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb134-5" data-line-number="5">              <span class="dt">delay_std =</span> <span class="kw">sd</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb134-6" data-line-number="6">by_month</a></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="co"># i&#39;m pretty sure this is easier to read and understand</span></a>
+<a class="sourceLine" id="cb135-2" data-line-number="2">by_month &lt;-<span class="st"> </span><span class="kw">group_by</span>(flights,</a>
+<a class="sourceLine" id="cb135-3" data-line-number="3">                     year, month) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb135-4" data-line-number="4"><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">delay =</span> <span class="kw">mean</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb135-5" data-line-number="5">              <span class="dt">delay_std =</span> <span class="kw">sd</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb135-6" data-line-number="6">by_month</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 4
 ## # Groups:   year [?]
 ##     year month delay delay_std
@@ -390,9 +391,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 12  2013    12 16.6       41.9</code></pre>
 <p>Otherwise you will have to create a temp variable,
 or write a nested expression</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1"><span class="kw">summarize</span>(<span class="kw">group_by</span>(flights, year, month),</a>
-<a class="sourceLine" id="cb136-2" data-line-number="2">          <span class="dt">delay =</span> <span class="kw">mean</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb136-3" data-line-number="3">          <span class="dt">delay_std =</span> <span class="kw">sd</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="kw">summarize</span>(<span class="kw">group_by</span>(flights, year, month),</a>
+<a class="sourceLine" id="cb137-2" data-line-number="2">          <span class="dt">delay =</span> <span class="kw">mean</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb137-3" data-line-number="3">          <span class="dt">delay_std =</span> <span class="kw">sd</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 4
 ## # Groups:   year [?]
 ##     year month delay delay_std

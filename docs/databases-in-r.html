@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#post-installation-settings"><i class="fa fa-check"></i>Post installation settings</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
@@ -323,9 +324,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="databases-in-r" class="section level2">
 <h2><span class="header-section-number">10.1</span> Databases in R</h2>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" data-line-number="1">rap_chart_artists &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;data/Rap_Charts.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Artists&quot;</span>)</a>
-<a class="sourceLine" id="cb345-2" data-line-number="2">rap_chart_singles &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;data/Rap_Charts.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Singles&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" data-line-number="1"><span class="kw">head</span>(rap_chart_artists)</a></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" data-line-number="1">rap_chart_artists &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;data/Rap_Charts.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Artists&quot;</span>)</a>
+<a class="sourceLine" id="cb346-2" data-line-number="2">rap_chart_singles &lt;-<span class="st"> </span>readxl<span class="op">::</span><span class="kw">read_excel</span>(<span class="st">&quot;data/Rap_Charts.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Singles&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" data-line-number="1"><span class="kw">head</span>(rap_chart_artists)</a></code></pre></div>
 <pre><code>## # A tibble: 4 x 4
 ##   Artist_ID First_Name Last_Name Psuedonym  
 ##       &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;      
@@ -333,7 +334,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2         3 Marvin     Young     Young M.C. 
 ## 3         2 Stanley    Burrell   M.C. Hammer
 ## 4         1 James      Smith     LL Cool J</code></pre>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" data-line-number="1"><span class="kw">head</span>(rap_chart_singles)</a></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb349-1" data-line-number="1"><span class="kw">head</span>(rap_chart_singles)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##   Artist_ID  Year Single                     Top_US_Rap_Chart Album       
 ##       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;                                 &lt;dbl&gt; &lt;chr&gt;       
@@ -345,13 +346,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6         1  1987 &quot;\&quot;I&#39;m Bad\&quot;&quot;                            NA Bigger and …</code></pre>
 <div id="create-reusable-connection-to-database" class="section level3">
 <h3><span class="header-section-number">10.1.1</span> CREATE REUSABLE CONNECTION TO DATABASE</h3>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" data-line-number="1"><span class="co"># by default this will open up your own database (e.g., aschroed)</span></a>
-<a class="sourceLine" id="cb350-2" data-line-number="2">my_db_con &lt;-<span class="st"> </span>sdalr<span class="op">::</span><span class="kw">con_db</span>(<span class="dt">pass =</span> sdalr<span class="op">::</span><span class="kw">get_my_password</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" data-line-number="1"><span class="co"># by default this will open up your own database (e.g., aschroed)</span></a>
+<a class="sourceLine" id="cb351-2" data-line-number="2">my_db_con &lt;-<span class="st"> </span>sdalr<span class="op">::</span><span class="kw">con_db</span>(<span class="dt">pass =</span> sdalr<span class="op">::</span><span class="kw">get_my_password</span>())</a></code></pre></div>
 </div>
 <div id="write-data-to-database-tables" class="section level3">
 <h3><span class="header-section-number">10.1.2</span> WRITE DATA TO DATABASE TABLES</h3>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" data-line-number="1">DBI<span class="op">::</span><span class="kw">dbWriteTable</span>(my_db_con, <span class="st">&quot;rap_chart_artists&quot;</span>, rap_chart_artists, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb351-2" data-line-number="2">DBI<span class="op">::</span><span class="kw">dbWriteTable</span>(my_db_con, <span class="st">&quot;rap_chart_singles&quot;</span>, rap_chart_singles, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" data-line-number="1">DBI<span class="op">::</span><span class="kw">dbWriteTable</span>(my_db_con, <span class="st">&quot;rap_chart_artists&quot;</span>, rap_chart_artists, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb352-2" data-line-number="2">DBI<span class="op">::</span><span class="kw">dbWriteTable</span>(my_db_con, <span class="st">&quot;rap_chart_singles&quot;</span>, rap_chart_singles, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 </div>
 </div>
             </section>

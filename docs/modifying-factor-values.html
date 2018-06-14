@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#post-installation-settings"><i class="fa fa-check"></i>Post installation settings</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
@@ -323,7 +324,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="modifying-factor-values" class="section level2">
 <h2><span class="header-section-number">8.5</span> Modifying factor values</h2>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" data-line-number="1">gss_cat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>(partyid)</a></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" data-line-number="1">gss_cat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>(partyid)</a></code></pre></div>
 <pre><code>## # A tibble: 10 x 2
 ##    partyid                n
 ##    &lt;fct&gt;              &lt;int&gt;
@@ -337,12 +338,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  8 Ind,near dem        2499
 ##  9 Not str democrat    3690
 ## 10 Strong democrat     3490</code></pre>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" data-line-number="1"><span class="co"># same as below</span></a>
-<a class="sourceLine" id="cb300-2" data-line-number="2"><span class="co">#forcats::fct_recode(gss_cat$partyid)</span></a></code></pre></div>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" data-line-number="1">forcats<span class="op">::</span><span class="kw">fct_recode</span>(gss_cat<span class="op">$</span>partyid,</a>
-<a class="sourceLine" id="cb301-2" data-line-number="2">                        <span class="st">&quot;Rep, Strong&quot;</span> =<span class="st"> &quot;Strong republican&quot;</span>,</a>
-<a class="sourceLine" id="cb301-3" data-line-number="3">                        <span class="st">&quot;Dem, Strong&quot;</span> =<span class="st"> &quot;Strong democrat&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb301-4" data-line-number="4"><span class="st">    </span><span class="kw">head</span>(<span class="dv">30</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" data-line-number="1"><span class="co"># same as below</span></a>
+<a class="sourceLine" id="cb301-2" data-line-number="2"><span class="co">#forcats::fct_recode(gss_cat$partyid)</span></a></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" data-line-number="1">forcats<span class="op">::</span><span class="kw">fct_recode</span>(gss_cat<span class="op">$</span>partyid,</a>
+<a class="sourceLine" id="cb302-2" data-line-number="2">                        <span class="st">&quot;Rep, Strong&quot;</span> =<span class="st"> &quot;Strong republican&quot;</span>,</a>
+<a class="sourceLine" id="cb302-3" data-line-number="3">                        <span class="st">&quot;Dem, Strong&quot;</span> =<span class="st"> &quot;Strong democrat&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb302-4" data-line-number="4"><span class="st">    </span><span class="kw">head</span>(<span class="dv">30</span>)</a></code></pre></div>
 <pre><code>##  [1] Ind,near rep       Not str republican Independent       
 ##  [4] Ind,near rep       Not str democrat   Dem, Strong       
 ##  [7] Not str republican Ind,near dem       Not str democrat  
@@ -354,16 +355,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [25] Not str democrat   Dem, Strong        Not str democrat  
 ## [28] Rep, Strong        Dem, Strong        Independent       
 ## 10 Levels: No answer Don&#39;t know Other party ... Dem, Strong</code></pre>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb303-1" data-line-number="1">gss_cat_recoded &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb303-2" data-line-number="2"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">party_id_recode =</span> <span class="kw">fct_recode</span>(</a>
-<a class="sourceLine" id="cb303-3" data-line-number="3">        partyid,</a>
-<a class="sourceLine" id="cb303-4" data-line-number="4">        <span class="st">&quot;Rep, Strong&quot;</span> =<span class="st"> &quot;Strong republican&quot;</span>,</a>
-<a class="sourceLine" id="cb303-5" data-line-number="5">        <span class="st">&quot;Dem, Strong&quot;</span> =<span class="st"> &quot;Strong democrat&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" data-line-number="1">gss_cat_recoded &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb304-2" data-line-number="2"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">party_id_recode =</span> <span class="kw">fct_recode</span>(</a>
+<a class="sourceLine" id="cb304-3" data-line-number="3">        partyid,</a>
+<a class="sourceLine" id="cb304-4" data-line-number="4">        <span class="st">&quot;Rep, Strong&quot;</span> =<span class="st"> &quot;Strong republican&quot;</span>,</a>
+<a class="sourceLine" id="cb304-5" data-line-number="5">        <span class="st">&quot;Dem, Strong&quot;</span> =<span class="st"> &quot;Strong democrat&quot;</span>))</a></code></pre></div>
 <div id="double-check-your-work" class="section level3">
 <h3><span class="header-section-number">8.5.1</span> Double check your work</h3>
 <p><a href="https://gist.github.com/jennybc/04b71bfaaf0f88d9d2eb" class="uri">https://gist.github.com/jennybc/04b71bfaaf0f88d9d2eb</a></p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" data-line-number="1"><span class="co"># do a cross tab in R</span></a>
-<a class="sourceLine" id="cb304-2" data-line-number="2"><span class="kw">table</span>(gss_cat_recoded<span class="op">$</span>partyid, gss_cat_recoded<span class="op">$</span>party_id_recode, <span class="dt">useNA =</span> <span class="st">&#39;always&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" data-line-number="1"><span class="co"># do a cross tab in R</span></a>
+<a class="sourceLine" id="cb305-2" data-line-number="2"><span class="kw">table</span>(gss_cat_recoded<span class="op">$</span>partyid, gss_cat_recoded<span class="op">$</span>party_id_recode, <span class="dt">useNA =</span> <span class="st">&#39;always&#39;</span>)</a></code></pre></div>
 <pre><code>##                     
 ##                      No answer Don&#39;t know Other party Rep, Strong
 ##   No answer                154          0           0           0

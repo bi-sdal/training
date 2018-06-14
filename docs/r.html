@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#post-installation-settings"><i class="fa fa-check"></i>Post installation settings</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
@@ -338,6 +339,24 @@ Install R by downloading and running this .pkg file from CRAN. Also, please inst
 <div id="linux-3" class="section level3 unnumbered">
 <h3>Linux</h3>
 <p>You can download the binary files for your distribution from CRAN. Or you can use your package manager (e.g. for Debian/Ubuntu run sudo apt-get install r-base and for Fedora run sudo dnf install R). Also, please install the RStudio IDE.</p>
+</div>
+<div id="post-installation-settings" class="section level3 unnumbered">
+<h3>Post installation settings</h3>
+<p><strong>Open up global options</strong></p>
+<p>You can do this by going to <code>Tools &gt; Global Options</code> on the top menu bar.
+<img src="figs/rstudio_setup/01-global_options.png" /><!-- --></p>
+<p><strong>Setup startup defaults</strong></p>
+<p>Make sure:</p>
+<ul>
+<li>“Restore .RData into workspace at startup” box is unchecked</li>
+<li>“Save workspace to .RData on exit” is set to “Never”</li>
+</ul>
+<p>It’s also advised to uncheck the top two options as well:</p>
+<ul>
+<li>Restore most recently opened project at startup</li>
+<li>Restore previously open source documents at startup</li>
+</ul>
+<p><img src="figs/rstudio_setup/02-options.png" /><!-- --></p>
 </div>
 </div>
             </section>

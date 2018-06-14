@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#windows-3"><i class="fa fa-check"></i>Windows</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#macos-3"><i class="fa fa-check"></i>macOS</a></li>
 <li class="chapter" data-level="" data-path="r.html"><a href="r.html#linux-3"><i class="fa fa-check"></i>Linux</a></li>
+<li class="chapter" data-level="" data-path="r.html"><a href="r.html#post-installation-settings"><i class="fa fa-check"></i>Post installation settings</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html"><i class="fa fa-check"></i>SQLite</a><ul>
 <li class="chapter" data-level="" data-path="sqlite.html"><a href="sqlite.html#windows-4"><i class="fa fa-check"></i>Windows</a></li>
@@ -327,31 +328,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 The output of the join will be determined by whether or not you have duplicate values in your keys,
 and whether or not both tables you are joining have duplicate values in the keys.</p>
 <p>In a one-to-one merge, there are no duplicate keys in both tables.</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" data-line-number="1">x <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb181-2" data-line-number="2"><span class="st">    </span><span class="kw">inner_join</span>(y, <span class="dt">by =</span> <span class="st">&#39;key&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1">x <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb182-2" data-line-number="2"><span class="st">    </span><span class="kw">inner_join</span>(y, <span class="dt">by =</span> <span class="st">&#39;key&#39;</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 3
 ##     key val_x val_y
 ##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
 ## 1     1 x1    y1   
 ## 2     2 x2    y2</code></pre>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1">x <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb183-2" data-line-number="2"><span class="st">    </span><span class="kw">left_join</span>(y, <span class="dt">by =</span> <span class="st">&#39;key&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" data-line-number="1">x <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb184-2" data-line-number="2"><span class="st">    </span><span class="kw">left_join</span>(y, <span class="dt">by =</span> <span class="st">&#39;key&#39;</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##     key val_x val_y
 ##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
 ## 1     1 x1    y1   
 ## 2     2 x2    y2   
 ## 3     3 x3    &lt;NA&gt;</code></pre>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1">x <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb185-2" data-line-number="2"><span class="st">    </span><span class="kw">right_join</span>(y, <span class="dt">by =</span> <span class="st">&#39;key&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" data-line-number="1">x <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb186-2" data-line-number="2"><span class="st">    </span><span class="kw">right_join</span>(y, <span class="dt">by =</span> <span class="st">&#39;key&#39;</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##     key val_x val_y
 ##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
 ## 1     1 x1    y1   
 ## 2     2 x2    y2   
 ## 3     4 &lt;NA&gt;  y3</code></pre>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1">x <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb187-2" data-line-number="2"><span class="st">    </span><span class="kw">full_join</span>(y, <span class="dt">by =</span> <span class="st">&#39;key&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1">x <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb188-2" data-line-number="2"><span class="st">    </span><span class="kw">full_join</span>(y, <span class="dt">by =</span> <span class="st">&#39;key&#39;</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 4 x 3
 ##     key val_x val_y
 ##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;

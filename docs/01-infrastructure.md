@@ -91,26 +91,73 @@ All of our code exist on a GitLab server (https://devlab.vbi.vt.edu)
 
 ### Using Terminal
 
-Find the link to the repository
+You can use the `SSH` or `HTTPS` link (selected blue text) to run `git clone` to pull down the repository code.
+In general this should be cloned into the `git` folder in your home folder.
+
+```bash
+cd ~
+git clone <REPO URL HERE>
+```
 
 ![](./figs/get_repo/010-gitlab.png)<!-- -->
 
 ![](./figs/get_repo/020-get_repo_url.png)<!-- -->
 
-You can then `git clone` the project into a directory (e.g., `~/git/`)
+
 
 ### Using RStudio
 
+The steps in RStudio actually do the same thing as the steps from the terminal.
+
+**Find the repository you plan to work on.**
+
 ![](./figs/get_repo/010-gitlab.png)<!-- -->
+
+<hr>
+
+**Get the `SSH` url.**
+
+You can also use the `HTTPS` url if you have not setup your SSH keys.
 
 ![](./figs/get_repo/020-get_repo_url.png)<!-- -->
 
+<hr>
+
+**File > New Project**
+
 ![](./figs/get_repo/030-new_project.png)<!-- -->
+
+<hr>
+
+**Version Control**
 
 ![](./figs/get_repo/040-version_control.png)<!-- -->
 
+<hr>
+
+**Git**
+
 ![](./figs/get_repo/050-git.png)<!-- -->
 
+<hr>
+
+**Enter repository URL**
+
+Paste in the repository URL from earlier.
+The "Project data name" should auto fill itself with the name of the repository (selected in blue text).
+
+It's highly advised to put the project into a folder designated for repositories (e.g., git, Repositories).
+You can make sure the project get's `clone`d to the correct place in the "Create project as a subdirectory of" section of the page.
+
 ![](./figs/get_repo/060-paste_screen.png)<!-- -->
+
+<hr>
+
+**The loaded project**
+
+RStudio will `git clone` the repository to the designated folder and open the project.
+The top right corner will tell you which project you are in.
+
+Make sure you check this everytime you start working.
 
 ![](./figs/get_repo/070-check_project.png)<!-- -->

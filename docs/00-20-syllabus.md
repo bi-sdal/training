@@ -87,6 +87,17 @@ Here you will find the schedule and the topics that will be covered in each less
 ### August {-}
 -->
 
+The bulk of the material comes from the [R for Data Science by Hadley Wickham and Garrett Grolemund](http://r4ds.had.co.nz/).
+There are additional topics that come from [Software-Carpentry](https://software-carpentry.org/lessons/),
+and various other materials found online.
+Supplemental material comes from an appropriate [DataCamp](https://www.datacamp.com/) course.
+
+Each chapter (and sometimes a set of chapters) can be taught within a 3 hour block with a break roughly every 45 minutes.
+
+The total amount of material cover's roughly a months worth of material (3 Hours a day, 5 Days a week).
+
+The introduction page for each chapter contains links to relevent chapters and additional resources.
+
 ## Lesson Breakdown {-}
 
 ### Lesson 1 {-}

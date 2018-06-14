@@ -85,8 +85,6 @@ R is a programming language that is especially powerful for data exploration, vi
 
 RStudio IDE: https://www.rstudio.com/products/rstudio/download/preview/
 
-
-
 ### Windows {-}
 Video Tutorial
 Install R by downloading and running this .exe file from CRAN. Also, please install the RStudio IDE. Note that if you have separate user and admin accounts, you should run the installers as administrator (right-click on .exe file and select "Run as administrator" instead of double-clicking). Otherwise problems may occur later, for example when installing R packages.

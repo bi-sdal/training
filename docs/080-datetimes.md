@@ -389,5 +389,5 @@ now() - curr_time
 ```
 
 ```
-## Time difference of 7.959174 days
+## Time difference of 8.006907 days
 ```

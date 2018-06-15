@@ -299,7 +299,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i><b>13</b> Iteration</a></li>
 <li class="chapter" data-level="14" data-path="r-dialects.html"><a href="r-dialects.html"><i class="fa fa-check"></i><b>14</b> R Dialects</a></li>
 <li class="chapter" data-level="15" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i><b>15</b> Spatial Data</a></li>
-<li class="chapter" data-level="16" data-path="apis-and-web-scraping.html"><a href="apis-and-web-scraping.html"><i class="fa fa-check"></i><b>16</b> APIs and Web Scraping</a></li>
+<li class="chapter" data-level="16" data-path="apis-and-web-scraping.html"><a href="apis-and-web-scraping.html"><i class="fa fa-check"></i><b>16</b> APIs and Web Scraping</a><ul>
+<li class="chapter" data-level="16.1" data-path="tables-from-websites-wikipedia.html"><a href="tables-from-websites-wikipedia.html"><i class="fa fa-check"></i><b>16.1</b> Tables from websites (wikipedia)</a></li>
+<li class="chapter" data-level="16.2" data-path="websites-rvest.html"><a href="websites-rvest.html"><i class="fa fa-check"></i><b>16.2</b> Websites (rvest)</a></li>
+<li class="chapter" data-level="16.3" data-path="selenium.html"><a href="selenium.html"><i class="fa fa-check"></i><b>16.3</b> Selenium</a></li>
+</ul></li>
 <li class="chapter" data-level="17" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>17</b> Communication</a></li>
 <li class="chapter" data-level="18" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>18</b> Shiny</a></li>
 <li class="chapter" data-level="19" data-path="text-mining.html"><a href="text-mining.html"><i class="fa fa-check"></i><b>19</b> Text Mining</a></li>
@@ -333,9 +337,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="build-details" class="section level1 unnumbered">
 <h1>Build Details</h1>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb375-1" data-line-number="1"><span class="kw">Sys.time</span>()</a></code></pre></div>
-<pre><code>## [1] &quot;2018-06-14 11:57:42 EDT&quot;</code></pre>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb377-1" data-line-number="1"><span class="kw">sessionInfo</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb403-1" data-line-number="1"><span class="kw">Sys.time</span>()</a></code></pre></div>
+<pre><code>## [1] &quot;2018-06-15 11:57:57 EDT&quot;</code></pre>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb405-1" data-line-number="1"><span class="kw">sessionInfo</span>()</a></code></pre></div>
 <pre><code>## R version 3.5.0 (2018-04-23)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
 ## Running under: Arch Linux
@@ -360,7 +364,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  [5] rprojroot_1.3-2 tools_3.5.0     htmltools_0.3.6 yaml_2.1.19    
 ##  [9] Rcpp_0.12.17    stringi_1.2.2   rmarkdown_1.9   knitr_1.20     
 ## [13] xfun_0.1        stringr_1.3.1   digest_0.6.15   evaluate_0.10.1</code></pre>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb379-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb407-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
 <pre><code>## Session info -------------------------------------------------------------</code></pre>
 <pre><code>##  setting  value                       
 ##  version  R version 3.5.0 (2018-04-23)
@@ -369,7 +373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-06-14</code></pre>
+##  date     2018-06-15</code></pre>
 <pre><code>## Packages -----------------------------------------------------------------</code></pre>
 <pre><code>##  package   * version date       source        
 ##  backports   1.1.2   2017-12-13 CRAN (R 3.5.0)

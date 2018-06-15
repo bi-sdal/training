@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="git-with-branches.html">
-<link rel="next" href="protecting-branches.html">
+<link rel="prev" href="tables-from-websites-wikipedia.html">
+<link rel="next" href="selenium.html">
 <script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -335,28 +335,134 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="collaborating-with-git" class="section level2">
-<h2><span class="header-section-number">20.3</span> Collaborating with Git</h2>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
-<img src="figs/git_dspg2018-fellows-model_fork.jpg" alt="The 'forking' model of Git workflows"  />
-<p class="caption">
-Figure .: The ‘forking’ model of Git workflows
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
-<img src="figs/git_dspg2018-fellows-2.jpg" alt="Git with branches"  />
-<p class="caption">
-Figure .: Git with branches
-</p>
-</div>
+<div id="websites-rvest" class="section level2">
+<h2><span class="header-section-number">16.2</span> Websites (rvest)</h2>
+<p>IMDB Top Rated Movies:</p>
+<p><a href="http://www.imdb.com/chart/top?ref_=nv_mv_250_6" class="uri">http://www.imdb.com/chart/top?ref_=nv_mv_250_6</a></p>
+<p><a href="http://selectorgadget.com/" class="uri">http://selectorgadget.com/</a></p>
+<p>CSS class and id</p>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb388-1" data-line-number="1"><span class="kw">library</span>(rvest)</a></code></pre></div>
+<pre><code>## Loading required package: xml2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;rvest&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:XML&#39;:
+## 
+##     xml</code></pre>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb392-1" data-line-number="1">lego_movie &lt;-<span class="st"> </span><span class="kw">read_html</span>(<span class="st">&quot;http://www.imdb.com/title/tt1490017/&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb393-1" data-line-number="1"><span class="co"># Rating</span></a>
+<a class="sourceLine" id="cb393-2" data-line-number="2">lego_movie <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb393-3" data-line-number="3"><span class="st">  </span><span class="kw">html_node</span>(<span class="st">&quot;strong span&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb393-4" data-line-number="4"><span class="st">  </span><span class="kw">html_text</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb393-5" data-line-number="5"><span class="st">  </span><span class="kw">as.numeric</span>()</a></code></pre></div>
+<pre><code>## [1] 7.8</code></pre>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb395-1" data-line-number="1"><span class="co"># First page of actors</span></a>
+<a class="sourceLine" id="cb395-2" data-line-number="2">lego_movie <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb395-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;.itemprop .itemprop&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb395-4" data-line-number="4"><span class="st">  </span><span class="kw">html_text</span>()</a></code></pre></div>
+<pre><code>##  [1] &quot;Will Arnett&quot;     &quot;Elizabeth Banks&quot; &quot;Craig Berry&quot;    
+##  [4] &quot;Alison Brie&quot;     &quot;David Burrows&quot;   &quot;Anthony Daniels&quot;
+##  [7] &quot;Charlie Day&quot;     &quot;Amanda Farinos&quot;  &quot;Keith Ferguson&quot; 
+## [10] &quot;Will Ferrell&quot;    &quot;Will Forte&quot;      &quot;Dave Franco&quot;    
+## [13] &quot;Morgan Freeman&quot;  &quot;Todd Hansen&quot;     &quot;Jonah Hill&quot;</code></pre>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb397-1" data-line-number="1">lego_movie <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb397-2" data-line-number="2"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;table&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb397-3" data-line-number="3"><span class="st">  </span>.[[<span class="dv">1</span>]] <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb397-4" data-line-number="4"><span class="st">  </span><span class="kw">html_table</span>()</a></code></pre></div>
+<pre><code>##                                   X1                                X2
+## 1  Cast overview, first billed only: Cast overview, first billed only:
+## 2                                                          Will Arnett
+## 3                                                      Elizabeth Banks
+## 4                                                          Craig Berry
+## 5                                                          Alison Brie
+## 6                                                        David Burrows
+## 7                                                      Anthony Daniels
+## 8                                                          Charlie Day
+## 9                                                       Amanda Farinos
+## 10                                                      Keith Ferguson
+## 11                                                        Will Ferrell
+## 12                                                          Will Forte
+## 13                                                         Dave Franco
+## 14                                                      Morgan Freeman
+## 15                                                         Todd Hansen
+## 16                                                          Jonah Hill
+##                                   X3
+## 1  Cast overview, first billed only:
+## 2                                ...
+## 3                                ...
+## 4                                ...
+## 5                                ...
+## 6                                ...
+## 7                                ...
+## 8                                ...
+## 9                                ...
+## 10                               ...
+## 11                               ...
+## 12                               ...
+## 13                               ...
+## 14                               ...
+## 15                               ...
+## 16                               ...
+##                                                                                                         X4
+## 1                                                                        Cast overview, first billed only:
+## 2                                                  Batman /  \n            Bruce Wayne \n  \n  \n  (voice)
+## 3                                                      Wyldstyle /  \n            Lucy \n  \n  \n  (voice)
+## 4                                             Blake /  \n            Additional Voices \n  \n  \n  (voice)
+## 5                                                                             Unikitty \n  \n  \n  (voice)
+## 6                                       Octan Robot /  \n            Additional Voices \n  \n  \n  (voice)
+## 7                                                                                C-3PO \n  \n  \n  (voice)
+## 8                                                                                Benny \n  \n  \n  (voice)
+## 9                                                                                  Mom \n  \n  \n  (voice)
+## 10                                                                            Han Solo \n  \n  \n  (voice)
+## 11 Lord Business /  \n            President Business /  \n            The Man Upstairs \n  \n  \n  (voice)
+## 12                                                  Abraham Lincoln \n  \n  \n  (voice) (as Orville Forte)
+## 13                                                                               Wally \n  \n  \n  (voice)
+## 14                                                                           Vitruvius \n  \n  \n  (voice)
+## 15                                          Gandalf /  \n            Additional Voices \n  \n  \n  (voice)
+## 16                                                                       Green Lantern \n  \n  \n  (voice)</code></pre>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb399-1" data-line-number="1">lego_movie <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb399-2" data-line-number="2"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;.primary_photo , .ellipsis, .character, #titleCast .itemprop, #titleCast .loadlate&quot;</span>)</a></code></pre></div>
+<pre><code>## {xml_nodeset (87)}
+##  [1] &lt;td class=&quot;primary_photo&quot;&gt;\n&lt;a href=&quot;/name/nm0004715/?ref_=tt_cl_i1 ...
+##  [2] &lt;img height=&quot;44&quot; width=&quot;32&quot; alt=&quot;Will Arnett&quot; title=&quot;Will Arnett&quot; s ...
+##  [3] &lt;td class=&quot;itemprop&quot; itemprop=&quot;actor&quot; itemscope itemtype=&quot;http://sc ...
+##  [4] &lt;span class=&quot;itemprop&quot; itemprop=&quot;name&quot;&gt;Will Arnett&lt;/span&gt;
+##  [5] &lt;td class=&quot;ellipsis&quot;&gt;\n              ...\n          &lt;/td&gt;
+##  [6] &lt;td class=&quot;character&quot;&gt;\n            &lt;a href=&quot;/title/tt1490017/chara ...
+##  [7] &lt;td class=&quot;primary_photo&quot;&gt;\n&lt;a href=&quot;/name/nm0006969/?ref_=tt_cl_i2 ...
+##  [8] &lt;img height=&quot;44&quot; width=&quot;32&quot; alt=&quot;Elizabeth Banks&quot; title=&quot;Elizabeth  ...
+##  [9] &lt;td class=&quot;itemprop&quot; itemprop=&quot;actor&quot; itemscope itemtype=&quot;http://sc ...
+## [10] &lt;span class=&quot;itemprop&quot; itemprop=&quot;name&quot;&gt;Elizabeth Banks&lt;/span&gt;
+## [11] &lt;td class=&quot;ellipsis&quot;&gt;\n              ...\n          &lt;/td&gt;
+## [12] &lt;td class=&quot;character&quot;&gt;\n            &lt;a href=&quot;/title/tt1490017/chara ...
+## [13] &lt;td class=&quot;primary_photo&quot;&gt;\n&lt;a href=&quot;/name/nm1911947/?ref_=tt_cl_i3 ...
+## [14] &lt;td class=&quot;itemprop&quot; itemprop=&quot;actor&quot; itemscope itemtype=&quot;http://sc ...
+## [15] &lt;span class=&quot;itemprop&quot; itemprop=&quot;name&quot;&gt;Craig Berry&lt;/span&gt;
+## [16] &lt;td class=&quot;ellipsis&quot;&gt;\n              ...\n          &lt;/td&gt;
+## [17] &lt;td class=&quot;character&quot;&gt;\n            Blake /  \n            Addition ...
+## [18] &lt;td class=&quot;primary_photo&quot;&gt;\n&lt;a href=&quot;/name/nm1555340/?ref_=tt_cl_i4 ...
+## [19] &lt;img height=&quot;44&quot; width=&quot;32&quot; alt=&quot;Alison Brie&quot; title=&quot;Alison Brie&quot; s ...
+## [20] &lt;td class=&quot;itemprop&quot; itemprop=&quot;actor&quot; itemscope itemtype=&quot;http://sc ...
+## ...</code></pre>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb401-1" data-line-number="1"><span class="co"># more manual way</span></a>
+<a class="sourceLine" id="cb401-2" data-line-number="2">lego_movie <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb401-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;table&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb401-4" data-line-number="4"><span class="st">  </span>.[[<span class="dv">1</span>]] <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb401-5" data-line-number="5"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;tr&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb401-6" data-line-number="6"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;span&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb401-7" data-line-number="7"><span class="st">  </span><span class="kw">html_text</span>()</a></code></pre></div>
+<pre><code>##  [1] &quot;Will Arnett&quot;     &quot;Elizabeth Banks&quot; &quot;Craig Berry&quot;    
+##  [4] &quot;Alison Brie&quot;     &quot;David Burrows&quot;   &quot;Anthony Daniels&quot;
+##  [7] &quot;Charlie Day&quot;     &quot;Amanda Farinos&quot;  &quot;Keith Ferguson&quot; 
+## [10] &quot;Will Ferrell&quot;    &quot;Will Forte&quot;      &quot;Dave Franco&quot;    
+## [13] &quot;Morgan Freeman&quot;  &quot;Todd Hansen&quot;     &quot;Jonah Hill&quot;</code></pre>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="git-with-branches.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="protecting-branches.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tables-from-websites-wikipedia.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="selenium.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
@@ -386,7 +492,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/bi-sdal/training/edit/master/77-git.Rmd",
+"link": "https://github.com/bi-sdal/training/edit/master/150-api_web_scape.Rmd",
 "text": "Edit"
 },
 "download": ["sdal-training.pdf", "sdal-training.epub"],

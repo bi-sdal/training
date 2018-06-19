@@ -1,1 +1,54 @@
 # R Dialects
+
+## data.frame
+
+```{r}
+library(nycflights13)
+```
+
+
+### Convert to dataframe
+
+```{r}
+flights_df <- as.data.frame(flights)
+```
+
+### Select columns
+
+```{r}
+flights_df[, c('distance', 'arr_delay')]
+```
+
+### Select column as dataframe
+
+```{r}
+flights_df[, 'distance', drop = FALSE]
+```
+
+### Filtering rows
+
+```{r}
+flights_df[flights_df$month == 11, ]
+```
+
+```{r}
+dplyr::filter(flights_df, month == 1)
+```
+
+### Filter rows and select columns
+
+```{r}
+flights_df[flights_df$month == 11, c('distance', 'arr_delay')]
+```
+
+### Works with dplyr
+
+```{r}
+library(dplyr)
+```
+
+```{r}
+flights %>%
+    filter(month == 11) %>%
+    select(distance, arr_delay)
+```

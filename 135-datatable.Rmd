@@ -1,3 +1,118 @@
 # (PART) R Special Topics {-}
 
 # data.table
+
+```{r}
+library(data.table)
+library(nycflights13)
+```
+
+## Read into data.table
+
+```{r, eval=FALSE}
+data.table::fread()
+```
+
+
+## Convert to data.table
+
+```{r}
+flights <- as.data.table(flights)
+```
+
+```{r}
+class(flights)
+```
+
+## Working with data.table
+
+DT[i, j, k]
+DT[filter by row, calculations on columns, groupby variable]
+
+"Take DT, subset rows using i, perfrom calulations with j, groupby k"
+
+
+```{r}
+flights[month == 11]
+```
+
+
+```{r}
+flights[month == 11 | month == 12]
+```
+
+```{r}
+flights[month %in% c(11, 12)]
+```
+
+```{r}
+flights[, arr_delay]
+```
+
+### Select columns list() .()
+```{r}
+flights[, list(arr_delay)]
+```
+
+
+```{r}
+flights[, list(arr_delay, dep_delay)]
+```
+
+using `list()` is exactly ths same as using `.()`
+
+```{r}
+flights[, .(arr_delay, dep_delay)]
+```
+
+### Functions on columns
+
+```{r}
+flights[, sum((arr_delay + dep_delay), na.rm = TRUE)]
+```
+
+```{r}
+flights[origin == "JFK" & month == 6,
+        .(m_arr = mean(arr_delay, na.rm = TRUE),
+          m_dep = mean(dep_delay, na.rm = TRUE))]
+```
+
+```{r}
+flights[origin == "JFK" & month == 6,.(m_arr = mean(arr_delay, na.rm = TRUE), m_dep = mean(dep_delay, na.rm = TRUE))]
+```
+
+### .N (counts)
+
+```{r}
+flights[origin == 'JFK' & month == 6, .N]
+```
+
+
+### Using dplyr
+
+```{r}
+library(dplyr)
+```
+
+
+```{r}
+flights %>%
+    filter(origin == 'JFK', month == 6) %>%
+    summarize(count = n())
+```
+
+```{r}
+flights[, .N, by = origin]
+```
+
+
+```{r}
+flights[, .N, origin]
+```
+
+```{r}
+flights %>%
+    group_by(origin) %>%
+    summarize(count = n())
+```
+

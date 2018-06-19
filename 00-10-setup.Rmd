@@ -39,6 +39,12 @@ The default shell in all versions of macOS is Bash, so no need to install anythi
 
 The default shell is usually Bash, but if your machine is set up differently you can run it by opening a terminal and typing bash. There is no need to install anything.
 
+### Chromebook {-}
+
+You already have a shell that ships with every Chromebook by opening a browser and pressing `Ctrl + Alt + t`, you will be in a `crosh` shell.
+If you type `shell` in there, you will be presented with a bash shell.
+
+Having said that, you will be much better off if you can install [Termux](https://termux.com/).
 
 ## Git {-}
 
@@ -55,6 +61,10 @@ For OS X 10.9 and higher, install Git for Mac by downloading and running the mos
 
 ### Linux {-}
 If Git is not already available on your machine you can try to install it via your distro's package manager. For Debian/Ubuntu run sudo apt-get install git and for Fedora run sudo dnf install git.
+
+### Chromebook {-}
+
+Termux (from the shell installation) can install git via `pkg install git`
 
 ## Text Editor {-}
 When you're writing code, it's nice to have a text editor that is optimized for writing code, with features like automatic color-coding of key words. The default text editor on macOS and Linux is usually set to Vim, which is not famous for being intuitive. If you accidentally find yourself stuck in it, try typing the escape key, followed by :q! (colon, lower-case 'q', exclamation mark), then hitting Return to return to the shell.

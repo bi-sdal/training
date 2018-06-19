@@ -32,7 +32,7 @@ my_vec[3]
 my_vec[2:3]
 ```
 
-# Negative indicies drop by position
+## Negative indicies drop by position
 
 ```{r}
 my_vec[-1]
@@ -152,4 +152,3 @@ x_bar <- mean(my_vec)
 ```{r}
 sum(((my_vec - x_bar)^2) / n_1)
 ```
-

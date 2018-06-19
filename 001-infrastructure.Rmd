@@ -1,5 +1,3 @@
-# (PART) SDAL Specific Components {-}
-
 # Infrastructure
 
 We have 2 servers in the lab, `lightfoot` and `snowmane` (named after horses from Lord of the Rings).

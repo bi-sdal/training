@@ -219,11 +219,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Version Control</b></span></li>
-<li class="chapter" data-level="2" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2</b> Git</a><ul>
-<li class="chapter" data-level="2.1" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.1</b> Git on your own</a></li>
-<li class="chapter" data-level="2.2" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.2</b> Git with branches</a></li>
-<li class="chapter" data-level="2.3" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.3</b> Collaborating with Git</a></li>
-<li class="chapter" data-level="2.4" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.4</b> Protecting branches</a></li>
+<li class="chapter" data-level="2" data-path="version-control.html"><a href="version-control.html"><i class="fa fa-check"></i><b>2</b> Version Control</a><ul>
+<li class="chapter" data-level="2.1" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2.1</b> Git</a></li>
+<li class="chapter" data-level="2.2" data-path="git-setup.html"><a href="git-setup.html"><i class="fa fa-check"></i><b>2.2</b> Git setup</a></li>
+<li class="chapter" data-level="2.3" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.3</b> Git on your own</a></li>
+<li class="chapter" data-level="2.4" data-path="working-with-remotes.html"><a href="working-with-remotes.html"><i class="fa fa-check"></i><b>2.4</b> Working with remotes</a></li>
+<li class="chapter" data-level="2.5" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.5</b> Git with branches</a></li>
+<li class="chapter" data-level="2.6" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.6</b> Collaborating with Git</a></li>
+<li class="chapter" data-level="2.7" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.7</b> Protecting branches</a></li>
+<li class="chapter" data-level="2.8" data-path="help-faq.html"><a href="help-faq.html"><i class="fa fa-check"></i><b>2.8</b> Help! (FAQ)</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="help-faq.html"><a href="help-faq.html#general-workflow"><i class="fa fa-check"></i><b>2.8.1</b> General workflow</a></li>
+<li class="chapter" data-level="2.8.2" data-path="help-faq.html"><a href="help-faq.html#git-push-rejected-master"><i class="fa fa-check"></i><b>2.8.2</b> Git push rejected (master)</a></li>
+<li class="chapter" data-level="2.8.3" data-path="help-faq.html"><a href="help-faq.html#accidently-did-work-on-master"><i class="fa fa-check"></i><b>2.8.3</b> Accidently did work on <code>master</code>:</a></li>
+<li class="chapter" data-level="2.8.4" data-path="help-faq.html"><a href="help-faq.html#remove-datafiles-from-history"><i class="fa fa-check"></i><b>2.8.4</b> Remove data/files from history</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>III R</b></span></li>
 <li class="chapter" data-level="3" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>3</b> Data Visualization</a><ul>
@@ -368,8 +377,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>20</b> Communication</a></li>
 <li class="chapter" data-level="21" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>21</b> Shiny</a></li>
 <li class="chapter" data-level="22" data-path="text-mining.html"><a href="text-mining.html"><i class="fa fa-check"></i><b>22</b> Text Mining</a></li>
-<li class="part"><span><b>V Exercises</b></span></li>
-<li class="part"><span><b>VI Back Matter</b></span></li>
+<li class="part"><span><b>V Modeling</b></span></li>
+<li class="part"><span><b>VI Exercises</b></span></li>
+<li class="part"><span><b>VII Back Matter</b></span></li>
 <li class="chapter" data-level="" data-path="build-details.html"><a href="build-details.html"><i class="fa fa-check"></i>Build Details</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -394,41 +404,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="gather" class="section level2">
 <h2><span class="header-section-number">6.2</span> Gather</h2>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1">table4a_tidy &lt;-<span class="st"> </span><span class="kw">gather</span>(table4a, <span class="st">&#39;2000&#39;</span>, <span class="st">&#39;1999&#39;</span>, <span class="dt">key =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">value =</span> <span class="st">&#39;cases&#39;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb143-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb143-3" data-line-number="3"><span class="kw">ggplot</span>(table4a_tidy) <span class="op">+</span></a>
-<a class="sourceLine" id="cb143-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cases, <span class="dt">fill =</span> country))</a></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="040-tidy_data_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1">(table4a_tidy &lt;-<span class="st"> </span>table4a <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb145-2" data-line-number="2"><span class="st">    </span><span class="kw">gather</span>(<span class="st">&#39;2000&#39;</span>, <span class="st">&#39;1999&#39;</span>, <span class="dt">key =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">value =</span> <span class="st">&#39;cases&#39;</span>))</a></code></pre></div>
-<pre><code>## # A tibble: 6 x 3
-##   country     year   cases
-##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;
-## 1 Afghanistan 2000    2666
-## 2 Brazil      2000   80488
-## 3 China       2000  213766
-## 4 Afghanistan 1999     745
-## 5 Brazil      1999   37737
-## 6 China       1999  212258</code></pre>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1"><span class="kw">library</span>(magrittr) <span class="co"># this is what actuallly gives you the pipe</span></a></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;magrittr&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
-## 
-##     extract</code></pre>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1">(table4b_tidy &lt;-<span class="st"> </span>table4b <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb150-2" data-line-number="2"><span class="st">    </span><span class="kw">gather</span>(<span class="st">&#39;1999&#39;</span><span class="op">:</span><span class="st">&#39;2000&#39;</span>, <span class="dt">key =</span> <span class="st">&#39;year&#39;</span>, <span class="dt">value =</span> <span class="st">&#39;population&#39;</span>))</a></code></pre></div>
-<pre><code>## # A tibble: 6 x 3
-##   country     year  population
-##   &lt;chr&gt;       &lt;chr&gt;      &lt;int&gt;
-## 1 Afghanistan 1999    19987071
-## 2 Brazil      1999   172006362
-## 3 China       1999  1272915272
-## 4 Afghanistan 2000    20595360
-## 5 Brazil      2000   174504898
-## 6 China       2000  1280428583</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">table4a_tidy &lt;-<span class="st"> </span><span class="kw">gather</span>(table4a, <span class="st">&#39;2000&#39;</span>, <span class="st">&#39;1999&#39;</span>, <span class="dt">key =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">value =</span> <span class="st">&#39;cases&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb97-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb97-3" data-line-number="3"><span class="kw">ggplot</span>(table4a_tidy) <span class="op">+</span></a>
+<a class="sourceLine" id="cb97-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cases, <span class="dt">fill =</span> country))</a>
+<a class="sourceLine" id="cb97-5" data-line-number="5"><span class="co">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></a></code></pre></div>
+<p><img src="040-tidy_data_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1">(table4a_tidy &lt;-<span class="st"> </span>table4a <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb98-2" data-line-number="2"><span class="st">    </span><span class="kw">gather</span>(<span class="st">&#39;2000&#39;</span>, <span class="st">&#39;1999&#39;</span>, <span class="dt">key =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">value =</span> <span class="st">&#39;cases&#39;</span>))</a>
+<a class="sourceLine" id="cb98-3" data-line-number="3"><span class="co">## # A tibble: 6 x 3</span></a>
+<a class="sourceLine" id="cb98-4" data-line-number="4"><span class="co">##   country     year   cases</span></a>
+<a class="sourceLine" id="cb98-5" data-line-number="5"><span class="co">##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb98-6" data-line-number="6"><span class="co">## 1 Afghanistan 2000    2666</span></a>
+<a class="sourceLine" id="cb98-7" data-line-number="7"><span class="co">## 2 Brazil      2000   80488</span></a>
+<a class="sourceLine" id="cb98-8" data-line-number="8"><span class="co">## 3 China       2000  213766</span></a>
+<a class="sourceLine" id="cb98-9" data-line-number="9"><span class="co">## 4 Afghanistan 1999     745</span></a>
+<a class="sourceLine" id="cb98-10" data-line-number="10"><span class="co">## 5 Brazil      1999   37737</span></a>
+<a class="sourceLine" id="cb98-11" data-line-number="11"><span class="co">## 6 China       1999  212258</span></a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="kw">library</span>(magrittr) <span class="co"># this is what actuallly gives you the pipe</span></a>
+<a class="sourceLine" id="cb99-2" data-line-number="2"><span class="co">## </span></a>
+<a class="sourceLine" id="cb99-3" data-line-number="3"><span class="co">## Attaching package: &#39;magrittr&#39;</span></a>
+<a class="sourceLine" id="cb99-4" data-line-number="4"><span class="co">## The following object is masked from &#39;package:tidyr&#39;:</span></a>
+<a class="sourceLine" id="cb99-5" data-line-number="5"><span class="co">## </span></a>
+<a class="sourceLine" id="cb99-6" data-line-number="6"><span class="co">##     extract</span></a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1">(table4b_tidy &lt;-<span class="st"> </span>table4b <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb100-2" data-line-number="2"><span class="st">    </span><span class="kw">gather</span>(<span class="st">&#39;1999&#39;</span><span class="op">:</span><span class="st">&#39;2000&#39;</span>, <span class="dt">key =</span> <span class="st">&#39;year&#39;</span>, <span class="dt">value =</span> <span class="st">&#39;population&#39;</span>))</a>
+<a class="sourceLine" id="cb100-3" data-line-number="3"><span class="co">## # A tibble: 6 x 3</span></a>
+<a class="sourceLine" id="cb100-4" data-line-number="4"><span class="co">##   country     year  population</span></a>
+<a class="sourceLine" id="cb100-5" data-line-number="5"><span class="co">##   &lt;chr&gt;       &lt;chr&gt;      &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb100-6" data-line-number="6"><span class="co">## 1 Afghanistan 1999    19987071</span></a>
+<a class="sourceLine" id="cb100-7" data-line-number="7"><span class="co">## 2 Brazil      1999   172006362</span></a>
+<a class="sourceLine" id="cb100-8" data-line-number="8"><span class="co">## 3 China       1999  1272915272</span></a>
+<a class="sourceLine" id="cb100-9" data-line-number="9"><span class="co">## 4 Afghanistan 2000    20595360</span></a>
+<a class="sourceLine" id="cb100-10" data-line-number="10"><span class="co">## 5 Brazil      2000   174504898</span></a>
+<a class="sourceLine" id="cb100-11" data-line-number="11"><span class="co">## 6 China       2000  1280428583</span></a></code></pre></div>
 </div>
             </section>
 

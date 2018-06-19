@@ -219,11 +219,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Version Control</b></span></li>
-<li class="chapter" data-level="2" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2</b> Git</a><ul>
-<li class="chapter" data-level="2.1" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.1</b> Git on your own</a></li>
-<li class="chapter" data-level="2.2" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.2</b> Git with branches</a></li>
-<li class="chapter" data-level="2.3" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.3</b> Collaborating with Git</a></li>
-<li class="chapter" data-level="2.4" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.4</b> Protecting branches</a></li>
+<li class="chapter" data-level="2" data-path="version-control.html"><a href="version-control.html"><i class="fa fa-check"></i><b>2</b> Version Control</a><ul>
+<li class="chapter" data-level="2.1" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2.1</b> Git</a></li>
+<li class="chapter" data-level="2.2" data-path="git-setup.html"><a href="git-setup.html"><i class="fa fa-check"></i><b>2.2</b> Git setup</a></li>
+<li class="chapter" data-level="2.3" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.3</b> Git on your own</a></li>
+<li class="chapter" data-level="2.4" data-path="working-with-remotes.html"><a href="working-with-remotes.html"><i class="fa fa-check"></i><b>2.4</b> Working with remotes</a></li>
+<li class="chapter" data-level="2.5" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.5</b> Git with branches</a></li>
+<li class="chapter" data-level="2.6" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.6</b> Collaborating with Git</a></li>
+<li class="chapter" data-level="2.7" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.7</b> Protecting branches</a></li>
+<li class="chapter" data-level="2.8" data-path="help-faq.html"><a href="help-faq.html"><i class="fa fa-check"></i><b>2.8</b> Help! (FAQ)</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="help-faq.html"><a href="help-faq.html#general-workflow"><i class="fa fa-check"></i><b>2.8.1</b> General workflow</a></li>
+<li class="chapter" data-level="2.8.2" data-path="help-faq.html"><a href="help-faq.html#git-push-rejected-master"><i class="fa fa-check"></i><b>2.8.2</b> Git push rejected (master)</a></li>
+<li class="chapter" data-level="2.8.3" data-path="help-faq.html"><a href="help-faq.html#accidently-did-work-on-master"><i class="fa fa-check"></i><b>2.8.3</b> Accidently did work on <code>master</code>:</a></li>
+<li class="chapter" data-level="2.8.4" data-path="help-faq.html"><a href="help-faq.html#remove-datafiles-from-history"><i class="fa fa-check"></i><b>2.8.4</b> Remove data/files from history</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>III R</b></span></li>
 <li class="chapter" data-level="3" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>3</b> Data Visualization</a><ul>
@@ -368,8 +377,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>20</b> Communication</a></li>
 <li class="chapter" data-level="21" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>21</b> Shiny</a></li>
 <li class="chapter" data-level="22" data-path="text-mining.html"><a href="text-mining.html"><i class="fa fa-check"></i><b>22</b> Text Mining</a></li>
-<li class="part"><span><b>V Exercises</b></span></li>
-<li class="part"><span><b>VI Back Matter</b></span></li>
+<li class="part"><span><b>V Modeling</b></span></li>
+<li class="part"><span><b>VI Exercises</b></span></li>
+<li class="part"><span><b>VII Back Matter</b></span></li>
 <li class="chapter" data-level="" data-path="build-details.html"><a href="build-details.html"><i class="fa fa-check"></i>Build Details</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -394,12 +404,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="data-science-for-the-public-good-program" class="section level2 unnumbered">
 <h2>Data Science for the Public Good Program</h2>
-<p><img src="https://www.bi.vt.edu/sdal/content/generic/data-science-for-public-good-student-photo-overview.jpg" width="100%" /></p>
+<p><img src="https://www.bi.vt.edu/sdal/content/generic/data-science-for-public-good-student-photo-overview.jpg" width="100%" style="display: block; margin: auto;" /></p>
 <p>The Data Science for the Public Good program (DSPG) engages young scholars in finding solutions to some of the most pressing social issues of our time. DSPG fellows conduct research at the intersection of statistics, computation, and the social sciences to determine how information generated within every community can be leveraged to improve quality of life.</p>
 <div id="problem" class="section level3 unnumbered">
 <h3>Problem</h3>
 <p>Our communities are engaged in a tremendous struggle to manage conflicting forces that threaten their ability to evolve and thrive. Government officials and policymakers must continuously develop their capacity to provide health, safety, security, employment, and leisure to their constituents. Sustaining this level of growth is becoming increasingly difficult in a climate of diminishing resources, mounting inequality, rapid technological change, and expanding global networks.</p>
-<p><img src="https://www.bi.vt.edu/sdal/content/generic/data-science-for-public-good-problem-policy-planning.jpg?v=1465936766" width="100%" /></p>
+<p><img src="https://www.bi.vt.edu/sdal/content/generic/data-science-for-public-good-problem-policy-planning.jpg?v=1465936766" width="100%" style="display: block; margin: auto;" /></p>
 <p>Data-driven research provides a rich, mutually rewarding opportunity to leverage community knowledge and public information resources to affect positive social change. The Data Science for the Public Good program was established to connect aspiring data science scholars to communities which can benefit from their expertise.</p>
 <p>Students selected through a competitive application process are engaged in a series of hands-on learning experiences while policymakers and government leaders receive data analysis support to inform difficult decisions related to healthcare, education, and social justice.</p>
 <p>The story of each community—its problems, needs, and aspirations—is contained within its data. The DSPG program’s overarching objective is to equip new generations of scientists with the skills they need to bring this story to light for leaders in local government.</p>
@@ -421,7 +431,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="impact" class="section level3 unnumbered">
 <h3>Impact</h3>
-<p><img src="https://www.bi.vt.edu/sdal/content/generic/data-science-for-public-good-impact-location.jpg?v=1465936895" width="100%" /></p>
+<p><img src="https://www.bi.vt.edu/sdal/content/generic/data-science-for-public-good-impact-location.jpg?v=1465936895" width="100%" style="display: block; margin: auto;" /></p>
 <p>As metropolitan areas assume greater responsibility for driving social transformation and economic prosperity, the demand for publicly engaged and highly trained data scientists will continue to grow.</p>
 <p>For students eager to participate in this emerging field, the Data Science for Public Good program promises to deliver a unique set of resources and opportunities.</p>
 <p>World-Class Training: DSPG fellows participate in professional training and development workshops, poster presentations, and technical report and publication writing. Formal sessions on data science practices introduce students to scientific and statistical computing tools including R, Python, and GIS. Workshops also include accessing and using local, state and federal data resources such as Census products and open data portals.</p>
@@ -432,7 +442,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="program-sponsors-who-we-work-with" class="section level3 unnumbered">
 <h3>Program Sponsors: Who We Work With</h3>
 <p>Every DSPG research project begins with a collaboration. While our sponsor organizations face unique challenges, they share a common commitment: leveraging data science to better serve the public good.</p>
-<div class="figure"><span id="fig:unnamed-chunk-4"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
 <img src="https://www.bi.vt.edu/sdal/content/generic_page/dspg-sponsor-logos.jpg" alt="Nonexclusive list of sponsors" width="100%" />
 <p class="caption">
 Figure .: Nonexclusive list of sponsors

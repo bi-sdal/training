@@ -219,11 +219,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Version Control</b></span></li>
-<li class="chapter" data-level="2" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2</b> Git</a><ul>
-<li class="chapter" data-level="2.1" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.1</b> Git on your own</a></li>
-<li class="chapter" data-level="2.2" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.2</b> Git with branches</a></li>
-<li class="chapter" data-level="2.3" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.3</b> Collaborating with Git</a></li>
-<li class="chapter" data-level="2.4" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.4</b> Protecting branches</a></li>
+<li class="chapter" data-level="2" data-path="version-control.html"><a href="version-control.html"><i class="fa fa-check"></i><b>2</b> Version Control</a><ul>
+<li class="chapter" data-level="2.1" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2.1</b> Git</a></li>
+<li class="chapter" data-level="2.2" data-path="git-setup.html"><a href="git-setup.html"><i class="fa fa-check"></i><b>2.2</b> Git setup</a></li>
+<li class="chapter" data-level="2.3" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.3</b> Git on your own</a></li>
+<li class="chapter" data-level="2.4" data-path="working-with-remotes.html"><a href="working-with-remotes.html"><i class="fa fa-check"></i><b>2.4</b> Working with remotes</a></li>
+<li class="chapter" data-level="2.5" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.5</b> Git with branches</a></li>
+<li class="chapter" data-level="2.6" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.6</b> Collaborating with Git</a></li>
+<li class="chapter" data-level="2.7" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.7</b> Protecting branches</a></li>
+<li class="chapter" data-level="2.8" data-path="help-faq.html"><a href="help-faq.html"><i class="fa fa-check"></i><b>2.8</b> Help! (FAQ)</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="help-faq.html"><a href="help-faq.html#general-workflow"><i class="fa fa-check"></i><b>2.8.1</b> General workflow</a></li>
+<li class="chapter" data-level="2.8.2" data-path="help-faq.html"><a href="help-faq.html#git-push-rejected-master"><i class="fa fa-check"></i><b>2.8.2</b> Git push rejected (master)</a></li>
+<li class="chapter" data-level="2.8.3" data-path="help-faq.html"><a href="help-faq.html#accidently-did-work-on-master"><i class="fa fa-check"></i><b>2.8.3</b> Accidently did work on <code>master</code>:</a></li>
+<li class="chapter" data-level="2.8.4" data-path="help-faq.html"><a href="help-faq.html#remove-datafiles-from-history"><i class="fa fa-check"></i><b>2.8.4</b> Remove data/files from history</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>III R</b></span></li>
 <li class="chapter" data-level="3" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>3</b> Data Visualization</a><ul>
@@ -368,8 +377,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>20</b> Communication</a></li>
 <li class="chapter" data-level="21" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>21</b> Shiny</a></li>
 <li class="chapter" data-level="22" data-path="text-mining.html"><a href="text-mining.html"><i class="fa fa-check"></i><b>22</b> Text Mining</a></li>
-<li class="part"><span><b>V Exercises</b></span></li>
-<li class="part"><span><b>VI Back Matter</b></span></li>
+<li class="part"><span><b>V Modeling</b></span></li>
+<li class="part"><span><b>VI Exercises</b></span></li>
+<li class="part"><span><b>VII Back Matter</b></span></li>
 <li class="chapter" data-level="" data-path="build-details.html"><a href="build-details.html"><i class="fa fa-check"></i>Build Details</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -394,42 +404,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="re-ording-factors" class="section level2">
 <h2><span class="header-section-number">9.4</span> Re-ording factors</h2>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb295-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb295-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb295-4" data-line-number="4">relig_summary &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb295-5" data-line-number="5"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">group_by</span>(relig) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb295-6" data-line-number="6"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">summarize</span>(</a>
-<a class="sourceLine" id="cb295-7" data-line-number="7">        <span class="dt">tvhours =</span> <span class="kw">mean</span>(tvhours, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb295-8" data-line-number="8">        <span class="dt">age =</span> <span class="kw">mean</span>(age, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb295-9" data-line-number="9">        <span class="dt">n =</span> <span class="kw">n</span>()</a>
-<a class="sourceLine" id="cb295-10" data-line-number="10">    )</a>
-<a class="sourceLine" id="cb295-11" data-line-number="11">relig_summary</a></code></pre></div>
-<pre><code>## # A tibble: 15 x 4
-##    relig                   tvhours   age     n
-##    &lt;fct&gt;                     &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
-##  1 No answer                  2.72  49.5    93
-##  2 Don&#39;t know                 4.62  35.9    15
-##  3 Inter-nondenominational    2.87  40.0   109
-##  4 Native american            3.46  38.9    23
-##  5 Christian                  2.79  40.1   689
-##  6 Orthodox-christian         2.42  50.4    95
-##  7 Moslem/islam               2.44  37.6   104
-##  8 Other eastern              1.67  45.9    32
-##  9 Hinduism                   1.89  37.7    71
-## 10 Buddhism                   2.38  44.7   147
-## 11 Other                      2.73  41.0   224
-## 12 None                       2.71  41.2  3523
-## 13 Jewish                     2.52  52.4   388
-## 14 Catholic                   2.96  46.9  5124
-## 15 Protestant                 3.15  49.9 10846</code></pre>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" data-line-number="1"><span class="kw">ggplot</span>(relig_summary, <span class="kw">aes</span>(<span class="dt">x =</span> tvhours, <span class="dt">y =</span> relig)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb297-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<p><img src="070-factors_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" data-line-number="1"><span class="kw">ggplot</span>(relig_summary, <span class="kw">aes</span>(<span class="dt">x =</span> tvhours,</a>
-<a class="sourceLine" id="cb298-2" data-line-number="2">                          <span class="dt">y =</span> <span class="kw">fct_reorder</span>(relig, tvhours))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb298-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<p><img src="070-factors_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb159-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb159-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb159-4" data-line-number="4">relig_summary &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb159-5" data-line-number="5"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">group_by</span>(relig) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb159-6" data-line-number="6"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">summarize</span>(</a>
+<a class="sourceLine" id="cb159-7" data-line-number="7">        <span class="dt">tvhours =</span> <span class="kw">mean</span>(tvhours, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb159-8" data-line-number="8">        <span class="dt">age =</span> <span class="kw">mean</span>(age, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb159-9" data-line-number="9">        <span class="dt">n =</span> <span class="kw">n</span>()</a>
+<a class="sourceLine" id="cb159-10" data-line-number="10">    )</a>
+<a class="sourceLine" id="cb159-11" data-line-number="11">relig_summary</a>
+<a class="sourceLine" id="cb159-12" data-line-number="12"><span class="co">## # A tibble: 15 x 4</span></a>
+<a class="sourceLine" id="cb159-13" data-line-number="13"><span class="co">##    relig                   tvhours   age     n</span></a>
+<a class="sourceLine" id="cb159-14" data-line-number="14"><span class="co">##    &lt;fct&gt;                     &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb159-15" data-line-number="15"><span class="co">##  1 No answer                  2.72  49.5    93</span></a>
+<a class="sourceLine" id="cb159-16" data-line-number="16"><span class="co">##  2 Don&#39;t know                 4.62  35.9    15</span></a>
+<a class="sourceLine" id="cb159-17" data-line-number="17"><span class="co">##  3 Inter-nondenominational    2.87  40.0   109</span></a>
+<a class="sourceLine" id="cb159-18" data-line-number="18"><span class="co">##  4 Native american            3.46  38.9    23</span></a>
+<a class="sourceLine" id="cb159-19" data-line-number="19"><span class="co">##  5 Christian                  2.79  40.1   689</span></a>
+<a class="sourceLine" id="cb159-20" data-line-number="20"><span class="co">##  6 Orthodox-christian         2.42  50.4    95</span></a>
+<a class="sourceLine" id="cb159-21" data-line-number="21"><span class="co">##  7 Moslem/islam               2.44  37.6   104</span></a>
+<a class="sourceLine" id="cb159-22" data-line-number="22"><span class="co">##  8 Other eastern              1.67  45.9    32</span></a>
+<a class="sourceLine" id="cb159-23" data-line-number="23"><span class="co">##  9 Hinduism                   1.89  37.7    71</span></a>
+<a class="sourceLine" id="cb159-24" data-line-number="24"><span class="co">## 10 Buddhism                   2.38  44.7   147</span></a>
+<a class="sourceLine" id="cb159-25" data-line-number="25"><span class="co">## 11 Other                      2.73  41.0   224</span></a>
+<a class="sourceLine" id="cb159-26" data-line-number="26"><span class="co">## 12 None                       2.71  41.2  3523</span></a>
+<a class="sourceLine" id="cb159-27" data-line-number="27"><span class="co">## 13 Jewish                     2.52  52.4   388</span></a>
+<a class="sourceLine" id="cb159-28" data-line-number="28"><span class="co">## 14 Catholic                   2.96  46.9  5124</span></a>
+<a class="sourceLine" id="cb159-29" data-line-number="29"><span class="co">## 15 Protestant                 3.15  49.9 10846</span></a></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1"><span class="kw">ggplot</span>(relig_summary, <span class="kw">aes</span>(<span class="dt">x =</span> tvhours, <span class="dt">y =</span> relig)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb160-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="070-factors_files/figure-html/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1"><span class="kw">ggplot</span>(relig_summary, <span class="kw">aes</span>(<span class="dt">x =</span> tvhours,</a>
+<a class="sourceLine" id="cb161-2" data-line-number="2">                          <span class="dt">y =</span> <span class="kw">fct_reorder</span>(relig, tvhours))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb161-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="070-factors_files/figure-html/unnamed-chunk-13-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
             </section>
 

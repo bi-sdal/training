@@ -1,3 +1,4 @@
+
 # Infrastructure
 
 We have 2 servers in the lab, `lightfoot` and `snowmane` (named after horses from Lord of the Rings).
@@ -99,9 +100,9 @@ cd ~
 git clone <REPO URL HERE>
 ```
 
-![](./figs/get_repo/010-gitlab.png)<!-- -->
+<img src="./figs/get_repo/010-gitlab.png" width="100%" style="display: block; margin: auto;" />
 
-![](./figs/get_repo/020-get_repo_url.png)<!-- -->
+<img src="./figs/get_repo/020-get_repo_url.png" width="100%" style="display: block; margin: auto;" />
 
 
 
@@ -111,7 +112,7 @@ The steps in RStudio actually do the same thing as the steps from the terminal.
 
 **Find the repository you plan to work on.**
 
-![](./figs/get_repo/010-gitlab.png)<!-- -->
+<img src="./figs/get_repo/010-gitlab.png" width="100%" style="display: block; margin: auto;" />
 
 <hr>
 
@@ -119,25 +120,25 @@ The steps in RStudio actually do the same thing as the steps from the terminal.
 
 You can also use the `HTTPS` url if you have not setup your SSH keys.
 
-![](./figs/get_repo/020-get_repo_url.png)<!-- -->
+<img src="./figs/get_repo/020-get_repo_url.png" width="100%" style="display: block; margin: auto;" />
 
 <hr>
 
 **File > New Project**
 
-![](./figs/get_repo/030-new_project.png)<!-- -->
+<img src="./figs/get_repo/030-new_project.png" width="100%" style="display: block; margin: auto;" />
 
 <hr>
 
 **Version Control**
 
-![](./figs/get_repo/040-version_control.png)<!-- -->
+<img src="./figs/get_repo/040-version_control.png" width="100%" style="display: block; margin: auto;" />
 
 <hr>
 
 **Git**
 
-![](./figs/get_repo/050-git.png)<!-- -->
+<img src="./figs/get_repo/050-git.png" width="100%" style="display: block; margin: auto;" />
 
 <hr>
 
@@ -149,7 +150,7 @@ The "Project data name" should auto fill itself with the name of the repository 
 It's highly advised to put the project into a folder designated for repositories (e.g., git, Repositories).
 You can make sure the project get's `clone`d to the correct place in the "Create project as a subdirectory of" section of the page.
 
-![](./figs/get_repo/060-paste_screen.png)<!-- -->
+<img src="./figs/get_repo/060-paste_screen.png" width="100%" style="display: block; margin: auto;" />
 
 <hr>
 
@@ -160,4 +161,4 @@ The top right corner will tell you which project you are in.
 
 Make sure you check this everytime you start working.
 
-![](./figs/get_repo/070-check_project.png)<!-- -->
+<img src="./figs/get_repo/070-check_project.png" width="100%" style="display: block; margin: auto;" />

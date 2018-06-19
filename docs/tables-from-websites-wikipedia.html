@@ -219,11 +219,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Version Control</b></span></li>
-<li class="chapter" data-level="2" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2</b> Git</a><ul>
-<li class="chapter" data-level="2.1" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.1</b> Git on your own</a></li>
-<li class="chapter" data-level="2.2" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.2</b> Git with branches</a></li>
-<li class="chapter" data-level="2.3" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.3</b> Collaborating with Git</a></li>
-<li class="chapter" data-level="2.4" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.4</b> Protecting branches</a></li>
+<li class="chapter" data-level="2" data-path="version-control.html"><a href="version-control.html"><i class="fa fa-check"></i><b>2</b> Version Control</a><ul>
+<li class="chapter" data-level="2.1" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2.1</b> Git</a></li>
+<li class="chapter" data-level="2.2" data-path="git-setup.html"><a href="git-setup.html"><i class="fa fa-check"></i><b>2.2</b> Git setup</a></li>
+<li class="chapter" data-level="2.3" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.3</b> Git on your own</a></li>
+<li class="chapter" data-level="2.4" data-path="working-with-remotes.html"><a href="working-with-remotes.html"><i class="fa fa-check"></i><b>2.4</b> Working with remotes</a></li>
+<li class="chapter" data-level="2.5" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.5</b> Git with branches</a></li>
+<li class="chapter" data-level="2.6" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.6</b> Collaborating with Git</a></li>
+<li class="chapter" data-level="2.7" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.7</b> Protecting branches</a></li>
+<li class="chapter" data-level="2.8" data-path="help-faq.html"><a href="help-faq.html"><i class="fa fa-check"></i><b>2.8</b> Help! (FAQ)</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="help-faq.html"><a href="help-faq.html#general-workflow"><i class="fa fa-check"></i><b>2.8.1</b> General workflow</a></li>
+<li class="chapter" data-level="2.8.2" data-path="help-faq.html"><a href="help-faq.html#git-push-rejected-master"><i class="fa fa-check"></i><b>2.8.2</b> Git push rejected (master)</a></li>
+<li class="chapter" data-level="2.8.3" data-path="help-faq.html"><a href="help-faq.html#accidently-did-work-on-master"><i class="fa fa-check"></i><b>2.8.3</b> Accidently did work on <code>master</code>:</a></li>
+<li class="chapter" data-level="2.8.4" data-path="help-faq.html"><a href="help-faq.html#remove-datafiles-from-history"><i class="fa fa-check"></i><b>2.8.4</b> Remove data/files from history</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>III R</b></span></li>
 <li class="chapter" data-level="3" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>3</b> Data Visualization</a><ul>
@@ -368,8 +377,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>20</b> Communication</a></li>
 <li class="chapter" data-level="21" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>21</b> Shiny</a></li>
 <li class="chapter" data-level="22" data-path="text-mining.html"><a href="text-mining.html"><i class="fa fa-check"></i><b>22</b> Text Mining</a></li>
-<li class="part"><span><b>V Exercises</b></span></li>
-<li class="part"><span><b>VI Back Matter</b></span></li>
+<li class="part"><span><b>V Modeling</b></span></li>
+<li class="part"><span><b>VI Exercises</b></span></li>
+<li class="part"><span><b>VII Back Matter</b></span></li>
 <li class="chapter" data-level="" data-path="build-details.html"><a href="build-details.html"><i class="fa fa-check"></i>Build Details</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -394,58 +404,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="tables-from-websites-wikipedia" class="section level2">
 <h2><span class="header-section-number">19.1</span> Tables from websites (wikipedia)</h2>
-<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb572-1" data-line-number="1"><span class="kw">library</span>(RCurl)</a></code></pre></div>
-<pre><code>## Loading required package: bitops</code></pre>
-<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb574-1" data-line-number="1"><span class="kw">library</span>(XML)</a></code></pre></div>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb575-1" data-line-number="1">wiki_url &lt;-<span class="st"> </span>RCurl<span class="op">::</span><span class="kw">getURL</span>(<span class="st">&quot;https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations&quot;</span>)</a>
-<a class="sourceLine" id="cb575-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb575-3" data-line-number="3">tables &lt;-<span class="st"> </span>XML<span class="op">::</span><span class="kw">readHTMLTable</span>(wiki_url)</a></code></pre></div>
-<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb576-1" data-line-number="1"><span class="kw">class</span>(tables)</a></code></pre></div>
-<pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb578-1" data-line-number="1"><span class="kw">length</span>(tables)</a></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb580-1" data-line-number="1">abbrevs &lt;-<span class="st"> </span>tables[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb580-2" data-line-number="2"><span class="kw">head</span>(abbrevs)</a></code></pre></div>
-<pre><code>##               V1
-## 1         Codes:
-## 2            ISO
-## 3           ANSI
-## 4           USPS
-## 5           USCG
-## 6 Abbreviations:
-##                                                                                                         V2
-## 1                                                                                                     &lt;NA&gt;
-## 2 ISO 3166 codes (2-letter, 3-letter, and 3-digit codes from ISO 3166-1; 2+2-letter codes from ISO 3166-2)
-## 3                                         2-letter and 2-digit codes from the ANSI standard INCITS 38:2009
-## 4                                                  2-letter codes used by the United States Postal Service
-## 5  2-letter codes used by the United States Coast Guard (red text shows differences between ANSI and USCG)
-## 6                                                                                                     &lt;NA&gt;
-##     V3   V4   V5   V6   V7   V8   V9  V10
-## 1 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
-## 2 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
-## 3 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
-## 4 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
-## 5 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
-## 6 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</code></pre>
-<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb582-1" data-line-number="1">us &lt;-<span class="st"> </span>abbrevs[<span class="dv">11</span><span class="op">:</span><span class="kw">nrow</span>(abbrevs), ]</a>
-<a class="sourceLine" id="cb582-2" data-line-number="2"><span class="kw">head</span>(us)</a></code></pre></div>
-<pre><code>##                           V1            V2           V3 V4 V5 V6 V7     V8
-## 11  United States of America Federal state US\nUSA\n840 US 00         U.S.
-## 12                   Alabama         State        US-AL AL 01 AL AL   Ala.
-## 13                    Alaska         State        US-AK AK 02 AK AK Alaska
-## 14                   Arizona         State        US-AZ AZ 04 AZ AZ  Ariz.
-## 15                  Arkansas         State        US-AR AR 05 AR AR   Ark.
-## 16                California         State        US-CA CA 06 CA CF Calif.
-##        V9       V10
-## 11   U.S.    U.S.A.
-## 12   Ala.          
-## 13 Alaska     Alas.
-## 14  Ariz.       Az.
-## 15   Ark.          
-## 16 Calif. Ca., Cal.</code></pre>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb303-1" data-line-number="1"><span class="kw">library</span>(RCurl)</a>
+<a class="sourceLine" id="cb303-2" data-line-number="2"><span class="co">## Loading required package: bitops</span></a>
+<a class="sourceLine" id="cb303-3" data-line-number="3"><span class="kw">library</span>(XML)</a></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" data-line-number="1">wiki_url &lt;-<span class="st"> </span>RCurl<span class="op">::</span><span class="kw">getURL</span>(<span class="st">&quot;https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations&quot;</span>)</a>
+<a class="sourceLine" id="cb304-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb304-3" data-line-number="3">tables &lt;-<span class="st"> </span>XML<span class="op">::</span><span class="kw">readHTMLTable</span>(wiki_url)</a></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" data-line-number="1"><span class="kw">class</span>(tables)</a>
+<a class="sourceLine" id="cb305-2" data-line-number="2"><span class="co">## [1] &quot;list&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" data-line-number="1"><span class="kw">length</span>(tables)</a>
+<a class="sourceLine" id="cb306-2" data-line-number="2"><span class="co">## [1] 5</span></a></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" data-line-number="1">abbrevs &lt;-<span class="st"> </span>tables[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb307-2" data-line-number="2"><span class="kw">head</span>(abbrevs)</a>
+<a class="sourceLine" id="cb307-3" data-line-number="3"><span class="co">##               V1</span></a>
+<a class="sourceLine" id="cb307-4" data-line-number="4"><span class="co">## 1         Codes:</span></a>
+<a class="sourceLine" id="cb307-5" data-line-number="5"><span class="co">## 2            ISO</span></a>
+<a class="sourceLine" id="cb307-6" data-line-number="6"><span class="co">## 3           ANSI</span></a>
+<a class="sourceLine" id="cb307-7" data-line-number="7"><span class="co">## 4           USPS</span></a>
+<a class="sourceLine" id="cb307-8" data-line-number="8"><span class="co">## 5           USCG</span></a>
+<a class="sourceLine" id="cb307-9" data-line-number="9"><span class="co">## 6 Abbreviations:</span></a>
+<a class="sourceLine" id="cb307-10" data-line-number="10"><span class="co">##                                                                                                         V2</span></a>
+<a class="sourceLine" id="cb307-11" data-line-number="11"><span class="co">## 1                                                                                                     &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb307-12" data-line-number="12"><span class="co">## 2 ISO 3166 codes (2-letter, 3-letter, and 3-digit codes from ISO 3166-1; 2+2-letter codes from ISO 3166-2)</span></a>
+<a class="sourceLine" id="cb307-13" data-line-number="13"><span class="co">## 3                                         2-letter and 2-digit codes from the ANSI standard INCITS 38:2009</span></a>
+<a class="sourceLine" id="cb307-14" data-line-number="14"><span class="co">## 4                                                  2-letter codes used by the United States Postal Service</span></a>
+<a class="sourceLine" id="cb307-15" data-line-number="15"><span class="co">## 5  2-letter codes used by the United States Coast Guard (red text shows differences between ANSI and USCG)</span></a>
+<a class="sourceLine" id="cb307-16" data-line-number="16"><span class="co">## 6                                                                                                     &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb307-17" data-line-number="17"><span class="co">##     V3   V4   V5   V6   V7   V8   V9  V10</span></a>
+<a class="sourceLine" id="cb307-18" data-line-number="18"><span class="co">## 1 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb307-19" data-line-number="19"><span class="co">## 2 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb307-20" data-line-number="20"><span class="co">## 3 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb307-21" data-line-number="21"><span class="co">## 4 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb307-22" data-line-number="22"><span class="co">## 5 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span></a>
+<a class="sourceLine" id="cb307-23" data-line-number="23"><span class="co">## 6 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" data-line-number="1">us &lt;-<span class="st"> </span>abbrevs[<span class="dv">11</span><span class="op">:</span><span class="kw">nrow</span>(abbrevs), ]</a>
+<a class="sourceLine" id="cb308-2" data-line-number="2"><span class="kw">head</span>(us)</a>
+<a class="sourceLine" id="cb308-3" data-line-number="3"><span class="co">##                           V1            V2           V3 V4 V5 V6 V7     V8</span></a>
+<a class="sourceLine" id="cb308-4" data-line-number="4"><span class="co">## 11  United States of America Federal state US\nUSA\n840 US 00         U.S.</span></a>
+<a class="sourceLine" id="cb308-5" data-line-number="5"><span class="co">## 12                   Alabama         State        US-AL AL 01 AL AL   Ala.</span></a>
+<a class="sourceLine" id="cb308-6" data-line-number="6"><span class="co">## 13                    Alaska         State        US-AK AK 02 AK AK Alaska</span></a>
+<a class="sourceLine" id="cb308-7" data-line-number="7"><span class="co">## 14                   Arizona         State        US-AZ AZ 04 AZ AZ  Ariz.</span></a>
+<a class="sourceLine" id="cb308-8" data-line-number="8"><span class="co">## 15                  Arkansas         State        US-AR AR 05 AR AR   Ark.</span></a>
+<a class="sourceLine" id="cb308-9" data-line-number="9"><span class="co">## 16                California         State        US-CA CA 06 CA CF Calif.</span></a>
+<a class="sourceLine" id="cb308-10" data-line-number="10"><span class="co">##        V9       V10</span></a>
+<a class="sourceLine" id="cb308-11" data-line-number="11"><span class="co">## 11   U.S.    U.S.A.</span></a>
+<a class="sourceLine" id="cb308-12" data-line-number="12"><span class="co">## 12   Ala.          </span></a>
+<a class="sourceLine" id="cb308-13" data-line-number="13"><span class="co">## 13 Alaska     Alas.</span></a>
+<a class="sourceLine" id="cb308-14" data-line-number="14"><span class="co">## 14  Ariz.       Az.</span></a>
+<a class="sourceLine" id="cb308-15" data-line-number="15"><span class="co">## 15   Ark.          </span></a>
+<a class="sourceLine" id="cb308-16" data-line-number="16"><span class="co">## 16 Calif. Ca., Cal.</span></a></code></pre></div>
 <p>Write a test to make sure what you got is what you expect</p>
-<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb584-1" data-line-number="1">first_value &lt;-<span class="st"> </span>stringr<span class="op">::</span><span class="kw">str_trim</span>((<span class="kw">as.character</span>(us[<span class="dv">1</span>, <span class="dv">1</span>])))</a>
-<a class="sourceLine" id="cb584-2" data-line-number="2">testthat<span class="op">::</span><span class="kw">expect_equal</span>(<span class="dt">object =</span> first_value, <span class="dt">expected =</span> <span class="st">&#39;United States of America&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb309-1" data-line-number="1">first_value &lt;-<span class="st"> </span>stringr<span class="op">::</span><span class="kw">str_trim</span>((<span class="kw">as.character</span>(us[<span class="dv">1</span>, <span class="dv">1</span>])))</a>
+<a class="sourceLine" id="cb309-2" data-line-number="2">testthat<span class="op">::</span><span class="kw">expect_equal</span>(<span class="dt">object =</span> first_value, <span class="dt">expected =</span> <span class="st">&#39;United States of America&#39;</span>)</a></code></pre></div>
 </div>
             </section>
 

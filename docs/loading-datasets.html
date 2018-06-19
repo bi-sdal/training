@@ -219,11 +219,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Version Control</b></span></li>
-<li class="chapter" data-level="2" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2</b> Git</a><ul>
-<li class="chapter" data-level="2.1" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.1</b> Git on your own</a></li>
-<li class="chapter" data-level="2.2" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.2</b> Git with branches</a></li>
-<li class="chapter" data-level="2.3" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.3</b> Collaborating with Git</a></li>
-<li class="chapter" data-level="2.4" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.4</b> Protecting branches</a></li>
+<li class="chapter" data-level="2" data-path="version-control.html"><a href="version-control.html"><i class="fa fa-check"></i><b>2</b> Version Control</a><ul>
+<li class="chapter" data-level="2.1" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2.1</b> Git</a></li>
+<li class="chapter" data-level="2.2" data-path="git-setup.html"><a href="git-setup.html"><i class="fa fa-check"></i><b>2.2</b> Git setup</a></li>
+<li class="chapter" data-level="2.3" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.3</b> Git on your own</a></li>
+<li class="chapter" data-level="2.4" data-path="working-with-remotes.html"><a href="working-with-remotes.html"><i class="fa fa-check"></i><b>2.4</b> Working with remotes</a></li>
+<li class="chapter" data-level="2.5" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.5</b> Git with branches</a></li>
+<li class="chapter" data-level="2.6" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.6</b> Collaborating with Git</a></li>
+<li class="chapter" data-level="2.7" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.7</b> Protecting branches</a></li>
+<li class="chapter" data-level="2.8" data-path="help-faq.html"><a href="help-faq.html"><i class="fa fa-check"></i><b>2.8</b> Help! (FAQ)</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="help-faq.html"><a href="help-faq.html#general-workflow"><i class="fa fa-check"></i><b>2.8.1</b> General workflow</a></li>
+<li class="chapter" data-level="2.8.2" data-path="help-faq.html"><a href="help-faq.html#git-push-rejected-master"><i class="fa fa-check"></i><b>2.8.2</b> Git push rejected (master)</a></li>
+<li class="chapter" data-level="2.8.3" data-path="help-faq.html"><a href="help-faq.html#accidently-did-work-on-master"><i class="fa fa-check"></i><b>2.8.3</b> Accidently did work on <code>master</code>:</a></li>
+<li class="chapter" data-level="2.8.4" data-path="help-faq.html"><a href="help-faq.html#remove-datafiles-from-history"><i class="fa fa-check"></i><b>2.8.4</b> Remove data/files from history</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>III R</b></span></li>
 <li class="chapter" data-level="3" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>3</b> Data Visualization</a><ul>
@@ -368,8 +377,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>20</b> Communication</a></li>
 <li class="chapter" data-level="21" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>21</b> Shiny</a></li>
 <li class="chapter" data-level="22" data-path="text-mining.html"><a href="text-mining.html"><i class="fa fa-check"></i><b>22</b> Text Mining</a></li>
-<li class="part"><span><b>V Exercises</b></span></li>
-<li class="part"><span><b>VI Back Matter</b></span></li>
+<li class="part"><span><b>V Modeling</b></span></li>
+<li class="part"><span><b>VI Exercises</b></span></li>
+<li class="part"><span><b>VII Back Matter</b></span></li>
 <li class="chapter" data-level="" data-path="build-details.html"><a href="build-details.html"><i class="fa fa-check"></i>Build Details</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -394,18 +404,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="loading-datasets" class="section level2">
 <h2><span class="header-section-number">4.1</span> Loading datasets</h2>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="kw">library</span>(readr)</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">library</span>(readr)</a></code></pre></div>
 <p>look at <code>read_</code> set of functions</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">heights =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;data/heights.csv&#39;</span>)</a></code></pre></div>
-<pre><code>## Parsed with column specification:
-## cols(
-##   earn = col_double(),
-##   height = col_double(),
-##   sex = col_character(),
-##   ed = col_integer(),
-##   age = col_integer(),
-##   race = col_character()
-## )</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1">heights =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;data/heights.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="co">## Parsed with column specification:</span></a>
+<a class="sourceLine" id="cb61-3" data-line-number="3"><span class="co">## cols(</span></a>
+<a class="sourceLine" id="cb61-4" data-line-number="4"><span class="co">##   earn = col_double(),</span></a>
+<a class="sourceLine" id="cb61-5" data-line-number="5"><span class="co">##   height = col_double(),</span></a>
+<a class="sourceLine" id="cb61-6" data-line-number="6"><span class="co">##   sex = col_character(),</span></a>
+<a class="sourceLine" id="cb61-7" data-line-number="7"><span class="co">##   ed = col_integer(),</span></a>
+<a class="sourceLine" id="cb61-8" data-line-number="8"><span class="co">##   age = col_integer(),</span></a>
+<a class="sourceLine" id="cb61-9" data-line-number="9"><span class="co">##   race = col_character()</span></a>
+<a class="sourceLine" id="cb61-10" data-line-number="10"><span class="co">## )</span></a></code></pre></div>
 <ul>
 <li>skip number of rows</li>
 <li>comments can be skipped</li>

@@ -1,3 +1,4 @@
+
 # Data Transformations
 
 Data Transformation chapter in r4ds
@@ -23,35 +24,20 @@ References:
 
 ```r
 library(dplyr)
-```
-
-```
 ## 
 ## Attaching package: 'dplyr'
-```
-
-```
 ## The following objects are masked from 'package:stats':
 ## 
 ##     filter, lag
-```
-
-```
 ## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union
-```
-
-```r
 library(nycflights13)
 ```
 
 
 ```r
 flights
-```
-
-```
 ## # A tibble: 336,776 x 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time
 ##    <int> <int> <int>    <int>          <int>     <dbl>    <int>
@@ -84,9 +70,6 @@ The basic verbs in `dplyr`
 
 ```r
 filter(flights, month == 1)
-```
-
-```
 ## # A tibble: 27,004 x 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time
 ##    <int> <int> <int>    <int>          <int>     <dbl>    <int>
@@ -109,9 +92,6 @@ filter(flights, month == 1)
 
 ```r
 filter(flights, month == 1, day == 1)
-```
-
-```
 ## # A tibble: 842 x 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time
 ##    <int> <int> <int>    <int>          <int>     <dbl>    <int>
@@ -142,9 +122,6 @@ jan1 <- filter(flights, month == 1, day == 1)
 
 ```r
 (jan1 <- filter(flights, month == 1, day == 1))
-```
-
-```
 ## # A tibble: 842 x 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time
 ##    <int> <int> <int>    <int>          <int>     <dbl>    <int>
@@ -181,9 +158,6 @@ Be careful when trying to compare things that are calculations that lead to a de
 
 ```r
 sqrt(2)^2 == 2
-```
-
-```
 ## [1] FALSE
 ```
 
@@ -193,9 +167,6 @@ you are comparing are decimal values, you should use the `near` function instead
 
 ```r
 near(sqrt(2)^2, 2)
-```
-
-```
 ## [1] TRUE
 ```
 
@@ -211,9 +182,6 @@ Filter the month from the flights dataset where the month is 11 (November) or 12
 
 ```r
 filter(flights, month == 11 | month == 12)
-```
-
-```
 ## # A tibble: 55,403 x 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time
 ##    <int> <int> <int>    <int>          <int>     <dbl>    <int>
@@ -243,9 +211,6 @@ The below code will not run like you would expect (even though this is how you w
 
 ```r
 filter(flights, month == 11 | 12)
-```
-
-```
 ## # A tibble: 336,776 x 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time
 ##    <int> <int> <int>    <int>          <int>     <dbl>    <int>
@@ -270,9 +235,6 @@ Instead of writing out each boolean statment separately using `|`, you can use t
 
 ```r
 filter(flights, month %in% c(11, 12))
-```
-
-```
 ## # A tibble: 55,403 x 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time
 ##    <int> <int> <int>    <int>          <int>     <dbl>    <int>
@@ -297,9 +259,6 @@ WIth `filter`, you can also specify multiple condition (like an `&`)
 
 ```r
 filter(flights, arr_delay <= 120, dep_delay <= 12)
-```
-
-```
 ## # A tibble: 250,224 x 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time
 ##    <int> <int> <int>    <int>          <int>     <dbl>    <int>
@@ -327,9 +286,6 @@ See the r4ds chapter for this.
 
 ```r
 arrange(flights, year, month, day)
-```
-
-```
 ## # A tibble: 336,776 x 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time
 ##    <int> <int> <int>    <int>          <int>     <dbl>    <int>
@@ -354,9 +310,6 @@ use `desc` to sort things in decending order
 
 ```r
 arrange(flights, year, month, desc(day))
-```
-
-```
 ## # A tibble: 336,776 x 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time
 ##    <int> <int> <int>    <int>          <int>     <dbl>    <int>
@@ -379,9 +332,6 @@ arrange(flights, year, month, desc(day))
 
 ```r
 arrange(flights, year, desc(month), day)
-```
-
-```
 ## # A tibble: 336,776 x 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time
 ##    <int> <int> <int>    <int>          <int>     <dbl>    <int>
@@ -406,9 +356,6 @@ arrange(flights, year, desc(month), day)
 
 ```r
 select(flights, year, month, day)
-```
-
-```
 ## # A tibble: 336,776 x 3
 ##     year month   day
 ##    <int> <int> <int>
@@ -429,9 +376,6 @@ select(flights, year, month, day)
 
 ```r
 select(flights, year:day, arr_delay)
-```
-
-```
 ## # A tibble: 336,776 x 4
 ##     year month   day arr_delay
 ##    <int> <int> <int>     <dbl>
@@ -451,9 +395,6 @@ select(flights, year:day, arr_delay)
 
 ```r
 select(flights, -year)
-```
-
-```
 ## # A tibble: 336,776 x 18
 ##    month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
 ##    <int> <int>    <int>          <int>     <dbl>    <int>          <int>
@@ -476,9 +417,6 @@ select(flights, -year)
 
 ```r
 select(flights, -(year:day))
-```
-
-```
 ## # A tibble: 336,776 x 16
 ##    dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay
 ##       <int>          <int>     <dbl>    <int>          <int>     <dbl>
@@ -510,9 +448,6 @@ num_range # for example to create x1, x2, x3
 
 ```r
 rename(flights, "tail_num" = tailnum, 'y' = year)
-```
-
-```
 ## # A tibble: 336,776 x 19
 ##        y month   day dep_time sched_dep_time dep_delay arr_time
 ##    <int> <int> <int>    <int>          <int>     <dbl>    <int>
@@ -535,9 +470,6 @@ rename(flights, "tail_num" = tailnum, 'y' = year)
 
 ```r
 select(flights, time_hour, air_time, everything())
-```
-
-```
 ## # A tibble: 336,776 x 19
 ##    time_hour           air_time  year month   day dep_time sched_dep_time
 ##    <dttm>                 <dbl> <int> <int> <int>    <int>          <int>
@@ -566,9 +498,6 @@ select(flights, time_hour, air_time, everything())
                       ends_with('delay'),
                       distance,
                       air_time))
-```
-
-```
 ## # A tibble: 336,776 x 7
 ##     year month   day dep_delay arr_delay distance air_time
 ##    <int> <int> <int>     <dbl>     <dbl>    <dbl>    <dbl>
@@ -590,9 +519,6 @@ select(flights, time_hour, air_time, everything())
 mutate(flights_sml,
        gain = arr_delay - dep_delay,
        speed = distance / air_time * 60)
-```
-
-```
 ## # A tibble: 336,776 x 9
 ##     year month   day dep_delay arr_delay distance air_time  gain speed
 ##    <int> <int> <int>     <dbl>     <dbl>    <dbl>    <dbl> <dbl> <dbl>
@@ -617,9 +543,6 @@ mutate(flights_sml,
        hours = air_time / 60,
        gain_per_hour = gain / hours
        )
-```
-
-```
 ## # A tibble: 336,776 x 11
 ##     year month   day dep_delay arr_delay distance air_time  gain speed
 ##    <int> <int> <int>     <dbl>     <dbl>    <dbl>    <dbl> <dbl> <dbl>
@@ -642,9 +565,6 @@ mutate(flights_sml,
 
 ```r
 summarize(flights, delay = mean(dep_delay, na.rm = TRUE))
-```
-
-```
 ## # A tibble: 1 x 1
 ##   delay
 ##   <dbl>
@@ -662,9 +582,6 @@ by_day <- group_by(flights,
 
 ```r
 summarize(by_day, delay = mean(dep_delay, na.rm = TRUE))
-```
-
-```
 ## # A tibble: 365 x 4
 ## # Groups:   year, month [?]
 ##     year month   day delay
@@ -693,9 +610,6 @@ by_month <- summarize(by_month,
           delay_std = sd(dep_delay, na.rm = TRUE)
           )
 by_month
-```
-
-```
 ## # A tibble: 12 x 4
 ## # Groups:   year [?]
 ##     year month delay delay_std
@@ -724,9 +638,6 @@ by_month <- group_by(flights,
     summarize(delay = mean(dep_delay, na.rm = TRUE),
               delay_std = sd(dep_delay, na.rm = TRUE))
 by_month
-```
-
-```
 ## # A tibble: 12 x 4
 ## # Groups:   year [?]
 ##     year month delay delay_std
@@ -753,9 +664,6 @@ or write a nested expression
 summarize(group_by(flights, year, month),
           delay = mean(dep_delay, na.rm = TRUE),
           delay_std = sd(dep_delay, na.rm = TRUE))
-```
-
-```
 ## # A tibble: 12 x 4
 ## # Groups:   year [?]
 ##     year month delay delay_std

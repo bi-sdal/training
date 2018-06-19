@@ -1,3 +1,4 @@
+
 --- 
 title: "Training Manual for SDAL"
 #author: "Daniel Chen"
@@ -68,7 +69,7 @@ The Social and Decision Analytics Laboratory welcomes new collaboration opportun
 ## Data Science for the Public Good Program {-}
 
 
-<img src="https://www.bi.vt.edu/sdal/content/generic/data-science-for-public-good-student-photo-overview.jpg" width="100%" />
+<img src="https://www.bi.vt.edu/sdal/content/generic/data-science-for-public-good-student-photo-overview.jpg" width="100%" style="display: block; margin: auto;" />
 
 The Data Science for the Public Good program (DSPG) engages young scholars in finding solutions to some of the most pressing social issues of our time. DSPG fellows conduct research at the intersection of statistics, computation, and the social sciences to determine how information generated within every community can be leveraged to improve quality of life.
 
@@ -77,7 +78,7 @@ The Data Science for the Public Good program (DSPG) engages young scholars in fi
 
 Our communities are engaged in a tremendous struggle to manage conflicting forces that threaten their ability to evolve and thrive. Government officials and policymakers must continuously develop their capacity to provide health, safety, security, employment, and leisure to their constituents. Sustaining this level of growth is becoming increasingly difficult in a climate of diminishing resources, mounting inequality, rapid technological change, and expanding global networks. 
 
-<img src="https://www.bi.vt.edu/sdal/content/generic/data-science-for-public-good-problem-policy-planning.jpg?v=1465936766" width="100%" />
+<img src="https://www.bi.vt.edu/sdal/content/generic/data-science-for-public-good-problem-policy-planning.jpg?v=1465936766" width="100%" style="display: block; margin: auto;" />
 
 Data-driven research provides a rich, mutually rewarding opportunity to leverage community knowledge and public information resources to affect positive social change. The Data Science for the Public Good program was established to connect aspiring data science scholars to communities which can benefit from their expertise.
 
@@ -103,7 +104,7 @@ These unique fellowship experiences are made possible through the support of sev
 
 ### Impact {-}
 
-<img src="https://www.bi.vt.edu/sdal/content/generic/data-science-for-public-good-impact-location.jpg?v=1465936895" width="100%" />
+<img src="https://www.bi.vt.edu/sdal/content/generic/data-science-for-public-good-impact-location.jpg?v=1465936895" width="100%" style="display: block; margin: auto;" />
 
 As metropolitan areas assume greater responsibility for driving social transformation and economic prosperity, the demand for publicly engaged and highly trained data scientists will continue to grow.
 
@@ -121,9 +122,9 @@ To learn more about how our DSPG program is making a difference in the lives of 
 
 Every DSPG research project begins with a collaboration. While our sponsor organizations face unique challenges, they share a common commitment: leveraging data science to better serve the public good.
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="https://www.bi.vt.edu/sdal/content/generic_page/dspg-sponsor-logos.jpg" alt="Nonexclusive list of sponsors" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-4)Nonexclusive list of sponsors</p>
+<p class="caption">(\#fig:unnamed-chunk-5)Nonexclusive list of sponsors</p>
 </div>
 
 ### Previous Projects {-}
@@ -162,6 +163,6 @@ By: Garrett Grolemund and Hadley Wickham
 http://r4ds.had.co.nz/
 
 <div class="figure" style="text-align: center">
-<img src="http://r4ds.had.co.nz/cover.png" alt="R for Data Science Cover"  />
-<p class="caption">(\#fig:unnamed-chunk-5)R for Data Science Cover</p>
+<img src="http://r4ds.had.co.nz/cover.png" alt="R for Data Science Cover" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-6)R for Data Science Cover</p>
 </div>

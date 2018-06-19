@@ -1,3 +1,4 @@
+
 # Setup {-}
 
 In general, the only thing you really need to work on our servers is a browser.
@@ -43,8 +44,15 @@ The default shell is usually Bash, but if your machine is set up differently you
 
 You already have a shell that ships with every Chromebook by opening a browser and pressing `Ctrl + Alt + t`, you will be in a `crosh` shell.
 If you type `shell` in there, you will be presented with a bash shell.
+This shell has SSH, to connect to our servers.
 
 Having said that, you will be much better off if you can install [Termux](https://termux.com/).
+However, if you are unable to use the Google Play Store (e.g., signed in under your VT ID),
+you can use the [Secure Shell App](https://chrome.google.com/webstore/detail/secure-shell-app/pnhechapfaindjhompbnflcldabbghjo?hl=en).
+This means you'll have to setup SSH, and will be doing *all* of your work on the server.
+
+Another option is to setup [Cruton](https://github.com/dnschneid/crouton),
+which will install Linux along Chrome OS.
 
 ## Git {-}
 
@@ -64,7 +72,9 @@ If Git is not already available on your machine you can try to install it via yo
 
 ### Chromebook {-}
 
-Termux (from the shell installation) can install git via `pkg install git`
+Termux: (from the shell installation) can install git via `pkg install git`.
+
+Otherwise you will need to SSH on to our servers to use Git.
 
 ## Text Editor {-}
 When you're writing code, it's nice to have a text editor that is optimized for writing code, with features like automatic color-coding of key words. The default text editor on macOS and Linux is usually set to Vim, which is not famous for being intuitive. If you accidentally find yourself stuck in it, try typing the escape key, followed by :q! (colon, lower-case 'q', exclamation mark), then hitting Return to return to the shell.
@@ -111,7 +121,7 @@ You can download the binary files for your distribution from CRAN. Or you can us
 **Open up global options**
 
 You can do this by going to `Tools > Global Options` on the top menu bar.
-![](./figs/rstudio_setup/01-global_options.png)<!-- -->
+<img src="./figs/rstudio_setup/01-global_options.png" width="100%" style="display: block; margin: auto;" />
 
 **Setup startup defaults**
 
@@ -125,7 +135,7 @@ It's also advised to uncheck the top two options as well:
 - Restore most recently opened project at startup
 - Restore previously open source documents at startup
 
-![](./figs/rstudio_setup/02-options.png)<!-- -->
+<img src="./figs/rstudio_setup/02-options.png" width="100%" style="display: block; margin: auto;" />
 
 ## SQLite {-}
 SQL is a specialized programming language used with databases. We use a simple database manager called SQLite in our lessons.

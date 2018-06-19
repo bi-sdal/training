@@ -1,3 +1,4 @@
+
 # APIs and Web Scraping
 
 Selector Gadget: http://selectorgadget.com/
@@ -16,13 +17,7 @@ Additional Resources:
 
 ```r
 library(RCurl)
-```
-
-```
 ## Loading required package: bitops
-```
-
-```r
 library(XML)
 ```
 
@@ -36,9 +31,6 @@ tables <- XML::readHTMLTable(wiki_url)
 
 ```r
 class(tables)
-```
-
-```
 ## [1] "list"
 ```
 
@@ -46,9 +38,6 @@ class(tables)
 
 ```r
 length(tables)
-```
-
-```
 ## [1] 5
 ```
 
@@ -56,9 +45,6 @@ length(tables)
 ```r
 abbrevs <- tables[[1]]
 head(abbrevs)
-```
-
-```
 ##               V1
 ## 1         Codes:
 ## 2            ISO
@@ -86,9 +72,6 @@ head(abbrevs)
 ```r
 us <- abbrevs[11:nrow(abbrevs), ]
 head(us)
-```
-
-```
 ##                           V1            V2           V3 V4 V5 V6 V7     V8
 ## 11  United States of America Federal state US\nUSA\n840 US 00         U.S.
 ## 12                   Alabama         State        US-AL AL 01 AL AL   Ala.
@@ -128,18 +111,9 @@ CSS class and id
 
 ```r
 library(rvest)
-```
-
-```
 ## Loading required package: xml2
-```
-
-```
 ## 
 ## Attaching package: 'rvest'
-```
-
-```
 ## The following object is masked from 'package:XML':
 ## 
 ##     xml
@@ -158,9 +132,6 @@ lego_movie %>%
   html_node("strong span") %>%
   html_text() %>%
   as.numeric()
-```
-
-```
 ## [1] 7.8
 ```
 
@@ -170,9 +141,6 @@ lego_movie %>%
 lego_movie %>%
   html_nodes(".itemprop .itemprop") %>%
   html_text()
-```
-
-```
 ##  [1] "Will Arnett"     "Elizabeth Banks" "Craig Berry"    
 ##  [4] "Alison Brie"     "David Burrows"   "Anthony Daniels"
 ##  [7] "Charlie Day"     "Amanda Farinos"  "Keith Ferguson" 
@@ -187,9 +155,6 @@ lego_movie %>%
   html_nodes("table") %>%
   .[[1]] %>%
   html_table()
-```
-
-```
 ##                                   X1                                X2
 ## 1  Cast overview, first billed only: Cast overview, first billed only:
 ## 2                                                          Will Arnett
@@ -248,9 +213,6 @@ lego_movie %>%
 ```r
 lego_movie %>%
   html_nodes(".primary_photo , .ellipsis, .character, #titleCast .itemprop, #titleCast .loadlate")
-```
-
-```
 ## {xml_nodeset (87)}
 ##  [1] <td class="primary_photo">\n<a href="/name/nm0004715/?ref_=tt_cl_i1 ...
 ##  [2] <img height="44" width="32" alt="Will Arnett" title="Will Arnett" s ...
@@ -284,9 +246,6 @@ lego_movie %>%
   html_nodes("tr") %>%
   html_nodes("span") %>%
   html_text()
-```
-
-```
 ##  [1] "Will Arnett"     "Elizabeth Banks" "Craig Berry"    
 ##  [4] "Alison Brie"     "David Burrows"   "Anthony Daniels"
 ##  [7] "Charlie Day"     "Amanda Farinos"  "Keith Ferguson" 

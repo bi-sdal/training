@@ -219,11 +219,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Version Control</b></span></li>
-<li class="chapter" data-level="2" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2</b> Git</a><ul>
-<li class="chapter" data-level="2.1" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.1</b> Git on your own</a></li>
-<li class="chapter" data-level="2.2" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.2</b> Git with branches</a></li>
-<li class="chapter" data-level="2.3" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.3</b> Collaborating with Git</a></li>
-<li class="chapter" data-level="2.4" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.4</b> Protecting branches</a></li>
+<li class="chapter" data-level="2" data-path="version-control.html"><a href="version-control.html"><i class="fa fa-check"></i><b>2</b> Version Control</a><ul>
+<li class="chapter" data-level="2.1" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2.1</b> Git</a></li>
+<li class="chapter" data-level="2.2" data-path="git-setup.html"><a href="git-setup.html"><i class="fa fa-check"></i><b>2.2</b> Git setup</a></li>
+<li class="chapter" data-level="2.3" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.3</b> Git on your own</a></li>
+<li class="chapter" data-level="2.4" data-path="working-with-remotes.html"><a href="working-with-remotes.html"><i class="fa fa-check"></i><b>2.4</b> Working with remotes</a></li>
+<li class="chapter" data-level="2.5" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.5</b> Git with branches</a></li>
+<li class="chapter" data-level="2.6" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.6</b> Collaborating with Git</a></li>
+<li class="chapter" data-level="2.7" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.7</b> Protecting branches</a></li>
+<li class="chapter" data-level="2.8" data-path="help-faq.html"><a href="help-faq.html"><i class="fa fa-check"></i><b>2.8</b> Help! (FAQ)</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="help-faq.html"><a href="help-faq.html#general-workflow"><i class="fa fa-check"></i><b>2.8.1</b> General workflow</a></li>
+<li class="chapter" data-level="2.8.2" data-path="help-faq.html"><a href="help-faq.html#git-push-rejected-master"><i class="fa fa-check"></i><b>2.8.2</b> Git push rejected (master)</a></li>
+<li class="chapter" data-level="2.8.3" data-path="help-faq.html"><a href="help-faq.html#accidently-did-work-on-master"><i class="fa fa-check"></i><b>2.8.3</b> Accidently did work on <code>master</code>:</a></li>
+<li class="chapter" data-level="2.8.4" data-path="help-faq.html"><a href="help-faq.html#remove-datafiles-from-history"><i class="fa fa-check"></i><b>2.8.4</b> Remove data/files from history</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>III R</b></span></li>
 <li class="chapter" data-level="3" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>3</b> Data Visualization</a><ul>
@@ -368,8 +377,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>20</b> Communication</a></li>
 <li class="chapter" data-level="21" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>21</b> Shiny</a></li>
 <li class="chapter" data-level="22" data-path="text-mining.html"><a href="text-mining.html"><i class="fa fa-check"></i><b>22</b> Text Mining</a></li>
-<li class="part"><span><b>V Exercises</b></span></li>
-<li class="part"><span><b>VI Back Matter</b></span></li>
+<li class="part"><span><b>V Modeling</b></span></li>
+<li class="part"><span><b>VI Exercises</b></span></li>
+<li class="part"><span><b>VII Back Matter</b></span></li>
 <li class="chapter" data-level="" data-path="build-details.html"><a href="build-details.html"><i class="fa fa-check"></i>Build Details</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -394,23 +404,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="loading-ggplot2" class="section level2">
 <h2><span class="header-section-number">3.1</span> Loading ggplot2</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># mpg dataset from the ggplot2 library</span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">mpg</a></code></pre></div>
-<pre><code>## # A tibble: 234 x 11
-##    manufacturer model    displ  year   cyl trans   drv     cty   hwy fl   
-##    &lt;chr&gt;        &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;
-##  1 audi         a4         1.8  1999     4 auto(l… f        18    29 p    
-##  2 audi         a4         1.8  1999     4 manual… f        21    29 p    
-##  3 audi         a4         2    2008     4 manual… f        20    31 p    
-##  4 audi         a4         2    2008     4 auto(a… f        21    30 p    
-##  5 audi         a4         2.8  1999     6 auto(l… f        16    26 p    
-##  6 audi         a4         2.8  1999     6 manual… f        18    26 p    
-##  7 audi         a4         3.1  2008     6 auto(a… f        18    27 p    
-##  8 audi         a4 quat…   1.8  1999     4 manual… 4        18    26 p    
-##  9 audi         a4 quat…   1.8  1999     4 auto(l… 4        16    25 p    
-## 10 audi         a4 quat…   2    2008     4 manual… 4        20    28 p    
-## # ... with 224 more rows, and 1 more variable: class &lt;chr&gt;</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co"># mpg dataset from the ggplot2 library</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">mpg</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">## # A tibble: 234 x 11</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">##    manufacturer model    displ  year   cyl trans   drv     cty   hwy fl   </span></a>
+<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="co">##    &lt;chr&gt;        &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="co">##  1 audi         a4         1.8  1999     4 auto(l… f        18    29 p    </span></a>
+<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="co">##  2 audi         a4         1.8  1999     4 manual… f        21    29 p    </span></a>
+<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="co">##  3 audi         a4         2    2008     4 manual… f        20    31 p    </span></a>
+<a class="sourceLine" id="cb15-9" data-line-number="9"><span class="co">##  4 audi         a4         2    2008     4 auto(a… f        21    30 p    </span></a>
+<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="co">##  5 audi         a4         2.8  1999     6 auto(l… f        16    26 p    </span></a>
+<a class="sourceLine" id="cb15-11" data-line-number="11"><span class="co">##  6 audi         a4         2.8  1999     6 manual… f        18    26 p    </span></a>
+<a class="sourceLine" id="cb15-12" data-line-number="12"><span class="co">##  7 audi         a4         3.1  2008     6 auto(a… f        18    27 p    </span></a>
+<a class="sourceLine" id="cb15-13" data-line-number="13"><span class="co">##  8 audi         a4 quat…   1.8  1999     4 manual… 4        18    26 p    </span></a>
+<a class="sourceLine" id="cb15-14" data-line-number="14"><span class="co">##  9 audi         a4 quat…   1.8  1999     4 auto(l… 4        16    25 p    </span></a>
+<a class="sourceLine" id="cb15-15" data-line-number="15"><span class="co">## 10 audi         a4 quat…   2    2008     4 manual… 4        20    28 p    </span></a>
+<a class="sourceLine" id="cb15-16" data-line-number="16"><span class="co">## # ... with 224 more rows, and 1 more variable: class &lt;chr&gt;</span></a></code></pre></div>
 </div>
             </section>
 

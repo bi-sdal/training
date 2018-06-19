@@ -1,3 +1,4 @@
+
 # Strings
 
 ## Regular Expressions
@@ -21,36 +22,15 @@ The main idea behind regular expressions (or regex) is to find blocks of text th
 ```r
 allchars = '1234567890abcdefghijklmnopqrstuvwxyz'
 str_extract_all(allchars, '1')
-```
-
-```
 ## [[1]]
 ## [1] "1"
-```
-
-```r
 str_extract_all(allchars, '12')
-```
-
-```
 ## [[1]]
 ## [1] "12"
-```
-
-```r
 str_extract_all(allchars, '13')
-```
-
-```
 ## [[1]]
 ## character(0)
-```
-
-```r
 str_extract_all(allchars, 'a')
-```
-
-```
 ## [[1]]
 ## [1] "a"
 ```
@@ -58,27 +38,12 @@ A character class is a set of characters, any one of which will match.
 
 ```r
 str_extract_all(allchars, '[12345]')
-```
-
-```
 ## [[1]]
 ## [1] "1" "2" "3" "4" "5"
-```
-
-```r
 str_extract_all(allchars, '[abcde]')
-```
-
-```
 ## [[1]]
 ## [1] "a" "b" "c" "d" "e"
-```
-
-```r
 str_extract_all(allchars, '[[:digit:]]')
-```
-
-```
 ## [[1]]
 ##  [1] "1" "2" "3" "4" "5" "6" "7" "8" "9" "0"
 ```
@@ -92,28 +57,13 @@ What if you wanted all numbers? There are a number of built in classes to save o
 
 ```r
 str_extract_all(allchars, '[[:digit:]]')
-```
-
-```
 ## [[1]]
 ##  [1] "1" "2" "3" "4" "5" "6" "7" "8" "9" "0"
-```
-
-```r
 str_extract_all(allchars, '[[:lower:]]')
-```
-
-```
 ## [[1]]
 ##  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q"
 ## [18] "r" "s" "t" "u" "v" "w" "x" "y" "z"
-```
-
-```r
 str_extract_all(allchars, '\\s')
-```
-
-```
 ## [[1]]
 ## character(0)
 ```
@@ -127,9 +77,6 @@ We'll start simple and try to build expressions that are general enough to get a
 
 ```r
 str_extract_all(exampleText, '\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d')
-```
-
-```
 ## [[1]]
 ## [1] "7608675309"
 ```
@@ -137,9 +84,6 @@ More succinctly we can use a quantifier to match a given number of times: {n} wi
 
 ```r
 str_extract_all(exampleText, '\\d{10}')
-```
-
-```
 ## [[1]]
 ## [1] "7608675309"
 ```
@@ -147,9 +91,6 @@ Other useful quantifiers are \* to match at least 0 times, + to match at least o
 
 ```r
 str_extract_all(exampleText, '\\d{3}-*\\d{3}-*\\d{4}')
-```
-
-```
 ## [[1]]
 ## [1] "7608675309"   "403-596-4038"
 ```
@@ -157,9 +98,6 @@ Sometimes the number groups are separated by -, sometimes by '.'. What happens i
 
 ```r
 str_extract_all(exampleText, '\\d{3}.*\\d{3}.*\\d{4}')
-```
-
-```
 ## [[1]]
 ## [1] "7608675309, perhaps also 403-596-4038. Some people use periods in their numbers, so 402.367.5039. We can also have things like 304 385 1029 or (760)-581-3957"
 ```
@@ -168,9 +106,6 @@ What happened? Since the period is the wildcard it matched all kinds of things. 
 
 ```r
 str_extract_all(exampleText, '\\d{3}\\.*\\d{3}\\.*\\d{4}')
-```
-
-```
 ## [[1]]
 ## [1] "7608675309"   "402.367.5039"
 ```
@@ -178,9 +113,6 @@ Now it's treating period as a literal character. We can combine the expression m
 
 ```r
 str_extract_all(exampleText, '\\d{3}[-\\.]*\\d{3}[-\\.]*\\d{4}')
-```
-
-```
 ## [[1]]
 ## [1] "7608675309"   "403-596-4038" "402.367.5039"
 ```
@@ -188,9 +120,6 @@ The pattern '[-\\.]*' will match either - or period at least 0 times. If you epe
 
 ```r
 str_extract_all(exampleText, '\\d{3}[-\\.\\s]*\\d{3}[-\\.\\s]*\\d{4}')
-```
-
-```
 ## [[1]]
 ## [1] "7608675309"   "403-596-4038" "402.367.5039" "304 385 1029"
 ```
@@ -198,9 +127,6 @@ The last challenge is getting the number with the parentheses. We can use the sa
 
 ```r
 str_extract_all(exampleText, '\\(*\\d{3}\\)*[-\\.\\s]*\\d{3}[-\\.\\s]*\\d{4}')
-```
-
-```
 ## [[1]]
 ## [1] "7608675309"     "403-596-4038"   "402.367.5039"   "304 385 1029"  
 ## [5] "(760)-581-3957"
@@ -215,9 +141,6 @@ library(XML)
 rooturl = "http://www.pulaskicounty.org/Board-of-Supervisors.html"
 bosMainPage = htmlParse(rooturl)
 bosMainPage
-```
-
-```
 ## <!DOCTYPE html>
 ## <html lang="en">
 ## <head>
@@ -431,14 +354,8 @@ bosMainPage
 ## </body>
 ## </html>
 ## 
-```
-
-```r
 links = xpathSApply(bosMainPage, "//a/@href")
 links
-```
-
-```
 ##                                                                  href 
 ##                                                          "index.html" 
 ##                                                                  href 
@@ -658,9 +575,6 @@ The above code downloads the html for the Board's website and saves it in bosMai
 minutesLinks = grep("Minutes", links, value = T)
 fullMinutesUrl = paste0("http://www.pulaskicounty.org/", minutesLinks)
 fullMinutesUrl
-```
-
-```
 ##  [1] "http://www.pulaskicounty.org/Board-of-Supervisors-Minutes-2017.html"
 ##  [2] "http://www.pulaskicounty.org/Board-of-Supervisors-Minutes-2016.html"
 ##  [3] "http://www.pulaskicounty.org/Board-of-Supervisors-Minutes-2015.html"
@@ -697,9 +611,6 @@ Now we have all the urls to the pages where the minutes are kept. To work with a
 minutePage2016 = htmlParse(fullMinutesUrl[2])
 pdfLinks = grep(".pdf", xpathSApply(minutePage2016, "//a/@href"), value = T)
 pdfLinks
-```
-
-```
 ##                                                             href 
 ##                                             "files/Churches.pdf" 
 ##                                                             href 
@@ -770,9 +681,6 @@ It's always wise to make sure your expressions are getting you the things you wa
 pdfLinks = grep("Minutes and Agendas", xpathSApply(minutePage2016, "//a/@href"), value = T)
 fullPdfUrl = paste0("http://www.pulaskicounty.org/", pdfLinks)
 fullPdfUrl
-```
-
-```
 ##  [1] "http://www.pulaskicounty.org/bos/Minutes and Agendas/2016/01 18 minutes organizational.pdf" 
 ##  [2] "http://www.pulaskicounty.org/bos/Minutes and Agendas/2016/01 25 minutes regular.pdf"        
 ##  [3] "http://www.pulaskicounty.org/bos/Minutes and Agendas/2016/02 16 minutes budget.pdf"         
@@ -816,9 +724,6 @@ naicsAndCompanies = c("Name: Herbalife Ltd; NAICS: 325411, 325412, 424490",
 "Name: Purdue Pharma LP; NAICS: 325412; Name: Transcept Pharmaceuticals Inc; NAICS: 325412",
 "Name: Sanofi-Aventis SA; NAICS: 325412")
 naicsAndCompanies
-```
-
-```
 ## [1] "Name: Herbalife Ltd; NAICS: 325411, 325412, 424490"                                       
 ## [2] "Name: Sanofi-Aventis SA; NAICS: 325412"                                                   
 ## [3] "Name: Abbott Laboratories; NAICS: 325411, 325412, 325413, 325620, 334516, 339112"         
@@ -839,27 +744,12 @@ Let's focus on the first entry for now. Notice that a semicolon separates the na
 ```r
 firstRegexCase = naicsAndCompanies[[1]]
 firstRegexCase
-```
-
-```
 ## [1] "Name: Herbalife Ltd; NAICS: 325411, 325412, 424490"
-```
-
-```r
 company = str_extract(firstRegexCase, "(.*?)(?=;)")
 naicsCodes = str_extract(firstRegexCase, "(?<=NAICS: )(.*)")
 company
-```
-
-```
 ## [1] "Name: Herbalife Ltd"
-```
-
-```r
 naicsCodes
-```
-
-```
 ## [1] "325411, 325412, 424490"
 ```
 We're getting there, but not quite. We don't want that annoying 'Name: ' in front of the company. We can achieve that with the following. The lookbehind '(?<=Name: )' will find a place in the string that matches the pattern 'Name: ' and then match what comes next, which in this case is anything (.*).
@@ -867,18 +757,12 @@ We're getting there, but not quite. We don't want that annoying 'Name: ' in fron
 ```r
 cleanerCompany = str_extract(company, "(?<=Name: )(.*)")
 cleanerCompany
-```
-
-```
 ## [1] "Herbalife Ltd"
 ```
 Note that we could have removed the 'Name: ' directly using a function called gsub, but the lookbehind will be useful later. gsub replaces the pattern in the first argument with the pattern in the second wherever it finds it in the third argument.
 
 ```r
 gsub("Name: ", "", company)
-```
-
-```
 ## [1] "Herbalife Ltd"
 ```
 
@@ -886,18 +770,12 @@ Now we can tackle the whole vector. We'll use the same idea of separating names 
 
 ```r
 naicsAndCompanies[[5]]
-```
-
-```
 ## [1] "Name: Purdue Pharma LP; NAICS: 325412; Name: Transcept Pharmaceuticals Inc; NAICS: 325412"
 ```
 This entry has multiple companies in the same line. To get at both of them, we need to use str_extract_all() instead of just str_extract().
 
 ```r
 str_extract_all(naicsAndCompanies, "(?<=Name: )(.*)(?=;)")
-```
-
-```
 ## [[1]]
 ## [1] "Herbalife Ltd"
 ## 
@@ -921,9 +799,6 @@ Whoops, looks like we didn't split the 5th string at the right place! This is be
 ```r
 companies = str_extract_all(naicsAndCompanies, "(?<=Name: )(.*?)(?=;)")
 companies
-```
-
-```
 ## [[1]]
 ## [1] "Herbalife Ltd"
 ## 
@@ -948,9 +823,6 @@ Now let's do the same for the NAICS codes.
 
 ```r
 str_extract_all(paste0(naicsAndCompanies), "(?<=NAICS: )(.*?)(?=;)")
-```
-
-```
 ## [[1]]
 ## character(0)
 ## 
@@ -975,9 +847,6 @@ What's going on here? This code looks for stuff between 'NAICS: ' and ';', but e
 ```r
 allNaics = str_extract_all(paste0(naicsAndCompanies), "(?<=NAICS: )(.*?)(?=(;|$))")
 allNaics
-```
-
-```
 ## [[1]]
 ## [1] "325411, 325412, 424490"
 ## 
@@ -1002,9 +871,6 @@ Finally, we can put it all together and we have a clean company by naics table:
 ```r
 companyNaicsList = data.frame(company = unlist(companies), naicsCodes = unlist(allNaics))
 companyNaicsList
-```
-
-```
 ##                         company
 ## 1                 Herbalife Ltd
 ## 2             Sanofi-Aventis SA

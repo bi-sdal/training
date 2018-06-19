@@ -219,11 +219,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Version Control</b></span></li>
-<li class="chapter" data-level="2" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2</b> Git</a><ul>
-<li class="chapter" data-level="2.1" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.1</b> Git on your own</a></li>
-<li class="chapter" data-level="2.2" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.2</b> Git with branches</a></li>
-<li class="chapter" data-level="2.3" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.3</b> Collaborating with Git</a></li>
-<li class="chapter" data-level="2.4" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.4</b> Protecting branches</a></li>
+<li class="chapter" data-level="2" data-path="version-control.html"><a href="version-control.html"><i class="fa fa-check"></i><b>2</b> Version Control</a><ul>
+<li class="chapter" data-level="2.1" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2.1</b> Git</a></li>
+<li class="chapter" data-level="2.2" data-path="git-setup.html"><a href="git-setup.html"><i class="fa fa-check"></i><b>2.2</b> Git setup</a></li>
+<li class="chapter" data-level="2.3" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.3</b> Git on your own</a></li>
+<li class="chapter" data-level="2.4" data-path="working-with-remotes.html"><a href="working-with-remotes.html"><i class="fa fa-check"></i><b>2.4</b> Working with remotes</a></li>
+<li class="chapter" data-level="2.5" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.5</b> Git with branches</a></li>
+<li class="chapter" data-level="2.6" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.6</b> Collaborating with Git</a></li>
+<li class="chapter" data-level="2.7" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.7</b> Protecting branches</a></li>
+<li class="chapter" data-level="2.8" data-path="help-faq.html"><a href="help-faq.html"><i class="fa fa-check"></i><b>2.8</b> Help! (FAQ)</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="help-faq.html"><a href="help-faq.html#general-workflow"><i class="fa fa-check"></i><b>2.8.1</b> General workflow</a></li>
+<li class="chapter" data-level="2.8.2" data-path="help-faq.html"><a href="help-faq.html#git-push-rejected-master"><i class="fa fa-check"></i><b>2.8.2</b> Git push rejected (master)</a></li>
+<li class="chapter" data-level="2.8.3" data-path="help-faq.html"><a href="help-faq.html#accidently-did-work-on-master"><i class="fa fa-check"></i><b>2.8.3</b> Accidently did work on <code>master</code>:</a></li>
+<li class="chapter" data-level="2.8.4" data-path="help-faq.html"><a href="help-faq.html#remove-datafiles-from-history"><i class="fa fa-check"></i><b>2.8.4</b> Remove data/files from history</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>III R</b></span></li>
 <li class="chapter" data-level="3" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>3</b> Data Visualization</a><ul>
@@ -368,8 +377,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>20</b> Communication</a></li>
 <li class="chapter" data-level="21" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>21</b> Shiny</a></li>
 <li class="chapter" data-level="22" data-path="text-mining.html"><a href="text-mining.html"><i class="fa fa-check"></i><b>22</b> Text Mining</a></li>
-<li class="part"><span><b>V Exercises</b></span></li>
-<li class="part"><span><b>VI Back Matter</b></span></li>
+<li class="part"><span><b>V Modeling</b></span></li>
+<li class="part"><span><b>VI Exercises</b></span></li>
+<li class="part"><span><b>VII Back Matter</b></span></li>
 <li class="chapter" data-level="" data-path="build-details.html"><a href="build-details.html"><i class="fa fa-check"></i>Build Details</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -394,28 +404,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="lubridate" class="section level2">
 <h2><span class="header-section-number">10.1</span> lubridate</h2>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" data-line-number="1"><span class="kw">library</span>(lubridate)</a></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;lubridate&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:base&#39;:
-## 
-##     date</code></pre>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" data-line-number="1"><span class="kw">ymd</span>(<span class="st">&#39;2018-06-06&#39;</span>)</a></code></pre></div>
-<pre><code>## [1] &quot;2018-06-06&quot;</code></pre>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" data-line-number="1">dt_str &lt;-<span class="st"> &#39;2018-06-06&#39;</span></a>
-<a class="sourceLine" id="cb312-2" data-line-number="2"><span class="kw">class</span>(dt_str)</a></code></pre></div>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" data-line-number="1">dt_dt &lt;-<span class="st"> </span><span class="kw">ymd</span>(dt_str)</a>
-<a class="sourceLine" id="cb314-2" data-line-number="2"><span class="kw">class</span>(dt_dt)</a></code></pre></div>
-<pre><code>## [1] &quot;Date&quot;</code></pre>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" data-line-number="1"><span class="kw">mdy</span>(<span class="st">&#39;June 6, 2018&#39;</span>)</a></code></pre></div>
-<pre><code>## [1] &quot;2018-06-06&quot;</code></pre>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" data-line-number="1"><span class="kw">dmy</span>(<span class="st">&#39;06-06-2018&#39;</span>)</a></code></pre></div>
-<pre><code>## [1] &quot;2018-06-06&quot;</code></pre>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" data-line-number="1"><span class="kw">ymd</span>(<span class="dv">20190606</span>)</a></code></pre></div>
-<pre><code>## [1] &quot;2019-06-06&quot;</code></pre>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" data-line-number="1"><span class="kw">ymd_hms</span>(<span class="st">&#39;2018-06-06 10:33:55&#39;</span>, <span class="dt">tz =</span> <span class="st">&#39;EDT&#39;</span>)</a></code></pre></div>
-<pre><code>## [1] &quot;2018-06-06 14:33:55 EDT&quot;</code></pre>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1"><span class="kw">library</span>(lubridate)</a>
+<a class="sourceLine" id="cb167-2" data-line-number="2"><span class="co">## </span></a>
+<a class="sourceLine" id="cb167-3" data-line-number="3"><span class="co">## Attaching package: &#39;lubridate&#39;</span></a>
+<a class="sourceLine" id="cb167-4" data-line-number="4"><span class="co">## The following object is masked from &#39;package:base&#39;:</span></a>
+<a class="sourceLine" id="cb167-5" data-line-number="5"><span class="co">## </span></a>
+<a class="sourceLine" id="cb167-6" data-line-number="6"><span class="co">##     date</span></a></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1"><span class="kw">ymd</span>(<span class="st">&#39;2018-06-06&#39;</span>)</a>
+<a class="sourceLine" id="cb168-2" data-line-number="2"><span class="co">## [1] &quot;2018-06-06&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1">dt_str &lt;-<span class="st"> &#39;2018-06-06&#39;</span></a>
+<a class="sourceLine" id="cb169-2" data-line-number="2"><span class="kw">class</span>(dt_str)</a>
+<a class="sourceLine" id="cb169-3" data-line-number="3"><span class="co">## [1] &quot;character&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" data-line-number="1">dt_dt &lt;-<span class="st"> </span><span class="kw">ymd</span>(dt_str)</a>
+<a class="sourceLine" id="cb170-2" data-line-number="2"><span class="kw">class</span>(dt_dt)</a>
+<a class="sourceLine" id="cb170-3" data-line-number="3"><span class="co">## [1] &quot;Date&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1"><span class="kw">mdy</span>(<span class="st">&#39;June 6, 2018&#39;</span>)</a>
+<a class="sourceLine" id="cb171-2" data-line-number="2"><span class="co">## [1] &quot;2018-06-06&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1"><span class="kw">dmy</span>(<span class="st">&#39;06-06-2018&#39;</span>)</a>
+<a class="sourceLine" id="cb172-2" data-line-number="2"><span class="co">## [1] &quot;2018-06-06&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" data-line-number="1"><span class="kw">ymd</span>(<span class="dv">20190606</span>)</a>
+<a class="sourceLine" id="cb173-2" data-line-number="2"><span class="co">## [1] &quot;2019-06-06&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1"><span class="kw">ymd_hms</span>(<span class="st">&#39;2018-06-06 10:33:55&#39;</span>, <span class="dt">tz =</span> <span class="st">&#39;EDT&#39;</span>)</a>
+<a class="sourceLine" id="cb174-2" data-line-number="2"><span class="co">## [1] &quot;2018-06-06 14:33:55 EDT&quot;</span></a></code></pre></div>
 </div>
             </section>
 

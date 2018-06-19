@@ -1,3 +1,4 @@
+
 # Dates and Times
 
 Resources
@@ -14,14 +15,8 @@ Cheat Sheets
 
 ```r
 library(lubridate)
-```
-
-```
 ## 
 ## Attaching package: 'lubridate'
-```
-
-```
 ## The following object is masked from 'package:base':
 ## 
 ##     date
@@ -30,9 +25,6 @@ library(lubridate)
 
 ```r
 ymd('2018-06-06')
-```
-
-```
 ## [1] "2018-06-06"
 ```
 
@@ -40,9 +32,6 @@ ymd('2018-06-06')
 ```r
 dt_str <- '2018-06-06'
 class(dt_str)
-```
-
-```
 ## [1] "character"
 ```
 
@@ -50,45 +39,30 @@ class(dt_str)
 ```r
 dt_dt <- ymd(dt_str)
 class(dt_dt)
-```
-
-```
 ## [1] "Date"
 ```
 
 
 ```r
 mdy('June 6, 2018')
-```
-
-```
 ## [1] "2018-06-06"
 ```
 
 
 ```r
 dmy('06-06-2018')
-```
-
-```
 ## [1] "2018-06-06"
 ```
 
 
 ```r
 ymd(20190606)
-```
-
-```
 ## [1] "2019-06-06"
 ```
 
 
 ```r
 ymd_hms('2018-06-06 10:33:55', tz = 'EDT')
-```
-
-```
 ## [1] "2018-06-06 14:33:55 EDT"
 ```
 
@@ -98,36 +72,18 @@ ymd_hms('2018-06-06 10:33:55', tz = 'EDT')
 ```r
 library(nycflights13)
 library(dplyr)
-```
-
-```
 ## 
 ## Attaching package: 'dplyr'
-```
-
-```
 ## The following objects are masked from 'package:lubridate':
 ## 
 ##     intersect, setdiff, union
-```
-
-```
 ## The following objects are masked from 'package:stats':
 ## 
 ##     filter, lag
-```
-
-```
 ## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union
-```
-
-```r
 flights
-```
-
-```
 ## # A tibble: 336,776 x 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time
 ##    <int> <int> <int>    <int>          <int>     <dbl>    <int>
@@ -152,9 +108,6 @@ flights
 flight_times <- flights %>%
     select(year, month, day, hour, minute)
 flight_times
-```
-
-```
 ## # A tibble: 336,776 x 5
 ##     year month   day  hour minute
 ##    <int> <int> <int> <dbl>  <dbl>
@@ -175,9 +128,6 @@ flight_times
 ```r
 flight_times %>%
     mutate(dep_dt = make_datetime(year, month, day, hour, minute))
-```
-
-```
 ## # A tibble: 336,776 x 6
 ##     year month   day  hour minute dep_dt             
 ##    <int> <int> <int> <dbl>  <dbl> <dttm>             
@@ -199,9 +149,6 @@ flight_times %>%
 flights %>%
     select(year, month, day, hour, minute) %>%
     mutate(dep_dt = make_datetime(year, month, day, hour, minute))
-```
-
-```
 ## # A tibble: 336,776 x 6
 ##     year month   day  hour minute dep_dt             
 ##    <int> <int> <int> <dbl>  <dbl> <dttm>             
@@ -224,9 +171,6 @@ flights %>%
 ```r
 # an example of a non-standard date format
 'WED 06-JUNE-18 10:47:30 AM'
-```
-
-```
 ## [1] "WED 06-JUNE-18 10:47:30 AM"
 ```
 
@@ -252,9 +196,6 @@ curr_time <- lubridate::as_datetime('WED 06-JUNE-18 10:47:30 AM',
                        format = '%a %d-%B-%y %I:%M:%S %p',
                        tz = "EST")
 curr_time
-```
-
-```
 ## [1] "2018-06-06 10:47:30 EST"
 ```
 
@@ -386,8 +327,5 @@ Once you have a datetime object, you can then begin to do calculations and arith
 
 ```r
 now() - curr_time
-```
-
-```
-## Time difference of 12.92465 days
+## Time difference of 13.24354 days
 ```

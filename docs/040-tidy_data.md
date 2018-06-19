@@ -1,3 +1,4 @@
+
 # Tidy data
 
 Tidy data chapter is r4ds:
@@ -29,9 +30,6 @@ library(tidyr)
 
 ```r
 table4a
-```
-
-```
 ## # A tibble: 3 x 3
 ##   country     `1999` `2000`
 ## * <chr>        <int>  <int>
@@ -54,21 +52,15 @@ library(ggplot2)
 
 ggplot(table4a_tidy) +
     geom_histogram(aes(x = cases, fill = country))
-```
-
-```
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-<img src="040-tidy_data_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="040-tidy_data_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
 (table4a_tidy <- table4a %>%
     gather('2000', '1999', key = "year", value = 'cases'))
-```
-
-```
 ## # A tibble: 6 x 3
 ##   country     year   cases
 ##   <chr>       <chr>  <int>
@@ -83,14 +75,8 @@ ggplot(table4a_tidy) +
 
 ```r
 library(magrittr) # this is what actuallly gives you the pipe
-```
-
-```
 ## 
 ## Attaching package: 'magrittr'
-```
-
-```
 ## The following object is masked from 'package:tidyr':
 ## 
 ##     extract
@@ -100,9 +86,6 @@ library(magrittr) # this is what actuallly gives you the pipe
 ```r
 (table4b_tidy <- table4b %>%
     gather('1999':'2000', key = 'year', value = 'population'))
-```
-
-```
 ## # A tibble: 6 x 3
 ##   country     year  population
 ##   <chr>       <chr>      <int>
@@ -119,26 +102,15 @@ library(magrittr) # this is what actuallly gives you the pipe
 
 ```r
 library(dplyr)
-```
-
-```
 ## 
 ## Attaching package: 'dplyr'
-```
-
-```
 ## The following objects are masked from 'package:stats':
 ## 
 ##     filter, lag
-```
-
-```
 ## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union
-```
 
-```r
 # use double colon to specify which library you are getting a function from
 # base::union()
 ```
@@ -146,9 +118,6 @@ library(dplyr)
 
 ```r
 table4a_tidy
-```
-
-```
 ## # A tibble: 6 x 3
 ##   country     year   cases
 ##   <chr>       <chr>  <int>
@@ -163,9 +132,6 @@ table4a_tidy
 
 ```r
 table4b_tidy
-```
-
-```
 ## # A tibble: 6 x 3
 ##   country     year  population
 ##   <chr>       <chr>      <int>
@@ -180,13 +146,7 @@ table4b_tidy
 
 ```r
 left_join(x = table4a_tidy, y = table4b_tidy)
-```
-
-```
 ## Joining, by = c("country", "year")
-```
-
-```
 ## # A tibble: 6 x 4
 ##   country     year   cases population
 ##   <chr>       <chr>  <int>      <int>
@@ -203,9 +163,6 @@ left_join(x = table4a_tidy, y = table4b_tidy)
 
 ```r
 table2
-```
-
-```
 ## # A tibble: 12 x 4
 ##    country      year type            count
 ##    <chr>       <int> <chr>           <int>
@@ -227,9 +184,6 @@ table2
 
 ```r
 spread(table2, key = type, value = count)
-```
-
-```
 ## # A tibble: 6 x 4
 ##   country      year  cases population
 ##   <chr>       <int>  <int>      <int>
@@ -246,9 +200,6 @@ spread(table2, key = type, value = count)
 
 ```r
 table3
-```
-
-```
 ## # A tibble: 6 x 3
 ##   country      year rate             
 ## * <chr>       <int> <chr>            
@@ -265,9 +216,6 @@ table3
 ```r
 table3 %>%
     separate(rate, into = c('cases', 'population'))
-```
-
-```
 ## # A tibble: 6 x 4
 ##   country      year cases  population
 ## * <chr>       <int> <chr>  <chr>     
@@ -284,9 +232,6 @@ table3 %>%
 ```r
 table3 %>%
     separate(rate, into = c('cases', 'population'), sep = '/')
-```
-
-```
 ## # A tibble: 6 x 4
 ##   country      year cases  population
 ## * <chr>       <int> <chr>  <chr>     

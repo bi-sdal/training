@@ -219,11 +219,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Version Control</b></span></li>
-<li class="chapter" data-level="2" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2</b> Git</a><ul>
-<li class="chapter" data-level="2.1" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.1</b> Git on your own</a></li>
-<li class="chapter" data-level="2.2" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.2</b> Git with branches</a></li>
-<li class="chapter" data-level="2.3" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.3</b> Collaborating with Git</a></li>
-<li class="chapter" data-level="2.4" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.4</b> Protecting branches</a></li>
+<li class="chapter" data-level="2" data-path="version-control.html"><a href="version-control.html"><i class="fa fa-check"></i><b>2</b> Version Control</a><ul>
+<li class="chapter" data-level="2.1" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2.1</b> Git</a></li>
+<li class="chapter" data-level="2.2" data-path="git-setup.html"><a href="git-setup.html"><i class="fa fa-check"></i><b>2.2</b> Git setup</a></li>
+<li class="chapter" data-level="2.3" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.3</b> Git on your own</a></li>
+<li class="chapter" data-level="2.4" data-path="working-with-remotes.html"><a href="working-with-remotes.html"><i class="fa fa-check"></i><b>2.4</b> Working with remotes</a></li>
+<li class="chapter" data-level="2.5" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.5</b> Git with branches</a></li>
+<li class="chapter" data-level="2.6" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.6</b> Collaborating with Git</a></li>
+<li class="chapter" data-level="2.7" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.7</b> Protecting branches</a></li>
+<li class="chapter" data-level="2.8" data-path="help-faq.html"><a href="help-faq.html"><i class="fa fa-check"></i><b>2.8</b> Help! (FAQ)</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="help-faq.html"><a href="help-faq.html#general-workflow"><i class="fa fa-check"></i><b>2.8.1</b> General workflow</a></li>
+<li class="chapter" data-level="2.8.2" data-path="help-faq.html"><a href="help-faq.html#git-push-rejected-master"><i class="fa fa-check"></i><b>2.8.2</b> Git push rejected (master)</a></li>
+<li class="chapter" data-level="2.8.3" data-path="help-faq.html"><a href="help-faq.html#accidently-did-work-on-master"><i class="fa fa-check"></i><b>2.8.3</b> Accidently did work on <code>master</code>:</a></li>
+<li class="chapter" data-level="2.8.4" data-path="help-faq.html"><a href="help-faq.html#remove-datafiles-from-history"><i class="fa fa-check"></i><b>2.8.4</b> Remove data/files from history</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>III R</b></span></li>
 <li class="chapter" data-level="3" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>3</b> Data Visualization</a><ul>
@@ -368,8 +377,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>20</b> Communication</a></li>
 <li class="chapter" data-level="21" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>21</b> Shiny</a></li>
 <li class="chapter" data-level="22" data-path="text-mining.html"><a href="text-mining.html"><i class="fa fa-check"></i><b>22</b> Text Mining</a></li>
-<li class="part"><span><b>V Exercises</b></span></li>
-<li class="part"><span><b>VI Back Matter</b></span></li>
+<li class="part"><span><b>V Modeling</b></span></li>
+<li class="part"><span><b>VI Exercises</b></span></li>
+<li class="part"><span><b>VII Back Matter</b></span></li>
 <li class="chapter" data-level="" data-path="build-details.html"><a href="build-details.html"><i class="fa fa-check"></i>Build Details</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -394,19 +404,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="non-standard-date-formatting" class="section level2">
 <h2><span class="header-section-number">10.3</span> Non-standard date formatting</h2>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" data-line-number="1"><span class="co"># an example of a non-standard date format</span></a>
-<a class="sourceLine" id="cb337-2" data-line-number="2"><span class="st">&#39;WED 06-JUNE-18 10:47:30 AM&#39;</span></a></code></pre></div>
-<pre><code>## [1] &quot;WED 06-JUNE-18 10:47:30 AM&quot;</code></pre>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" data-line-number="1"><span class="co"># an example of a non-standard date format</span></a>
+<a class="sourceLine" id="cb179-2" data-line-number="2"><span class="st">&#39;WED 06-JUNE-18 10:47:30 AM&#39;</span></a>
+<a class="sourceLine" id="cb179-3" data-line-number="3"><span class="co">## [1] &quot;WED 06-JUNE-18 10:47:30 AM&quot;</span></a></code></pre></div>
 <p>If you look at the <code>as_datetime</code> function, under the ‘format’ section there is a link to the <code>strptime</code> documentation</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" data-line-number="1">?lubridate<span class="op">::</span>as_datetime</a></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1">?lubridate<span class="op">::</span>as_datetime</a></code></pre></div>
 <p>If you look at the <code>strptime</code> documentation, you will get a nice table of codes you can use to create your own datetime pattern</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" data-line-number="1">?strptime</a></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" data-line-number="1">?strptime</a></code></pre></div>
 <p>You can now use these variables to create a pattern for your custom datetime string</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1">curr_time &lt;-<span class="st"> </span>lubridate<span class="op">::</span><span class="kw">as_datetime</span>(<span class="st">&#39;WED 06-JUNE-18 10:47:30 AM&#39;</span>,</a>
-<a class="sourceLine" id="cb341-2" data-line-number="2">                       <span class="dt">format =</span> <span class="st">&#39;%a %d-%B-%y %I:%M:%S %p&#39;</span>,</a>
-<a class="sourceLine" id="cb341-3" data-line-number="3">                       <span class="dt">tz =</span> <span class="st">&quot;EST&quot;</span>)</a>
-<a class="sourceLine" id="cb341-4" data-line-number="4">curr_time</a></code></pre></div>
-<pre><code>## [1] &quot;2018-06-06 10:47:30 EST&quot;</code></pre>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1">curr_time &lt;-<span class="st"> </span>lubridate<span class="op">::</span><span class="kw">as_datetime</span>(<span class="st">&#39;WED 06-JUNE-18 10:47:30 AM&#39;</span>,</a>
+<a class="sourceLine" id="cb182-2" data-line-number="2">                       <span class="dt">format =</span> <span class="st">&#39;%a %d-%B-%y %I:%M:%S %p&#39;</span>,</a>
+<a class="sourceLine" id="cb182-3" data-line-number="3">                       <span class="dt">tz =</span> <span class="st">&quot;EST&quot;</span>)</a>
+<a class="sourceLine" id="cb182-4" data-line-number="4">curr_time</a>
+<a class="sourceLine" id="cb182-5" data-line-number="5"><span class="co">## [1] &quot;2018-06-06 10:47:30 EST&quot;</span></a></code></pre></div>
 </div>
             </section>
 

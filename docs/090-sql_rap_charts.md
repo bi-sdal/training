@@ -1,3 +1,4 @@
+
 <!--
 Message to anyone editing this page
 Note that most of the chunks are not being evaluated,
@@ -30,9 +31,6 @@ rap_chart_singles <- readxl::read_excel("data/Rap_Charts.xlsx", sheet = "Singles
 
 ```r
 head(rap_chart_artists)
-```
-
-```
 ## # A tibble: 4 x 4
 ##   Artist_ID First_Name Last_Name Psuedonym  
 ##       <dbl> <chr>      <chr>     <chr>      
@@ -45,9 +43,6 @@ head(rap_chart_artists)
 
 ```r
 head(rap_chart_singles)
-```
-
-```
 ## # A tibble: 6 x 5
 ##   Artist_ID  Year Single                     Top_US_Rap_Chart Album       
 ##       <dbl> <dbl> <chr>                                 <dbl> <chr>       
@@ -155,49 +150,26 @@ ORDER BY "Psuedonym", "Top_US_Rap_Chart"
 
 ```r
 library(dplyr)
-```
-
-```
 ## 
 ## Attaching package: 'dplyr'
-```
-
-```
 ## The following objects are masked from 'package:stats':
 ## 
 ##     filter, lag
-```
-
-```
 ## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union
-```
-
-```r
 library(data.table)
-```
-
-```
 ## 
 ## Attaching package: 'data.table'
-```
-
-```
 ## The following objects are masked from 'package:dplyr':
 ## 
 ##     between, first, last
-```
 
-```r
 rap_chart_artists <- readxl::read_excel("data/Rap_Charts.xlsx", sheet = "Artists")
 rap_chart_singles <- readxl::read_excel("data/Rap_Charts.xlsx", sheet = "Singles")
 
 (rap_artist_singles <- rap_chart_artists %>%
     dplyr::full_join(rap_chart_singles, by = "Artist_ID"))
-```
-
-```
 ## # A tibble: 167 x 8
 ##    Artist_ID First_Name Last_Name Psuedonym  Year Single  Top_US_Rap_Chart
 ##        <dbl> <chr>      <chr>     <chr>     <dbl> <chr>              <dbl>
@@ -222,9 +194,6 @@ rap_artist_singles_dt <- setDT(rap_artist_singles)
 
 ```r
 rap_artist_singles_dt[Psuedonym %like% "LL"]
-```
-
-```
 ##     Artist_ID First_Name Last_Name Psuedonym Year
 ##  1:         1      James     Smith LL Cool J 1984
 ##  2:         1      James     Smith LL Cool J 1985
@@ -416,9 +385,6 @@ rap_artist_singles_dt[Psuedonym %like% "LL"]
 
 ```r
 rap_artist_singles_dt[Psuedonym %like% "LL", .(Psuedonym, Single, Top_US_Rap_Chart)]
-```
-
-```
 ##     Psuedonym
 ##  1: LL Cool J
 ##  2: LL Cool J
@@ -610,9 +576,6 @@ rap_artist_singles_dt[Psuedonym %like% "LL", .(Psuedonym, Single, Top_US_Rap_Cha
 
 ```r
 rap_artist_singles_dt[Psuedonym %like% "LL" & !is.na(Top_US_Rap_Chart), .(Psuedonym, Single, Top_US_Rap_Chart)]
-```
-
-```
 ##     Psuedonym                                                      Single
 ##  1: LL Cool J                                      "I'm That Type of Guy"
 ##  2: LL Cool J                                              "Big Ole Butt"
@@ -678,9 +641,6 @@ rap_artist_singles_dt[Psuedonym %like% "LL" & !is.na(Top_US_Rap_Chart), .(Psuedo
 
 ```r
 rap_artist_singles_dt[Psuedonym %like% "LL" & !is.na(Top_US_Rap_Chart), .(.N), c("Psuedonym", "Top_US_Rap_Chart")]
-```
-
-```
 ##     Psuedonym Top_US_Rap_Chart N
 ##  1: LL Cool J                1 8
 ##  2: LL Cool J               13 1
@@ -704,9 +664,6 @@ rap_artist_singles_dt[Psuedonym %like% "LL" & !is.na(Top_US_Rap_Chart), .(.N), c
 
 ```r
 rap_artist_singles_dt[Psuedonym %like% "LL" & !is.na(Top_US_Rap_Chart), .(.N), c("Psuedonym", "Top_US_Rap_Chart")][order(Top_US_Rap_Chart)]
-```
-
-```
 ##     Psuedonym Top_US_Rap_Chart N
 ##  1: LL Cool J                1 8
 ##  2: LL Cool J                2 3

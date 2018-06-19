@@ -1,3 +1,4 @@
+
 # data.table
 
 
@@ -24,9 +25,6 @@ flights <- as.data.table(flights)
 
 ```r
 class(flights)
-```
-
-```
 ## [1] "data.table" "data.frame"
 ```
 
@@ -41,9 +39,6 @@ DT[filter by row, calculations on columns, groupby variable]
 
 ```r
 flights[month == 11]
-```
-
-```
 ##        year month day dep_time sched_dep_time dep_delay arr_time
 ##     1: 2013    11   1        5           2359         6      352
 ##     2: 2013    11   1       35           2250       105      123
@@ -86,9 +81,6 @@ flights[month == 11]
 
 ```r
 flights[month == 11 | month == 12]
-```
-
-```
 ##        year month day dep_time sched_dep_time dep_delay arr_time
 ##     1: 2013    11   1        5           2359         6      352
 ##     2: 2013    11   1       35           2250       105      123
@@ -130,9 +122,6 @@ flights[month == 11 | month == 12]
 
 ```r
 flights[month %in% c(11, 12)]
-```
-
-```
 ##        year month day dep_time sched_dep_time dep_delay arr_time
 ##     1: 2013    11   1        5           2359         6      352
 ##     2: 2013    11   1       35           2250       105      123
@@ -174,9 +163,6 @@ flights[month %in% c(11, 12)]
 
 ```r
 flights[, arr_delay]
-```
-
-```
 ##     [1]   11   20   33  -18  -25   12   19  -14   -8    8   -2   -3    7
 ##    [14]  -14   31   -4   -8   -7   12   -6   -8   16  -12   -8  -17   32
 ##    [27]   14    4  -21   -9    3    5    1   29   10    0   -3   29   14
@@ -7877,9 +7863,6 @@ flights[, arr_delay]
 
 ```r
 flights[, list(arr_delay)]
-```
-
-```
 ##         arr_delay
 ##      1:        11
 ##      2:        20
@@ -7898,9 +7881,6 @@ flights[, list(arr_delay)]
 
 ```r
 flights[, list(arr_delay, dep_delay)]
-```
-
-```
 ##         arr_delay dep_delay
 ##      1:        11         2
 ##      2:        20         4
@@ -7920,9 +7900,6 @@ using `list()` is exactly ths same as using `.()`
 
 ```r
 flights[, .(arr_delay, dep_delay)]
-```
-
-```
 ##         arr_delay dep_delay
 ##      1:        11         2
 ##      2:        20         4
@@ -7942,9 +7919,6 @@ flights[, .(arr_delay, dep_delay)]
 
 ```r
 flights[, sum((arr_delay + dep_delay), na.rm = TRUE)]
-```
-
-```
 ## [1] 6367054
 ```
 
@@ -7953,9 +7927,6 @@ flights[, sum((arr_delay + dep_delay), na.rm = TRUE)]
 flights[origin == "JFK" & month == 6,
         .(m_arr = mean(arr_delay, na.rm = TRUE),
           m_dep = mean(dep_delay, na.rm = TRUE))]
-```
-
-```
 ##       m_arr    m_dep
 ## 1: 17.59693 20.49973
 ```
@@ -7963,9 +7934,6 @@ flights[origin == "JFK" & month == 6,
 
 ```r
 flights[origin == "JFK" & month == 6,.(m_arr = mean(arr_delay, na.rm = TRUE), m_dep = mean(dep_delay, na.rm = TRUE))]
-```
-
-```
 ##       m_arr    m_dep
 ## 1: 17.59693 20.49973
 ```
@@ -7975,9 +7943,6 @@ flights[origin == "JFK" & month == 6,.(m_arr = mean(arr_delay, na.rm = TRUE), m_
 
 ```r
 flights[origin == 'JFK' & month == 6, .N]
-```
-
-```
 ## [1] 9472
 ```
 
@@ -7987,26 +7952,14 @@ flights[origin == 'JFK' & month == 6, .N]
 
 ```r
 library(dplyr)
-```
-
-```
 ## 
 ## Attaching package: 'dplyr'
-```
-
-```
 ## The following objects are masked from 'package:data.table':
 ## 
 ##     between, first, last
-```
-
-```
 ## The following objects are masked from 'package:stats':
 ## 
 ##     filter, lag
-```
-
-```
 ## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union
@@ -8018,9 +7971,6 @@ library(dplyr)
 flights %>%
     filter(origin == 'JFK', month == 6) %>%
     summarize(count = n())
-```
-
-```
 ##   count
 ## 1  9472
 ```
@@ -8028,9 +7978,6 @@ flights %>%
 
 ```r
 flights[, .N, by = origin]
-```
-
-```
 ##    origin      N
 ## 1:    EWR 120835
 ## 2:    LGA 104662
@@ -8041,9 +7988,6 @@ flights[, .N, by = origin]
 
 ```r
 flights[, .N, origin]
-```
-
-```
 ##    origin      N
 ## 1:    EWR 120835
 ## 2:    LGA 104662
@@ -8055,9 +7999,6 @@ flights[, .N, origin]
 flights %>%
     group_by(origin) %>%
     summarize(count = n())
-```
-
-```
 ## # A tibble: 3 x 2
 ##   origin  count
 ##   <chr>   <int>

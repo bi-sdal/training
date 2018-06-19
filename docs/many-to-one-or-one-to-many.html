@@ -219,11 +219,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Version Control</b></span></li>
-<li class="chapter" data-level="2" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2</b> Git</a><ul>
-<li class="chapter" data-level="2.1" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.1</b> Git on your own</a></li>
-<li class="chapter" data-level="2.2" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.2</b> Git with branches</a></li>
-<li class="chapter" data-level="2.3" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.3</b> Collaborating with Git</a></li>
-<li class="chapter" data-level="2.4" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.4</b> Protecting branches</a></li>
+<li class="chapter" data-level="2" data-path="version-control.html"><a href="version-control.html"><i class="fa fa-check"></i><b>2</b> Version Control</a><ul>
+<li class="chapter" data-level="2.1" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2.1</b> Git</a></li>
+<li class="chapter" data-level="2.2" data-path="git-setup.html"><a href="git-setup.html"><i class="fa fa-check"></i><b>2.2</b> Git setup</a></li>
+<li class="chapter" data-level="2.3" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.3</b> Git on your own</a></li>
+<li class="chapter" data-level="2.4" data-path="working-with-remotes.html"><a href="working-with-remotes.html"><i class="fa fa-check"></i><b>2.4</b> Working with remotes</a></li>
+<li class="chapter" data-level="2.5" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.5</b> Git with branches</a></li>
+<li class="chapter" data-level="2.6" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.6</b> Collaborating with Git</a></li>
+<li class="chapter" data-level="2.7" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.7</b> Protecting branches</a></li>
+<li class="chapter" data-level="2.8" data-path="help-faq.html"><a href="help-faq.html"><i class="fa fa-check"></i><b>2.8</b> Help! (FAQ)</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="help-faq.html"><a href="help-faq.html#general-workflow"><i class="fa fa-check"></i><b>2.8.1</b> General workflow</a></li>
+<li class="chapter" data-level="2.8.2" data-path="help-faq.html"><a href="help-faq.html#git-push-rejected-master"><i class="fa fa-check"></i><b>2.8.2</b> Git push rejected (master)</a></li>
+<li class="chapter" data-level="2.8.3" data-path="help-faq.html"><a href="help-faq.html#accidently-did-work-on-master"><i class="fa fa-check"></i><b>2.8.3</b> Accidently did work on <code>master</code>:</a></li>
+<li class="chapter" data-level="2.8.4" data-path="help-faq.html"><a href="help-faq.html#remove-datafiles-from-history"><i class="fa fa-check"></i><b>2.8.4</b> Remove data/files from history</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>III R</b></span></li>
 <li class="chapter" data-level="3" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>3</b> Data Visualization</a><ul>
@@ -368,8 +377,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>20</b> Communication</a></li>
 <li class="chapter" data-level="21" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>21</b> Shiny</a></li>
 <li class="chapter" data-level="22" data-path="text-mining.html"><a href="text-mining.html"><i class="fa fa-check"></i><b>22</b> Text Mining</a></li>
-<li class="part"><span><b>V Exercises</b></span></li>
-<li class="part"><span><b>VI Back Matter</b></span></li>
+<li class="part"><span><b>V Modeling</b></span></li>
+<li class="part"><span><b>VI Exercises</b></span></li>
+<li class="part"><span><b>VII Back Matter</b></span></li>
 <li class="chapter" data-level="" data-path="build-details.html"><a href="build-details.html"><i class="fa fa-check"></i>Build Details</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -395,47 +405,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="many-to-one-or-one-to-many" class="section level2">
 <h2><span class="header-section-number">7.3</span> many to one OR one to many</h2>
 <p>In a many-to-one merge, one of the tables have duplicate keys</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1">(x &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
-<a class="sourceLine" id="cb190-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_x,</a>
-<a class="sourceLine" id="cb190-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</a>
-<a class="sourceLine" id="cb190-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</a>
-<a class="sourceLine" id="cb190-5" data-line-number="5">    <span class="dv">3</span>, <span class="st">&quot;x3&quot;</span>,</a>
-<a class="sourceLine" id="cb190-6" data-line-number="6">    <span class="dv">1</span>, <span class="st">&quot;x4&quot;</span>,</a>
-<a class="sourceLine" id="cb190-7" data-line-number="7">    <span class="dv">1</span>, <span class="st">&quot;x5&quot;</span>,</a>
-<a class="sourceLine" id="cb190-8" data-line-number="8">    <span class="dv">1</span>, <span class="st">&quot;x6&quot;</span></a>
-<a class="sourceLine" id="cb190-9" data-line-number="9">))</a></code></pre></div>
-<pre><code>## # A tibble: 6 x 2
-##     key val_x
-##   &lt;dbl&gt; &lt;chr&gt;
-## 1     1 x1   
-## 2     2 x2   
-## 3     3 x3   
-## 4     1 x4   
-## 5     1 x5   
-## 6     1 x6</code></pre>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1">(y &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
-<a class="sourceLine" id="cb192-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_y,</a>
-<a class="sourceLine" id="cb192-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</a>
-<a class="sourceLine" id="cb192-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</a>
-<a class="sourceLine" id="cb192-5" data-line-number="5">    <span class="dv">4</span>, <span class="st">&quot;y3&quot;</span></a>
-<a class="sourceLine" id="cb192-6" data-line-number="6">))</a></code></pre></div>
-<pre><code>## # A tibble: 3 x 2
-##     key val_y
-##   &lt;dbl&gt; &lt;chr&gt;
-## 1     1 y1   
-## 2     2 y2   
-## 3     4 y3</code></pre>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1">x <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb194-2" data-line-number="2"><span class="st">    </span><span class="kw">left_join</span>(y, <span class="dt">by =</span> <span class="st">&#39;key&#39;</span>)</a></code></pre></div>
-<pre><code>## # A tibble: 6 x 3
-##     key val_x val_y
-##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
-## 1     1 x1    y1   
-## 2     2 x2    y2   
-## 3     3 x3    &lt;NA&gt; 
-## 4     1 x4    y1   
-## 5     1 x5    y1   
-## 6     1 x6    y1</code></pre>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1">(x &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb117-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_x,</a>
+<a class="sourceLine" id="cb117-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</a>
+<a class="sourceLine" id="cb117-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</a>
+<a class="sourceLine" id="cb117-5" data-line-number="5">    <span class="dv">3</span>, <span class="st">&quot;x3&quot;</span>,</a>
+<a class="sourceLine" id="cb117-6" data-line-number="6">    <span class="dv">1</span>, <span class="st">&quot;x4&quot;</span>,</a>
+<a class="sourceLine" id="cb117-7" data-line-number="7">    <span class="dv">1</span>, <span class="st">&quot;x5&quot;</span>,</a>
+<a class="sourceLine" id="cb117-8" data-line-number="8">    <span class="dv">1</span>, <span class="st">&quot;x6&quot;</span></a>
+<a class="sourceLine" id="cb117-9" data-line-number="9">))</a>
+<a class="sourceLine" id="cb117-10" data-line-number="10"><span class="co">## # A tibble: 6 x 2</span></a>
+<a class="sourceLine" id="cb117-11" data-line-number="11"><span class="co">##     key val_x</span></a>
+<a class="sourceLine" id="cb117-12" data-line-number="12"><span class="co">##   &lt;dbl&gt; &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb117-13" data-line-number="13"><span class="co">## 1     1 x1   </span></a>
+<a class="sourceLine" id="cb117-14" data-line-number="14"><span class="co">## 2     2 x2   </span></a>
+<a class="sourceLine" id="cb117-15" data-line-number="15"><span class="co">## 3     3 x3   </span></a>
+<a class="sourceLine" id="cb117-16" data-line-number="16"><span class="co">## 4     1 x4   </span></a>
+<a class="sourceLine" id="cb117-17" data-line-number="17"><span class="co">## 5     1 x5   </span></a>
+<a class="sourceLine" id="cb117-18" data-line-number="18"><span class="co">## 6     1 x6</span></a>
+<a class="sourceLine" id="cb117-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb117-20" data-line-number="20">(y &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb117-21" data-line-number="21">    <span class="op">~</span>key, <span class="op">~</span>val_y,</a>
+<a class="sourceLine" id="cb117-22" data-line-number="22">    <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</a>
+<a class="sourceLine" id="cb117-23" data-line-number="23">    <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</a>
+<a class="sourceLine" id="cb117-24" data-line-number="24">    <span class="dv">4</span>, <span class="st">&quot;y3&quot;</span></a>
+<a class="sourceLine" id="cb117-25" data-line-number="25">))</a>
+<a class="sourceLine" id="cb117-26" data-line-number="26"><span class="co">## # A tibble: 3 x 2</span></a>
+<a class="sourceLine" id="cb117-27" data-line-number="27"><span class="co">##     key val_y</span></a>
+<a class="sourceLine" id="cb117-28" data-line-number="28"><span class="co">##   &lt;dbl&gt; &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb117-29" data-line-number="29"><span class="co">## 1     1 y1   </span></a>
+<a class="sourceLine" id="cb117-30" data-line-number="30"><span class="co">## 2     2 y2   </span></a>
+<a class="sourceLine" id="cb117-31" data-line-number="31"><span class="co">## 3     4 y3</span></a></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1">x <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb118-2" data-line-number="2"><span class="st">    </span><span class="kw">left_join</span>(y, <span class="dt">by =</span> <span class="st">&#39;key&#39;</span>)</a>
+<a class="sourceLine" id="cb118-3" data-line-number="3"><span class="co">## # A tibble: 6 x 3</span></a>
+<a class="sourceLine" id="cb118-4" data-line-number="4"><span class="co">##     key val_x val_y</span></a>
+<a class="sourceLine" id="cb118-5" data-line-number="5"><span class="co">##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb118-6" data-line-number="6"><span class="co">## 1     1 x1    y1   </span></a>
+<a class="sourceLine" id="cb118-7" data-line-number="7"><span class="co">## 2     2 x2    y2   </span></a>
+<a class="sourceLine" id="cb118-8" data-line-number="8"><span class="co">## 3     3 x3    &lt;NA&gt; </span></a>
+<a class="sourceLine" id="cb118-9" data-line-number="9"><span class="co">## 4     1 x4    y1   </span></a>
+<a class="sourceLine" id="cb118-10" data-line-number="10"><span class="co">## 5     1 x5    y1   </span></a>
+<a class="sourceLine" id="cb118-11" data-line-number="11"><span class="co">## 6     1 x6    y1</span></a></code></pre></div>
 </div>
             </section>
 

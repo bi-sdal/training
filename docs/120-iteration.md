@@ -1,3 +1,4 @@
+
 # Iteration
 
 ## Broadcasting
@@ -10,18 +11,12 @@ f_values <- c(0, 32, 212, -40)
 
 ```r
 f_values * 10
-```
-
-```
 ## [1]    0  320 2120 -400
 ```
 
 
 ```r
 f_values * c(10, 100)
-```
-
-```
 ## [1]     0  3200  2120 -4000
 ```
 
@@ -65,9 +60,6 @@ for (pizza in f_values) {
     converted <- f_c(pizza)
     print(converted)
 }
-```
-
-```
 ## [1] 0
 ## [1] -17.77778
 ## [1] 32
@@ -90,9 +82,6 @@ for (i in seq_along(f_values)) {
     converted <- f_c(val)
     print(converted)
 }
-```
-
-```
 ## [1] 1
 ## [1] 0
 ## [1] -17.77778
@@ -123,9 +112,6 @@ for (to_be_converted_position in seq_along(f_values)) {
 
 ```r
 converted_values
-```
-
-```
 ## [1] -17.22222 -16.66667 -16.11111 -15.55556
 ```
 
@@ -139,9 +125,6 @@ library(purrr)
 
 ```r
 map(f_values, f_c)
-```
-
-```
 ## [[1]]
 ## [1] -17.77778
 ## 
@@ -158,18 +141,12 @@ map(f_values, f_c)
 
 ```r
 map_dbl(f_values, f_c)
-```
-
-```
 ## [1] -17.77778   0.00000 100.00000 -40.00000
 ```
 
 
 ```r
 mtcars
-```
-
-```
 ##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 ## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
 ## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
@@ -208,9 +185,6 @@ mtcars
 
 ```r
 map(mtcars, class)
-```
-
-```
 ## $mpg
 ## [1] "numeric"
 ## 
@@ -248,9 +222,6 @@ map(mtcars, class)
 
 ```r
 map_chr(mtcars, class)
-```
-
-```
 ##       mpg       cyl      disp        hp      drat        wt      qsec 
 ## "numeric" "numeric" "numeric" "numeric" "numeric" "numeric" "numeric" 
 ##        vs        am      gear      carb 
@@ -261,9 +232,6 @@ map_chr(mtcars, class)
 
 ```r
 map_dbl(mtcars, mean)
-```
-
-```
 ##        mpg        cyl       disp         hp       drat         wt 
 ##  20.090625   6.187500 230.721875 146.687500   3.596563   3.217250 
 ##       qsec         vs         am       gear       carb 
@@ -273,9 +241,6 @@ map_dbl(mtcars, mean)
 
 ```r
 map(mtcars, summary)
-```
-
-```
 ## $mpg
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   10.40   15.43   19.20   20.09   22.80   33.90 
@@ -331,9 +296,6 @@ apply family of functions
 
 ```r
 lapply(f_values, f_c)
-```
-
-```
 ## [[1]]
 ## [1] -17.77778
 ## 
@@ -352,9 +314,6 @@ lapply(f_values, f_c)
 
 ```r
 sapply(f_values, f_c)
-```
-
-```
 ## [1] -17.77778   0.00000 100.00000 -40.00000
 ```
 
@@ -381,13 +340,7 @@ my_mean <- function(x, y){
 
 ```r
 mapply(my_mean, v1, v2)
-```
-
-```
 ## [1]  50.5 101.0 151.5 202.0
-```
-
-```r
 # this is the same as purrr::map2
 ```
 
@@ -396,9 +349,6 @@ mapply(my_mean, v1, v2)
 
 ```r
 apply(mtcars, MARGIN = 1, mean)
-```
-
-```
 ##           Mazda RX4       Mazda RX4 Wag          Datsun 710 
 ##            29.90727            29.98136            23.59818 
 ##      Hornet 4 Drive   Hornet Sportabout             Valiant 
@@ -426,9 +376,6 @@ apply(mtcars, MARGIN = 1, mean)
 
 ```r
 apply(mtcars, MARGIN = 2, mean)
-```
-
-```
 ##        mpg        cyl       disp         hp       drat         wt 
 ##  20.090625   6.187500 230.721875 146.687500   3.596563   3.217250 
 ##       qsec         vs         am       gear       carb 

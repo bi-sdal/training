@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="project-template.html">
-<link rel="next" href="git-1.html">
+<link rel="next" href="version-control.html">
 <script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -219,11 +219,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Version Control</b></span></li>
-<li class="chapter" data-level="2" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2</b> Git</a><ul>
-<li class="chapter" data-level="2.1" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.1</b> Git on your own</a></li>
-<li class="chapter" data-level="2.2" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.2</b> Git with branches</a></li>
-<li class="chapter" data-level="2.3" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.3</b> Collaborating with Git</a></li>
-<li class="chapter" data-level="2.4" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.4</b> Protecting branches</a></li>
+<li class="chapter" data-level="2" data-path="version-control.html"><a href="version-control.html"><i class="fa fa-check"></i><b>2</b> Version Control</a><ul>
+<li class="chapter" data-level="2.1" data-path="git-1.html"><a href="git-1.html"><i class="fa fa-check"></i><b>2.1</b> Git</a></li>
+<li class="chapter" data-level="2.2" data-path="git-setup.html"><a href="git-setup.html"><i class="fa fa-check"></i><b>2.2</b> Git setup</a></li>
+<li class="chapter" data-level="2.3" data-path="git-on-your-own.html"><a href="git-on-your-own.html"><i class="fa fa-check"></i><b>2.3</b> Git on your own</a></li>
+<li class="chapter" data-level="2.4" data-path="working-with-remotes.html"><a href="working-with-remotes.html"><i class="fa fa-check"></i><b>2.4</b> Working with remotes</a></li>
+<li class="chapter" data-level="2.5" data-path="git-with-branches.html"><a href="git-with-branches.html"><i class="fa fa-check"></i><b>2.5</b> Git with branches</a></li>
+<li class="chapter" data-level="2.6" data-path="collaborating-with-git.html"><a href="collaborating-with-git.html"><i class="fa fa-check"></i><b>2.6</b> Collaborating with Git</a></li>
+<li class="chapter" data-level="2.7" data-path="protecting-branches.html"><a href="protecting-branches.html"><i class="fa fa-check"></i><b>2.7</b> Protecting branches</a></li>
+<li class="chapter" data-level="2.8" data-path="help-faq.html"><a href="help-faq.html"><i class="fa fa-check"></i><b>2.8</b> Help! (FAQ)</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="help-faq.html"><a href="help-faq.html#general-workflow"><i class="fa fa-check"></i><b>2.8.1</b> General workflow</a></li>
+<li class="chapter" data-level="2.8.2" data-path="help-faq.html"><a href="help-faq.html#git-push-rejected-master"><i class="fa fa-check"></i><b>2.8.2</b> Git push rejected (master)</a></li>
+<li class="chapter" data-level="2.8.3" data-path="help-faq.html"><a href="help-faq.html#accidently-did-work-on-master"><i class="fa fa-check"></i><b>2.8.3</b> Accidently did work on <code>master</code>:</a></li>
+<li class="chapter" data-level="2.8.4" data-path="help-faq.html"><a href="help-faq.html#remove-datafiles-from-history"><i class="fa fa-check"></i><b>2.8.4</b> Remove data/files from history</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>III R</b></span></li>
 <li class="chapter" data-level="3" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>3</b> Data Visualization</a><ul>
@@ -368,8 +377,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>20</b> Communication</a></li>
 <li class="chapter" data-level="21" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>21</b> Shiny</a></li>
 <li class="chapter" data-level="22" data-path="text-mining.html"><a href="text-mining.html"><i class="fa fa-check"></i><b>22</b> Text Mining</a></li>
-<li class="part"><span><b>V Exercises</b></span></li>
-<li class="part"><span><b>VI Back Matter</b></span></li>
+<li class="part"><span><b>V Modeling</b></span></li>
+<li class="part"><span><b>VI Exercises</b></span></li>
+<li class="part"><span><b>VII Back Matter</b></span></li>
 <li class="chapter" data-level="" data-path="build-details.html"><a href="build-details.html"><i class="fa fa-check"></i>Build Details</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -401,40 +411,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 In general this should be cloned into the <code>git</code> folder in your home folder.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="bu">cd</span> ~</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="fu">git</span> clone <span class="op">&lt;</span>REPO URL HERE<span class="op">&gt;</span></a></code></pre></div>
-<p><img src="figs/get_repo/010-gitlab.png" /><!-- --></p>
-<p><img src="figs/get_repo/020-get_repo_url.png" /><!-- --></p>
+<p><img src="figs/get_repo/010-gitlab.png" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="figs/get_repo/020-get_repo_url.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="using-rstudio" class="section level3">
 <h3><span class="header-section-number">1.4.2</span> Using RStudio</h3>
 <p>The steps in RStudio actually do the same thing as the steps from the terminal.</p>
 <p><strong>Find the repository you plan to work on.</strong></p>
-<p><img src="figs/get_repo/010-gitlab.png" /><!-- --></p>
+<p><img src="figs/get_repo/010-gitlab.png" width="100%" style="display: block; margin: auto;" /></p>
 <hr>
 <p><strong>Get the <code>SSH</code> url.</strong></p>
 <p>You can also use the <code>HTTPS</code> url if you have not setup your SSH keys.</p>
-<p><img src="figs/get_repo/020-get_repo_url.png" /><!-- --></p>
+<p><img src="figs/get_repo/020-get_repo_url.png" width="100%" style="display: block; margin: auto;" /></p>
 <hr>
 <p><strong>File &gt; New Project</strong></p>
-<p><img src="figs/get_repo/030-new_project.png" /><!-- --></p>
+<p><img src="figs/get_repo/030-new_project.png" width="100%" style="display: block; margin: auto;" /></p>
 <hr>
 <p><strong>Version Control</strong></p>
-<p><img src="figs/get_repo/040-version_control.png" /><!-- --></p>
+<p><img src="figs/get_repo/040-version_control.png" width="100%" style="display: block; margin: auto;" /></p>
 <hr>
 <p><strong>Git</strong></p>
-<p><img src="figs/get_repo/050-git.png" /><!-- --></p>
+<p><img src="figs/get_repo/050-git.png" width="100%" style="display: block; margin: auto;" /></p>
 <hr>
 <p><strong>Enter repository URL</strong></p>
 <p>Paste in the repository URL from earlier.
 The “Project data name” should auto fill itself with the name of the repository (selected in blue text).</p>
 <p>It’s highly advised to put the project into a folder designated for repositories (e.g., git, Repositories).
 You can make sure the project get’s <code>clone</code>d to the correct place in the “Create project as a subdirectory of” section of the page.</p>
-<p><img src="figs/get_repo/060-paste_screen.png" /><!-- --></p>
+<p><img src="figs/get_repo/060-paste_screen.png" width="100%" style="display: block; margin: auto;" /></p>
 <hr>
 <p><strong>The loaded project</strong></p>
 <p>RStudio will <code>git clone</code> the repository to the designated folder and open the project.
 The top right corner will tell you which project you are in.</p>
 <p>Make sure you check this everytime you start working.</p>
-<p><img src="figs/get_repo/070-check_project.png" /><!-- --></p>
+<p><img src="figs/get_repo/070-check_project.png" width="100%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
@@ -449,7 +459,7 @@ The top right corner will tell you which project you are in.</p>
         </div>
       </div>
 <a href="project-template.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="git-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="version-control.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>

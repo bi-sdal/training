@@ -1,3 +1,4 @@
+
 # Relational Data in R
 
 Relational data chapter in r4ds
@@ -21,20 +22,11 @@ Resources:
 ```r
 library(tibble)
 library(dplyr)
-```
-
-```
 ## 
 ## Attaching package: 'dplyr'
-```
-
-```
 ## The following objects are masked from 'package:stats':
 ## 
 ##     filter, lag
-```
-
-```
 ## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union
@@ -49,9 +41,6 @@ x <- tribble(
     3, "x3"
 )
 x
-```
-
-```
 ## # A tibble: 3 x 2
 ##     key val_x
 ##   <dbl> <chr>
@@ -69,9 +58,6 @@ y <- tribble(
     4, "y3"
 )
 y
-```
-
-```
 ## # A tibble: 3 x 2
 ##     key val_y
 ##   <dbl> <chr>
@@ -93,9 +79,6 @@ In a one-to-one merge, there are no duplicate keys in both tables.
 ```r
 x %>% 
     inner_join(y, by = 'key')
-```
-
-```
 ## # A tibble: 2 x 3
 ##     key val_x val_y
 ##   <dbl> <chr> <chr>
@@ -108,9 +91,6 @@ x %>%
 ```r
 x %>% 
     left_join(y, by = 'key')
-```
-
-```
 ## # A tibble: 3 x 3
 ##     key val_x val_y
 ##   <dbl> <chr> <chr>
@@ -123,9 +103,6 @@ x %>%
 ```r
 x %>% 
     right_join(y, by = 'key')
-```
-
-```
 ## # A tibble: 3 x 3
 ##     key val_x val_y
 ##   <dbl> <chr> <chr>
@@ -138,9 +115,6 @@ x %>%
 ```r
 x %>% 
     full_join(y, by = 'key')
-```
-
-```
 ## # A tibble: 4 x 3
 ##     key val_x val_y
 ##   <dbl> <chr> <chr>
@@ -165,9 +139,6 @@ In a many-to-one merge, one of the tables have duplicate keys
     1, "x5",
     1, "x6"
 ))
-```
-
-```
 ## # A tibble: 6 x 2
 ##     key val_x
 ##   <dbl> <chr>
@@ -177,18 +148,13 @@ In a many-to-one merge, one of the tables have duplicate keys
 ## 4     1 x4   
 ## 5     1 x5   
 ## 6     1 x6
-```
 
-```r
 (y <- tribble(
     ~key, ~val_y,
     1, "y1",
     2, "y2",
     4, "y3"
 ))
-```
-
-```
 ## # A tibble: 3 x 2
 ##     key val_y
 ##   <dbl> <chr>
@@ -201,9 +167,6 @@ In a many-to-one merge, one of the tables have duplicate keys
 ```r
 x %>%
     left_join(y, by = 'key')
-```
-
-```
 ## # A tibble: 6 x 3
 ##     key val_x val_y
 ##   <dbl> <chr> <chr>
@@ -231,9 +194,6 @@ You end up with what's known as a cartesian product of the keys.
     1, "x5",
     1, "x6"
 ))
-```
-
-```
 ## # A tibble: 6 x 2
 ##     key val_x
 ##   <dbl> <chr>
@@ -243,9 +203,7 @@ You end up with what's known as a cartesian product of the keys.
 ## 4     1 x4   
 ## 5     1 x5   
 ## 6     1 x6
-```
 
-```r
 (y <- tribble(
     ~key, ~val_y,
     1, "y1",
@@ -254,9 +212,6 @@ You end up with what's known as a cartesian product of the keys.
     1, "y4",
     1, "y5"
 ))
-```
-
-```
 ## # A tibble: 5 x 2
 ##     key val_y
 ##   <dbl> <chr>
@@ -273,9 +228,6 @@ A many to many join creates a cartesian product
 ```r
 x %>%
     left_join(y, by = 'key')
-```
-
-```
 ## # A tibble: 14 x 3
 ##      key val_x val_y
 ##    <dbl> <chr> <chr>

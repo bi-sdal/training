@@ -1,3 +1,4 @@
+
 Conditionals
 
 ## if statements
@@ -19,13 +20,7 @@ k_c <- function(temp_k) {
 
 ```r
 k_c(-9)
-```
-
-```
 ## Warning in k_c(-9): you passed in a negative Kelvin number
-```
-
-```
 ## [1] NA
 ```
 
@@ -42,9 +37,6 @@ Error in if (temp_k < 0) { : missing value where TRUE/FALSE needed
 
 ```r
 k_c(0)
-```
-
-```
 ## [1] -273.15
 ```
 
@@ -53,6 +45,7 @@ k_c(0)
 
 
 ```r
+
 k_c <- function(temp_k) {
     if (temp_k < 0) {
         warning('you passed in a negative Kelvin number')
@@ -68,13 +61,7 @@ k_c <- function(temp_k) {
 
 ```r
 k_c(-9)
-```
-
-```
 ## Warning in k_c(-9): you passed in a negative Kelvin number
-```
-
-```
 ## [1] NA
 ```
 
@@ -87,9 +74,6 @@ k_c(NA)
 
 ```r
 k_c(0)
-```
-
-```
 ## [1] -273.15
 ```
 
@@ -118,30 +102,18 @@ k_c <- function(temp_k) {
 
 ```r
 k_c(-9)
-```
-
-```
 ## Warning in k_c(-9): you passed in a negative Kelvin number
-```
-
-```
 ## [1] NA
 ```
 
 
 ```r
 k_c(NA)
-```
-
-```
 ## [1] NA
 ```
 
 
 ```r
 k_c(0)
-```
-
-```
 ## [1] -273.15
 ```

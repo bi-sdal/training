@@ -1,3 +1,4 @@
+
 # Data Visualization
 
 Data visualization Chapter in r4ds
@@ -22,9 +23,6 @@ library(ggplot2)
 ```r
 # mpg dataset from the ggplot2 library
 mpg
-```
-
-```
 ## # A tibble: 234 x 11
 ##    manufacturer model    displ  year   cyl trans   drv     cty   hwy fl   
 ##    <chr>        <chr>    <dbl> <int> <int> <chr>   <chr> <int> <int> <chr>
@@ -49,7 +47,7 @@ mpg
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" />
 
 ## Aesthetic Mapings
 
@@ -59,19 +57,16 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = class))
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
 # using size
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, size = class))
-```
-
-```
 ## Warning: Using size for a discrete variable is not advised.
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -79,25 +74,19 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, size = class))
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
 # using shape
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, shape = class))
-```
-
-```
 ## Warning: The shape palette can deal with a maximum of 6 discrete values
 ## because more than 6 becomes difficult to discriminate; you have 7.
 ## Consider specifying shapes manually if you must have them.
-```
-
-```
 ## Warning: Removed 62 rows containing missing values (geom_point).
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -106,7 +95,7 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, shape = class)
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -121,14 +110,14 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), color = class
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_wrap(~ class, nrow = 2)
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_grid(drv ~ cyl)
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" />
 
 ## Geometic Objects
 
@@ -137,79 +126,60 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) + facet_grid(
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-13-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
 ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy))
-```
-
-```
 ## `geom_smooth()` using method = 'loess'
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-14-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
 ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, linetime = drv))
-```
-
-```
 ## Warning: Ignoring unknown aesthetics: linetime
-```
-
-```
 ## `geom_smooth()` using method = 'loess'
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-15-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
 # base plot before groupings
 ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy))
-```
-
-```
 ## `geom_smooth()` using method = 'loess'
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-16-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
 # base plot before groupings
 ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy))
-```
-
-```
 ## `geom_smooth()` using method = 'loess'
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-17-1.png" width="100%" style="display: block; margin: auto;" />
 
 ```r
+
 # separate smoothing line by group
 ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, group = drv))
-```
-
-```
 ## `geom_smooth()` using method = 'loess'
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-16-2.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-17-2.png" width="100%" style="display: block; margin: auto;" />
 
 ```r
+
 # different color foe each group
 ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, color = drv), show.legend = FALSE)
-```
-
-```
 ## `geom_smooth()` using method = 'loess'
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-16-3.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-17-3.png" width="100%" style="display: block; margin: auto;" />
 
 
 Adding multiple geoms in the same plot
@@ -218,13 +188,10 @@ Adding multiple geoms in the same plot
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy)) +
   geom_smooth(mapping = aes(x = displ, y = hwy))
-```
-
-```
 ## `geom_smooth()` using method = 'loess'
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-18-1.png" width="100%" style="display: block; margin: auto;" />
 
 The layering system will carry over values from the previous layer.
 the ggplot layer will specify the global values
@@ -234,13 +201,10 @@ the ggplot layer will specify the global values
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
   geom_point() +
   geom_smooth()
-```
-
-```
 ## `geom_smooth()` using method = 'loess'
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-19-1.png" width="100%" style="display: block; margin: auto;" />
 
 Mappings in a a geom function, will overwrite the global settings (i.e., they are local settings)
 
@@ -249,13 +213,10 @@ Mappings in a a geom function, will overwrite the global settings (i.e., they ar
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
   geom_point(mapping = aes(color = class)) +
   geom_smooth()
-```
-
-```
 ## `geom_smooth()` using method = 'loess'
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-20-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -265,31 +226,22 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
     data = dplyr::filter(mpg, class == 'subcompact'),
     se = FALSE
   )
-```
-
-```
 ## `geom_smooth()` using method = 'loess'
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-21-1.png" width="100%" style="display: block; margin: auto;" />
 
 ## Statistical Transformations
 
 
 ```r
 dim(diamonds)
-```
-
-```
 ## [1] 53940    10
 ```
 
 
 ```r
 head(diamonds)
-```
-
-```
 ## # A tibble: 6 x 10
 ##   carat cut       color clarity depth table price     x     y     z
 ##   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
@@ -307,7 +259,7 @@ head(diamonds)
 ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut))
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-24-1.png" width="100%" style="display: block; margin: auto;" />
 
 Use a *stat* to calculate a new value.
 diamonds data gets "transformed" into a frequency table that get's plotted by the bar plot.
@@ -319,7 +271,7 @@ Look at the geom_bar documentation, you will see the `stat` will be `count` (i.e
 ggplot(data = diamonds) + stat_count(mapping = aes(x = cut))
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-25-1.png" width="100%" style="display: block; margin: auto;" />
 
 You can set stat to 'identity' if you have already calculated a frequency table
 
@@ -336,7 +288,7 @@ ggplot(data = pre_counted) +
   )
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-27-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 
@@ -349,7 +301,7 @@ ggplot(data = diamonds) +
   )
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-28-1.png" width="100%" style="display: block; margin: auto;" />
 
 grouping: http://ggplot2.tidyverse.org/reference/aes_group_order.html
 
@@ -367,7 +319,7 @@ for each group.
 ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, color = cut))
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-29-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -375,7 +327,7 @@ ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, color = cut))
 ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = cut))
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-30-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -385,7 +337,7 @@ ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = cut))
 ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = clarity))
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-30-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-31-1.png" width="100%" style="display: block; margin: auto;" />
 
 position: identity
 
@@ -394,7 +346,7 @@ position: identity
 ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) + geom_bar(alpha = 1/5, position = 'identity')
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-31-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-32-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 
@@ -402,7 +354,7 @@ ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) + geom_bar(alpha
 ggplot(data = diamonds, mapping = aes(x = cut, color = clarity)) + geom_bar(fill = NA, position = 'identity')
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-33-1.png" width="100%" style="display: block; margin: auto;" />
 
 potition: fill
 
@@ -411,7 +363,7 @@ potition: fill
 ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = clarity), position = 'fill')
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-33-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-34-1.png" width="100%" style="display: block; margin: auto;" />
 
 position: dodge
 
@@ -420,7 +372,7 @@ position: dodge
 ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, fill = clarity), position = 'dodge')
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-34-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-35-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 Jitter scatter plot
@@ -430,7 +382,7 @@ Jitter scatter plot
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-35-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-36-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 
@@ -438,7 +390,7 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), position = 'jitter')
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-36-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-37-1.png" width="100%" style="display: block; margin: auto;" />
 
 ## Coordinate Systems
 
@@ -449,14 +401,14 @@ coord_flipswaps the x and y axis, useful when you have long labels
 ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + geom_boxplot()
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-37-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-38-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
 ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + geom_boxplot() + coord_flip()
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-38-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-39-1.png" width="100%" style="display: block; margin: auto;" />
 
 coord_quickmap, sets aspect ratio for maps
 
@@ -471,14 +423,14 @@ usa <- ggplot2::map_data('usa')
 ggplot(usa, aes(long, lat, group = group)) + geom_polygon(fill = 'white', color = 'black')
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-40-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-41-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
 ggplot(usa, aes(long, lat, group = group)) + geom_polygon(fill = 'white', color = 'black') + coord_quickmap()
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-41-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-42-1.png" width="100%" style="display: block; margin: auto;" />
 
 corrd_polar, uses polar coordinates
 
@@ -495,13 +447,13 @@ bar <- ggplot(data = diamonds) +
 bar + coord_flip()
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-44-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
 bar + coord_polar()
 ```
 
-<img src="010-data_vis_files/figure-html/unnamed-chunk-44-1.png" width="672" />
+<img src="010-data_vis_files/figure-html/unnamed-chunk-45-1.png" width="100%" style="display: block; margin: auto;" />
 
 

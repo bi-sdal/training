@@ -1,3 +1,4 @@
+
 # Importing Data
 
 Data import chapter in r4ds
@@ -22,9 +23,6 @@ look at `read_` set of functions
 
 ```r
 heights = read_csv('data/heights.csv')
-```
-
-```
 ## Parsed with column specification:
 ## cols(
 ##   earn = col_double(),

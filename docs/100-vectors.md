@@ -1,21 +1,16 @@
+
 # Vectors
 
 ## vectors (c)
 
 ```r
 c(1, 2, 3)
-```
-
-```
 ## [1] 1 2 3
 ```
 
 
 ```r
 c('a', 'b', 'c')
-```
-
-```
 ## [1] "a" "b" "c"
 ```
  
@@ -23,27 +18,18 @@ c('a', 'b', 'c')
 
 ```r
 c(1L, 4L, 5L)
-```
-
-```
 ## [1] 1 4 5
 ```
 
 
 ```r
 c(4, 'd', TRUE, FALSE)
-```
-
-```
 ## [1] "4"     "d"     "TRUE"  "FALSE"
 ```
 
 
 ```r
 (my_vec <- c(1, 2, 3))
-```
-
-```
 ## [1] 1 2 3
 ```
 
@@ -52,18 +38,12 @@ c(4, 'd', TRUE, FALSE)
 
 ```r
 my_vec[3]
-```
-
-```
 ## [1] 3
 ```
 
 
 ```r
 my_vec[2:3]
-```
-
-```
 ## [1] 2 3
 ```
 
@@ -72,18 +52,12 @@ my_vec[2:3]
 
 ```r
 my_vec[-1]
-```
-
-```
 ## [1] 2 3
 ```
 
 
 ```r
 my_vec[c(TRUE, TRUE, FALSE)]
-```
-
-```
 ## [1] 1 2
 ```
 
@@ -101,9 +75,6 @@ my_list <- list(3, 4, 5, TRUE, 'letters', 5L, mtcars)
 
 ```r
 my_list[[7]]
-```
-
-```
 ##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 ## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
 ## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
@@ -148,18 +119,12 @@ sub_val <- my_list[[7]]
 
 ```r
 class(sub_list)
-```
-
-```
 ## [1] "list"
 ```
 
 
 ```r
 class(sub_val)
-```
-
-```
 ## [1] "data.frame"
 ```
 
@@ -174,9 +139,6 @@ my_named_vec <- c('a' = 1, 'b' = 2, 'c' = 3)
 
 ```r
 my_named_vec[3]
-```
-
-```
 ## c 
 ## 3
 ```
@@ -184,9 +146,6 @@ my_named_vec[3]
 
 ```r
 my_named_vec['b']
-```
-
-```
 ## b 
 ## 2
 ```
@@ -209,9 +168,6 @@ names(my_unnamed) <- my_labels
 
 ```r
 my_unnamed['g']
-```
-
-```
 ## g 
 ## 7
 ```
@@ -219,9 +175,6 @@ my_unnamed['g']
 
 ```r
 my_unnamed[7]
-```
-
-```
 ## g 
 ## 7
 ```
@@ -239,18 +192,12 @@ my_named_list <- list(
 
 ```r
 my_named_list[['a']]
-```
-
-```
 ## [1] 1
 ```
 
 
 ```r
 my_named_list['a']
-```
-
-```
 ## $a
 ## [1] 1
 ```
@@ -259,9 +206,6 @@ my_named_list['a']
 
 ```r
 my_named_list
-```
-
-```
 ## $a
 ## [1] 1
 ## 
@@ -315,9 +259,6 @@ my_vec <- c(1, 2, 3, 4, 5, 6)
 
 ```r
 my_vec * 2
-```
-
-```
 ## [1]  2  4  6  8 10 12
 ```
 
@@ -325,9 +266,6 @@ my_vec * 2
 
 ```r
 my_vec * c(2, 100)
-```
-
-```
 ## [1]   2 200   6 400  10 600
 ```
 
@@ -342,9 +280,6 @@ x_bar <- mean(my_vec)
 
 ```r
 sum(((my_vec - x_bar)^2) / n_1)
-```
-
-```
 ## [1] 3.5
 ```
 

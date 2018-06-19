@@ -1,3 +1,4 @@
+
 ---
 output: html_document
 editor_options: 
@@ -23,26 +24,14 @@ Resources
 ```r
 library(forcats)
 library(dplyr)
-```
-
-```
 ## 
 ## Attaching package: 'dplyr'
-```
-
-```
 ## The following objects are masked from 'package:stats':
 ## 
 ##     filter, lag
-```
-
-```
 ## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union
-```
-
-```r
 library(ggplot2)
 ```
 
@@ -57,9 +46,6 @@ x2 <- c("Sa", "Su")
 
 ```r
 sort(x1)
-```
-
-```
 ## [1] "F" "M" "R" "S" "T" "U" "W"
 ```
 
@@ -72,9 +58,6 @@ proper_order <- x1
 ```r
 cat1 <- factor(x1, levels = proper_order)
 cat1
-```
-
-```
 ## [1] M T W R F S U
 ## Levels: M T W R F S U
 ```
@@ -82,9 +65,6 @@ cat1
 
 ```r
 sort(cat1)
-```
-
-```
 ## [1] M T W R F S U
 ## Levels: M T W R F S U
 ```
@@ -95,9 +75,6 @@ sort(cat1)
 
 ```r
 head(gss_cat)
-```
-
-```
 ## # A tibble: 6 x 9
 ##    year marital         age race  rincome  partyid   relig  denom  tvhours
 ##   <int> <fct>         <int> <fct> <fct>    <fct>     <fct>  <fct>    <int>
@@ -112,9 +89,6 @@ head(gss_cat)
 
 ```r
 dplyr::count(gss_cat, marital)
-```
-
-```
 ## # A tibble: 6 x 2
 ##   marital           n
 ##   <fct>         <int>
@@ -130,9 +104,6 @@ dplyr::count(gss_cat, marital)
 ```r
 gss_cat %>%
     dplyr::count(marital)
-```
-
-```
 ## # A tibble: 6 x 2
 ##   marital           n
 ##   <fct>         <int>
@@ -159,9 +130,6 @@ relig_summary <- gss_cat %>%
         n = n()
     )
 relig_summary
-```
-
-```
 ## # A tibble: 15 x 4
 ##    relig                   tvhours   age     n
 ##    <fct>                     <dbl> <dbl> <int>
@@ -188,7 +156,7 @@ ggplot(relig_summary, aes(x = tvhours, y = relig)) +
     geom_point()
 ```
 
-<img src="070-factors_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="070-factors_files/figure-html/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -197,16 +165,13 @@ ggplot(relig_summary, aes(x = tvhours,
     geom_point()
 ```
 
-<img src="070-factors_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="070-factors_files/figure-html/unnamed-chunk-13-1.png" width="100%" style="display: block; margin: auto;" />
 
 ## Modifying factor values
 
 
 ```r
 gss_cat %>% count(partyid)
-```
-
-```
 ## # A tibble: 10 x 2
 ##    partyid                n
 ##    <fct>              <int>
@@ -235,9 +200,6 @@ forcats::fct_recode(gss_cat$partyid,
                         "Rep, Strong" = "Strong republican",
                         "Dem, Strong" = "Strong democrat") %>%
     head(30)
-```
-
-```
 ##  [1] Ind,near rep       Not str republican Independent       
 ##  [4] Ind,near rep       Not str democrat   Dem, Strong       
 ##  [7] Not str republican Ind,near dem       Not str democrat  
@@ -268,9 +230,6 @@ https://gist.github.com/jennybc/04b71bfaaf0f88d9d2eb
 ```r
 # do a cross tab in R
 table(gss_cat_recoded$partyid, gss_cat_recoded$party_id_recode, useNA = 'always')
-```
-
-```
 ##                     
 ##                      No answer Don't know Other party Rep, Strong
 ##   No answer                154          0           0           0

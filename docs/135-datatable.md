@@ -1,35 +1,9 @@
-# (PART) R Special Topics {-}
-
 # data.table
 
 
 ```r
 library(data.table)
 library(nycflights13)
-library(dplyr)
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:data.table':
-## 
-##     between, first, last
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
 ```
 
 ## Read into data.table
@@ -55,6 +29,8 @@ class(flights)
 ```
 ## [1] "data.table" "data.frame"
 ```
+
+## Working with data.table
 
 DT[i, j, k]
 DT[filter by row, calculations on columns, groupby variable]
@@ -7897,6 +7873,7 @@ flights[, arr_delay]
 ##  [ reached getOption("max.print") -- omitted 236777 entries ]
 ```
 
+### Select columns list() .()
 
 ```r
 flights[, list(arr_delay)]
@@ -7960,6 +7937,7 @@ flights[, .(arr_delay, dep_delay)]
 ## 336776:        NA        NA
 ```
 
+### Functions on columns
 
 
 ```r
@@ -7992,6 +7970,7 @@ flights[origin == "JFK" & month == 6,.(m_arr = mean(arr_delay, na.rm = TRUE), m_
 ## 1: 17.59693 20.49973
 ```
 
+### .N (counts)
 
 
 ```r
@@ -8002,6 +7981,36 @@ flights[origin == 'JFK' & month == 6, .N]
 ## [1] 9472
 ```
 
+
+### Using dplyr
+
+
+```r
+library(dplyr)
+```
+
+```
+## 
+## Attaching package: 'dplyr'
+```
+
+```
+## The following objects are masked from 'package:data.table':
+## 
+##     between, first, last
+```
+
+```
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+```
+
+```
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+```
 
 
 

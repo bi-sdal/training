@@ -350,6 +350,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="data-table.html"><a href="data-table.html"><i class="fa fa-check"></i><b>17</b> data.table</a><ul>
 <li class="chapter" data-level="17.1" data-path="read-into-data-table.html"><a href="read-into-data-table.html"><i class="fa fa-check"></i><b>17.1</b> Read into data.table</a></li>
 <li class="chapter" data-level="17.2" data-path="convert-to-data-table.html"><a href="convert-to-data-table.html"><i class="fa fa-check"></i><b>17.2</b> Convert to data.table</a></li>
+<li class="chapter" data-level="17.3" data-path="working-with-data-table.html"><a href="working-with-data-table.html"><i class="fa fa-check"></i><b>17.3</b> Working with data.table</a><ul>
+<li class="chapter" data-level="17.3.1" data-path="working-with-data-table.html"><a href="working-with-data-table.html#select-columns-list-."><i class="fa fa-check"></i><b>17.3.1</b> Select columns list() .()</a></li>
+<li class="chapter" data-level="17.3.2" data-path="working-with-data-table.html"><a href="working-with-data-table.html#functions-on-columns"><i class="fa fa-check"></i><b>17.3.2</b> Functions on columns</a></li>
+<li class="chapter" data-level="17.3.3" data-path="working-with-data-table.html"><a href="working-with-data-table.html#n-counts"><i class="fa fa-check"></i><b>17.3.3</b> .N (counts)</a></li>
+<li class="chapter" data-level="17.3.4" data-path="working-with-data-table.html"><a href="working-with-data-table.html#using-dplyr"><i class="fa fa-check"></i><b>17.3.4</b> Using dplyr</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i><b>18</b> Spatial Data</a></li>
 <li class="chapter" data-level="19" data-path="apis-and-web-scraping.html"><a href="apis-and-web-scraping.html"><i class="fa fa-check"></i><b>19</b> APIs and Web Scraping</a><ul>
@@ -390,33 +396,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="http://www.imdb.com/chart/top?ref_=nv_mv_250_6" class="uri">http://www.imdb.com/chart/top?ref_=nv_mv_250_6</a></p>
 <p><a href="http://selectorgadget.com/" class="uri">http://selectorgadget.com/</a></p>
 <p>CSS class and id</p>
-<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb584-1" data-line-number="1"><span class="kw">library</span>(rvest)</a></code></pre></div>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb585-1" data-line-number="1"><span class="kw">library</span>(rvest)</a></code></pre></div>
 <pre><code>## Loading required package: xml2</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;rvest&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:XML&#39;:
 ## 
 ##     xml</code></pre>
-<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb588-1" data-line-number="1">lego_movie &lt;-<span class="st"> </span><span class="kw">read_html</span>(<span class="st">&quot;http://www.imdb.com/title/tt1490017/&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb589-1" data-line-number="1"><span class="co"># Rating</span></a>
-<a class="sourceLine" id="cb589-2" data-line-number="2">lego_movie <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb589-3" data-line-number="3"><span class="st">  </span><span class="kw">html_node</span>(<span class="st">&quot;strong span&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb589-4" data-line-number="4"><span class="st">  </span><span class="kw">html_text</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb589-5" data-line-number="5"><span class="st">  </span><span class="kw">as.numeric</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb589-1" data-line-number="1">lego_movie &lt;-<span class="st"> </span><span class="kw">read_html</span>(<span class="st">&quot;http://www.imdb.com/title/tt1490017/&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb590-1" data-line-number="1"><span class="co"># Rating</span></a>
+<a class="sourceLine" id="cb590-2" data-line-number="2">lego_movie <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb590-3" data-line-number="3"><span class="st">  </span><span class="kw">html_node</span>(<span class="st">&quot;strong span&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb590-4" data-line-number="4"><span class="st">  </span><span class="kw">html_text</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb590-5" data-line-number="5"><span class="st">  </span><span class="kw">as.numeric</span>()</a></code></pre></div>
 <pre><code>## [1] 7.8</code></pre>
-<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb591-1" data-line-number="1"><span class="co"># First page of actors</span></a>
-<a class="sourceLine" id="cb591-2" data-line-number="2">lego_movie <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb591-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;.itemprop .itemprop&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb591-4" data-line-number="4"><span class="st">  </span><span class="kw">html_text</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb592-1" data-line-number="1"><span class="co"># First page of actors</span></a>
+<a class="sourceLine" id="cb592-2" data-line-number="2">lego_movie <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb592-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;.itemprop .itemprop&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb592-4" data-line-number="4"><span class="st">  </span><span class="kw">html_text</span>()</a></code></pre></div>
 <pre><code>##  [1] &quot;Will Arnett&quot;     &quot;Elizabeth Banks&quot; &quot;Craig Berry&quot;    
 ##  [4] &quot;Alison Brie&quot;     &quot;David Burrows&quot;   &quot;Anthony Daniels&quot;
 ##  [7] &quot;Charlie Day&quot;     &quot;Amanda Farinos&quot;  &quot;Keith Ferguson&quot; 
 ## [10] &quot;Will Ferrell&quot;    &quot;Will Forte&quot;      &quot;Dave Franco&quot;    
 ## [13] &quot;Morgan Freeman&quot;  &quot;Todd Hansen&quot;     &quot;Jonah Hill&quot;</code></pre>
-<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb593-1" data-line-number="1">lego_movie <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb593-2" data-line-number="2"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;table&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb593-3" data-line-number="3"><span class="st">  </span>.[[<span class="dv">1</span>]] <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb593-4" data-line-number="4"><span class="st">  </span><span class="kw">html_table</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb594-1" data-line-number="1">lego_movie <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb594-2" data-line-number="2"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;table&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb594-3" data-line-number="3"><span class="st">  </span>.[[<span class="dv">1</span>]] <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb594-4" data-line-number="4"><span class="st">  </span><span class="kw">html_table</span>()</a></code></pre></div>
 <pre><code>##                                   X1                                X2
 ## 1  Cast overview, first billed only: Cast overview, first billed only:
 ## 2                                                          Will Arnett
@@ -468,8 +474,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 14                                                                           Vitruvius \n  \n  \n  (voice)
 ## 15                                          Gandalf /  \n            Additional Voices \n  \n  \n  (voice)
 ## 16                                                                       Green Lantern \n  \n  \n  (voice)</code></pre>
-<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb595-1" data-line-number="1">lego_movie <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb595-2" data-line-number="2"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;.primary_photo , .ellipsis, .character, #titleCast .itemprop, #titleCast .loadlate&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb596-1" data-line-number="1">lego_movie <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb596-2" data-line-number="2"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;.primary_photo , .ellipsis, .character, #titleCast .itemprop, #titleCast .loadlate&quot;</span>)</a></code></pre></div>
 <pre><code>## {xml_nodeset (87)}
 ##  [1] &lt;td class=&quot;primary_photo&quot;&gt;\n&lt;a href=&quot;/name/nm0004715/?ref_=tt_cl_i1 ...
 ##  [2] &lt;img height=&quot;44&quot; width=&quot;32&quot; alt=&quot;Will Arnett&quot; title=&quot;Will Arnett&quot; s ...
@@ -492,13 +498,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [19] &lt;img height=&quot;44&quot; width=&quot;32&quot; alt=&quot;Alison Brie&quot; title=&quot;Alison Brie&quot; s ...
 ## [20] &lt;td class=&quot;itemprop&quot; itemprop=&quot;actor&quot; itemscope itemtype=&quot;http://sc ...
 ## ...</code></pre>
-<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb597-1" data-line-number="1"><span class="co"># more manual way</span></a>
-<a class="sourceLine" id="cb597-2" data-line-number="2">lego_movie <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb597-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;table&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb597-4" data-line-number="4"><span class="st">  </span>.[[<span class="dv">1</span>]] <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb597-5" data-line-number="5"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;tr&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb597-6" data-line-number="6"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;span&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb597-7" data-line-number="7"><span class="st">  </span><span class="kw">html_text</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb598-1" data-line-number="1"><span class="co"># more manual way</span></a>
+<a class="sourceLine" id="cb598-2" data-line-number="2">lego_movie <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb598-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;table&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb598-4" data-line-number="4"><span class="st">  </span>.[[<span class="dv">1</span>]] <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb598-5" data-line-number="5"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;tr&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb598-6" data-line-number="6"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;span&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb598-7" data-line-number="7"><span class="st">  </span><span class="kw">html_text</span>()</a></code></pre></div>
 <pre><code>##  [1] &quot;Will Arnett&quot;     &quot;Elizabeth Banks&quot; &quot;Craig Berry&quot;    
 ##  [4] &quot;Alison Brie&quot;     &quot;David Burrows&quot;   &quot;Anthony Daniels&quot;
 ##  [7] &quot;Charlie Day&quot;     &quot;Amanda Farinos&quot;  &quot;Keith Ferguson&quot; 

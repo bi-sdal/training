@@ -350,6 +350,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="data-table.html"><a href="data-table.html"><i class="fa fa-check"></i><b>17</b> data.table</a><ul>
 <li class="chapter" data-level="17.1" data-path="read-into-data-table.html"><a href="read-into-data-table.html"><i class="fa fa-check"></i><b>17.1</b> Read into data.table</a></li>
 <li class="chapter" data-level="17.2" data-path="convert-to-data-table.html"><a href="convert-to-data-table.html"><i class="fa fa-check"></i><b>17.2</b> Convert to data.table</a></li>
+<li class="chapter" data-level="17.3" data-path="working-with-data-table.html"><a href="working-with-data-table.html"><i class="fa fa-check"></i><b>17.3</b> Working with data.table</a><ul>
+<li class="chapter" data-level="17.3.1" data-path="working-with-data-table.html"><a href="working-with-data-table.html#select-columns-list-."><i class="fa fa-check"></i><b>17.3.1</b> Select columns list() .()</a></li>
+<li class="chapter" data-level="17.3.2" data-path="working-with-data-table.html"><a href="working-with-data-table.html#functions-on-columns"><i class="fa fa-check"></i><b>17.3.2</b> Functions on columns</a></li>
+<li class="chapter" data-level="17.3.3" data-path="working-with-data-table.html"><a href="working-with-data-table.html#n-counts"><i class="fa fa-check"></i><b>17.3.3</b> .N (counts)</a></li>
+<li class="chapter" data-level="17.3.4" data-path="working-with-data-table.html"><a href="working-with-data-table.html#using-dplyr"><i class="fa fa-check"></i><b>17.3.4</b> Using dplyr</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="spatial-data.html"><a href="spatial-data.html"><i class="fa fa-check"></i><b>18</b> Spatial Data</a></li>
 <li class="chapter" data-level="19" data-path="apis-and-web-scraping.html"><a href="apis-and-web-scraping.html"><i class="fa fa-check"></i><b>19</b> APIs and Web Scraping</a><ul>
@@ -386,18 +392,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="tables-from-websites-wikipedia" class="section level2">
 <h2><span class="header-section-number">19.1</span> Tables from websites (wikipedia)</h2>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb571-1" data-line-number="1"><span class="kw">library</span>(RCurl)</a></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb572-1" data-line-number="1"><span class="kw">library</span>(RCurl)</a></code></pre></div>
 <pre><code>## Loading required package: bitops</code></pre>
-<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb573-1" data-line-number="1"><span class="kw">library</span>(XML)</a></code></pre></div>
-<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb574-1" data-line-number="1">wiki_url &lt;-<span class="st"> </span>RCurl<span class="op">::</span><span class="kw">getURL</span>(<span class="st">&quot;https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations&quot;</span>)</a>
-<a class="sourceLine" id="cb574-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb574-3" data-line-number="3">tables &lt;-<span class="st"> </span>XML<span class="op">::</span><span class="kw">readHTMLTable</span>(wiki_url)</a></code></pre></div>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb575-1" data-line-number="1"><span class="kw">class</span>(tables)</a></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb574-1" data-line-number="1"><span class="kw">library</span>(XML)</a></code></pre></div>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb575-1" data-line-number="1">wiki_url &lt;-<span class="st"> </span>RCurl<span class="op">::</span><span class="kw">getURL</span>(<span class="st">&quot;https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations&quot;</span>)</a>
+<a class="sourceLine" id="cb575-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb575-3" data-line-number="3">tables &lt;-<span class="st"> </span>XML<span class="op">::</span><span class="kw">readHTMLTable</span>(wiki_url)</a></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb576-1" data-line-number="1"><span class="kw">class</span>(tables)</a></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb577-1" data-line-number="1"><span class="kw">length</span>(tables)</a></code></pre></div>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb578-1" data-line-number="1"><span class="kw">length</span>(tables)</a></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb579-1" data-line-number="1">abbrevs &lt;-<span class="st"> </span>tables[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb579-2" data-line-number="2"><span class="kw">head</span>(abbrevs)</a></code></pre></div>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb580-1" data-line-number="1">abbrevs &lt;-<span class="st"> </span>tables[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb580-2" data-line-number="2"><span class="kw">head</span>(abbrevs)</a></code></pre></div>
 <pre><code>##               V1
 ## 1         Codes:
 ## 2            ISO
@@ -419,8 +425,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
 ## 5 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;
 ## 6 &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</code></pre>
-<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb581-1" data-line-number="1">us &lt;-<span class="st"> </span>abbrevs[<span class="dv">11</span><span class="op">:</span><span class="kw">nrow</span>(abbrevs), ]</a>
-<a class="sourceLine" id="cb581-2" data-line-number="2"><span class="kw">head</span>(us)</a></code></pre></div>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb582-1" data-line-number="1">us &lt;-<span class="st"> </span>abbrevs[<span class="dv">11</span><span class="op">:</span><span class="kw">nrow</span>(abbrevs), ]</a>
+<a class="sourceLine" id="cb582-2" data-line-number="2"><span class="kw">head</span>(us)</a></code></pre></div>
 <pre><code>##                           V1            V2           V3 V4 V5 V6 V7     V8
 ## 11  United States of America Federal state US\nUSA\n840 US 00         U.S.
 ## 12                   Alabama         State        US-AL AL 01 AL AL   Ala.
@@ -436,8 +442,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 15   Ark.          
 ## 16 Calif. Ca., Cal.</code></pre>
 <p>Write a test to make sure what you got is what you expect</p>
-<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb583-1" data-line-number="1">first_value &lt;-<span class="st"> </span>stringr<span class="op">::</span><span class="kw">str_trim</span>((<span class="kw">as.character</span>(us[<span class="dv">1</span>, <span class="dv">1</span>])))</a>
-<a class="sourceLine" id="cb583-2" data-line-number="2">testthat<span class="op">::</span><span class="kw">expect_equal</span>(<span class="dt">object =</span> first_value, <span class="dt">expected =</span> <span class="st">&#39;United States of America&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb584-1" data-line-number="1">first_value &lt;-<span class="st"> </span>stringr<span class="op">::</span><span class="kw">str_trim</span>((<span class="kw">as.character</span>(us[<span class="dv">1</span>, <span class="dv">1</span>])))</a>
+<a class="sourceLine" id="cb584-2" data-line-number="2">testthat<span class="op">::</span><span class="kw">expect_equal</span>(<span class="dt">object =</span> first_value, <span class="dt">expected =</span> <span class="st">&#39;United States of America&#39;</span>)</a></code></pre></div>
 </div>
             </section>
 

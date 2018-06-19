@@ -1,1 +1,155 @@
 # Vectors
+
+## vectors (c)
+```{r}
+c(1, 2, 3)
+```
+
+```{r}
+c('a', 'b', 'c')
+```
+ 
+ 
+```{r}
+c(1L, 4L, 5L)
+```
+
+```{r}
+c(4, 'd', TRUE, FALSE)
+```
+
+```{r}
+(my_vec <- c(1, 2, 3))
+```
+
+## Subsetting vectors
+
+```{r}
+my_vec[3]
+```
+
+```{r}
+my_vec[2:3]
+```
+
+# Negative indicies drop by position
+
+```{r}
+my_vec[-1]
+```
+
+```{r}
+my_vec[c(TRUE, TRUE, FALSE)]
+```
+
+## Lists
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Indexing lists in <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a>. Inspired by the Residence Inn <a href="http://t.co/YQ6axb2w7t">pic.twitter.com/YQ6axb2w7t</a></p>&mdash; Hadley Wickham (@hadleywickham) <a href="https://twitter.com/hadleywickham/status/643381054758363136?ref_src=twsrc%5Etfw">September 14, 2015</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+```{r}
+my_list <- list(3, 4, 5, TRUE, 'letters', 5L, mtcars)
+```
+
+```{r}
+my_list[[7]]
+```
+
+```{r}
+sub_list <- my_list[7]
+sub_val <- my_list[[7]]
+```
+
+```{r}
+class(sub_list)
+```
+
+```{r}
+class(sub_val)
+```
+
+
+## Named vectors
+
+```{r}
+my_named_vec <- c('a' = 1, 'b' = 2, 'c' = 3)
+```
+
+```{r}
+my_named_vec[3]
+```
+
+```{r}
+my_named_vec['b']
+```
+
+```{r}
+my_unnamed <- c(1:10)
+```
+
+```{r}
+my_labels <- letters[1:10]
+```
+
+```{r}
+names(my_unnamed) <- my_labels
+```
+
+```{r}
+my_unnamed['g']
+```
+
+```{r}
+my_unnamed[7]
+```
+
+## Named lists
+
+```{r}
+my_named_list <- list(
+    'a' = 1,
+    'b' = mtcars,
+    'c' = 4L
+)
+```
+```{r}
+my_named_list[['a']]
+```
+
+```{r}
+my_named_list['a']
+```
+
+
+```{r}
+my_named_list
+```
+
+## vectorization / broadcasting
+
+```{r}
+my_vec <- c(1, 2, 3, 4, 5, 6)
+```
+
+
+```{r}
+my_vec * 2
+```
+
+
+```{r}
+my_vec * c(2, 100)
+```
+
+$\sum_{i = 0}^n\dfrac{(x_i - \bar{x})^2}{n -1}$
+
+```{r}
+n_1 <- length(my_vec) - 1
+x_bar <- mean(my_vec)
+```
+
+```{r}
+sum(((my_vec - x_bar)^2) / n_1)
+```
+

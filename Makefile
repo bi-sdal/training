@@ -4,5 +4,7 @@ book :
 
 .PHONY : clean
 clean :
-	rm -r docs/
-	rm -r _bookdown_files/
+	#rm -r docs/
+	#rm -r _bookdown_files/
+	Rscript -e "bookdown::clean_book()"
+	Rscript -e "bookdown::clean_book(TRUE)"

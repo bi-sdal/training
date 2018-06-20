@@ -166,6 +166,6 @@ By: Garrett Grolemund and Hadley Wickham
 
 http://r4ds.had.co.nz/
 
-```{r, echo=FALSE, fig.cap="R for Data Science Cover", dpi = 300, fig.align='center'}
+```{r, echo=FALSE, fig.cap="R for Data Science Cover", dpi = 300, fig.align='center', fig.width=4}
 knitr::include_graphics(path = "http://r4ds.had.co.nz/cover.png")
 ```

@@ -4,7 +4,7 @@
 
 ```r
 Sys.time()
-## [1] "2018-06-19 17:53:21 EDT"
+## [1] "2018-06-20 13:38:28 EDT"
 ```
 
 
@@ -49,7 +49,7 @@ devtools::session_info()
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
 ##  tz       America/New_York            
-##  date     2018-06-19
+##  date     2018-06-20
 ## Packages -----------------------------------------------------------------
 ##  package   * version date       source        
 ##  backports   1.1.2   2017-12-13 CRAN (R 3.5.0)

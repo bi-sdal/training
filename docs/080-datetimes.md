@@ -327,5 +327,5 @@ Once you have a datetime object, you can then begin to do calculations and arith
 
 ```r
 now() - curr_time
-## Time difference of 14.08658 days
+## Time difference of 14.13714 days
 ```

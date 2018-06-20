@@ -1,6 +1,7 @@
 # DSPG Introduction {-}
 
-Download PDF: https://github.com/bi-sdal/training/blob/master/presentations/010-introduction/DSPG%202018%20Intro.pdf
+Download
+[PDF](https://github.com/bi-sdal/training/blob/master/presentations/010-introduction/DSPG%202018%20Intro.pdf)
 
 ```{r, echo=FALSE, out.width="100%", out.height="600px"}
 knitr::include_graphics(path = './presentations/010-introduction/DSPG 2018 Intro.pdf')

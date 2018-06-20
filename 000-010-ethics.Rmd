@@ -1,6 +1,8 @@
 # Ethics {-}
 
-Download PDF: https://github.com/bi-sdal/training/blob/master/presentations/020-ethics/Ethics%202018%20sak.pdf
+Download
+[PDF](https://github.com/bi-sdal/training/blob/master/presentations/020-ethics/Ethics%202018%20sak.pdf),
+[PPTX](https://github.com/bi-sdal/training/blob/master/presentations/020-ethics/Ethics%202018%20sak.pptx)
 
 ```{r, echo=FALSE, out.width="100%", out.height="600px"}
 knitr::include_graphics(path = './presentations/020-ethics/Ethics 2018 sak.pdf')

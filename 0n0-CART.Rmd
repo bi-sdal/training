@@ -1,4 +1,8 @@
-# CART
+# Random Forests
+
+## CART
+
+
 ```{r}
 library(ggplot2)
 library(tree)
@@ -24,19 +28,24 @@ classTree = tree(Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Wid
 summary(classTree)
 plot(classTree)
 text(classTree)
+table(predict(classTree, type = 'class'), iris$Species)
 ```
-Trees, left unattended, can easily overfit. Loss can always be reduced to zero by cutting the predictor space up enough. The two major ways to hadle this is the Bayesian approach of putting priors on trees, or a penalized loss function approach, which adds a penalty for more complex trees (mode nodes).
+Trees, left unattended, can easily overfit. Loss can always be reduced to zero by cutting the predictor space up enough. The two major ways to hadle this is the Bayesian approach of putting priors on trees, or a penalized loss function approach, which adds a penalty for more complex trees (mode leaves).
 
 It's common practice to grow a tree too large and then prune it back, rather than just stop growing the tree when it gets too complex. This explores tree space more thoroughly. Once we have our overgrown tree we remove terminal nodes and try to minimize a penalized loss function. For a tree with $T$ nodes labelled $N_t$ for $t \in 1, \ldots, T$ we want to minimize
 
-$$\alpha T + \sum_{t = 1}^{T}loss(N_t)$$
-where $\alpha$ is a parameter controlling the penalty on the tree size. Harsher penalties lead to smaller trees.
+$$k T + \sum_{t = 1}^{T}loss(N_t)$$
+where k is a parameter controlling the penalty on the tree size. Harsher penalties lead to smaller trees.
 
 ```{r}
 # Prune that tree!
 prune = prune.tree(classTree, method = 'misclass')
 prune
 plot(prune$size, prune$dev, main = "Scree/Elbow Plot", xlab = "Number of Leaves", ylab = "Misclassifications")
+
+```
+
+```{r}
 # Cross validation
 cvTree = cv.tree(classTree, method = 'misclass')
 cvTree
@@ -57,19 +66,23 @@ plot(ciTree)
 
 A main advantage of trees is their ease of interpretability and use. 
 ```{r}
-install.packages("DAAG")
 library(DAAG)
 data(spam7)
+head(spam7)
 spamTree = ctree(yesno ~., data = spam7)
 spamTree
 plot(spamTree)
 ```
+Let's predict an email!
+
 How well does it predict?
 ```{r}
 spamTreeConfusionMatrix = table(predict(spamTree, spam7), spam7$yesno)
 spamTreeConfusionMatrix
 sum(diag(spamTreeConfusionMatrix))/sum(spamTreeConfusionMatrix) #86.7%
+```
 
+```{r}
 # Let's do a simple cross validation
 
 inSampleProp = .85
@@ -96,7 +109,7 @@ sum(diag(outSampleMat))/sum(outSampleMat)
 ```
 
 
-# Bootstrapping
+## Bootstrapping
 
 How can we estimate the variability in a statistic? Let's say we want a probability interval for the mean of some data.
 ```{r}
@@ -133,9 +146,7 @@ confInt
 We can visualize this:
 
 ```{r}
-
 plotSequence = seq(min(simulatedMeans), max(simulatedMeans), length = 1000)
-
 hist(simulatedMeans, prob = TRUE, sub = "Line is the normal approximation density")
 lines(plotSequence, dnorm(plotSequence, mean = xbar, sd = xsd/sqrt(n)))
 ```
@@ -231,14 +242,13 @@ compareBootstrapToTruth(mean, plot = TRUE)
 compareBootstrapToTruth(confintWidth, plot = TRUE)
 ```
 
-# Bagging
+## Bagging
 
 Just as bootstrapping can estimate variability for statistics, it can also do so for predictions. This process is known as Bootstrap AGGrigation, or bagging. It turns out that, when doing bootstrap sampling, about 1/3 of the entries don't make it into the resampled data set. These points are called out-of-bag (oob), and the rest are in-bag. We can use oob data like a free testing set. First a simple example to illustrate, then a non-trivial one.
 
 ```{r}
 mpgLm = lm(mpg ~ hp + wt, data = mtcars)
 summary(mpgLm)
-predict(mpgLm, mtcars[1,], interval = "confidence")
 
 b = 2000
 oobPredictions = matrix(NA, nrow = nrow(mtcars), ncol = b)
@@ -258,6 +268,77 @@ predict(mpgLm, mtcars[1,], interval = "confidence")
 quantile(oobPredictions[1,], c(.025, .975), na.rm = TRUE)
 ```
 
+We see the bootstrap confidence interval is very close to the normal theory interval, as was the case above. This isn't super useful for linear models, but gives us a way to measure uncertainty for models which don't have a probability model to give us error bars, such as CART.
 
+Now, we bag cart. We'll use the very first example.
 
+```{r}
+classTree = tree(Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width, data = iris)
+summary(classTree)
+plot(classTree)
+text(classTree)
+table(predict(classTree, type = 'class'), iris$Species)
+
+b = 2000
+oobPredictions = matrix(NA, nrow = nrow(iris), ncol = b)
+for(i in 1:b){
+  resampleIndices = sample(1:nrow(iris), nrow(iris), replace = TRUE)
+  # use the set difference to find the out of bag indices
+  oobIndices = setdiff(1:nrow(iris), resampleIndices)
+  
+  bootstrapIris= iris[resampleIndices, ]
+  oobIris = iris[oobIndices,]
+  bsTree = tree(Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width, data = bootstrapIris)
+  oobPreds = predict(bsTree, oobIris, type = 'class')
+  oobPredictions[oobIndices, i] = oobPreds
+} 
+```
+Let's look at some results!
+```{r}
+
+oobPredictions[,1:5]
+bsPreds = cbind(prob1 = apply(oobPredictions, 1, function(x) sum(x == 1, na.rm = TRUE)),
+                prob2 = apply(oobPredictions, 1, function(x) sum(x == 2, na.rm = TRUE)),
+                prob3 = apply(oobPredictions, 1, function(x) sum(x == 3, na.rm = TRUE)))
+bsPreds = bsPreds / rowSums(bsPreds)
+bsPreds = cbind(bsPreds, Species = iris$Species)
+bsPreds[c(1:10, 51:60, 101:110),]
+```
+Congratulations, we just fit a random forest!
+
+Let's see where the model is uncertain.
+```{r}
+uncertainty = apply(bsPreds[,1:3], 1, function(x) 1/var(x))
+ggplot(data = iris) + geom_point(aes(x = Petal.Length, y = Petal.Width, col = Species, size = uncertainty))
+```
+
+As expected, the model is perfectly sure about setosa, but uncertain on the boundary between versicolo and virginica.
+
+## Viewing Random Forests
+
+The last part of the course will introduce you to the random forest package, some nifty things you can do with it, and some visuals.
+IMPORTANT NOTE!!! This implementation of random forest can't handle catgegorical predictors directly. You need to convert them to a model matrix. This isn't that hard, but if you're not aware of it you can get spurious results
+
+```{r}
+library(randomForest)
+mtcarsRf = randomForest(mpg ~ ., data=mtcars, importance=TRUE, proximity=TRUE, mtry = 4)
+mtcarsRf
+plot(mtcarsRf)
+```
+Variable importance.
+```{r}
+varImportance = importance(mtcarsRf, type = 2)
+varImportance
+layout(matrix(c(1,1,2,1,1,3,1, 1, 4), nrow = 3, ncol = 3, byrow = TRUE))
+varImpPlot(mtcarsRf, type = 2)
+impvar = rownames(varImportance)[order(varImportance[, 1], decreasing=TRUE)]
+colors = c("black", "blue", "red")
+for(j in 1:3){
+  partialPlot(mtcarsRf, mtcars, impvar[j], main = "",xlab = impvar[j], lwd= 3, cex.lab = 2, n.pt = 100)
+}
+```
+
+A neat output of an RF model is a measure of proximity between rows. Proximity is the proportion of times two observations appear in the same leaf node. This can be very useful in cases where rows contain both continuous and categorical data, a typically difficult situation for most metrics.
+
+If we do 1 - proximity we can turn this into a distance matrix and do things like multidimensional scaling.
 

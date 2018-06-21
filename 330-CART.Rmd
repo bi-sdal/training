@@ -443,6 +443,9 @@ IMPORTANT NOTE!!! This implementation of random forest can't handle catgegorical
 
 ```{r}
 library(randomForest)
+```
+
+```{r}
 mtcarsRf = randomForest(mpg ~ ., data=mtcars, importance=TRUE, proximity=TRUE, mtry = 4)
 mtcarsRf
 ```

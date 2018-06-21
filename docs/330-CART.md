@@ -1046,13 +1046,10 @@ IMPORTANT NOTE!!! This implementation of random forest can't handle catgegorical
 
 ```r
 library(randomForest)
-## randomForest 4.6-14
-## Type rfNews() to see new features/changes/bug fixes.
-## 
-## Attaching package: 'randomForest'
-## The following object is masked from 'package:ggplot2':
-## 
-##     margin
+```
+
+
+```r
 mtcarsRf = randomForest(mpg ~ ., data=mtcars, importance=TRUE, proximity=TRUE, mtry = 4)
 mtcarsRf
 ## 
@@ -1071,7 +1068,7 @@ mtcarsRf
 plot(mtcarsRf)
 ```
 
-<img src="330-CART_files/figure-html/unnamed-chunk-64-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="330-CART_files/figure-html/unnamed-chunk-65-1.png" width="100%" style="display: block; margin: auto;" />
 
 Variable importance.
 
@@ -1102,7 +1099,7 @@ for(j in 1:3){
 }
 ```
 
-<img src="330-CART_files/figure-html/unnamed-chunk-66-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="330-CART_files/figure-html/unnamed-chunk-67-1.png" width="100%" style="display: block; margin: auto;" />
 
 A neat output of an RF model is a measure of proximity between rows. Proximity is the proportion of times two observations appear in the same leaf node. This can be very useful in cases where rows contain both continuous and categorical data, a typically difficult situation for most metrics.
 

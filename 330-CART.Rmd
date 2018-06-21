@@ -1,5 +1,14 @@
 # Random Forests
 
+DataCamp:
+
+- https://www.datacamp.com/courses/machine-learning-with-tree-based-models-in-r
+
+Articles:
+
+- https://www.datacamp.com/community/tutorials/decision-trees-R
+- Random Forests: https://campus.datacamp.com/courses/kaggle-r-tutorial-on-machine-learning/chapter-3-improving-your-predictions-through-random-forests?ex=2#skiponboarding
+
 ## CART
 
 

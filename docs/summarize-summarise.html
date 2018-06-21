@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,11 +72,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -416,10 +418,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="summarize-summarise" class="section level2">
 <h2><span class="header-section-number">5.8</span> Summarize (summarise)</h2>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1"><span class="kw">summarize</span>(flights, <span class="dt">delay =</span> <span class="kw">mean</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb88-2" data-line-number="2"><span class="co">## # A tibble: 1 x 1</span></a>
-<a class="sourceLine" id="cb88-3" data-line-number="3"><span class="co">##   delay</span></a>
-<a class="sourceLine" id="cb88-4" data-line-number="4"><span class="co">##   &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb88-5" data-line-number="5"><span class="co">## 1  12.6</span></a></code></pre></div>
+<a class="sourceLine" id="cb88-2" data-line-number="2">## # A tibble: 1 x 1</a>
+<a class="sourceLine" id="cb88-3" data-line-number="3">##   delay</a>
+<a class="sourceLine" id="cb88-4" data-line-number="4">##   &lt;dbl&gt;</a>
+<a class="sourceLine" id="cb88-5" data-line-number="5">## 1  12.6</a></code></pre></div>
 </div>
             </section>
 

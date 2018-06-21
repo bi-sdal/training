@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,11 +72,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -416,123 +418,121 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="bootstrapping" class="section level2">
 <h2><span class="header-section-number">23.2</span> Bootstrapping</h2>
 <p>How can we estimate the variability in a statistic? Let’s say we want a probability interval for the mean of some data.</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1">n =<span class="st"> </span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb341-2" data-line-number="2">simData =<span class="st"> </span><span class="kw">rgamma</span>(n, <span class="dv">2</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb341-3" data-line-number="3"><span class="co"># True mean: 2</span></a>
-<a class="sourceLine" id="cb341-4" data-line-number="4"><span class="kw">hist</span>(simData)</a></code></pre></div>
-<p><img src="330-CART_files/figure-html/unnamed-chunk-26-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" data-line-number="1"><span class="kw">mean</span>(simData)</a>
-<a class="sourceLine" id="cb342-2" data-line-number="2"><span class="co">## [1] 2.04451</span></a></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" data-line-number="1">n =<span class="st"> </span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb342-2" data-line-number="2">simData =<span class="st"> </span><span class="kw">rgamma</span>(n, <span class="dv">2</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb342-3" data-line-number="3"><span class="co"># True mean: 2</span></a>
+<a class="sourceLine" id="cb342-4" data-line-number="4"><span class="kw">hist</span>(simData)</a></code></pre></div>
+<p><img src="330-CART_files/figure-html/unnamed-chunk-27-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" data-line-number="1"><span class="kw">mean</span>(simData)</a>
+<a class="sourceLine" id="cb343-2" data-line-number="2">## [1] 2.04451</a></code></pre></div>
 <p>One option is to rely on normal theory and write,</p>
 <p><span class="math display">\[var(\bar{x}) = \frac{1}{n}var(x),\]</span>
 then use the right normal score to get the ``confidence interval’’ you want:</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" data-line-number="1">xbar =<span class="st"> </span><span class="kw">mean</span>(simData)</a>
-<a class="sourceLine" id="cb343-2" data-line-number="2">xsd =<span class="st"> </span><span class="kw">sd</span>(simData)</a>
-<a class="sourceLine" id="cb343-3" data-line-number="3"><span class="co"># 95% interval</span></a>
-<a class="sourceLine" id="cb343-4" data-line-number="4">confInt =<span class="st"> </span>xbar <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="fl">1.96</span>, <span class="fl">1.96</span>) <span class="op">*</span><span class="st"> </span>(xsd<span class="op">/</span><span class="kw">sqrt</span>(n))</a>
-<a class="sourceLine" id="cb343-5" data-line-number="5">confInt</a>
-<a class="sourceLine" id="cb343-6" data-line-number="6"><span class="co">## [1] 1.800013 2.289007</span></a></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb344-1" data-line-number="1">xbar =<span class="st"> </span><span class="kw">mean</span>(simData)</a>
+<a class="sourceLine" id="cb344-2" data-line-number="2">xsd =<span class="st"> </span><span class="kw">sd</span>(simData)</a>
+<a class="sourceLine" id="cb344-3" data-line-number="3"><span class="co"># 95% interval</span></a>
+<a class="sourceLine" id="cb344-4" data-line-number="4">confInt =<span class="st"> </span>xbar <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="fl">1.96</span>, <span class="fl">1.96</span>) <span class="op">*</span><span class="st"> </span>(xsd<span class="op">/</span><span class="kw">sqrt</span>(n))</a>
+<a class="sourceLine" id="cb344-5" data-line-number="5">confInt</a>
+<a class="sourceLine" id="cb344-6" data-line-number="6">## [1] 1.800013 2.289007</a></code></pre></div>
 <p>The accuracy of this estimate depends on the extent to which the data are normal. We know the data are from a rather skewed gamma, how much does that skewness affect the interval? How could we find out?</p>
 <p>What if we had some large number of samples, say m, of the mean computed from <span class="math inline">\(n\)</span> samples of this population? This is an awful idea in practice, but bear with me.</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb344-1" data-line-number="1">m =<span class="st"> </span><span class="dv">2000</span></a>
-<a class="sourceLine" id="cb344-2" data-line-number="2">simulatedMeans =<span class="st"> </span><span class="kw">numeric</span>(m)</a>
-<a class="sourceLine" id="cb344-3" data-line-number="3"><span class="co"># don&#39;t need for loop for this</span></a>
-<a class="sourceLine" id="cb344-4" data-line-number="4"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>m) simulatedMeans[i] =<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rgamma</span>(n, <span class="dv">2</span>, <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb344-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb344-6" data-line-number="6"><span class="kw">quantile</span>(simulatedMeans, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
-<a class="sourceLine" id="cb344-7" data-line-number="7"><span class="co">##     2.5%    97.5% </span></a>
-<a class="sourceLine" id="cb344-8" data-line-number="8"><span class="co">## 1.734263 2.283977</span></a></code></pre></div>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" data-line-number="1">confInt</a>
-<a class="sourceLine" id="cb345-2" data-line-number="2"><span class="co">## [1] 1.800013 2.289007</span></a></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" data-line-number="1">m =<span class="st"> </span><span class="dv">2000</span></a>
+<a class="sourceLine" id="cb345-2" data-line-number="2">simulatedMeans =<span class="st"> </span><span class="kw">numeric</span>(m)</a>
+<a class="sourceLine" id="cb345-3" data-line-number="3"><span class="co"># don&#39;t need for loop for this</span></a>
+<a class="sourceLine" id="cb345-4" data-line-number="4"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>m) simulatedMeans[i] =<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rgamma</span>(n, <span class="dv">2</span>, <span class="dv">1</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" data-line-number="1"><span class="kw">quantile</span>(simulatedMeans, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
+<a class="sourceLine" id="cb346-2" data-line-number="2">##     2.5%    97.5% </a>
+<a class="sourceLine" id="cb346-3" data-line-number="3">## 1.734263 2.283977</a></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" data-line-number="1">confInt</a>
+<a class="sourceLine" id="cb347-2" data-line-number="2">## [1] 1.800013 2.289007</a></code></pre></div>
 <p>We can visualize this:</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" data-line-number="1">plotSequence =<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(simulatedMeans), <span class="kw">max</span>(simulatedMeans), <span class="dt">length =</span> <span class="dv">1000</span>)</a>
-<a class="sourceLine" id="cb346-2" data-line-number="2"><span class="kw">hist</span>(simulatedMeans, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">sub =</span> <span class="st">&quot;Line is the normal approximation density&quot;</span>)</a>
-<a class="sourceLine" id="cb346-3" data-line-number="3"><span class="kw">lines</span>(plotSequence, <span class="kw">dnorm</span>(plotSequence, <span class="dt">mean =</span> xbar, <span class="dt">sd =</span> xsd<span class="op">/</span><span class="kw">sqrt</span>(n)))</a></code></pre></div>
-<p><img src="330-CART_files/figure-html/unnamed-chunk-31-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" data-line-number="1">plotSequence =<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(simulatedMeans), <span class="kw">max</span>(simulatedMeans), <span class="dt">length =</span> <span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb348-2" data-line-number="2"><span class="kw">hist</span>(simulatedMeans, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">sub =</span> <span class="st">&quot;Line is the normal approximation density&quot;</span>)</a>
+<a class="sourceLine" id="cb348-3" data-line-number="3"><span class="kw">lines</span>(plotSequence, <span class="kw">dnorm</span>(plotSequence, <span class="dt">mean =</span> xbar, <span class="dt">sd =</span> xsd<span class="op">/</span><span class="kw">sqrt</span>(n)))</a></code></pre></div>
+<p><img src="330-CART_files/figure-html/unnamed-chunk-33-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Obviously, we can’t just get a thousand means to estimate its variability, but we can do something close by resampling from our original data. This is called bootstrapping.</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" data-line-number="1"><span class="co"># b represents the number of bootstrap samples</span></a>
-<a class="sourceLine" id="cb347-2" data-line-number="2">b =<span class="st"> </span><span class="dv">2000</span></a>
-<a class="sourceLine" id="cb347-3" data-line-number="3">bootstrapMeans =<span class="st"> </span><span class="kw">numeric</span>(b)</a>
-<a class="sourceLine" id="cb347-4" data-line-number="4"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>b){</a>
-<a class="sourceLine" id="cb347-5" data-line-number="5">  resample =<span class="st"> </span><span class="kw">sample</span>(simData, n, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb347-6" data-line-number="6">  bootstrapMeans[i] =<span class="st"> </span><span class="kw">mean</span>(resample)</a>
-<a class="sourceLine" id="cb347-7" data-line-number="7">} </a>
-<a class="sourceLine" id="cb347-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb347-9" data-line-number="9"><span class="kw">quantile</span>(simulatedMeans, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
-<a class="sourceLine" id="cb347-10" data-line-number="10"><span class="co">##     2.5%    97.5% </span></a>
-<a class="sourceLine" id="cb347-11" data-line-number="11"><span class="co">## 1.734263 2.283977</span></a></code></pre></div>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" data-line-number="1"><span class="kw">quantile</span>(bootstrapMeans, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
-<a class="sourceLine" id="cb348-2" data-line-number="2"><span class="co">##     2.5%    97.5% </span></a>
-<a class="sourceLine" id="cb348-3" data-line-number="3"><span class="co">## 1.807087 2.300364</span></a></code></pre></div>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb349-1" data-line-number="1">confInt</a>
-<a class="sourceLine" id="cb349-2" data-line-number="2"><span class="co">## [1] 1.800013 2.289007</span></a></code></pre></div>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" data-line-number="1"><span class="kw">hist</span>(simulatedMeans, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">sub =</span> <span class="st">&quot;Line is the normal approximation density&quot;</span>, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">.2</span>))</a>
-<a class="sourceLine" id="cb350-2" data-line-number="2"><span class="kw">hist</span>(bootstrapMeans, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">.2</span>), <span class="dt">add =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb350-3" data-line-number="3"><span class="kw">lines</span>(plotSequence, <span class="kw">dnorm</span>(plotSequence, <span class="dt">mean =</span> xbar, <span class="dt">sd =</span> xsd<span class="op">/</span><span class="kw">sqrt</span>(n)))</a>
-<a class="sourceLine" id="cb350-4" data-line-number="4"><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">bty =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">fill =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;True Mean Dist&quot;</span>, <span class="st">&quot;Bootstrap Dist&quot;</span>))</a></code></pre></div>
-<p><img src="330-CART_files/figure-html/unnamed-chunk-35-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<p>We see that this strange resampling technique seems to work well when we want to find a mean, at least as well as the normal approximation. Its true strength lies in estimating variability in more exotic statistics. For example, what is the variability in the width of the 95% confidence probability interval for our gamma data?</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" data-line-number="1">confintWidth =<span class="st"> </span><span class="cf">function</span>(data){</a>
-<a class="sourceLine" id="cb351-2" data-line-number="2">  upperAndLowerBounds =<span class="st"> </span><span class="kw">quantile</span>(data, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.095</span>))</a>
-<a class="sourceLine" id="cb351-3" data-line-number="3">  width =<span class="st"> </span><span class="kw">diff</span>(upperAndLowerBounds)</a>
-<a class="sourceLine" id="cb351-4" data-line-number="4">  <span class="kw">names</span>(width) =<span class="st"> </span><span class="ot">NULL</span></a>
-<a class="sourceLine" id="cb351-5" data-line-number="5">  <span class="kw">return</span>(width)</a>
-<a class="sourceLine" id="cb351-6" data-line-number="6">}</a>
-<a class="sourceLine" id="cb351-7" data-line-number="7"><span class="kw">confintWidth</span>(simData)</a>
-<a class="sourceLine" id="cb351-8" data-line-number="8"><span class="co">## [1] 0.1734299</span></a></code></pre></div>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" data-line-number="1">m =<span class="st"> </span><span class="dv">2000</span></a>
-<a class="sourceLine" id="cb352-2" data-line-number="2">simulatedWidths =<span class="st"> </span><span class="kw">numeric</span>(m)</a>
-<a class="sourceLine" id="cb352-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>m) simulatedWidths[i] =<span class="st"> </span><span class="kw">confintWidth</span>(<span class="kw">rgamma</span>(n, <span class="dv">2</span>, <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb352-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb352-5" data-line-number="5"><span class="kw">quantile</span>(simulatedWidths, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
-<a class="sourceLine" id="cb352-6" data-line-number="6"><span class="co">##      2.5%     97.5% </span></a>
-<a class="sourceLine" id="cb352-7" data-line-number="7"><span class="co">## 0.1232144 0.4330531</span></a></code></pre></div>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb353-1" data-line-number="1"><span class="kw">hist</span>(simulatedWidths)</a></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb349-1" data-line-number="1"><span class="co"># b represents the number of bootstrap samples</span></a>
+<a class="sourceLine" id="cb349-2" data-line-number="2">b =<span class="st"> </span><span class="dv">2000</span></a>
+<a class="sourceLine" id="cb349-3" data-line-number="3">bootstrapMeans =<span class="st"> </span><span class="kw">numeric</span>(b)</a>
+<a class="sourceLine" id="cb349-4" data-line-number="4"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>b){</a>
+<a class="sourceLine" id="cb349-5" data-line-number="5">  resample =<span class="st"> </span><span class="kw">sample</span>(simData, n, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb349-6" data-line-number="6">  bootstrapMeans[i] =<span class="st"> </span><span class="kw">mean</span>(resample)</a>
+<a class="sourceLine" id="cb349-7" data-line-number="7">} </a></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" data-line-number="1"><span class="kw">quantile</span>(simulatedMeans, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
+<a class="sourceLine" id="cb350-2" data-line-number="2">##     2.5%    97.5% </a>
+<a class="sourceLine" id="cb350-3" data-line-number="3">## 1.734263 2.283977</a></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" data-line-number="1"><span class="kw">quantile</span>(bootstrapMeans, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
+<a class="sourceLine" id="cb351-2" data-line-number="2">##     2.5%    97.5% </a>
+<a class="sourceLine" id="cb351-3" data-line-number="3">## 1.807087 2.300364</a></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" data-line-number="1">confInt</a>
+<a class="sourceLine" id="cb352-2" data-line-number="2">## [1] 1.800013 2.289007</a></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb353-1" data-line-number="1"><span class="kw">hist</span>(simulatedMeans, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">sub =</span> <span class="st">&quot;Line is the normal approximation density&quot;</span>, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">.2</span>))</a>
+<a class="sourceLine" id="cb353-2" data-line-number="2"><span class="kw">hist</span>(bootstrapMeans, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">.2</span>), <span class="dt">add =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb353-3" data-line-number="3"><span class="kw">lines</span>(plotSequence, <span class="kw">dnorm</span>(plotSequence, <span class="dt">mean =</span> xbar, <span class="dt">sd =</span> xsd<span class="op">/</span><span class="kw">sqrt</span>(n)))</a>
+<a class="sourceLine" id="cb353-4" data-line-number="4"><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">bty =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">fill =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;True Mean Dist&quot;</span>, <span class="st">&quot;Bootstrap Dist&quot;</span>))</a></code></pre></div>
 <p><img src="330-CART_files/figure-html/unnamed-chunk-38-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" data-line-number="1">b =<span class="st"> </span><span class="dv">2000</span></a>
-<a class="sourceLine" id="cb354-2" data-line-number="2">bootstrapWidths =<span class="st"> </span><span class="kw">numeric</span>(b)</a>
-<a class="sourceLine" id="cb354-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>b){</a>
-<a class="sourceLine" id="cb354-4" data-line-number="4">  resample =<span class="st"> </span><span class="kw">sample</span>(simData, n, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb354-5" data-line-number="5">  bootstrapWidths[i] =<span class="st"> </span><span class="kw">confintWidth</span>(resample)</a>
-<a class="sourceLine" id="cb354-6" data-line-number="6">} </a></code></pre></div>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb355-1" data-line-number="1"><span class="kw">quantile</span>(simulatedWidths, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
-<a class="sourceLine" id="cb355-2" data-line-number="2"><span class="co">##      2.5%     97.5% </span></a>
-<a class="sourceLine" id="cb355-3" data-line-number="3"><span class="co">## 0.1232144 0.4330531</span></a></code></pre></div>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb356-1" data-line-number="1"><span class="kw">quantile</span>(bootstrapWidths, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
-<a class="sourceLine" id="cb356-2" data-line-number="2"><span class="co">##       2.5%      97.5% </span></a>
-<a class="sourceLine" id="cb356-3" data-line-number="3"><span class="co">## 0.07638408 0.47030471</span></a></code></pre></div>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb357-1" data-line-number="1"><span class="kw">hist</span>(simulatedWidths, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">.2</span>))</a>
-<a class="sourceLine" id="cb357-2" data-line-number="2"><span class="kw">hist</span>(bootstrapWidths, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">.2</span>), <span class="dt">add =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb357-3" data-line-number="3"><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">bty =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">fill =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;True Mean Dist&quot;</span>, <span class="st">&quot;Bootstrap Dist&quot;</span>))</a></code></pre></div>
-<p><img src="330-CART_files/figure-html/unnamed-chunk-42-1.png" width="100%" style="display: block; margin: auto;" />
+<p>We see that this strange resampling technique seems to work well when we want to find a mean, at least as well as the normal approximation. Its true strength lies in estimating variability in more exotic statistics. For example, what is the variability in the width of the 95% confidence probability interval for our gamma data?</p>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" data-line-number="1">confintWidth =<span class="st"> </span><span class="cf">function</span>(data){</a>
+<a class="sourceLine" id="cb354-2" data-line-number="2">  upperAndLowerBounds =<span class="st"> </span><span class="kw">quantile</span>(data, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.095</span>))</a>
+<a class="sourceLine" id="cb354-3" data-line-number="3">  width =<span class="st"> </span><span class="kw">diff</span>(upperAndLowerBounds)</a>
+<a class="sourceLine" id="cb354-4" data-line-number="4">  <span class="kw">names</span>(width) =<span class="st"> </span><span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb354-5" data-line-number="5">  <span class="kw">return</span>(width)</a>
+<a class="sourceLine" id="cb354-6" data-line-number="6">}</a></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb355-1" data-line-number="1"><span class="kw">confintWidth</span>(simData)</a>
+<a class="sourceLine" id="cb355-2" data-line-number="2">## [1] 0.1734299</a></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb356-1" data-line-number="1">m =<span class="st"> </span><span class="dv">2000</span></a>
+<a class="sourceLine" id="cb356-2" data-line-number="2">simulatedWidths =<span class="st"> </span><span class="kw">numeric</span>(m)</a>
+<a class="sourceLine" id="cb356-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>m) simulatedWidths[i] =<span class="st"> </span><span class="kw">confintWidth</span>(<span class="kw">rgamma</span>(n, <span class="dv">2</span>, <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb356-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb356-5" data-line-number="5"><span class="kw">quantile</span>(simulatedWidths, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
+<a class="sourceLine" id="cb356-6" data-line-number="6">##      2.5%     97.5% </a>
+<a class="sourceLine" id="cb356-7" data-line-number="7">## 0.1232144 0.4330531</a></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb357-1" data-line-number="1"><span class="kw">hist</span>(simulatedWidths)</a></code></pre></div>
+<p><img src="330-CART_files/figure-html/unnamed-chunk-42-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" data-line-number="1">b =<span class="st"> </span><span class="dv">2000</span></a>
+<a class="sourceLine" id="cb358-2" data-line-number="2">bootstrapWidths =<span class="st"> </span><span class="kw">numeric</span>(b)</a>
+<a class="sourceLine" id="cb358-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>b){</a>
+<a class="sourceLine" id="cb358-4" data-line-number="4">  resample =<span class="st"> </span><span class="kw">sample</span>(simData, n, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb358-5" data-line-number="5">  bootstrapWidths[i] =<span class="st"> </span><span class="kw">confintWidth</span>(resample)</a>
+<a class="sourceLine" id="cb358-6" data-line-number="6">} </a></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb359-1" data-line-number="1"><span class="kw">quantile</span>(simulatedWidths, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
+<a class="sourceLine" id="cb359-2" data-line-number="2">##      2.5%     97.5% </a>
+<a class="sourceLine" id="cb359-3" data-line-number="3">## 0.1232144 0.4330531</a></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" data-line-number="1"><span class="kw">quantile</span>(bootstrapWidths, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
+<a class="sourceLine" id="cb360-2" data-line-number="2">##       2.5%      97.5% </a>
+<a class="sourceLine" id="cb360-3" data-line-number="3">## 0.07638408 0.47030471</a></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb361-1" data-line-number="1"><span class="kw">hist</span>(simulatedWidths, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">.2</span>))</a>
+<a class="sourceLine" id="cb361-2" data-line-number="2"><span class="kw">hist</span>(bootstrapWidths, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">.2</span>), <span class="dt">add =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb361-3" data-line-number="3"><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">bty =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">fill =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;True Mean Dist&quot;</span>, <span class="st">&quot;Bootstrap Dist&quot;</span>))</a></code></pre></div>
+<p><img src="330-CART_files/figure-html/unnamed-chunk-46-1.png" width="100%" style="display: block; margin: auto;" />
 We can do this with any function at all!</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" data-line-number="1">compareBootstrapToTruth =<span class="st"> </span><span class="cf">function</span>(functionToCompare, <span class="dt">sampleSize =</span> <span class="dv">100</span>, <span class="dt">resamples =</span> <span class="dv">1000</span>, <span class="dt">plot =</span> <span class="ot">FALSE</span>, <span class="dt">ret =</span> <span class="ot">FALSE</span>){</a>
-<a class="sourceLine" id="cb358-2" data-line-number="2">  </a>
-<a class="sourceLine" id="cb358-3" data-line-number="3">  data =<span class="st"> </span><span class="kw">rgamma</span>(sampleSize, <span class="dv">2</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb358-4" data-line-number="4">  trueSamples =<span class="st"> </span><span class="kw">numeric</span>(resamples)</a>
-<a class="sourceLine" id="cb358-5" data-line-number="5">  bootstrapSamples =<span class="st"> </span><span class="kw">numeric</span>(resamples)</a>
-<a class="sourceLine" id="cb358-6" data-line-number="6">  <span class="cf">if</span>(<span class="kw">class</span>(<span class="kw">functionToCompare</span>(data)) <span class="op">!=</span><span class="st"> &quot;numeric&quot;</span>) <span class="kw">stop</span>(<span class="st">&quot;Function must return a scalar.&quot;</span>)</a>
-<a class="sourceLine" id="cb358-7" data-line-number="7">  </a>
-<a class="sourceLine" id="cb358-8" data-line-number="8">  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>m){</a>
-<a class="sourceLine" id="cb358-9" data-line-number="9">    trueSamples[i] =<span class="st"> </span><span class="kw">functionToCompare</span>(<span class="kw">rgamma</span>(sampleSize, <span class="dv">2</span>, <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb358-10" data-line-number="10">    resample =<span class="st"> </span><span class="kw">sample</span>(data, sampleSize, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb358-11" data-line-number="11">    bootstrapSamples[i] =<span class="st"> </span><span class="kw">functionToCompare</span>(resample)</a>
-<a class="sourceLine" id="cb358-12" data-line-number="12">  } </a>
-<a class="sourceLine" id="cb358-13" data-line-number="13">  </a>
-<a class="sourceLine" id="cb358-14" data-line-number="14">  <span class="cf">if</span>(plot){</a>
-<a class="sourceLine" id="cb358-15" data-line-number="15">    trueHist =<span class="st"> </span><span class="kw">hist</span>(trueSamples, <span class="dt">plot =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb358-16" data-line-number="16">    bootHist =<span class="st"> </span><span class="kw">hist</span>(bootstrapSamples, <span class="dt">plot =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb358-17" data-line-number="17">    <span class="kw">hist</span>(trueSamples, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">.2</span>), <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Sample Values&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="kw">max</span>(trueHist<span class="op">$</span>density, bootHist<span class="op">$</span>density)))</a>
-<a class="sourceLine" id="cb358-18" data-line-number="18">    <span class="kw">hist</span>(bootstrapSamples, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">.2</span>), <span class="dt">add =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb358-19" data-line-number="19">    <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">bty =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">fill =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;True Dist&quot;</span>, <span class="st">&quot;Bootstrap Dist&quot;</span>))</a>
-<a class="sourceLine" id="cb358-20" data-line-number="20">  }</a>
-<a class="sourceLine" id="cb358-21" data-line-number="21">  out =<span class="st"> </span><span class="kw">list</span>(<span class="dt">trueSamples =</span> trueSamples, <span class="dt">bootstrapSamples =</span> bootstrapSamples)</a>
-<a class="sourceLine" id="cb358-22" data-line-number="22">  <span class="cf">if</span>(ret) <span class="kw">return</span>(out)</a>
-<a class="sourceLine" id="cb358-23" data-line-number="23">}</a></code></pre></div>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb359-1" data-line-number="1"><span class="kw">compareBootstrapToTruth</span>(mean, <span class="dt">plot =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<p><img src="330-CART_files/figure-html/unnamed-chunk-44-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" data-line-number="1"><span class="kw">compareBootstrapToTruth</span>(confintWidth, <span class="dt">plot =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<p><img src="330-CART_files/figure-html/unnamed-chunk-45-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" data-line-number="1">compareBootstrapToTruth =<span class="st"> </span><span class="cf">function</span>(functionToCompare, <span class="dt">sampleSize =</span> <span class="dv">100</span>, <span class="dt">resamples =</span> <span class="dv">1000</span>, <span class="dt">plot =</span> <span class="ot">FALSE</span>, <span class="dt">ret =</span> <span class="ot">FALSE</span>){</a>
+<a class="sourceLine" id="cb362-2" data-line-number="2">  </a>
+<a class="sourceLine" id="cb362-3" data-line-number="3">  data =<span class="st"> </span><span class="kw">rgamma</span>(sampleSize, <span class="dv">2</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb362-4" data-line-number="4">  trueSamples =<span class="st"> </span><span class="kw">numeric</span>(resamples)</a>
+<a class="sourceLine" id="cb362-5" data-line-number="5">  bootstrapSamples =<span class="st"> </span><span class="kw">numeric</span>(resamples)</a>
+<a class="sourceLine" id="cb362-6" data-line-number="6">  <span class="cf">if</span>(<span class="kw">class</span>(<span class="kw">functionToCompare</span>(data)) <span class="op">!=</span><span class="st"> &quot;numeric&quot;</span>) <span class="kw">stop</span>(<span class="st">&quot;Function must return a scalar.&quot;</span>)</a>
+<a class="sourceLine" id="cb362-7" data-line-number="7">  </a>
+<a class="sourceLine" id="cb362-8" data-line-number="8">  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>m){</a>
+<a class="sourceLine" id="cb362-9" data-line-number="9">    trueSamples[i] =<span class="st"> </span><span class="kw">functionToCompare</span>(<span class="kw">rgamma</span>(sampleSize, <span class="dv">2</span>, <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb362-10" data-line-number="10">    resample =<span class="st"> </span><span class="kw">sample</span>(data, sampleSize, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb362-11" data-line-number="11">    bootstrapSamples[i] =<span class="st"> </span><span class="kw">functionToCompare</span>(resample)</a>
+<a class="sourceLine" id="cb362-12" data-line-number="12">  } </a>
+<a class="sourceLine" id="cb362-13" data-line-number="13">  </a>
+<a class="sourceLine" id="cb362-14" data-line-number="14">  <span class="cf">if</span>(plot){</a>
+<a class="sourceLine" id="cb362-15" data-line-number="15">    trueHist =<span class="st"> </span><span class="kw">hist</span>(trueSamples, <span class="dt">plot =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb362-16" data-line-number="16">    bootHist =<span class="st"> </span><span class="kw">hist</span>(bootstrapSamples, <span class="dt">plot =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb362-17" data-line-number="17">    <span class="kw">hist</span>(trueSamples, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">.2</span>), <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Sample Values&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="kw">max</span>(trueHist<span class="op">$</span>density, bootHist<span class="op">$</span>density)))</a>
+<a class="sourceLine" id="cb362-18" data-line-number="18">    <span class="kw">hist</span>(bootstrapSamples, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">.2</span>), <span class="dt">add =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb362-19" data-line-number="19">    <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">bty =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">fill =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;True Dist&quot;</span>, <span class="st">&quot;Bootstrap Dist&quot;</span>))</a>
+<a class="sourceLine" id="cb362-20" data-line-number="20">  }</a>
+<a class="sourceLine" id="cb362-21" data-line-number="21">  out =<span class="st"> </span><span class="kw">list</span>(<span class="dt">trueSamples =</span> trueSamples, <span class="dt">bootstrapSamples =</span> bootstrapSamples)</a>
+<a class="sourceLine" id="cb362-22" data-line-number="22">  <span class="cf">if</span>(ret) <span class="kw">return</span>(out)</a>
+<a class="sourceLine" id="cb362-23" data-line-number="23">}</a></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb363-1" data-line-number="1"><span class="kw">compareBootstrapToTruth</span>(mean, <span class="dt">plot =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="330-CART_files/figure-html/unnamed-chunk-48-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" data-line-number="1"><span class="kw">compareBootstrapToTruth</span>(confintWidth, <span class="dt">plot =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="330-CART_files/figure-html/unnamed-chunk-49-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
             </section>
 

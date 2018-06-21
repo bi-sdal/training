@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,11 +72,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -416,17 +418,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="statistical-transformations" class="section level2">
 <h2><span class="header-section-number">3.6</span> Statistical Transformations</h2>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">dim</span>(diamonds)</a>
-<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="co">## [1] 53940    10</span></a></code></pre></div>
+<a class="sourceLine" id="cb36-2" data-line-number="2">## [1] 53940    10</a></code></pre></div>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">head</span>(diamonds)</a>
-<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="co">## # A tibble: 6 x 10</span></a>
-<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="co">##   carat cut       color clarity depth table price     x     y     z</span></a>
-<a class="sourceLine" id="cb37-4" data-line-number="4"><span class="co">##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb37-5" data-line-number="5"><span class="co">## 1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43</span></a>
-<a class="sourceLine" id="cb37-6" data-line-number="6"><span class="co">## 2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31</span></a>
-<a class="sourceLine" id="cb37-7" data-line-number="7"><span class="co">## 3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31</span></a>
-<a class="sourceLine" id="cb37-8" data-line-number="8"><span class="co">## 4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63</span></a>
-<a class="sourceLine" id="cb37-9" data-line-number="9"><span class="co">## 5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75</span></a>
-<a class="sourceLine" id="cb37-10" data-line-number="10"><span class="co">## 6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48</span></a></code></pre></div>
+<a class="sourceLine" id="cb37-2" data-line-number="2">## # A tibble: 6 x 10</a>
+<a class="sourceLine" id="cb37-3" data-line-number="3">##   carat cut       color clarity depth table price     x     y     z</a>
+<a class="sourceLine" id="cb37-4" data-line-number="4">##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</a>
+<a class="sourceLine" id="cb37-5" data-line-number="5">## 1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43</a>
+<a class="sourceLine" id="cb37-6" data-line-number="6">## 2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31</a>
+<a class="sourceLine" id="cb37-7" data-line-number="7">## 3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31</a>
+<a class="sourceLine" id="cb37-8" data-line-number="8">## 4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63</a>
+<a class="sourceLine" id="cb37-9" data-line-number="9">## 5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75</a>
+<a class="sourceLine" id="cb37-10" data-line-number="10">## 6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48</a></code></pre></div>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut))</a></code></pre></div>
 <p><img src="010-data_vis_files/figure-html/unnamed-chunk-24-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Use a <em>stat</em> to calculate a new value.

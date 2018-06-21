@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,11 +72,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -420,36 +422,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb97-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb97-3" data-line-number="3"><span class="kw">ggplot</span>(table4a_tidy) <span class="op">+</span></a>
 <a class="sourceLine" id="cb97-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cases, <span class="dt">fill =</span> country))</a>
-<a class="sourceLine" id="cb97-5" data-line-number="5"><span class="co">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></a></code></pre></div>
+<a class="sourceLine" id="cb97-5" data-line-number="5">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</a></code></pre></div>
 <p><img src="040-tidy_data_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1">(table4a_tidy &lt;-<span class="st"> </span>table4a <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb98-2" data-line-number="2"><span class="st">    </span><span class="kw">gather</span>(<span class="st">&#39;2000&#39;</span>, <span class="st">&#39;1999&#39;</span>, <span class="dt">key =</span> <span class="st">&quot;year&quot;</span>, <span class="dt">value =</span> <span class="st">&#39;cases&#39;</span>))</a>
-<a class="sourceLine" id="cb98-3" data-line-number="3"><span class="co">## # A tibble: 6 x 3</span></a>
-<a class="sourceLine" id="cb98-4" data-line-number="4"><span class="co">##   country     year   cases</span></a>
-<a class="sourceLine" id="cb98-5" data-line-number="5"><span class="co">##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb98-6" data-line-number="6"><span class="co">## 1 Afghanistan 2000    2666</span></a>
-<a class="sourceLine" id="cb98-7" data-line-number="7"><span class="co">## 2 Brazil      2000   80488</span></a>
-<a class="sourceLine" id="cb98-8" data-line-number="8"><span class="co">## 3 China       2000  213766</span></a>
-<a class="sourceLine" id="cb98-9" data-line-number="9"><span class="co">## 4 Afghanistan 1999     745</span></a>
-<a class="sourceLine" id="cb98-10" data-line-number="10"><span class="co">## 5 Brazil      1999   37737</span></a>
-<a class="sourceLine" id="cb98-11" data-line-number="11"><span class="co">## 6 China       1999  212258</span></a></code></pre></div>
+<a class="sourceLine" id="cb98-3" data-line-number="3">## # A tibble: 6 x 3</a>
+<a class="sourceLine" id="cb98-4" data-line-number="4">##   country     year   cases</a>
+<a class="sourceLine" id="cb98-5" data-line-number="5">##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;</a>
+<a class="sourceLine" id="cb98-6" data-line-number="6">## 1 Afghanistan 2000    2666</a>
+<a class="sourceLine" id="cb98-7" data-line-number="7">## 2 Brazil      2000   80488</a>
+<a class="sourceLine" id="cb98-8" data-line-number="8">## 3 China       2000  213766</a>
+<a class="sourceLine" id="cb98-9" data-line-number="9">## 4 Afghanistan 1999     745</a>
+<a class="sourceLine" id="cb98-10" data-line-number="10">## 5 Brazil      1999   37737</a>
+<a class="sourceLine" id="cb98-11" data-line-number="11">## 6 China       1999  212258</a></code></pre></div>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="kw">library</span>(magrittr) <span class="co"># this is what actuallly gives you the pipe</span></a>
-<a class="sourceLine" id="cb99-2" data-line-number="2"><span class="co">## </span></a>
-<a class="sourceLine" id="cb99-3" data-line-number="3"><span class="co">## Attaching package: &#39;magrittr&#39;</span></a>
-<a class="sourceLine" id="cb99-4" data-line-number="4"><span class="co">## The following object is masked from &#39;package:tidyr&#39;:</span></a>
-<a class="sourceLine" id="cb99-5" data-line-number="5"><span class="co">## </span></a>
-<a class="sourceLine" id="cb99-6" data-line-number="6"><span class="co">##     extract</span></a></code></pre></div>
+<a class="sourceLine" id="cb99-2" data-line-number="2">## </a>
+<a class="sourceLine" id="cb99-3" data-line-number="3">## Attaching package: &#39;magrittr&#39;</a>
+<a class="sourceLine" id="cb99-4" data-line-number="4">## The following object is masked from &#39;package:tidyr&#39;:</a>
+<a class="sourceLine" id="cb99-5" data-line-number="5">## </a>
+<a class="sourceLine" id="cb99-6" data-line-number="6">##     extract</a></code></pre></div>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1">(table4b_tidy &lt;-<span class="st"> </span>table4b <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb100-2" data-line-number="2"><span class="st">    </span><span class="kw">gather</span>(<span class="st">&#39;1999&#39;</span><span class="op">:</span><span class="st">&#39;2000&#39;</span>, <span class="dt">key =</span> <span class="st">&#39;year&#39;</span>, <span class="dt">value =</span> <span class="st">&#39;population&#39;</span>))</a>
-<a class="sourceLine" id="cb100-3" data-line-number="3"><span class="co">## # A tibble: 6 x 3</span></a>
-<a class="sourceLine" id="cb100-4" data-line-number="4"><span class="co">##   country     year  population</span></a>
-<a class="sourceLine" id="cb100-5" data-line-number="5"><span class="co">##   &lt;chr&gt;       &lt;chr&gt;      &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb100-6" data-line-number="6"><span class="co">## 1 Afghanistan 1999    19987071</span></a>
-<a class="sourceLine" id="cb100-7" data-line-number="7"><span class="co">## 2 Brazil      1999   172006362</span></a>
-<a class="sourceLine" id="cb100-8" data-line-number="8"><span class="co">## 3 China       1999  1272915272</span></a>
-<a class="sourceLine" id="cb100-9" data-line-number="9"><span class="co">## 4 Afghanistan 2000    20595360</span></a>
-<a class="sourceLine" id="cb100-10" data-line-number="10"><span class="co">## 5 Brazil      2000   174504898</span></a>
-<a class="sourceLine" id="cb100-11" data-line-number="11"><span class="co">## 6 China       2000  1280428583</span></a></code></pre></div>
+<a class="sourceLine" id="cb100-3" data-line-number="3">## # A tibble: 6 x 3</a>
+<a class="sourceLine" id="cb100-4" data-line-number="4">##   country     year  population</a>
+<a class="sourceLine" id="cb100-5" data-line-number="5">##   &lt;chr&gt;       &lt;chr&gt;      &lt;int&gt;</a>
+<a class="sourceLine" id="cb100-6" data-line-number="6">## 1 Afghanistan 1999    19987071</a>
+<a class="sourceLine" id="cb100-7" data-line-number="7">## 2 Brazil      1999   172006362</a>
+<a class="sourceLine" id="cb100-8" data-line-number="8">## 3 China       1999  1272915272</a>
+<a class="sourceLine" id="cb100-9" data-line-number="9">## 4 Afghanistan 2000    20595360</a>
+<a class="sourceLine" id="cb100-10" data-line-number="10">## 5 Brazil      2000   174504898</a>
+<a class="sourceLine" id="cb100-11" data-line-number="11">## 6 China       2000  1280428583</a></code></pre></div>
 </div>
             </section>
 

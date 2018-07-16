@@ -214,7 +214,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>II SDAL Specific Components</b></span></li>
 <li class="chapter" data-level="1" data-path="infrastructure.html"><a href="infrastructure.html"><i class="fa fa-check"></i><b>1</b> Infrastructure</a><ul>
 <li class="chapter" data-level="1.1" data-path="components.html"><a href="components.html"><i class="fa fa-check"></i><b>1.1</b> Components</a></li>
-<li class="chapter" data-level="1.2" data-path="accessing-servers.html"><a href="accessing-servers.html"><i class="fa fa-check"></i><b>1.2</b> Accessing Servers</a></li>
+<li class="chapter" data-level="1.2" data-path="accessing-servers.html"><a href="accessing-servers.html"><i class="fa fa-check"></i><b>1.2</b> Accessing Servers</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="accessing-servers.html"><a href="accessing-servers.html#rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Rstudio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="accessing-servers.html"><a href="accessing-servers.html#python"><i class="fa fa-check"></i><b>1.2.2</b> Python</a></li>
+</ul></li>
 <li class="chapter" data-level="1.3" data-path="project-template.html"><a href="project-template.html"><i class="fa fa-check"></i><b>1.3</b> Project Template</a></li>
 <li class="chapter" data-level="1.4" data-path="getting-a-project-repository.html"><a href="getting-a-project-repository.html"><i class="fa fa-check"></i><b>1.4</b> Getting a project repository</a><ul>
 <li class="chapter" data-level="1.4.1" data-path="getting-a-project-repository.html"><a href="getting-a-project-repository.html#using-terminal"><i class="fa fa-check"></i><b>1.4.1</b> Using Terminal</a></li>
@@ -419,9 +422,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 There’s a few things that can be setup so you don’t have to type your password all the time.
 This involves creating “SSH keys”.
 Aside from creating keys, below is a set of links you’ll probably be using all the time:</p>
+<div id="rstudio" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Rstudio</h3>
+<p>Best to open/run rstudio in a private/incognito browser window</p>
 <ul>
-<li>Rstudio
-<ul>
+<li>safari: <a href="https://support.apple.com/guide/safari/browse-privately-ibrw1069/mac" class="uri">https://support.apple.com/guide/safari/browse-privately-ibrw1069/mac</a></li>
+<li>chrome: <a href="https://support.google.com/chrome/answer/95464?hl=en&amp;co=GENIE.Platform%3DDesktop">https://support.google.com/chrome/answer/95464?hl=en&amp;co=GENIE.Platform%3DDesktop</a></li>
+<li><p>firefox: <a href="https://support.mozilla.org/en-US/kb/private-browsing-use-firefox-without-history" class="uri">https://support.mozilla.org/en-US/kb/private-browsing-use-firefox-without-history</a></p></li>
 <li>Your own container: <a href="https://analytics.bi.vt.edu/YOUR_PID/rstudio" class="uri">https://analytics.bi.vt.edu/YOUR_PID/rstudio</a>
 <ul>
 <li>It’s suggested you use the container assigned to yourself, since your work and crashed code is isolated from everyone else</li>
@@ -430,10 +437,42 @@ Aside from creating keys, below is a set of links you’ll probably be using all
 <ul>
 <li>There is a generic container that can be used as well,
 it’s availiable to you, but if you have an individual conatiner,
-it’s better to use that one instead</li>
-</ul></li>
+it’s better to use that one instead.</li>
 </ul></li>
 </ul>
+</div>
+<div id="python" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> Python</h3>
+<p>Currently Python (Anaconda) in installed on an individual basis directly on Lightfoot.
+Since Anaconda installs things into your <code>home</code> directory, you have access to Python on all the containers.
+You can open <code>python</code> or <code>ipython</code> directly by running the command in the terminal.</p>
+<div id="jupyter-notebook" class="section level4">
+<h4><span class="header-section-number">1.2.2.1</span> Jupyter Notebook</h4>
+<p>If you want to use the jupyter notebook,
+you need to run the command on the server,
+and then connect to it from the browser on your local machine</p>
+<ol style="list-style-type: decimal">
+<li>Run the notebook on the server
+<ol style="list-style-type: decimal">
+<li><code>ssh</code> into <code>lightfoot</code> (e.g., <code>ssh pid@lightfoot.vbi.vt.edu</code>)</li>
+<li><code>jupyter notebook</code></li>
+<li>Note the url of the notebook server (along with the token):
+<ul>
+<li>e.g., <code>http://localhost:8888/?token=asdfasdfasdfasdfasdf</code></li>
+</ul></li>
+</ol></li>
+<li>Connect your laptop to the server
+<ol style="list-style-type: decimal">
+<li>In another terminal window make the connection:
+<ul>
+<li>Pay attention to the port number from the previous step (e.g., <code>8888</code>)</li>
+<li>Make the connection <code>ssh -L 8888:localhost:8888</code></li>
+</ul></li>
+</ol></li>
+<li>Copy/paste the url of the notebook server (from step 1) into your browser</li>
+</ol>
+</div>
+</div>
 </div>
             </section>
 

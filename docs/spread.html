@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,11 +72,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -419,31 +421,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="spread" class="section level2">
 <h2><span class="header-section-number">6.4</span> Spread</h2>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1">table2</a>
-<a class="sourceLine" id="cb105-2" data-line-number="2"><span class="co">## # A tibble: 12 x 4</span></a>
-<a class="sourceLine" id="cb105-3" data-line-number="3"><span class="co">##    country      year type            count</span></a>
-<a class="sourceLine" id="cb105-4" data-line-number="4"><span class="co">##    &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;           &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb105-5" data-line-number="5"><span class="co">##  1 Afghanistan  1999 cases             745</span></a>
-<a class="sourceLine" id="cb105-6" data-line-number="6"><span class="co">##  2 Afghanistan  1999 population   19987071</span></a>
-<a class="sourceLine" id="cb105-7" data-line-number="7"><span class="co">##  3 Afghanistan  2000 cases            2666</span></a>
-<a class="sourceLine" id="cb105-8" data-line-number="8"><span class="co">##  4 Afghanistan  2000 population   20595360</span></a>
-<a class="sourceLine" id="cb105-9" data-line-number="9"><span class="co">##  5 Brazil       1999 cases           37737</span></a>
-<a class="sourceLine" id="cb105-10" data-line-number="10"><span class="co">##  6 Brazil       1999 population  172006362</span></a>
-<a class="sourceLine" id="cb105-11" data-line-number="11"><span class="co">##  7 Brazil       2000 cases           80488</span></a>
-<a class="sourceLine" id="cb105-12" data-line-number="12"><span class="co">##  8 Brazil       2000 population  174504898</span></a>
-<a class="sourceLine" id="cb105-13" data-line-number="13"><span class="co">##  9 China        1999 cases          212258</span></a>
-<a class="sourceLine" id="cb105-14" data-line-number="14"><span class="co">## 10 China        1999 population 1272915272</span></a>
-<a class="sourceLine" id="cb105-15" data-line-number="15"><span class="co">## 11 China        2000 cases          213766</span></a>
-<a class="sourceLine" id="cb105-16" data-line-number="16"><span class="co">## 12 China        2000 population 1280428583</span></a></code></pre></div>
+<a class="sourceLine" id="cb105-2" data-line-number="2">## # A tibble: 12 x 4</a>
+<a class="sourceLine" id="cb105-3" data-line-number="3">##    country      year type            count</a>
+<a class="sourceLine" id="cb105-4" data-line-number="4">##    &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;           &lt;int&gt;</a>
+<a class="sourceLine" id="cb105-5" data-line-number="5">##  1 Afghanistan  1999 cases             745</a>
+<a class="sourceLine" id="cb105-6" data-line-number="6">##  2 Afghanistan  1999 population   19987071</a>
+<a class="sourceLine" id="cb105-7" data-line-number="7">##  3 Afghanistan  2000 cases            2666</a>
+<a class="sourceLine" id="cb105-8" data-line-number="8">##  4 Afghanistan  2000 population   20595360</a>
+<a class="sourceLine" id="cb105-9" data-line-number="9">##  5 Brazil       1999 cases           37737</a>
+<a class="sourceLine" id="cb105-10" data-line-number="10">##  6 Brazil       1999 population  172006362</a>
+<a class="sourceLine" id="cb105-11" data-line-number="11">##  7 Brazil       2000 cases           80488</a>
+<a class="sourceLine" id="cb105-12" data-line-number="12">##  8 Brazil       2000 population  174504898</a>
+<a class="sourceLine" id="cb105-13" data-line-number="13">##  9 China        1999 cases          212258</a>
+<a class="sourceLine" id="cb105-14" data-line-number="14">## 10 China        1999 population 1272915272</a>
+<a class="sourceLine" id="cb105-15" data-line-number="15">## 11 China        2000 cases          213766</a>
+<a class="sourceLine" id="cb105-16" data-line-number="16">## 12 China        2000 population 1280428583</a></code></pre></div>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1"><span class="kw">spread</span>(table2, <span class="dt">key =</span> type, <span class="dt">value =</span> count)</a>
-<a class="sourceLine" id="cb106-2" data-line-number="2"><span class="co">## # A tibble: 6 x 4</span></a>
-<a class="sourceLine" id="cb106-3" data-line-number="3"><span class="co">##   country      year  cases population</span></a>
-<a class="sourceLine" id="cb106-4" data-line-number="4"><span class="co">##   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb106-5" data-line-number="5"><span class="co">## 1 Afghanistan  1999    745   19987071</span></a>
-<a class="sourceLine" id="cb106-6" data-line-number="6"><span class="co">## 2 Afghanistan  2000   2666   20595360</span></a>
-<a class="sourceLine" id="cb106-7" data-line-number="7"><span class="co">## 3 Brazil       1999  37737  172006362</span></a>
-<a class="sourceLine" id="cb106-8" data-line-number="8"><span class="co">## 4 Brazil       2000  80488  174504898</span></a>
-<a class="sourceLine" id="cb106-9" data-line-number="9"><span class="co">## 5 China        1999 212258 1272915272</span></a>
-<a class="sourceLine" id="cb106-10" data-line-number="10"><span class="co">## 6 China        2000 213766 1280428583</span></a></code></pre></div>
+<a class="sourceLine" id="cb106-2" data-line-number="2">## # A tibble: 6 x 4</a>
+<a class="sourceLine" id="cb106-3" data-line-number="3">##   country      year  cases population</a>
+<a class="sourceLine" id="cb106-4" data-line-number="4">##   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;</a>
+<a class="sourceLine" id="cb106-5" data-line-number="5">## 1 Afghanistan  1999    745   19987071</a>
+<a class="sourceLine" id="cb106-6" data-line-number="6">## 2 Afghanistan  2000   2666   20595360</a>
+<a class="sourceLine" id="cb106-7" data-line-number="7">## 3 Brazil       1999  37737  172006362</a>
+<a class="sourceLine" id="cb106-8" data-line-number="8">## 4 Brazil       2000  80488  174504898</a>
+<a class="sourceLine" id="cb106-9" data-line-number="9">## 5 China        1999 212258 1272915272</a>
+<a class="sourceLine" id="cb106-10" data-line-number="10">## 6 China        2000 213766 1280428583</a></code></pre></div>
 </div>
             </section>
 

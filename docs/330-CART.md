@@ -1,6 +1,15 @@
 
 # Random Forests
 
+DataCamp:
+
+- https://www.datacamp.com/courses/machine-learning-with-tree-based-models-in-r
+- https://campus.datacamp.com/courses/kaggle-r-tutorial-on-machine-learning/chapter-2-from-icebergs-to-trees?ex=1
+
+Articles:
+
+- https://www.datacamp.com/community/tutorials/decision-trees-R
+
 ## CART
 
 
@@ -156,6 +165,7 @@ Other methods use a significance test approach to determining whether or not to 
 
 ```r
 library(party)
+## Loading required package: methods
 ## Loading required package: grid
 ## Loading required package: mvtnorm
 ## Loading required package: modeltools
@@ -168,6 +178,10 @@ library(party)
 ## 
 ##     as.Date, as.Date.numeric
 ## Loading required package: sandwich
+```
+
+
+```r
 ciTree = ctree(Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width, data = iris)
 ciTree
 ## 
@@ -194,7 +208,7 @@ ciTree
 plot(ciTree)
 ```
 
-<img src="330-CART_files/figure-html/unnamed-chunk-14-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="330-CART_files/figure-html/unnamed-chunk-15-1.png" width="100%" style="display: block; margin: auto;" />
 
 A main advantage of trees is their ease of interpretability and use. 
 
@@ -288,7 +302,7 @@ spamTree
 plot(spamTree)
 ```
 
-<img src="330-CART_files/figure-html/unnamed-chunk-17-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="330-CART_files/figure-html/unnamed-chunk-18-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 Let's predict an email!
@@ -314,7 +328,6 @@ sum(diag(spamTreeConfusionMatrix))/sum(spamTreeConfusionMatrix) #86.7%
 
 ```r
 # Let's do a simple cross validation
-
 inSampleProp = .85
 inSampleIndicator = sample(c(TRUE, FALSE), size = nrow(spam7), replace = TRUE, prob = c(inSampleProp, 1 - inSampleProp))
 trainingSet = spam7[inSampleIndicator,]
@@ -393,7 +406,7 @@ trainingTree
 plot(trainingTree)
 ```
 
-<img src="330-CART_files/figure-html/unnamed-chunk-21-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="330-CART_files/figure-html/unnamed-chunk-22-1.png" width="100%" style="display: block; margin: auto;" />
 
 Now we can do a more fair out of sample calculation
 
@@ -442,7 +455,7 @@ simData = rgamma(n, 2, 1)
 hist(simData)
 ```
 
-<img src="330-CART_files/figure-html/unnamed-chunk-26-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="330-CART_files/figure-html/unnamed-chunk-27-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -473,7 +486,10 @@ m = 2000
 simulatedMeans = numeric(m)
 # don't need for loop for this
 for (i in 1:m) simulatedMeans[i] = mean(rgamma(n, 2, 1))
+```
 
+
+```r
 quantile(simulatedMeans, c(.025, .975))
 ##     2.5%    97.5% 
 ## 1.734263 2.283977
@@ -495,7 +511,7 @@ hist(simulatedMeans, prob = TRUE, sub = "Line is the normal approximation densit
 lines(plotSequence, dnorm(plotSequence, mean = xbar, sd = xsd/sqrt(n)))
 ```
 
-<img src="330-CART_files/figure-html/unnamed-chunk-31-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="330-CART_files/figure-html/unnamed-chunk-33-1.png" width="100%" style="display: block; margin: auto;" />
 
 Obviously, we can't just get a thousand means to estimate its variability, but we can do something close by resampling from our original data. This is called bootstrapping.
 
@@ -508,7 +524,10 @@ for(i in 1:b){
   resample = sample(simData, n, replace = TRUE)
   bootstrapMeans[i] = mean(resample)
 } 
+```
 
+
+```r
 quantile(simulatedMeans, c(.025, .975))
 ##     2.5%    97.5% 
 ## 1.734263 2.283977
@@ -537,7 +556,7 @@ lines(plotSequence, dnorm(plotSequence, mean = xbar, sd = xsd/sqrt(n)))
 legend("topright", bty = 'n', fill = c("red", "blue"), legend = c("True Mean Dist", "Bootstrap Dist"))
 ```
 
-<img src="330-CART_files/figure-html/unnamed-chunk-35-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="330-CART_files/figure-html/unnamed-chunk-38-1.png" width="100%" style="display: block; margin: auto;" />
 
 We see that this strange resampling technique seems to work well when we want to find a mean, at least as well as the normal approximation. Its true strength lies in estimating variability in more exotic statistics. For example, what is the variability in the width of the 95\% confidence probability interval for our gamma data?
 
@@ -549,6 +568,10 @@ confintWidth = function(data){
   names(width) = NULL
   return(width)
 }
+```
+
+
+```r
 confintWidth(simData)
 ## [1] 0.1734299
 ```
@@ -569,7 +592,7 @@ quantile(simulatedWidths, c(.025, .975))
 hist(simulatedWidths)
 ```
 
-<img src="330-CART_files/figure-html/unnamed-chunk-38-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="330-CART_files/figure-html/unnamed-chunk-42-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -604,7 +627,7 @@ hist(bootstrapWidths, prob = TRUE, col = rgb(0, 0, 1, .2), add = TRUE)
 legend("topright", bty = 'n', fill = c("red", "blue"), legend = c("True Mean Dist", "Bootstrap Dist"))
 ```
 
-<img src="330-CART_files/figure-html/unnamed-chunk-42-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="330-CART_files/figure-html/unnamed-chunk-46-1.png" width="100%" style="display: block; margin: auto;" />
 We can do this with any function at all!
 
 
@@ -639,14 +662,14 @@ compareBootstrapToTruth = function(functionToCompare, sampleSize = 100, resample
 compareBootstrapToTruth(mean, plot = TRUE)
 ```
 
-<img src="330-CART_files/figure-html/unnamed-chunk-44-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="330-CART_files/figure-html/unnamed-chunk-48-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
 compareBootstrapToTruth(confintWidth, plot = TRUE)
 ```
 
-<img src="330-CART_files/figure-html/unnamed-chunk-45-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="330-CART_files/figure-html/unnamed-chunk-49-1.png" width="100%" style="display: block; margin: auto;" />
 
 ## Bagging
 
@@ -775,7 +798,7 @@ plot(classTree)
 text(classTree)
 ```
 
-<img src="330-CART_files/figure-html/unnamed-chunk-53-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="330-CART_files/figure-html/unnamed-chunk-57-1.png" width="100%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -959,6 +982,10 @@ oobPredictions[, 1:5]
 ## [148,]   NA   NA    3   NA   NA
 ## [149,]    3    3   NA   NA   NA
 ## [150,]   NA   NA   NA   NA    3
+```
+
+
+```r
 bsPreds = cbind(prob1 = apply(oobPredictions, 1, function(x) sum(x == 1, na.rm = TRUE)),
                 prob2 = apply(oobPredictions, 1, function(x) sum(x == 2, na.rm = TRUE)),
                 prob3 = apply(oobPredictions, 1, function(x) sum(x == 3, na.rm = TRUE)))
@@ -1007,7 +1034,7 @@ uncertainty = apply(bsPreds[,1:3], 1, function(x) 1/var(x))
 ggplot(data = iris) + geom_point(aes(x = Petal.Length, y = Petal.Width, col = Species, size = uncertainty))
 ```
 
-<img src="330-CART_files/figure-html/unnamed-chunk-57-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="330-CART_files/figure-html/unnamed-chunk-62-1.png" width="100%" style="display: block; margin: auto;" />
 
 As expected, the model is perfectly sure about setosa, but uncertain on the boundary between versicolo and virginica.
 
@@ -1019,13 +1046,10 @@ IMPORTANT NOTE!!! This implementation of random forest can't handle catgegorical
 
 ```r
 library(randomForest)
-## randomForest 4.6-14
-## Type rfNews() to see new features/changes/bug fixes.
-## 
-## Attaching package: 'randomForest'
-## The following object is masked from 'package:ggplot2':
-## 
-##     margin
+```
+
+
+```r
 mtcarsRf = randomForest(mpg ~ ., data=mtcars, importance=TRUE, proximity=TRUE, mtry = 4)
 mtcarsRf
 ## 
@@ -1044,7 +1068,7 @@ mtcarsRf
 plot(mtcarsRf)
 ```
 
-<img src="330-CART_files/figure-html/unnamed-chunk-59-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="330-CART_files/figure-html/unnamed-chunk-65-1.png" width="100%" style="display: block; margin: auto;" />
 
 Variable importance.
 
@@ -1075,7 +1099,7 @@ for(j in 1:3){
 }
 ```
 
-<img src="330-CART_files/figure-html/unnamed-chunk-61-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="330-CART_files/figure-html/unnamed-chunk-67-1.png" width="100%" style="display: block; margin: auto;" />
 
 A neat output of an RF model is a measure of proximity between rows. Proximity is the proportion of times two observations appear in the same leaf node. This can be very useful in cases where rows contain both continuous and categorical data, a typically difficult situation for most metrics.
 

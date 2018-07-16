@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,11 +72,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -429,13 +431,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb237-9" data-line-number="9">    <span class="kw">return</span>(temp_c)</a>
 <a class="sourceLine" id="cb237-10" data-line-number="10">}</a></code></pre></div>
 <div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1"><span class="kw">k_c</span>(<span class="op">-</span><span class="dv">9</span>)</a>
-<a class="sourceLine" id="cb238-2" data-line-number="2"><span class="co">## Warning in k_c(-9): you passed in a negative Kelvin number</span></a>
-<a class="sourceLine" id="cb238-3" data-line-number="3"><span class="co">## [1] NA</span></a></code></pre></div>
+<a class="sourceLine" id="cb238-2" data-line-number="2">## Warning in k_c(-9): you passed in a negative Kelvin number</a>
+<a class="sourceLine" id="cb238-3" data-line-number="3">## [1] NA</a></code></pre></div>
 <p>Our current function does not deal with missing numbers</p>
 <div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" data-line-number="1"><span class="kw">k_c</span>(<span class="ot">NA</span>)</a></code></pre></div>
 <pre><code>Error in if (temp_k &lt; 0) { : missing value where TRUE/FALSE needed</code></pre>
 <div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1"><span class="kw">k_c</span>(<span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb241-2" data-line-number="2"><span class="co">## [1] -273.15</span></a></code></pre></div>
+<a class="sourceLine" id="cb241-2" data-line-number="2">## [1] -273.15</a></code></pre></div>
 </div>
             </section>
 

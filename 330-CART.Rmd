@@ -1,5 +1,14 @@
 # Random Forests
 
+DataCamp:
+
+- https://www.datacamp.com/courses/machine-learning-with-tree-based-models-in-r
+- https://campus.datacamp.com/courses/kaggle-r-tutorial-on-machine-learning/chapter-2-from-icebergs-to-trees?ex=1
+
+Articles:
+
+- https://www.datacamp.com/community/tutorials/decision-trees-R
+
 ## CART
 
 
@@ -79,6 +88,9 @@ Other methods use a significance test approach to determining whether or not to 
 
 ```{r}
 library(party)
+```
+
+```{r}
 ciTree = ctree(Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width, data = iris)
 ciTree
 ```
@@ -119,7 +131,6 @@ sum(diag(spamTreeConfusionMatrix))/sum(spamTreeConfusionMatrix) #86.7%
 
 ```{r}
 # Let's do a simple cross validation
-
 inSampleProp = .85
 inSampleIndicator = sample(c(TRUE, FALSE), size = nrow(spam7), replace = TRUE, prob = c(inSampleProp, 1 - inSampleProp))
 trainingSet = spam7[inSampleIndicator,]
@@ -188,7 +199,9 @@ m = 2000
 simulatedMeans = numeric(m)
 # don't need for loop for this
 for (i in 1:m) simulatedMeans[i] = mean(rgamma(n, 2, 1))
+```
 
+```{r}
 quantile(simulatedMeans, c(.025, .975))
 ```
 
@@ -215,7 +228,9 @@ for(i in 1:b){
   resample = sample(simData, n, replace = TRUE)
   bootstrapMeans[i] = mean(resample)
 } 
+```
 
+```{r}
 quantile(simulatedMeans, c(.025, .975))
 ```
 
@@ -245,6 +260,9 @@ confintWidth = function(data){
   names(width) = NULL
   return(width)
 }
+```
+
+```{r}
 confintWidth(simData)
 ```
 
@@ -397,6 +415,9 @@ for(i in 1:b){
 Let's look at some results!
 ```{r}
 oobPredictions[, 1:5]
+```
+
+```{r}
 bsPreds = cbind(prob1 = apply(oobPredictions, 1, function(x) sum(x == 1, na.rm = TRUE)),
                 prob2 = apply(oobPredictions, 1, function(x) sum(x == 2, na.rm = TRUE)),
                 prob3 = apply(oobPredictions, 1, function(x) sum(x == 3, na.rm = TRUE)))
@@ -422,6 +443,9 @@ IMPORTANT NOTE!!! This implementation of random forest can't handle catgegorical
 
 ```{r}
 library(randomForest)
+```
+
+```{r}
 mtcarsRf = randomForest(mpg ~ ., data=mtcars, importance=TRUE, proximity=TRUE, mtry = 4)
 mtcarsRf
 ```

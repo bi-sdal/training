@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,11 +72,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -417,7 +419,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="random-forests" class="section level1">
-<h1><span class="header-section-number">Chapter 23</span> Random Forests</h1> 
+<h1><span class="header-section-number">Chapter 23</span> Random Forests</h1>
+<p>DataCamp:</p>
+<ul>
+<li><a href="https://www.datacamp.com/courses/machine-learning-with-tree-based-models-in-r" class="uri">https://www.datacamp.com/courses/machine-learning-with-tree-based-models-in-r</a></li>
+<li><a href="https://campus.datacamp.com/courses/kaggle-r-tutorial-on-machine-learning/chapter-2-from-icebergs-to-trees?ex=1" class="uri">https://campus.datacamp.com/courses/kaggle-r-tutorial-on-machine-learning/chapter-2-from-icebergs-to-trees?ex=1</a></li>
+</ul>
+<p>Articles:</p>
+<ul>
+<li><a href="https://www.datacamp.com/community/tutorials/decision-trees-R" class="uri">https://www.datacamp.com/community/tutorials/decision-trees-R</a></li>
+</ul> 
 </div>
             </section>
 

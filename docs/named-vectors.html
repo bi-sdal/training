@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,11 +72,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -420,20 +422,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">12.5</span> Named vectors</h2>
 <div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1">my_named_vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span> =<span class="st"> </span><span class="dv">1</span>, <span class="st">&#39;b&#39;</span> =<span class="st"> </span><span class="dv">2</span>, <span class="st">&#39;c&#39;</span> =<span class="st"> </span><span class="dv">3</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1">my_named_vec[<span class="dv">3</span>]</a>
-<a class="sourceLine" id="cb214-2" data-line-number="2"><span class="co">## c </span></a>
-<a class="sourceLine" id="cb214-3" data-line-number="3"><span class="co">## 3</span></a></code></pre></div>
+<a class="sourceLine" id="cb214-2" data-line-number="2">## c </a>
+<a class="sourceLine" id="cb214-3" data-line-number="3">## 3</a></code></pre></div>
 <div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">my_named_vec[<span class="st">&#39;b&#39;</span>]</a>
-<a class="sourceLine" id="cb215-2" data-line-number="2"><span class="co">## b </span></a>
-<a class="sourceLine" id="cb215-3" data-line-number="3"><span class="co">## 2</span></a></code></pre></div>
+<a class="sourceLine" id="cb215-2" data-line-number="2">## b </a>
+<a class="sourceLine" id="cb215-3" data-line-number="3">## 2</a></code></pre></div>
 <div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1">my_unnamed &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1">my_labels &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]</a></code></pre></div>
 <div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1"><span class="kw">names</span>(my_unnamed) &lt;-<span class="st"> </span>my_labels</a></code></pre></div>
 <div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1">my_unnamed[<span class="st">&#39;g&#39;</span>]</a>
-<a class="sourceLine" id="cb219-2" data-line-number="2"><span class="co">## g </span></a>
-<a class="sourceLine" id="cb219-3" data-line-number="3"><span class="co">## 7</span></a></code></pre></div>
+<a class="sourceLine" id="cb219-2" data-line-number="2">## g </a>
+<a class="sourceLine" id="cb219-3" data-line-number="3">## 7</a></code></pre></div>
 <div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1">my_unnamed[<span class="dv">7</span>]</a>
-<a class="sourceLine" id="cb220-2" data-line-number="2"><span class="co">## g </span></a>
-<a class="sourceLine" id="cb220-3" data-line-number="3"><span class="co">## 7</span></a></code></pre></div>
+<a class="sourceLine" id="cb220-2" data-line-number="2">## g </a>
+<a class="sourceLine" id="cb220-3" data-line-number="3">## 7</a></code></pre></div>
 </div>
             </section>
 

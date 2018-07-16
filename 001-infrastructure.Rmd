@@ -27,13 +27,43 @@ There's a few things that can be setup so you don't have to type your password a
 This involves creating "SSH keys".
 Aside from creating keys, below is a set of links you'll probably be using all the time:
 
-- Rstudio
-    - Your own container: https://analytics.bi.vt.edu/YOUR_PID/rstudio
-        - It's suggested you use the container assigned to yourself, since your work and crashed code is isolated from everyone else
-    - Generic RStudio container: https://analytics.bi.vt.edu/rstudio
-        - There is a generic container that can be used as well,
-        it's availiable to you, but if you have an individual conatiner,
-        it's better to use that one instead
+### Rstudio
+
+Best to open/run rstudio in a private/incognito browser window
+
+- safari: https://support.apple.com/guide/safari/browse-privately-ibrw1069/mac
+- chrome: https://support.google.com/chrome/answer/95464?hl=en&co=GENIE.Platform%3DDesktop
+- firefox: https://support.mozilla.org/en-US/kb/private-browsing-use-firefox-without-history
+
+- Your own container: https://analytics.bi.vt.edu/YOUR_PID/rstudio
+    - It's suggested you use the container assigned to yourself, since your work and crashed code is isolated from everyone else
+- Generic RStudio container: https://analytics.bi.vt.edu/rstudio
+    - There is a generic container that can be used as well,
+    it's availiable to you, but if you have an individual conatiner,
+    it's better to use that one instead.
+
+### Python
+
+Currently Python (Anaconda) in installed on an individual basis directly on Lightfoot.
+Since Anaconda installs things into your `home` directory, you have access to Python on all the containers.
+You can open `python` or `ipython` directly by running the command in the terminal.
+
+#### Jupyter Notebook
+
+If you want to use the jupyter notebook,
+you need to run the command on the server,
+and then connect to it from the browser on your local machine
+
+1. Run the notebook on the server
+    1. `ssh` into `lightfoot` (e.g., `ssh pid@lightfoot.vbi.vt.edu`)
+    2. `jupyter notebook`
+    3. Note the url of the notebook server (along with the token):
+        - e.g., `http://localhost:8888/?token=asdfasdfasdfasdfasdf`
+2. Connect your laptop to the server
+    1. In another terminal window make the connection:
+        - Pay attention to the port number from the previous step (e.g., `8888`)
+        - Make the connection `ssh -L 8888:localhost:8888`
+3. Copy/paste the url of the notebook server (from step 1) into your browser
 
 ## Project Template
 

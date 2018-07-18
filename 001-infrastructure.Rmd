@@ -9,15 +9,15 @@ We use [Docker](https://www.docker.com/) in our lab.
 This allows us to install various components without affecting the underlying server.
 A brief history of how we settled on docker and why is in this blog post on [From VMs to LXC Containers to Docker Containers](https://chendaniely.github.io/sdal/2017/07/07/vm_lxc_docker/).
 
-Figure \@ref(fig:docker-lightfoot) depicts what conatiners we have on `lightfoot`.
+Figure \@ref(fig:docker-lightfoot) depicts what containers we have on `lightfoot`.
 You can think of each 'container' as an 'application' just like one you are running on your laptop.
-But the behvaior of each 'container' is more like a separate server you connect to.
+But the behavior of each 'container' is more like a separate server you connect to.
 
 ```{r docker-lightfoot, echo=FALSE, fig.cap='The Docker infrastructure used in SDAL. The containers on the top row are the parts of the system lab members will be connecting to and working on.', fig.align='center', out.width='100%'}
 knitr::include_graphics(path = "./figs/sdal_docker_lightfoot.png")
 ```
 
-The primary conatiners you will be using are the RStudio, Adminer, and Django/Wagtail containers.
+The primary containers you will be using are the RStudio, Adminer, and Django/Wagtail containers.
 They all exist on `lightfoot` and can all be reached in a browser with [`https://analytics.bi.vt.edu`](https://analytics.bi.vt.edu) and an appropriate suffix (e.g., [`/rstudio`](https://analytics.bi.vt.edu/rstudio), [`/db`](https://analytics.bi.vt.edu/db)).
 
 ## Accessing Servers
@@ -27,20 +27,48 @@ There's a few things that can be setup so you don't have to type your password a
 This involves creating "SSH keys".
 Aside from creating keys, below is a set of links you'll probably be using all the time:
 
-### Rstudio
+### RStudio
 
-Best to open/run rstudio in a private/incognito browser window
+**Best to open/run rstudio in a private/incognito browser window**
 
-- safari: https://support.apple.com/guide/safari/browse-privately-ibrw1069/mac
-- chrome: https://support.google.com/chrome/answer/95464?hl=en&co=GENIE.Platform%3DDesktop
-- firefox: https://support.mozilla.org/en-US/kb/private-browsing-use-firefox-without-history
+You will definitely need to do this if you try to go to your rstudio container and are only presented with an empty/blank/white screen.
 
+- Safari: https://support.apple.com/guide/safari/browse-privately-ibrw1069/mac
+- Chrome: https://support.google.com/chrome/answer/95464?hl=en&co=GENIE.Platform%3DDesktop
+- Firefox: https://support.mozilla.org/en-US/kb/private-browsing-use-firefox-without-history
+
+**RStudio**
+
+- Generic RStudio container: https://analytics.bi.vt.edu/rstudio
+    - This is the generic RStudio container
+    - For people doing heavy computational work, you will be assigned a separate container. It is better to use that one instead.
 - Your own container: https://analytics.bi.vt.edu/YOUR_PID/rstudio
     - It's suggested you use the container assigned to yourself, since your work and crashed code is isolated from everyone else
-- Generic RStudio container: https://analytics.bi.vt.edu/rstudio
-    - There is a generic container that can be used as well,
-    it's availiable to you, but if you have an individual conatiner,
-    it's better to use that one instead.
+
+
+### Database
+
+We use [PostgreSQL](https://www.postgresql.org/) for our database.
+There is a way to connect directly to the database container,
+but the easiest way is to use the [Adminer Database management](https://www.adminer.org/en/) server.
+
+Connect to adminer (i.e., the database web interface) by going to: https://analytics.bi.vt.edu/db.
+
+You should see the login screen:
+
+```{r adminer-login, echo=FALSE, fig.cap='Login screen for Adminer', fig.align='center', out.width='50%'}
+knitr::include_graphics(path = "./figs/adminer/adminer_login.png")
+```
+
+Make sure:
+
+1. System: `PostgreSQL`
+2. Server `postgresql` (note all lower-case)
+3. Username: your username (i.e., vt PID)
+4. Password: Your BI LDAP Password
+5. Database: You can leave this blank, or you can put in the name of the database you want to connect to if you already know.
+    You have to option to connect and look for a database after you connect.
+    So this field is optional.
 
 ### Python
 
@@ -59,6 +87,10 @@ and then connect to it from the browser on your local machine
     2. `jupyter notebook`
     3. Note the url of the notebook server (along with the token):
         - e.g., `http://localhost:8888/?token=asdfasdfasdfasdfasdf`
+        - Here also pay very close attention to the port number, this example shows `8888`
+        - Older versions of `jupyter` will not have a token
+            - You may want to think about performing a full update
+            - `conda update conda && conda update --all`
 2. Connect your laptop to the server
     1. In another terminal window make the connection:
         - Pay attention to the port number from the previous step (e.g., `8888`)
@@ -204,7 +236,7 @@ knitr::include_graphics(path = "./figs/get_repo/060-paste_screen.png")
 RStudio will `git clone` the repository to the designated folder and open the project.
 The top right corner will tell you which project you are in.
 
-Make sure you check this everytime you start working.
+Make sure you check this every time you start working.
 
 ```{r, echo=FALSE}
 knitr::include_graphics(path = "./figs/get_repo/070-check_project.png")

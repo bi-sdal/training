@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,13 +72,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -217,8 +215,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="infrastructure.html"><a href="infrastructure.html"><i class="fa fa-check"></i><b>1</b> Infrastructure</a><ul>
 <li class="chapter" data-level="1.1" data-path="components.html"><a href="components.html"><i class="fa fa-check"></i><b>1.1</b> Components</a></li>
 <li class="chapter" data-level="1.2" data-path="accessing-servers.html"><a href="accessing-servers.html"><i class="fa fa-check"></i><b>1.2</b> Accessing Servers</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="accessing-servers.html"><a href="accessing-servers.html#rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Rstudio</a></li>
-<li class="chapter" data-level="1.2.2" data-path="accessing-servers.html"><a href="accessing-servers.html#python"><i class="fa fa-check"></i><b>1.2.2</b> Python</a></li>
+<li class="chapter" data-level="1.2.1" data-path="accessing-servers.html"><a href="accessing-servers.html#rstudio"><i class="fa fa-check"></i><b>1.2.1</b> RStudio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="accessing-servers.html"><a href="accessing-servers.html#database"><i class="fa fa-check"></i><b>1.2.2</b> Database</a></li>
+<li class="chapter" data-level="1.2.3" data-path="accessing-servers.html"><a href="accessing-servers.html#python"><i class="fa fa-check"></i><b>1.2.3</b> Python</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="project-template.html"><a href="project-template.html"><i class="fa fa-check"></i><b>1.3</b> Project Template</a></li>
 <li class="chapter" data-level="1.4" data-path="getting-a-project-repository.html"><a href="getting-a-project-repository.html"><i class="fa fa-check"></i><b>1.4</b> Getting a project repository</a><ul>
@@ -425,31 +424,31 @@ IMPORTANT NOTE!!! This implementation of random forest can’t handle catgegoric
 <div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb378-1" data-line-number="1"><span class="kw">library</span>(randomForest)</a></code></pre></div>
 <div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb379-1" data-line-number="1">mtcarsRf =<span class="st"> </span><span class="kw">randomForest</span>(mpg <span class="op">~</span><span class="st"> </span>., <span class="dt">data=</span>mtcars, <span class="dt">importance=</span><span class="ot">TRUE</span>, <span class="dt">proximity=</span><span class="ot">TRUE</span>, <span class="dt">mtry =</span> <span class="dv">4</span>)</a>
 <a class="sourceLine" id="cb379-2" data-line-number="2">mtcarsRf</a>
-<a class="sourceLine" id="cb379-3" data-line-number="3">## </a>
-<a class="sourceLine" id="cb379-4" data-line-number="4">## Call:</a>
-<a class="sourceLine" id="cb379-5" data-line-number="5">##  randomForest(formula = mpg ~ ., data = mtcars, importance = TRUE,      proximity = TRUE, mtry = 4) </a>
-<a class="sourceLine" id="cb379-6" data-line-number="6">##                Type of random forest: regression</a>
-<a class="sourceLine" id="cb379-7" data-line-number="7">##                      Number of trees: 500</a>
-<a class="sourceLine" id="cb379-8" data-line-number="8">## No. of variables tried at each split: 4</a>
-<a class="sourceLine" id="cb379-9" data-line-number="9">## </a>
-<a class="sourceLine" id="cb379-10" data-line-number="10">##           Mean of squared residuals: 5.424577</a>
-<a class="sourceLine" id="cb379-11" data-line-number="11">##                     % Var explained: 84.58</a></code></pre></div>
+<a class="sourceLine" id="cb379-3" data-line-number="3"><span class="co">## </span></a>
+<a class="sourceLine" id="cb379-4" data-line-number="4"><span class="co">## Call:</span></a>
+<a class="sourceLine" id="cb379-5" data-line-number="5"><span class="co">##  randomForest(formula = mpg ~ ., data = mtcars, importance = TRUE,      proximity = TRUE, mtry = 4) </span></a>
+<a class="sourceLine" id="cb379-6" data-line-number="6"><span class="co">##                Type of random forest: regression</span></a>
+<a class="sourceLine" id="cb379-7" data-line-number="7"><span class="co">##                      Number of trees: 500</span></a>
+<a class="sourceLine" id="cb379-8" data-line-number="8"><span class="co">## No. of variables tried at each split: 4</span></a>
+<a class="sourceLine" id="cb379-9" data-line-number="9"><span class="co">## </span></a>
+<a class="sourceLine" id="cb379-10" data-line-number="10"><span class="co">##           Mean of squared residuals: 5.424577</span></a>
+<a class="sourceLine" id="cb379-11" data-line-number="11"><span class="co">##                     % Var explained: 84.58</span></a></code></pre></div>
 <div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb380-1" data-line-number="1"><span class="kw">plot</span>(mtcarsRf)</a></code></pre></div>
 <p><img src="330-CART_files/figure-html/unnamed-chunk-65-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Variable importance.</p>
 <div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb381-1" data-line-number="1">varImportance =<span class="st"> </span><span class="kw">importance</span>(mtcarsRf, <span class="dt">type =</span> <span class="dv">2</span>)</a>
 <a class="sourceLine" id="cb381-2" data-line-number="2">varImportance</a>
-<a class="sourceLine" id="cb381-3" data-line-number="3">##      IncNodePurity</a>
-<a class="sourceLine" id="cb381-4" data-line-number="4">## cyl     189.275498</a>
-<a class="sourceLine" id="cb381-5" data-line-number="5">## disp    262.391424</a>
-<a class="sourceLine" id="cb381-6" data-line-number="6">## hp      205.431608</a>
-<a class="sourceLine" id="cb381-7" data-line-number="7">## drat     45.489344</a>
-<a class="sourceLine" id="cb381-8" data-line-number="8">## wt      278.369216</a>
-<a class="sourceLine" id="cb381-9" data-line-number="9">## qsec     19.915649</a>
-<a class="sourceLine" id="cb381-10" data-line-number="10">## vs        9.846512</a>
-<a class="sourceLine" id="cb381-11" data-line-number="11">## am        8.995382</a>
-<a class="sourceLine" id="cb381-12" data-line-number="12">## gear      9.776913</a>
-<a class="sourceLine" id="cb381-13" data-line-number="13">## carb     19.251604</a></code></pre></div>
+<a class="sourceLine" id="cb381-3" data-line-number="3"><span class="co">##      IncNodePurity</span></a>
+<a class="sourceLine" id="cb381-4" data-line-number="4"><span class="co">## cyl     189.275498</span></a>
+<a class="sourceLine" id="cb381-5" data-line-number="5"><span class="co">## disp    262.391424</span></a>
+<a class="sourceLine" id="cb381-6" data-line-number="6"><span class="co">## hp      205.431608</span></a>
+<a class="sourceLine" id="cb381-7" data-line-number="7"><span class="co">## drat     45.489344</span></a>
+<a class="sourceLine" id="cb381-8" data-line-number="8"><span class="co">## wt      278.369216</span></a>
+<a class="sourceLine" id="cb381-9" data-line-number="9"><span class="co">## qsec     19.915649</span></a>
+<a class="sourceLine" id="cb381-10" data-line-number="10"><span class="co">## vs        9.846512</span></a>
+<a class="sourceLine" id="cb381-11" data-line-number="11"><span class="co">## am        8.995382</span></a>
+<a class="sourceLine" id="cb381-12" data-line-number="12"><span class="co">## gear      9.776913</span></a>
+<a class="sourceLine" id="cb381-13" data-line-number="13"><span class="co">## carb     19.251604</span></a></code></pre></div>
 <div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb382-1" data-line-number="1"><span class="kw">layout</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>))</a>
 <a class="sourceLine" id="cb382-2" data-line-number="2"><span class="kw">varImpPlot</span>(mtcarsRf, <span class="dt">type =</span> <span class="dv">2</span>)</a>
 <a class="sourceLine" id="cb382-3" data-line-number="3">impvar =<span class="st"> </span><span class="kw">rownames</span>(varImportance)[<span class="kw">order</span>(varImportance[, <span class="dv">1</span>], <span class="dt">decreasing=</span><span class="ot">TRUE</span>)]</a>

@@ -165,19 +165,6 @@ Other methods use a significance test approach to determining whether or not to 
 
 ```r
 library(party)
-## Loading required package: methods
-## Loading required package: grid
-## Loading required package: mvtnorm
-## Loading required package: modeltools
-## Loading required package: stats4
-## Loading required package: strucchange
-## Loading required package: zoo
-## 
-## Attaching package: 'zoo'
-## The following objects are masked from 'package:base':
-## 
-##     as.Date, as.Date.numeric
-## Loading required package: sandwich
 ```
 
 
@@ -214,7 +201,6 @@ A main advantage of trees is their ease of interpretability and use.
 
 ```r
 library(DAAG)
-## Loading required package: lattice
 data(spam7)
 head(spam7)
 ##   crl.tot dollar  bang money n000 make yesno

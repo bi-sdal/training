@@ -138,7 +138,6 @@ Regular expressions are very useful in the context of web scraping. This example
 
 ```r
 library(XML)
-## Loading required package: methods
 rooturl = "http://www.pulaskicounty.org/Board-of-Supervisors.html"
 bosMainPage = htmlParse(rooturl)
 bosMainPage

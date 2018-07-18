@@ -15,7 +15,6 @@ Cheat Sheets
 
 ```r
 library(lubridate)
-## Loading required package: methods
 ## 
 ## Attaching package: 'lubridate'
 ## The following object is masked from 'package:base':
@@ -328,5 +327,5 @@ Once you have a datetime object, you can then begin to do calculations and arith
 
 ```r
 now() - curr_time
-## Time difference of 14.93392 days
+## Time difference of 14.13714 days
 ```

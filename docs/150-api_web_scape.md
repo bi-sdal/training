@@ -17,7 +17,6 @@ Additional Resources:
 
 ```r
 library(RCurl)
-## Loading required package: methods
 ## Loading required package: bitops
 library(XML)
 ```

@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,13 +72,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -217,8 +215,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="infrastructure.html"><a href="infrastructure.html"><i class="fa fa-check"></i><b>1</b> Infrastructure</a><ul>
 <li class="chapter" data-level="1.1" data-path="components.html"><a href="components.html"><i class="fa fa-check"></i><b>1.1</b> Components</a></li>
 <li class="chapter" data-level="1.2" data-path="accessing-servers.html"><a href="accessing-servers.html"><i class="fa fa-check"></i><b>1.2</b> Accessing Servers</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="accessing-servers.html"><a href="accessing-servers.html#rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Rstudio</a></li>
-<li class="chapter" data-level="1.2.2" data-path="accessing-servers.html"><a href="accessing-servers.html#python"><i class="fa fa-check"></i><b>1.2.2</b> Python</a></li>
+<li class="chapter" data-level="1.2.1" data-path="accessing-servers.html"><a href="accessing-servers.html#rstudio"><i class="fa fa-check"></i><b>1.2.1</b> RStudio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="accessing-servers.html"><a href="accessing-servers.html#database"><i class="fa fa-check"></i><b>1.2.2</b> Database</a></li>
+<li class="chapter" data-level="1.2.3" data-path="accessing-servers.html"><a href="accessing-servers.html#python"><i class="fa fa-check"></i><b>1.2.3</b> Python</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="project-template.html"><a href="project-template.html"><i class="fa fa-check"></i><b>1.3</b> Project Template</a></li>
 <li class="chapter" data-level="1.4" data-path="getting-a-project-repository.html"><a href="getting-a-project-repository.html"><i class="fa fa-check"></i><b>1.4</b> Getting a project repository</a><ul>
@@ -427,7 +426,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb342-4" data-line-number="4"><span class="kw">hist</span>(simData)</a></code></pre></div>
 <p><img src="330-CART_files/figure-html/unnamed-chunk-27-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" data-line-number="1"><span class="kw">mean</span>(simData)</a>
-<a class="sourceLine" id="cb343-2" data-line-number="2">## [1] 2.04451</a></code></pre></div>
+<a class="sourceLine" id="cb343-2" data-line-number="2"><span class="co">## [1] 2.04451</span></a></code></pre></div>
 <p>One option is to rely on normal theory and write,</p>
 <p><span class="math display">\[var(\bar{x}) = \frac{1}{n}var(x),\]</span>
 then use the right normal score to get the ``confidence interval’’ you want:</p>
@@ -436,7 +435,7 @@ then use the right normal score to get the ``confidence interval’’ you want:
 <a class="sourceLine" id="cb344-3" data-line-number="3"><span class="co"># 95% interval</span></a>
 <a class="sourceLine" id="cb344-4" data-line-number="4">confInt =<span class="st"> </span>xbar <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="fl">1.96</span>, <span class="fl">1.96</span>) <span class="op">*</span><span class="st"> </span>(xsd<span class="op">/</span><span class="kw">sqrt</span>(n))</a>
 <a class="sourceLine" id="cb344-5" data-line-number="5">confInt</a>
-<a class="sourceLine" id="cb344-6" data-line-number="6">## [1] 1.800013 2.289007</a></code></pre></div>
+<a class="sourceLine" id="cb344-6" data-line-number="6"><span class="co">## [1] 1.800013 2.289007</span></a></code></pre></div>
 <p>The accuracy of this estimate depends on the extent to which the data are normal. We know the data are from a rather skewed gamma, how much does that skewness affect the interval? How could we find out?</p>
 <p>What if we had some large number of samples, say m, of the mean computed from <span class="math inline">\(n\)</span> samples of this population? This is an awful idea in practice, but bear with me.</p>
 <div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" data-line-number="1">m =<span class="st"> </span><span class="dv">2000</span></a>
@@ -444,10 +443,10 @@ then use the right normal score to get the ``confidence interval’’ you want:
 <a class="sourceLine" id="cb345-3" data-line-number="3"><span class="co"># don&#39;t need for loop for this</span></a>
 <a class="sourceLine" id="cb345-4" data-line-number="4"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>m) simulatedMeans[i] =<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rgamma</span>(n, <span class="dv">2</span>, <span class="dv">1</span>))</a></code></pre></div>
 <div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" data-line-number="1"><span class="kw">quantile</span>(simulatedMeans, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
-<a class="sourceLine" id="cb346-2" data-line-number="2">##     2.5%    97.5% </a>
-<a class="sourceLine" id="cb346-3" data-line-number="3">## 1.734263 2.283977</a></code></pre></div>
+<a class="sourceLine" id="cb346-2" data-line-number="2"><span class="co">##     2.5%    97.5% </span></a>
+<a class="sourceLine" id="cb346-3" data-line-number="3"><span class="co">## 1.734263 2.283977</span></a></code></pre></div>
 <div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" data-line-number="1">confInt</a>
-<a class="sourceLine" id="cb347-2" data-line-number="2">## [1] 1.800013 2.289007</a></code></pre></div>
+<a class="sourceLine" id="cb347-2" data-line-number="2"><span class="co">## [1] 1.800013 2.289007</span></a></code></pre></div>
 <p>We can visualize this:</p>
 <div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" data-line-number="1">plotSequence =<span class="st"> </span><span class="kw">seq</span>(<span class="kw">min</span>(simulatedMeans), <span class="kw">max</span>(simulatedMeans), <span class="dt">length =</span> <span class="dv">1000</span>)</a>
 <a class="sourceLine" id="cb348-2" data-line-number="2"><span class="kw">hist</span>(simulatedMeans, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">sub =</span> <span class="st">&quot;Line is the normal approximation density&quot;</span>)</a>
@@ -462,13 +461,13 @@ then use the right normal score to get the ``confidence interval’’ you want:
 <a class="sourceLine" id="cb349-6" data-line-number="6">  bootstrapMeans[i] =<span class="st"> </span><span class="kw">mean</span>(resample)</a>
 <a class="sourceLine" id="cb349-7" data-line-number="7">} </a></code></pre></div>
 <div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" data-line-number="1"><span class="kw">quantile</span>(simulatedMeans, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
-<a class="sourceLine" id="cb350-2" data-line-number="2">##     2.5%    97.5% </a>
-<a class="sourceLine" id="cb350-3" data-line-number="3">## 1.734263 2.283977</a></code></pre></div>
+<a class="sourceLine" id="cb350-2" data-line-number="2"><span class="co">##     2.5%    97.5% </span></a>
+<a class="sourceLine" id="cb350-3" data-line-number="3"><span class="co">## 1.734263 2.283977</span></a></code></pre></div>
 <div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" data-line-number="1"><span class="kw">quantile</span>(bootstrapMeans, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
-<a class="sourceLine" id="cb351-2" data-line-number="2">##     2.5%    97.5% </a>
-<a class="sourceLine" id="cb351-3" data-line-number="3">## 1.807087 2.300364</a></code></pre></div>
+<a class="sourceLine" id="cb351-2" data-line-number="2"><span class="co">##     2.5%    97.5% </span></a>
+<a class="sourceLine" id="cb351-3" data-line-number="3"><span class="co">## 1.807087 2.300364</span></a></code></pre></div>
 <div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" data-line-number="1">confInt</a>
-<a class="sourceLine" id="cb352-2" data-line-number="2">## [1] 1.800013 2.289007</a></code></pre></div>
+<a class="sourceLine" id="cb352-2" data-line-number="2"><span class="co">## [1] 1.800013 2.289007</span></a></code></pre></div>
 <div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb353-1" data-line-number="1"><span class="kw">hist</span>(simulatedMeans, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">sub =</span> <span class="st">&quot;Line is the normal approximation density&quot;</span>, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">.2</span>))</a>
 <a class="sourceLine" id="cb353-2" data-line-number="2"><span class="kw">hist</span>(bootstrapMeans, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">.2</span>), <span class="dt">add =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb353-3" data-line-number="3"><span class="kw">lines</span>(plotSequence, <span class="kw">dnorm</span>(plotSequence, <span class="dt">mean =</span> xbar, <span class="dt">sd =</span> xsd<span class="op">/</span><span class="kw">sqrt</span>(n)))</a>
@@ -482,14 +481,14 @@ then use the right normal score to get the ``confidence interval’’ you want:
 <a class="sourceLine" id="cb354-5" data-line-number="5">  <span class="kw">return</span>(width)</a>
 <a class="sourceLine" id="cb354-6" data-line-number="6">}</a></code></pre></div>
 <div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb355-1" data-line-number="1"><span class="kw">confintWidth</span>(simData)</a>
-<a class="sourceLine" id="cb355-2" data-line-number="2">## [1] 0.1734299</a></code></pre></div>
+<a class="sourceLine" id="cb355-2" data-line-number="2"><span class="co">## [1] 0.1734299</span></a></code></pre></div>
 <div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb356-1" data-line-number="1">m =<span class="st"> </span><span class="dv">2000</span></a>
 <a class="sourceLine" id="cb356-2" data-line-number="2">simulatedWidths =<span class="st"> </span><span class="kw">numeric</span>(m)</a>
 <a class="sourceLine" id="cb356-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>m) simulatedWidths[i] =<span class="st"> </span><span class="kw">confintWidth</span>(<span class="kw">rgamma</span>(n, <span class="dv">2</span>, <span class="dv">1</span>))</a>
 <a class="sourceLine" id="cb356-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb356-5" data-line-number="5"><span class="kw">quantile</span>(simulatedWidths, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
-<a class="sourceLine" id="cb356-6" data-line-number="6">##      2.5%     97.5% </a>
-<a class="sourceLine" id="cb356-7" data-line-number="7">## 0.1232144 0.4330531</a></code></pre></div>
+<a class="sourceLine" id="cb356-6" data-line-number="6"><span class="co">##      2.5%     97.5% </span></a>
+<a class="sourceLine" id="cb356-7" data-line-number="7"><span class="co">## 0.1232144 0.4330531</span></a></code></pre></div>
 <div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb357-1" data-line-number="1"><span class="kw">hist</span>(simulatedWidths)</a></code></pre></div>
 <p><img src="330-CART_files/figure-html/unnamed-chunk-42-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" data-line-number="1">b =<span class="st"> </span><span class="dv">2000</span></a>
@@ -499,11 +498,11 @@ then use the right normal score to get the ``confidence interval’’ you want:
 <a class="sourceLine" id="cb358-5" data-line-number="5">  bootstrapWidths[i] =<span class="st"> </span><span class="kw">confintWidth</span>(resample)</a>
 <a class="sourceLine" id="cb358-6" data-line-number="6">} </a></code></pre></div>
 <div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb359-1" data-line-number="1"><span class="kw">quantile</span>(simulatedWidths, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
-<a class="sourceLine" id="cb359-2" data-line-number="2">##      2.5%     97.5% </a>
-<a class="sourceLine" id="cb359-3" data-line-number="3">## 0.1232144 0.4330531</a></code></pre></div>
+<a class="sourceLine" id="cb359-2" data-line-number="2"><span class="co">##      2.5%     97.5% </span></a>
+<a class="sourceLine" id="cb359-3" data-line-number="3"><span class="co">## 0.1232144 0.4330531</span></a></code></pre></div>
 <div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" data-line-number="1"><span class="kw">quantile</span>(bootstrapWidths, <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>))</a>
-<a class="sourceLine" id="cb360-2" data-line-number="2">##       2.5%      97.5% </a>
-<a class="sourceLine" id="cb360-3" data-line-number="3">## 0.07638408 0.47030471</a></code></pre></div>
+<a class="sourceLine" id="cb360-2" data-line-number="2"><span class="co">##       2.5%      97.5% </span></a>
+<a class="sourceLine" id="cb360-3" data-line-number="3"><span class="co">## 0.07638408 0.47030471</span></a></code></pre></div>
 <div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb361-1" data-line-number="1"><span class="kw">hist</span>(simulatedWidths, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">.2</span>))</a>
 <a class="sourceLine" id="cb361-2" data-line-number="2"><span class="kw">hist</span>(bootstrapWidths, <span class="dt">prob =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">.2</span>), <span class="dt">add =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb361-3" data-line-number="3"><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">bty =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">fill =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;True Mean Dist&quot;</span>, <span class="st">&quot;Bootstrap Dist&quot;</span>))</a></code></pre></div>

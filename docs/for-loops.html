@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,13 +72,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -217,8 +215,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="infrastructure.html"><a href="infrastructure.html"><i class="fa fa-check"></i><b>1</b> Infrastructure</a><ul>
 <li class="chapter" data-level="1.1" data-path="components.html"><a href="components.html"><i class="fa fa-check"></i><b>1.1</b> Components</a></li>
 <li class="chapter" data-level="1.2" data-path="accessing-servers.html"><a href="accessing-servers.html"><i class="fa fa-check"></i><b>1.2</b> Accessing Servers</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="accessing-servers.html"><a href="accessing-servers.html#rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Rstudio</a></li>
-<li class="chapter" data-level="1.2.2" data-path="accessing-servers.html"><a href="accessing-servers.html#python"><i class="fa fa-check"></i><b>1.2.2</b> Python</a></li>
+<li class="chapter" data-level="1.2.1" data-path="accessing-servers.html"><a href="accessing-servers.html#rstudio"><i class="fa fa-check"></i><b>1.2.1</b> RStudio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="accessing-servers.html"><a href="accessing-servers.html#database"><i class="fa fa-check"></i><b>1.2.2</b> Database</a></li>
+<li class="chapter" data-level="1.2.3" data-path="accessing-servers.html"><a href="accessing-servers.html#python"><i class="fa fa-check"></i><b>1.2.3</b> Python</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="project-template.html"><a href="project-template.html"><i class="fa fa-check"></i><b>1.3</b> Project Template</a></li>
 <li class="chapter" data-level="1.4" data-path="getting-a-project-repository.html"><a href="getting-a-project-repository.html"><i class="fa fa-check"></i><b>1.4</b> Getting a project repository</a><ul>
@@ -449,14 +448,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb254-3" data-line-number="3">    converted &lt;-<span class="st"> </span><span class="kw">f_c</span>(pizza)</a>
 <a class="sourceLine" id="cb254-4" data-line-number="4">    <span class="kw">print</span>(converted)</a>
 <a class="sourceLine" id="cb254-5" data-line-number="5">}</a>
-<a class="sourceLine" id="cb254-6" data-line-number="6">## [1] 0</a>
-<a class="sourceLine" id="cb254-7" data-line-number="7">## [1] -17.77778</a>
-<a class="sourceLine" id="cb254-8" data-line-number="8">## [1] 32</a>
-<a class="sourceLine" id="cb254-9" data-line-number="9">## [1] 0</a>
-<a class="sourceLine" id="cb254-10" data-line-number="10">## [1] 212</a>
-<a class="sourceLine" id="cb254-11" data-line-number="11">## [1] 100</a>
-<a class="sourceLine" id="cb254-12" data-line-number="12">## [1] -40</a>
-<a class="sourceLine" id="cb254-13" data-line-number="13">## [1] -40</a></code></pre></div>
+<a class="sourceLine" id="cb254-6" data-line-number="6"><span class="co">## [1] 0</span></a>
+<a class="sourceLine" id="cb254-7" data-line-number="7"><span class="co">## [1] -17.77778</span></a>
+<a class="sourceLine" id="cb254-8" data-line-number="8"><span class="co">## [1] 32</span></a>
+<a class="sourceLine" id="cb254-9" data-line-number="9"><span class="co">## [1] 0</span></a>
+<a class="sourceLine" id="cb254-10" data-line-number="10"><span class="co">## [1] 212</span></a>
+<a class="sourceLine" id="cb254-11" data-line-number="11"><span class="co">## [1] 100</span></a>
+<a class="sourceLine" id="cb254-12" data-line-number="12"><span class="co">## [1] -40</span></a>
+<a class="sourceLine" id="cb254-13" data-line-number="13"><span class="co">## [1] -40</span></a></code></pre></div>
 <div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" data-line-number="1"><span class="co"># 1:length(f_values)</span></a>
 <a class="sourceLine" id="cb255-2" data-line-number="2"><span class="co"># seq_along(f_values)</span></a>
 <a class="sourceLine" id="cb255-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(f_values)) {</a>
@@ -467,18 +466,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb255-8" data-line-number="8">    converted &lt;-<span class="st"> </span><span class="kw">f_c</span>(val)</a>
 <a class="sourceLine" id="cb255-9" data-line-number="9">    <span class="kw">print</span>(converted)</a>
 <a class="sourceLine" id="cb255-10" data-line-number="10">}</a>
-<a class="sourceLine" id="cb255-11" data-line-number="11">## [1] 1</a>
-<a class="sourceLine" id="cb255-12" data-line-number="12">## [1] 0</a>
-<a class="sourceLine" id="cb255-13" data-line-number="13">## [1] -17.77778</a>
-<a class="sourceLine" id="cb255-14" data-line-number="14">## [1] 2</a>
-<a class="sourceLine" id="cb255-15" data-line-number="15">## [1] 32</a>
-<a class="sourceLine" id="cb255-16" data-line-number="16">## [1] 0</a>
-<a class="sourceLine" id="cb255-17" data-line-number="17">## [1] 3</a>
-<a class="sourceLine" id="cb255-18" data-line-number="18">## [1] 212</a>
-<a class="sourceLine" id="cb255-19" data-line-number="19">## [1] 100</a>
-<a class="sourceLine" id="cb255-20" data-line-number="20">## [1] 4</a>
-<a class="sourceLine" id="cb255-21" data-line-number="21">## [1] -40</a>
-<a class="sourceLine" id="cb255-22" data-line-number="22">## [1] -40</a></code></pre></div>
+<a class="sourceLine" id="cb255-11" data-line-number="11"><span class="co">## [1] 1</span></a>
+<a class="sourceLine" id="cb255-12" data-line-number="12"><span class="co">## [1] 0</span></a>
+<a class="sourceLine" id="cb255-13" data-line-number="13"><span class="co">## [1] -17.77778</span></a>
+<a class="sourceLine" id="cb255-14" data-line-number="14"><span class="co">## [1] 2</span></a>
+<a class="sourceLine" id="cb255-15" data-line-number="15"><span class="co">## [1] 32</span></a>
+<a class="sourceLine" id="cb255-16" data-line-number="16"><span class="co">## [1] 0</span></a>
+<a class="sourceLine" id="cb255-17" data-line-number="17"><span class="co">## [1] 3</span></a>
+<a class="sourceLine" id="cb255-18" data-line-number="18"><span class="co">## [1] 212</span></a>
+<a class="sourceLine" id="cb255-19" data-line-number="19"><span class="co">## [1] 100</span></a>
+<a class="sourceLine" id="cb255-20" data-line-number="20"><span class="co">## [1] 4</span></a>
+<a class="sourceLine" id="cb255-21" data-line-number="21"><span class="co">## [1] -40</span></a>
+<a class="sourceLine" id="cb255-22" data-line-number="22"><span class="co">## [1] -40</span></a></code></pre></div>
 <div id="pre-allocating-in-a-loop" class="section level3">
 <h3><span class="header-section-number">15.2.1</span> Pre allocating in a loop</h3>
 <div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" data-line-number="1"><span class="co"># prepopulate an empty vector</span></a>
@@ -488,7 +487,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb256-5" data-line-number="5">    converted_values[to_be_converted_position] &lt;-<span class="st"> </span>converted</a>
 <a class="sourceLine" id="cb256-6" data-line-number="6">}</a></code></pre></div>
 <div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1">converted_values</a>
-<a class="sourceLine" id="cb257-2" data-line-number="2">## [1] -17.22222 -16.66667 -16.11111 -15.55556</a></code></pre></div>
+<a class="sourceLine" id="cb257-2" data-line-number="2"><span class="co">## [1] -17.22222 -16.66667 -16.11111 -15.55556</span></a></code></pre></div>
 </div>
 </div>
             </section>

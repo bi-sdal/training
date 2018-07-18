@@ -72,7 +72,6 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, size = class))
 ```r
 # using alpha
 ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
-## Warning: Using alpha for a discrete variable is not advised.
 ```
 
 <img src="010-data_vis_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" />
@@ -132,7 +131,7 @@ ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
 
 ```r
 ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy))
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+## `geom_smooth()` using method = 'loess'
 ```
 
 <img src="010-data_vis_files/figure-html/unnamed-chunk-14-1.png" width="100%" style="display: block; margin: auto;" />
@@ -141,7 +140,7 @@ ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy))
 ```r
 ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, linetime = drv))
 ## Warning: Ignoring unknown aesthetics: linetime
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+## `geom_smooth()` using method = 'loess'
 ```
 
 <img src="010-data_vis_files/figure-html/unnamed-chunk-15-1.png" width="100%" style="display: block; margin: auto;" />
@@ -150,7 +149,7 @@ ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, linetime = dr
 ```r
 # base plot before groupings
 ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy))
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+## `geom_smooth()` using method = 'loess'
 ```
 
 <img src="010-data_vis_files/figure-html/unnamed-chunk-16-1.png" width="100%" style="display: block; margin: auto;" />
@@ -159,7 +158,7 @@ ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy))
 ```r
 # base plot before groupings
 ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy))
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+## `geom_smooth()` using method = 'loess'
 ```
 
 <img src="010-data_vis_files/figure-html/unnamed-chunk-17-1.png" width="100%" style="display: block; margin: auto;" />
@@ -168,7 +167,7 @@ ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy))
 
 # separate smoothing line by group
 ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, group = drv))
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+## `geom_smooth()` using method = 'loess'
 ```
 
 <img src="010-data_vis_files/figure-html/unnamed-chunk-17-2.png" width="100%" style="display: block; margin: auto;" />
@@ -177,7 +176,7 @@ ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, group = drv))
 
 # different color foe each group
 ggplot(data = mpg) + geom_smooth(mapping = aes(x = displ, y = hwy, color = drv), show.legend = FALSE)
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+## `geom_smooth()` using method = 'loess'
 ```
 
 <img src="010-data_vis_files/figure-html/unnamed-chunk-17-3.png" width="100%" style="display: block; margin: auto;" />
@@ -189,7 +188,7 @@ Adding multiple geoms in the same plot
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy)) +
   geom_smooth(mapping = aes(x = displ, y = hwy))
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+## `geom_smooth()` using method = 'loess'
 ```
 
 <img src="010-data_vis_files/figure-html/unnamed-chunk-18-1.png" width="100%" style="display: block; margin: auto;" />
@@ -202,7 +201,7 @@ the ggplot layer will specify the global values
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
   geom_point() +
   geom_smooth()
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+## `geom_smooth()` using method = 'loess'
 ```
 
 <img src="010-data_vis_files/figure-html/unnamed-chunk-19-1.png" width="100%" style="display: block; margin: auto;" />
@@ -214,7 +213,7 @@ Mappings in a a geom function, will overwrite the global settings (i.e., they ar
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
   geom_point(mapping = aes(color = class)) +
   geom_smooth()
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+## `geom_smooth()` using method = 'loess'
 ```
 
 <img src="010-data_vis_files/figure-html/unnamed-chunk-20-1.png" width="100%" style="display: block; margin: auto;" />
@@ -227,7 +226,7 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
     data = dplyr::filter(mpg, class == 'subcompact'),
     se = FALSE
   )
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+## `geom_smooth()` using method = 'loess'
 ```
 
 <img src="010-data_vis_files/figure-html/unnamed-chunk-21-1.png" width="100%" style="display: block; margin: auto;" />

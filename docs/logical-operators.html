@@ -59,7 +59,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -72,13 +72,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -217,8 +215,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="infrastructure.html"><a href="infrastructure.html"><i class="fa fa-check"></i><b>1</b> Infrastructure</a><ul>
 <li class="chapter" data-level="1.1" data-path="components.html"><a href="components.html"><i class="fa fa-check"></i><b>1.1</b> Components</a></li>
 <li class="chapter" data-level="1.2" data-path="accessing-servers.html"><a href="accessing-servers.html"><i class="fa fa-check"></i><b>1.2</b> Accessing Servers</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="accessing-servers.html"><a href="accessing-servers.html#rstudio"><i class="fa fa-check"></i><b>1.2.1</b> Rstudio</a></li>
-<li class="chapter" data-level="1.2.2" data-path="accessing-servers.html"><a href="accessing-servers.html#python"><i class="fa fa-check"></i><b>1.2.2</b> Python</a></li>
+<li class="chapter" data-level="1.2.1" data-path="accessing-servers.html"><a href="accessing-servers.html#rstudio"><i class="fa fa-check"></i><b>1.2.1</b> RStudio</a></li>
+<li class="chapter" data-level="1.2.2" data-path="accessing-servers.html"><a href="accessing-servers.html#database"><i class="fa fa-check"></i><b>1.2.2</b> Database</a></li>
+<li class="chapter" data-level="1.2.3" data-path="accessing-servers.html"><a href="accessing-servers.html#python"><i class="fa fa-check"></i><b>1.2.3</b> Python</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="project-template.html"><a href="project-template.html"><i class="fa fa-check"></i><b>1.3</b> Project Template</a></li>
 <li class="chapter" data-level="1.4" data-path="getting-a-project-repository.html"><a href="getting-a-project-repository.html"><i class="fa fa-check"></i><b>1.4</b> Getting a project repository</a><ul>
@@ -427,81 +426,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Filter the month from the flights dataset where the month is 11 (November) or 12 (December)</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw">filter</span>(flights, month <span class="op">==</span><span class="st"> </span><span class="dv">11</span> <span class="op">|</span><span class="st"> </span>month <span class="op">==</span><span class="st"> </span><span class="dv">12</span>)</a>
-<a class="sourceLine" id="cb70-2" data-line-number="2">## # A tibble: 55,403 x 19</a>
-<a class="sourceLine" id="cb70-3" data-line-number="3">##     year month   day dep_time sched_dep_time dep_delay arr_time</a>
-<a class="sourceLine" id="cb70-4" data-line-number="4">##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;</a>
-<a class="sourceLine" id="cb70-5" data-line-number="5">##  1  2013    11     1        5           2359         6      352</a>
-<a class="sourceLine" id="cb70-6" data-line-number="6">##  2  2013    11     1       35           2250       105      123</a>
-<a class="sourceLine" id="cb70-7" data-line-number="7">##  3  2013    11     1      455            500        -5      641</a>
-<a class="sourceLine" id="cb70-8" data-line-number="8">##  4  2013    11     1      539            545        -6      856</a>
-<a class="sourceLine" id="cb70-9" data-line-number="9">##  5  2013    11     1      542            545        -3      831</a>
-<a class="sourceLine" id="cb70-10" data-line-number="10">##  6  2013    11     1      549            600       -11      912</a>
-<a class="sourceLine" id="cb70-11" data-line-number="11">##  7  2013    11     1      550            600       -10      705</a>
-<a class="sourceLine" id="cb70-12" data-line-number="12">##  8  2013    11     1      554            600        -6      659</a>
-<a class="sourceLine" id="cb70-13" data-line-number="13">##  9  2013    11     1      554            600        -6      826</a>
-<a class="sourceLine" id="cb70-14" data-line-number="14">## 10  2013    11     1      554            600        -6      749</a>
-<a class="sourceLine" id="cb70-15" data-line-number="15">## # ... with 55,393 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,</a>
-<a class="sourceLine" id="cb70-16" data-line-number="16">## #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,</a>
-<a class="sourceLine" id="cb70-17" data-line-number="17">## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,</a>
-<a class="sourceLine" id="cb70-18" data-line-number="18">## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</a></code></pre></div>
+<a class="sourceLine" id="cb70-2" data-line-number="2"><span class="co">## # A tibble: 55,403 x 19</span></a>
+<a class="sourceLine" id="cb70-3" data-line-number="3"><span class="co">##     year month   day dep_time sched_dep_time dep_delay arr_time</span></a>
+<a class="sourceLine" id="cb70-4" data-line-number="4"><span class="co">##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb70-5" data-line-number="5"><span class="co">##  1  2013    11     1        5           2359         6      352</span></a>
+<a class="sourceLine" id="cb70-6" data-line-number="6"><span class="co">##  2  2013    11     1       35           2250       105      123</span></a>
+<a class="sourceLine" id="cb70-7" data-line-number="7"><span class="co">##  3  2013    11     1      455            500        -5      641</span></a>
+<a class="sourceLine" id="cb70-8" data-line-number="8"><span class="co">##  4  2013    11     1      539            545        -6      856</span></a>
+<a class="sourceLine" id="cb70-9" data-line-number="9"><span class="co">##  5  2013    11     1      542            545        -3      831</span></a>
+<a class="sourceLine" id="cb70-10" data-line-number="10"><span class="co">##  6  2013    11     1      549            600       -11      912</span></a>
+<a class="sourceLine" id="cb70-11" data-line-number="11"><span class="co">##  7  2013    11     1      550            600       -10      705</span></a>
+<a class="sourceLine" id="cb70-12" data-line-number="12"><span class="co">##  8  2013    11     1      554            600        -6      659</span></a>
+<a class="sourceLine" id="cb70-13" data-line-number="13"><span class="co">##  9  2013    11     1      554            600        -6      826</span></a>
+<a class="sourceLine" id="cb70-14" data-line-number="14"><span class="co">## 10  2013    11     1      554            600        -6      749</span></a>
+<a class="sourceLine" id="cb70-15" data-line-number="15"><span class="co">## # ... with 55,393 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb70-16" data-line-number="16"><span class="co">## #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb70-17" data-line-number="17"><span class="co">## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb70-18" data-line-number="18"><span class="co">## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</span></a></code></pre></div>
 <p>The below code will not run like you would expect (even though this is how you would say it in your head)</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="co"># filter(flights, month == 11 | 12)  ## this is wrong and will not work like you expect</span></a></code></pre></div>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">filter</span>(flights, month <span class="op">==</span><span class="st"> </span><span class="dv">11</span> <span class="op">|</span><span class="st"> </span><span class="dv">12</span>)</a>
-<a class="sourceLine" id="cb72-2" data-line-number="2">## # A tibble: 336,776 x 19</a>
-<a class="sourceLine" id="cb72-3" data-line-number="3">##     year month   day dep_time sched_dep_time dep_delay arr_time</a>
-<a class="sourceLine" id="cb72-4" data-line-number="4">##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;</a>
-<a class="sourceLine" id="cb72-5" data-line-number="5">##  1  2013     1     1      517            515         2      830</a>
-<a class="sourceLine" id="cb72-6" data-line-number="6">##  2  2013     1     1      533            529         4      850</a>
-<a class="sourceLine" id="cb72-7" data-line-number="7">##  3  2013     1     1      542            540         2      923</a>
-<a class="sourceLine" id="cb72-8" data-line-number="8">##  4  2013     1     1      544            545        -1     1004</a>
-<a class="sourceLine" id="cb72-9" data-line-number="9">##  5  2013     1     1      554            600        -6      812</a>
-<a class="sourceLine" id="cb72-10" data-line-number="10">##  6  2013     1     1      554            558        -4      740</a>
-<a class="sourceLine" id="cb72-11" data-line-number="11">##  7  2013     1     1      555            600        -5      913</a>
-<a class="sourceLine" id="cb72-12" data-line-number="12">##  8  2013     1     1      557            600        -3      709</a>
-<a class="sourceLine" id="cb72-13" data-line-number="13">##  9  2013     1     1      557            600        -3      838</a>
-<a class="sourceLine" id="cb72-14" data-line-number="14">## 10  2013     1     1      558            600        -2      753</a>
-<a class="sourceLine" id="cb72-15" data-line-number="15">## # ... with 336,766 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,</a>
-<a class="sourceLine" id="cb72-16" data-line-number="16">## #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,</a>
-<a class="sourceLine" id="cb72-17" data-line-number="17">## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,</a>
-<a class="sourceLine" id="cb72-18" data-line-number="18">## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</a></code></pre></div>
+<a class="sourceLine" id="cb72-2" data-line-number="2"><span class="co">## # A tibble: 336,776 x 19</span></a>
+<a class="sourceLine" id="cb72-3" data-line-number="3"><span class="co">##     year month   day dep_time sched_dep_time dep_delay arr_time</span></a>
+<a class="sourceLine" id="cb72-4" data-line-number="4"><span class="co">##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb72-5" data-line-number="5"><span class="co">##  1  2013     1     1      517            515         2      830</span></a>
+<a class="sourceLine" id="cb72-6" data-line-number="6"><span class="co">##  2  2013     1     1      533            529         4      850</span></a>
+<a class="sourceLine" id="cb72-7" data-line-number="7"><span class="co">##  3  2013     1     1      542            540         2      923</span></a>
+<a class="sourceLine" id="cb72-8" data-line-number="8"><span class="co">##  4  2013     1     1      544            545        -1     1004</span></a>
+<a class="sourceLine" id="cb72-9" data-line-number="9"><span class="co">##  5  2013     1     1      554            600        -6      812</span></a>
+<a class="sourceLine" id="cb72-10" data-line-number="10"><span class="co">##  6  2013     1     1      554            558        -4      740</span></a>
+<a class="sourceLine" id="cb72-11" data-line-number="11"><span class="co">##  7  2013     1     1      555            600        -5      913</span></a>
+<a class="sourceLine" id="cb72-12" data-line-number="12"><span class="co">##  8  2013     1     1      557            600        -3      709</span></a>
+<a class="sourceLine" id="cb72-13" data-line-number="13"><span class="co">##  9  2013     1     1      557            600        -3      838</span></a>
+<a class="sourceLine" id="cb72-14" data-line-number="14"><span class="co">## 10  2013     1     1      558            600        -2      753</span></a>
+<a class="sourceLine" id="cb72-15" data-line-number="15"><span class="co">## # ... with 336,766 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb72-16" data-line-number="16"><span class="co">## #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb72-17" data-line-number="17"><span class="co">## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb72-18" data-line-number="18"><span class="co">## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</span></a></code></pre></div>
 <p>Instead of writing out each boolean statment separately using <code>|</code>, you can use the <code>%in%</code> operator</p>
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="kw">filter</span>(flights, month <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">11</span>, <span class="dv">12</span>))</a>
-<a class="sourceLine" id="cb73-2" data-line-number="2">## # A tibble: 55,403 x 19</a>
-<a class="sourceLine" id="cb73-3" data-line-number="3">##     year month   day dep_time sched_dep_time dep_delay arr_time</a>
-<a class="sourceLine" id="cb73-4" data-line-number="4">##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;</a>
-<a class="sourceLine" id="cb73-5" data-line-number="5">##  1  2013    11     1        5           2359         6      352</a>
-<a class="sourceLine" id="cb73-6" data-line-number="6">##  2  2013    11     1       35           2250       105      123</a>
-<a class="sourceLine" id="cb73-7" data-line-number="7">##  3  2013    11     1      455            500        -5      641</a>
-<a class="sourceLine" id="cb73-8" data-line-number="8">##  4  2013    11     1      539            545        -6      856</a>
-<a class="sourceLine" id="cb73-9" data-line-number="9">##  5  2013    11     1      542            545        -3      831</a>
-<a class="sourceLine" id="cb73-10" data-line-number="10">##  6  2013    11     1      549            600       -11      912</a>
-<a class="sourceLine" id="cb73-11" data-line-number="11">##  7  2013    11     1      550            600       -10      705</a>
-<a class="sourceLine" id="cb73-12" data-line-number="12">##  8  2013    11     1      554            600        -6      659</a>
-<a class="sourceLine" id="cb73-13" data-line-number="13">##  9  2013    11     1      554            600        -6      826</a>
-<a class="sourceLine" id="cb73-14" data-line-number="14">## 10  2013    11     1      554            600        -6      749</a>
-<a class="sourceLine" id="cb73-15" data-line-number="15">## # ... with 55,393 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,</a>
-<a class="sourceLine" id="cb73-16" data-line-number="16">## #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,</a>
-<a class="sourceLine" id="cb73-17" data-line-number="17">## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,</a>
-<a class="sourceLine" id="cb73-18" data-line-number="18">## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</a></code></pre></div>
+<a class="sourceLine" id="cb73-2" data-line-number="2"><span class="co">## # A tibble: 55,403 x 19</span></a>
+<a class="sourceLine" id="cb73-3" data-line-number="3"><span class="co">##     year month   day dep_time sched_dep_time dep_delay arr_time</span></a>
+<a class="sourceLine" id="cb73-4" data-line-number="4"><span class="co">##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb73-5" data-line-number="5"><span class="co">##  1  2013    11     1        5           2359         6      352</span></a>
+<a class="sourceLine" id="cb73-6" data-line-number="6"><span class="co">##  2  2013    11     1       35           2250       105      123</span></a>
+<a class="sourceLine" id="cb73-7" data-line-number="7"><span class="co">##  3  2013    11     1      455            500        -5      641</span></a>
+<a class="sourceLine" id="cb73-8" data-line-number="8"><span class="co">##  4  2013    11     1      539            545        -6      856</span></a>
+<a class="sourceLine" id="cb73-9" data-line-number="9"><span class="co">##  5  2013    11     1      542            545        -3      831</span></a>
+<a class="sourceLine" id="cb73-10" data-line-number="10"><span class="co">##  6  2013    11     1      549            600       -11      912</span></a>
+<a class="sourceLine" id="cb73-11" data-line-number="11"><span class="co">##  7  2013    11     1      550            600       -10      705</span></a>
+<a class="sourceLine" id="cb73-12" data-line-number="12"><span class="co">##  8  2013    11     1      554            600        -6      659</span></a>
+<a class="sourceLine" id="cb73-13" data-line-number="13"><span class="co">##  9  2013    11     1      554            600        -6      826</span></a>
+<a class="sourceLine" id="cb73-14" data-line-number="14"><span class="co">## 10  2013    11     1      554            600        -6      749</span></a>
+<a class="sourceLine" id="cb73-15" data-line-number="15"><span class="co">## # ... with 55,393 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb73-16" data-line-number="16"><span class="co">## #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb73-17" data-line-number="17"><span class="co">## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb73-18" data-line-number="18"><span class="co">## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</span></a></code></pre></div>
 <p>WIth <code>filter</code>, you can also specify multiple condition (like an <code>&amp;</code>)</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw">filter</span>(flights, arr_delay <span class="op">&lt;=</span><span class="st"> </span><span class="dv">120</span>, dep_delay <span class="op">&lt;=</span><span class="st"> </span><span class="dv">12</span>)</a>
-<a class="sourceLine" id="cb74-2" data-line-number="2">## # A tibble: 250,224 x 19</a>
-<a class="sourceLine" id="cb74-3" data-line-number="3">##     year month   day dep_time sched_dep_time dep_delay arr_time</a>
-<a class="sourceLine" id="cb74-4" data-line-number="4">##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;</a>
-<a class="sourceLine" id="cb74-5" data-line-number="5">##  1  2013     1     1      517            515         2      830</a>
-<a class="sourceLine" id="cb74-6" data-line-number="6">##  2  2013     1     1      533            529         4      850</a>
-<a class="sourceLine" id="cb74-7" data-line-number="7">##  3  2013     1     1      542            540         2      923</a>
-<a class="sourceLine" id="cb74-8" data-line-number="8">##  4  2013     1     1      544            545        -1     1004</a>
-<a class="sourceLine" id="cb74-9" data-line-number="9">##  5  2013     1     1      554            600        -6      812</a>
-<a class="sourceLine" id="cb74-10" data-line-number="10">##  6  2013     1     1      554            558        -4      740</a>
-<a class="sourceLine" id="cb74-11" data-line-number="11">##  7  2013     1     1      555            600        -5      913</a>
-<a class="sourceLine" id="cb74-12" data-line-number="12">##  8  2013     1     1      557            600        -3      709</a>
-<a class="sourceLine" id="cb74-13" data-line-number="13">##  9  2013     1     1      557            600        -3      838</a>
-<a class="sourceLine" id="cb74-14" data-line-number="14">## 10  2013     1     1      558            600        -2      753</a>
-<a class="sourceLine" id="cb74-15" data-line-number="15">## # ... with 250,214 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,</a>
-<a class="sourceLine" id="cb74-16" data-line-number="16">## #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,</a>
-<a class="sourceLine" id="cb74-17" data-line-number="17">## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,</a>
-<a class="sourceLine" id="cb74-18" data-line-number="18">## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</a></code></pre></div>
+<a class="sourceLine" id="cb74-2" data-line-number="2"><span class="co">## # A tibble: 250,224 x 19</span></a>
+<a class="sourceLine" id="cb74-3" data-line-number="3"><span class="co">##     year month   day dep_time sched_dep_time dep_delay arr_time</span></a>
+<a class="sourceLine" id="cb74-4" data-line-number="4"><span class="co">##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb74-5" data-line-number="5"><span class="co">##  1  2013     1     1      517            515         2      830</span></a>
+<a class="sourceLine" id="cb74-6" data-line-number="6"><span class="co">##  2  2013     1     1      533            529         4      850</span></a>
+<a class="sourceLine" id="cb74-7" data-line-number="7"><span class="co">##  3  2013     1     1      542            540         2      923</span></a>
+<a class="sourceLine" id="cb74-8" data-line-number="8"><span class="co">##  4  2013     1     1      544            545        -1     1004</span></a>
+<a class="sourceLine" id="cb74-9" data-line-number="9"><span class="co">##  5  2013     1     1      554            600        -6      812</span></a>
+<a class="sourceLine" id="cb74-10" data-line-number="10"><span class="co">##  6  2013     1     1      554            558        -4      740</span></a>
+<a class="sourceLine" id="cb74-11" data-line-number="11"><span class="co">##  7  2013     1     1      555            600        -5      913</span></a>
+<a class="sourceLine" id="cb74-12" data-line-number="12"><span class="co">##  8  2013     1     1      557            600        -3      709</span></a>
+<a class="sourceLine" id="cb74-13" data-line-number="13"><span class="co">##  9  2013     1     1      557            600        -3      838</span></a>
+<a class="sourceLine" id="cb74-14" data-line-number="14"><span class="co">## 10  2013     1     1      558            600        -2      753</span></a>
+<a class="sourceLine" id="cb74-15" data-line-number="15"><span class="co">## # ... with 250,214 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb74-16" data-line-number="16"><span class="co">## #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb74-17" data-line-number="17"><span class="co">## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb74-18" data-line-number="18"><span class="co">## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</span></a></code></pre></div>
 <p>by default filter will also drop missing values.
 See the r4ds chapter for this.</p>
 </div>

@@ -87,7 +87,7 @@ and then connect to it from the browser on your local machine
 
 1. Run the notebook on the server
     1. `ssh` into `lightfoot` (e.g., `ssh pid@lightfoot.vbi.vt.edu`)
-    2. `jupyter notebook`
+    2. `jupyter notebook --no-browser`
     3. Note the url of the notebook server (along with the token):
         - e.g., `http://localhost:8888/?token=asdfasdfasdfasdfasdf`
         - Here also pay very close attention to the port number, this example shows `8888`
@@ -97,7 +97,7 @@ and then connect to it from the browser on your local machine
 2. Connect your laptop to the server
     1. In another terminal window make the connection:
         - Pay attention to the port number from the previous step (e.g., `8888`)
-        - Make the connection `ssh -L 8888:localhost:8888`
+        - Make the connection `ssh -L 8888:localhost:8888 pid@lightfoot.vbi.vt.edu`
 3. Copy/paste the url of the notebook server (from step 1) into your browser
 
 ## Project Template

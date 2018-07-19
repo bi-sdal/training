@@ -385,7 +385,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="20" data-path="communication.html"><a href="communication.html"><i class="fa fa-check"></i><b>20</b> Communication</a></li>
 <li class="chapter" data-level="21" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>21</b> Shiny</a></li>
-<li class="chapter" data-level="22" data-path="text-mining.html"><a href="text-mining.html"><i class="fa fa-check"></i><b>22</b> Text Mining</a></li>
+<li class="chapter" data-level="22" data-path="text-mining.html"><a href="text-mining.html"><i class="fa fa-check"></i><b>22</b> Text Mining</a><ul>
+<li class="chapter" data-level="22.1" data-path="one-token-per-row-unnest-tokens.html"><a href="one-token-per-row-unnest-tokens.html"><i class="fa fa-check"></i><b>22.1</b> One-token-per-row (unnest_tokens)</a></li>
+<li class="chapter" data-level="22.2" data-path="jane-austen.html"><a href="jane-austen.html"><i class="fa fa-check"></i><b>22.2</b> Jane Austen</a></li>
+<li class="chapter" data-level="22.3" data-path="stop-words-and-frequencies.html"><a href="stop-words-and-frequencies.html"><i class="fa fa-check"></i><b>22.3</b> Stop words and Frequencies</a></li>
+<li class="chapter" data-level="22.4" data-path="gutenbergr-package.html"><a href="gutenbergr-package.html"><i class="fa fa-check"></i><b>22.4</b> gutenbergr package</a></li>
+<li class="chapter" data-level="22.5" data-path="sentiment-analytis.html"><a href="sentiment-analytis.html"><i class="fa fa-check"></i><b>22.5</b> Sentiment Analytis</a></li>
+<li class="chapter" data-level="22.6" data-path="tf-idf-term-frequency-inverse-document-frequency.html"><a href="tf-idf-term-frequency-inverse-document-frequency.html"><i class="fa fa-check"></i><b>22.6</b> tf-idf: Term frequency, inverse document frequency</a></li>
+<li class="chapter" data-level="22.7" data-path="bind-tf-idf.html"><a href="bind-tf-idf.html"><i class="fa fa-check"></i><b>22.7</b> bind_tf_idf</a></li>
+<li class="chapter" data-level="22.8" data-path="relationships-n-grams.html"><a href="relationships-n-grams.html"><i class="fa fa-check"></i><b>22.8</b> Relationships (n-grams)</a></li>
+</ul></li>
 <li class="part"><span><b>VI Modeling</b></span></li>
 <li class="chapter" data-level="23" data-path="random-forests.html"><a href="random-forests.html"><i class="fa fa-check"></i><b>23</b> Random Forests</a><ul>
 <li class="chapter" data-level="23.1" data-path="cart.html"><a href="cart.html"><i class="fa fa-check"></i><b>23.1</b> CART</a></li>
@@ -483,7 +492,7 @@ and then connect to it from the browser on your local machine</p>
 <li>Run the notebook on the server
 <ol style="list-style-type: decimal">
 <li><code>ssh</code> into <code>lightfoot</code> (e.g., <code>ssh pid@lightfoot.vbi.vt.edu</code>)</li>
-<li><code>jupyter notebook</code></li>
+<li><code>jupyter notebook --no-browser</code></li>
 <li>Note the url of the notebook server (along with the token):
 <ul>
 <li>e.g., <code>http://localhost:8888/?token=asdfasdfasdfasdfasdf</code></li>
@@ -500,7 +509,7 @@ and then connect to it from the browser on your local machine</p>
 <li>In another terminal window make the connection:
 <ul>
 <li>Pay attention to the port number from the previous step (e.g., <code>8888</code>)</li>
-<li>Make the connection <code>ssh -L 8888:localhost:8888</code></li>
+<li>Make the connection <code>ssh -L 8888:localhost:8888 pid@lightfoot.vbi.vt.edu</code></li>
 </ul></li>
 </ol></li>
 <li>Copy/paste the url of the notebook server (from step 1) into your browser</li>

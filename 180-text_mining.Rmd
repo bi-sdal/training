@@ -4,6 +4,10 @@ Pretty much everything in this chapter comes from the "Text Mining in R" book
 
 Book: https://www.tidytextmining.com/
 
+Stemming:
+
+- https://cran.r-project.org/web/packages/corpus/vignettes/stemmer.html
+
 Datacamp:
 
 - https://www.datacamp.com/courses/intro-to-text-mining-bag-of-words
@@ -354,3 +358,29 @@ bigram_tf_idf %>%
 
 ```
 
+## Stemming
+
+https://cran.r-project.org/web/packages/corpus/vignettes/stemmer.html
+
+```{r}
+library(corpus)
+```
+
+```{r}
+text <- "love loving lovingly loved lover lovely love"
+text_tokens(text, stemmer = "en") # english stemmer
+```
+
+Using `tm`
+
+```{r}
+library(tm)
+```
+
+```{r}
+complicate <- c("complicated", "complication", "complicatedly")
+```
+
+```{r}
+stemDocument(complicate)
+```

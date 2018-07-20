@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="read-into-data-table.html">
-<link rel="next" href="working-with-data-table.html">
+<link rel="prev" href="relationships-n-grams.html">
+<link rel="next" href="random-forests.html">
 <script src="book_assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="book_assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="book_assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -427,19 +427,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="convert-to-data.table" class="section level2">
-<h2><span class="header-section-number">17.2</span> Convert to data.table</h2>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb285-1" data-line-number="1">flights &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(flights)</a></code></pre></div>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1"><span class="kw">class</span>(flights)</a>
-<a class="sourceLine" id="cb286-2" data-line-number="2"><span class="co">## [1] &quot;data.table&quot; &quot;data.frame&quot;</span></a></code></pre></div>
+<div id="stemming" class="section level2">
+<h2><span class="header-section-number">22.9</span> Stemming</h2>
+<p><a href="https://cran.r-project.org/web/packages/corpus/vignettes/stemmer.html" class="uri">https://cran.r-project.org/web/packages/corpus/vignettes/stemmer.html</a></p>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" data-line-number="1"><span class="kw">library</span>(corpus)</a></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb349-1" data-line-number="1">text &lt;-<span class="st"> &quot;love loving lovingly loved lover lovely love&quot;</span></a>
+<a class="sourceLine" id="cb349-2" data-line-number="2"><span class="kw">text_tokens</span>(text, <span class="dt">stemmer =</span> <span class="st">&quot;en&quot;</span>) <span class="co"># english stemmer</span></a>
+<a class="sourceLine" id="cb349-3" data-line-number="3"><span class="co">## [[1]]</span></a>
+<a class="sourceLine" id="cb349-4" data-line-number="4"><span class="co">## [1] &quot;love&quot;  &quot;love&quot;  &quot;love&quot;  &quot;love&quot;  &quot;lover&quot; &quot;love&quot;  &quot;love&quot;</span></a></code></pre></div>
+<p>Using <code>tm</code></p>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" data-line-number="1"><span class="kw">library</span>(tm)</a>
+<a class="sourceLine" id="cb350-2" data-line-number="2"><span class="co">## Loading required package: NLP</span></a>
+<a class="sourceLine" id="cb350-3" data-line-number="3"><span class="co">## </span></a>
+<a class="sourceLine" id="cb350-4" data-line-number="4"><span class="co">## Attaching package: &#39;NLP&#39;</span></a>
+<a class="sourceLine" id="cb350-5" data-line-number="5"><span class="co">## The following object is masked from &#39;package:ggplot2&#39;:</span></a>
+<a class="sourceLine" id="cb350-6" data-line-number="6"><span class="co">## </span></a>
+<a class="sourceLine" id="cb350-7" data-line-number="7"><span class="co">##     annotate</span></a></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" data-line-number="1">complicate &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;complicated&quot;</span>, <span class="st">&quot;complication&quot;</span>, <span class="st">&quot;complicatedly&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" data-line-number="1"><span class="kw">stemDocument</span>(complicate)</a>
+<a class="sourceLine" id="cb352-2" data-line-number="2"><span class="co">## [1] &quot;complic&quot; &quot;complic&quot; &quot;complic&quot;</span></a></code></pre></div>
+
+</div>
+<!-- </div> -->
+
+
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="read-into-data-table.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="working-with-data-table.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="relationships-n-grams.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="random-forests.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="book_assets/gitbook-2.6.7/js/app.min.js"></script>
@@ -469,7 +489,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/bi-sdal/training/edit/master/135-datatable.Rmd",
+"link": "https://github.com/bi-sdal/training/edit/master/180-text_mining.Rmd",
 "text": "Edit"
 },
 "download": ["sdal-training.pdf", "sdal-training.epub"],

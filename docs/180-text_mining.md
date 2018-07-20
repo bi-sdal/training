@@ -5,6 +5,10 @@ Pretty much everything in this chapter comes from the "Text Mining in R" book
 
 Book: https://www.tidytextmining.com/
 
+Stemming:
+
+- https://cran.r-project.org/web/packages/corpus/vignettes/stemmer.html
+
 Datacamp:
 
 - https://www.datacamp.com/courses/intro-to-text-mining-bag-of-words
@@ -686,3 +690,43 @@ bigram_tf_idf %>%
 
 <img src="180-text_mining_files/figure-html/unnamed-chunk-32-1.png" width="100%" style="display: block; margin: auto;" />
 
+## Stemming
+
+https://cran.r-project.org/web/packages/corpus/vignettes/stemmer.html
+
+
+```r
+library(corpus)
+```
+
+
+```r
+text <- "love loving lovingly loved lover lovely love"
+text_tokens(text, stemmer = "en") # english stemmer
+## [[1]]
+## [1] "love"  "love"  "love"  "love"  "lover" "love"  "love"
+```
+
+Using `tm`
+
+
+```r
+library(tm)
+## Loading required package: NLP
+## 
+## Attaching package: 'NLP'
+## The following object is masked from 'package:ggplot2':
+## 
+##     annotate
+```
+
+
+```r
+complicate <- c("complicated", "complication", "complicatedly")
+```
+
+
+```r
+stemDocument(complicate)
+## [1] "complic" "complic" "complic"
+```

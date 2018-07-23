@@ -1,0 +1,18 @@
+# RStudio
+
+## Accessing folders
+
+### Outside of Home
+
+Sometimes you might want to naviate outside your home directory.
+To do this first click the 3 dots in the files panel to manually input a directory.
+
+```{r, echo=FALSE, fig.cap='Go to a specific directory', fig.align='center', out.width='100%'}
+knitr::include_graphics(path = "./figs/manual_folder_dir/01-3_dots.png")
+```
+
+Then you can manually navigate into a different path
+
+```{r, echo=FALSE, fig.cap='Manually input directory', fig.align='center', out.width='100%'}
+knitr::include_graphics(path = "./figs/manual_folder_dir/02-projects_dir.png")
+```

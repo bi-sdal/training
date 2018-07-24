@@ -189,6 +189,15 @@ but you are still working on your branch and not ready to create a pull/merge re
 3. Go back to your branch: `git checkout my_branch`
 4. Rebase your branch against master: `git rebase master`
     - You may or may not need to solve merge conflicts.
+5. Force push your branch: `git push -f origin my_branch`
+
+
+### Remote server (e.g., GitLab, GitHub, Bitbucket, etc) shows merge conflict
+
+When you attempt to merge a pull/merge request and tells you that the branch cannot be merged becuase of a merge conflict,
+you need to follow the same steps from "Get changes from master on your branch".
+During the rebasing step, you will be fixing the merge conflict(s).
+
 
 ### Remove data/files from history
 

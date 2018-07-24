@@ -239,7 +239,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.8.2" data-path="help-faq.html"><a href="help-faq.html#git-push-rejected-master"><i class="fa fa-check"></i><b>2.8.2</b> Git push rejected (master)</a></li>
 <li class="chapter" data-level="2.8.3" data-path="help-faq.html"><a href="help-faq.html#accidently-did-work-on-master"><i class="fa fa-check"></i><b>2.8.3</b> Accidently did work on <code>master</code>:</a></li>
 <li class="chapter" data-level="2.8.4" data-path="help-faq.html"><a href="help-faq.html#get-changes-from-master-on-your-branch"><i class="fa fa-check"></i><b>2.8.4</b> Get changes from master on your branch</a></li>
-<li class="chapter" data-level="2.8.5" data-path="help-faq.html"><a href="help-faq.html#remove-datafiles-from-history"><i class="fa fa-check"></i><b>2.8.5</b> Remove data/files from history</a></li>
+<li class="chapter" data-level="2.8.5" data-path="help-faq.html"><a href="help-faq.html#remote-server-e.g.-gitlab-github-bitbucket-etc-shows-merge-conflict"><i class="fa fa-check"></i><b>2.8.5</b> Remote server (e.g., GitLab, GitHub, Bitbucket, etc) shows merge conflict</a></li>
+<li class="chapter" data-level="2.8.6" data-path="help-faq.html"><a href="help-faq.html#remove-datafiles-from-history"><i class="fa fa-check"></i><b>2.8.6</b> Remove data/files from history</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV RStudio</b></span></li>
@@ -519,18 +520,25 @@ but you are still working on your branch and not ready to create a pull/merge re
 <ul>
 <li>You may or may not need to solve merge conflicts.</li>
 </ul></li>
+<li>Force push your branch: <code>git push -f origin my_branch</code></li>
 </ol>
 </div>
+<div id="remote-server-e.g.-gitlab-github-bitbucket-etc-shows-merge-conflict" class="section level3">
+<h3><span class="header-section-number">2.8.5</span> Remote server (e.g., GitLab, GitHub, Bitbucket, etc) shows merge conflict</h3>
+<p>When you attempt to merge a pull/merge request and tells you that the branch cannot be merged becuase of a merge conflict,
+you need to follow the same steps from “Get changes from master on your branch”.
+During the rebasing step, you will be fixing the merge conflict(s).</p>
+</div>
 <div id="remove-datafiles-from-history" class="section level3">
-<h3><span class="header-section-number">2.8.5</span> Remove data/files from history</h3>
+<h3><span class="header-section-number">2.8.6</span> Remove data/files from history</h3>
 <div id="bfg-repo-cleaner" class="section level4">
-<h4><span class="header-section-number">2.8.5.1</span> BFG repo cleaner</h4>
+<h4><span class="header-section-number">2.8.6.1</span> BFG repo cleaner</h4>
 <ul>
 <li><a href="https://rtyley.github.io/bfg-repo-cleaner/" class="uri">https://rtyley.github.io/bfg-repo-cleaner/</a></li>
 </ul>
 </div>
 <div id="git-filter-branch" class="section level4">
-<h4><span class="header-section-number">2.8.5.2</span> Git filter branch</h4>
+<h4><span class="header-section-number">2.8.6.2</span> Git filter branch</h4>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="fu">git</span> filter-branch --force --index-filter \</a>
 <a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">&#39;git rm --cached --ignore-unmatch &lt;PATH_TO_FILE&gt;&#39;</span> \</a>
 <a class="sourceLine" id="cb12-3" data-line-number="3">--prune-empty --tag-name-filter cat -- --all</a></code></pre></div>

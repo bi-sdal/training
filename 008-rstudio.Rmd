@@ -11,8 +11,12 @@ To do this first click the 3 dots in the files panel to manually input a directo
 knitr::include_graphics(path = "./figs/manual_folder_dir/01-3_dots.png")
 ```
 
-Then you can manually navigate into a different path
+Then you can manually navigate into a different path.
 
 ```{r, echo=FALSE, fig.cap='Manually input directory', fig.align='center', out.width='100%'}
 knitr::include_graphics(path = "./figs/manual_folder_dir/02-projects_dir.png")
 ```
+
+This example specifically shows navigating to the `/home/sdal/projects` directory.
+However, you might want to check your project's `data` folder,
+a link to the relevent data folder should already be in there.

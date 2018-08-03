@@ -443,66 +443,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>apply family of functions</p>
 <div id="lapply" class="section level3">
 <h3><span class="header-section-number">16.4.1</span> lapply</h3>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" data-line-number="1"><span class="kw">lapply</span>(f_values, f_c)</a>
-<a class="sourceLine" id="cb266-2" data-line-number="2"><span class="co">## [[1]]</span></a>
-<a class="sourceLine" id="cb266-3" data-line-number="3"><span class="co">## [1] -17.77778</span></a>
-<a class="sourceLine" id="cb266-4" data-line-number="4"><span class="co">## </span></a>
-<a class="sourceLine" id="cb266-5" data-line-number="5"><span class="co">## [[2]]</span></a>
-<a class="sourceLine" id="cb266-6" data-line-number="6"><span class="co">## [1] 0</span></a>
-<a class="sourceLine" id="cb266-7" data-line-number="7"><span class="co">## </span></a>
-<a class="sourceLine" id="cb266-8" data-line-number="8"><span class="co">## [[3]]</span></a>
-<a class="sourceLine" id="cb266-9" data-line-number="9"><span class="co">## [1] 100</span></a>
-<a class="sourceLine" id="cb266-10" data-line-number="10"><span class="co">## </span></a>
-<a class="sourceLine" id="cb266-11" data-line-number="11"><span class="co">## [[4]]</span></a>
-<a class="sourceLine" id="cb266-12" data-line-number="12"><span class="co">## [1] -40</span></a></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" data-line-number="1"><span class="kw">lapply</span>(f_values, f_c)</a>
+<a class="sourceLine" id="cb267-2" data-line-number="2"><span class="co">## [[1]]</span></a>
+<a class="sourceLine" id="cb267-3" data-line-number="3"><span class="co">## [1] -17.77778</span></a>
+<a class="sourceLine" id="cb267-4" data-line-number="4"><span class="co">## </span></a>
+<a class="sourceLine" id="cb267-5" data-line-number="5"><span class="co">## [[2]]</span></a>
+<a class="sourceLine" id="cb267-6" data-line-number="6"><span class="co">## [1] 0</span></a>
+<a class="sourceLine" id="cb267-7" data-line-number="7"><span class="co">## </span></a>
+<a class="sourceLine" id="cb267-8" data-line-number="8"><span class="co">## [[3]]</span></a>
+<a class="sourceLine" id="cb267-9" data-line-number="9"><span class="co">## [1] 100</span></a>
+<a class="sourceLine" id="cb267-10" data-line-number="10"><span class="co">## </span></a>
+<a class="sourceLine" id="cb267-11" data-line-number="11"><span class="co">## [[4]]</span></a>
+<a class="sourceLine" id="cb267-12" data-line-number="12"><span class="co">## [1] -40</span></a></code></pre></div>
 </div>
 <div id="sapply" class="section level3">
 <h3><span class="header-section-number">16.4.2</span> sapply</h3>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" data-line-number="1"><span class="kw">sapply</span>(f_values, f_c)</a>
-<a class="sourceLine" id="cb267-2" data-line-number="2"><span class="co">## [1] -17.77778   0.00000 100.00000 -40.00000</span></a></code></pre></div>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb268-1" data-line-number="1">v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb268-2" data-line-number="2">v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">400</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb268-1" data-line-number="1"><span class="kw">sapply</span>(f_values, f_c)</a>
+<a class="sourceLine" id="cb268-2" data-line-number="2"><span class="co">## [1] -17.77778   0.00000 100.00000 -40.00000</span></a></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1">v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb269-2" data-line-number="2">v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">400</span>)</a></code></pre></div>
 </div>
 <div id="mapply" class="section level3">
 <h3><span class="header-section-number">16.4.3</span> mapply</h3>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1">my_mean &lt;-<span class="st"> </span><span class="cf">function</span>(x, y){</a>
-<a class="sourceLine" id="cb269-2" data-line-number="2">    <span class="kw">return</span>((x <span class="op">+</span><span class="st"> </span>y) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb269-3" data-line-number="3">}</a></code></pre></div>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb270-1" data-line-number="1"><span class="co"># sapply(v1, v2, my_mean)</span></a></code></pre></div>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" data-line-number="1"><span class="kw">mapply</span>(my_mean, v1, v2)</a>
-<a class="sourceLine" id="cb271-2" data-line-number="2"><span class="co">## [1]  50.5 101.0 151.5 202.0</span></a>
-<a class="sourceLine" id="cb271-3" data-line-number="3"><span class="co"># this is the same as purrr::map2</span></a></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb270-1" data-line-number="1">my_mean &lt;-<span class="st"> </span><span class="cf">function</span>(x, y){</a>
+<a class="sourceLine" id="cb270-2" data-line-number="2">    <span class="kw">return</span>((x <span class="op">+</span><span class="st"> </span>y) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb270-3" data-line-number="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" data-line-number="1"><span class="co"># sapply(v1, v2, my_mean)</span></a></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb272-1" data-line-number="1"><span class="kw">mapply</span>(my_mean, v1, v2)</a>
+<a class="sourceLine" id="cb272-2" data-line-number="2"><span class="co">## [1]  50.5 101.0 151.5 202.0</span></a>
+<a class="sourceLine" id="cb272-3" data-line-number="3"><span class="co"># this is the same as purrr::map2</span></a></code></pre></div>
 </div>
 <div id="apply-2-dimensions" class="section level3">
 <h3><span class="header-section-number">16.4.4</span> apply (2-dimensions)</h3>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb272-1" data-line-number="1"><span class="kw">apply</span>(mtcars, <span class="dt">MARGIN =</span> <span class="dv">1</span>, mean)</a>
-<a class="sourceLine" id="cb272-2" data-line-number="2"><span class="co">##           Mazda RX4       Mazda RX4 Wag          Datsun 710 </span></a>
-<a class="sourceLine" id="cb272-3" data-line-number="3"><span class="co">##            29.90727            29.98136            23.59818 </span></a>
-<a class="sourceLine" id="cb272-4" data-line-number="4"><span class="co">##      Hornet 4 Drive   Hornet Sportabout             Valiant </span></a>
-<a class="sourceLine" id="cb272-5" data-line-number="5"><span class="co">##            38.73955            53.66455            35.04909 </span></a>
-<a class="sourceLine" id="cb272-6" data-line-number="6"><span class="co">##          Duster 360           Merc 240D            Merc 230 </span></a>
-<a class="sourceLine" id="cb272-7" data-line-number="7"><span class="co">##            59.72000            24.63455            27.23364 </span></a>
-<a class="sourceLine" id="cb272-8" data-line-number="8"><span class="co">##            Merc 280           Merc 280C          Merc 450SE </span></a>
-<a class="sourceLine" id="cb272-9" data-line-number="9"><span class="co">##            31.86000            31.78727            46.43091 </span></a>
-<a class="sourceLine" id="cb272-10" data-line-number="10"><span class="co">##          Merc 450SL         Merc 450SLC  Cadillac Fleetwood </span></a>
-<a class="sourceLine" id="cb272-11" data-line-number="11"><span class="co">##            46.50000            46.35000            66.23273 </span></a>
-<a class="sourceLine" id="cb272-12" data-line-number="12"><span class="co">## Lincoln Continental   Chrysler Imperial            Fiat 128 </span></a>
-<a class="sourceLine" id="cb272-13" data-line-number="13"><span class="co">##            66.05855            65.97227            19.44091 </span></a>
-<a class="sourceLine" id="cb272-14" data-line-number="14"><span class="co">##         Honda Civic      Toyota Corolla       Toyota Corona </span></a>
-<a class="sourceLine" id="cb272-15" data-line-number="15"><span class="co">##            17.74227            18.81409            24.88864 </span></a>
-<a class="sourceLine" id="cb272-16" data-line-number="16"><span class="co">##    Dodge Challenger         AMC Javelin          Camaro Z28 </span></a>
-<a class="sourceLine" id="cb272-17" data-line-number="17"><span class="co">##            47.24091            46.00773            58.75273 </span></a>
-<a class="sourceLine" id="cb272-18" data-line-number="18"><span class="co">##    Pontiac Firebird           Fiat X1-9       Porsche 914-2 </span></a>
-<a class="sourceLine" id="cb272-19" data-line-number="19"><span class="co">##            57.37955            18.92864            24.77909 </span></a>
-<a class="sourceLine" id="cb272-20" data-line-number="20"><span class="co">##        Lotus Europa      Ford Pantera L        Ferrari Dino </span></a>
-<a class="sourceLine" id="cb272-21" data-line-number="21"><span class="co">##            24.88027            60.97182            34.50818 </span></a>
-<a class="sourceLine" id="cb272-22" data-line-number="22"><span class="co">##       Maserati Bora          Volvo 142E </span></a>
-<a class="sourceLine" id="cb272-23" data-line-number="23"><span class="co">##            63.15545            26.26273</span></a></code></pre></div>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" data-line-number="1"><span class="kw">apply</span>(mtcars, <span class="dt">MARGIN =</span> <span class="dv">2</span>, mean)</a>
-<a class="sourceLine" id="cb273-2" data-line-number="2"><span class="co">##        mpg        cyl       disp         hp       drat         wt </span></a>
-<a class="sourceLine" id="cb273-3" data-line-number="3"><span class="co">##  20.090625   6.187500 230.721875 146.687500   3.596563   3.217250 </span></a>
-<a class="sourceLine" id="cb273-4" data-line-number="4"><span class="co">##       qsec         vs         am       gear       carb </span></a>
-<a class="sourceLine" id="cb273-5" data-line-number="5"><span class="co">##  17.848750   0.437500   0.406250   3.687500   2.812500</span></a></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" data-line-number="1"><span class="kw">apply</span>(mtcars, <span class="dt">MARGIN =</span> <span class="dv">1</span>, mean)</a>
+<a class="sourceLine" id="cb273-2" data-line-number="2"><span class="co">##           Mazda RX4       Mazda RX4 Wag          Datsun 710 </span></a>
+<a class="sourceLine" id="cb273-3" data-line-number="3"><span class="co">##            29.90727            29.98136            23.59818 </span></a>
+<a class="sourceLine" id="cb273-4" data-line-number="4"><span class="co">##      Hornet 4 Drive   Hornet Sportabout             Valiant </span></a>
+<a class="sourceLine" id="cb273-5" data-line-number="5"><span class="co">##            38.73955            53.66455            35.04909 </span></a>
+<a class="sourceLine" id="cb273-6" data-line-number="6"><span class="co">##          Duster 360           Merc 240D            Merc 230 </span></a>
+<a class="sourceLine" id="cb273-7" data-line-number="7"><span class="co">##            59.72000            24.63455            27.23364 </span></a>
+<a class="sourceLine" id="cb273-8" data-line-number="8"><span class="co">##            Merc 280           Merc 280C          Merc 450SE </span></a>
+<a class="sourceLine" id="cb273-9" data-line-number="9"><span class="co">##            31.86000            31.78727            46.43091 </span></a>
+<a class="sourceLine" id="cb273-10" data-line-number="10"><span class="co">##          Merc 450SL         Merc 450SLC  Cadillac Fleetwood </span></a>
+<a class="sourceLine" id="cb273-11" data-line-number="11"><span class="co">##            46.50000            46.35000            66.23273 </span></a>
+<a class="sourceLine" id="cb273-12" data-line-number="12"><span class="co">## Lincoln Continental   Chrysler Imperial            Fiat 128 </span></a>
+<a class="sourceLine" id="cb273-13" data-line-number="13"><span class="co">##            66.05855            65.97227            19.44091 </span></a>
+<a class="sourceLine" id="cb273-14" data-line-number="14"><span class="co">##         Honda Civic      Toyota Corolla       Toyota Corona </span></a>
+<a class="sourceLine" id="cb273-15" data-line-number="15"><span class="co">##            17.74227            18.81409            24.88864 </span></a>
+<a class="sourceLine" id="cb273-16" data-line-number="16"><span class="co">##    Dodge Challenger         AMC Javelin          Camaro Z28 </span></a>
+<a class="sourceLine" id="cb273-17" data-line-number="17"><span class="co">##            47.24091            46.00773            58.75273 </span></a>
+<a class="sourceLine" id="cb273-18" data-line-number="18"><span class="co">##    Pontiac Firebird           Fiat X1-9       Porsche 914-2 </span></a>
+<a class="sourceLine" id="cb273-19" data-line-number="19"><span class="co">##            57.37955            18.92864            24.77909 </span></a>
+<a class="sourceLine" id="cb273-20" data-line-number="20"><span class="co">##        Lotus Europa      Ford Pantera L        Ferrari Dino </span></a>
+<a class="sourceLine" id="cb273-21" data-line-number="21"><span class="co">##            24.88027            60.97182            34.50818 </span></a>
+<a class="sourceLine" id="cb273-22" data-line-number="22"><span class="co">##       Maserati Bora          Volvo 142E </span></a>
+<a class="sourceLine" id="cb273-23" data-line-number="23"><span class="co">##            63.15545            26.26273</span></a></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" data-line-number="1"><span class="kw">apply</span>(mtcars, <span class="dt">MARGIN =</span> <span class="dv">2</span>, mean)</a>
+<a class="sourceLine" id="cb274-2" data-line-number="2"><span class="co">##        mpg        cyl       disp         hp       drat         wt </span></a>
+<a class="sourceLine" id="cb274-3" data-line-number="3"><span class="co">##  20.090625   6.187500 230.721875 146.687500   3.596563   3.217250 </span></a>
+<a class="sourceLine" id="cb274-4" data-line-number="4"><span class="co">##       qsec         vs         am       gear       carb </span></a>
+<a class="sourceLine" id="cb274-5" data-line-number="5"><span class="co">##  17.848750   0.437500   0.406250   3.687500   2.812500</span></a></code></pre></div>
 
 </div>
 </div>

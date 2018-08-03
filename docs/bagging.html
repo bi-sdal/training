@@ -441,309 +441,309 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="bagging" class="section level2">
 <h2><span class="header-section-number">24.3</span> Bagging</h2>
 <p>Just as bootstrapping can estimate variability for statistics, it can also do so for predictions. This process is known as Bootstrap AGGrigation, or bagging. It turns out that, when doing bootstrap sampling, about 1/3 of the entries don’t make it into the resampled data set. These points are called out-of-bag (oob), and the rest are in-bag. We can use oob data like a free testing set. First a simple example to illustrate, then a non-trivial one.</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb401-1" data-line-number="1">mpgLm =<span class="st"> </span><span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>wt, <span class="dt">data =</span> mtcars)</a>
-<a class="sourceLine" id="cb401-2" data-line-number="2"><span class="kw">summary</span>(mpgLm)</a>
-<a class="sourceLine" id="cb401-3" data-line-number="3"><span class="co">## </span></a>
-<a class="sourceLine" id="cb401-4" data-line-number="4"><span class="co">## Call:</span></a>
-<a class="sourceLine" id="cb401-5" data-line-number="5"><span class="co">## lm(formula = mpg ~ hp + wt, data = mtcars)</span></a>
-<a class="sourceLine" id="cb401-6" data-line-number="6"><span class="co">## </span></a>
-<a class="sourceLine" id="cb401-7" data-line-number="7"><span class="co">## Residuals:</span></a>
-<a class="sourceLine" id="cb401-8" data-line-number="8"><span class="co">##    Min     1Q Median     3Q    Max </span></a>
-<a class="sourceLine" id="cb401-9" data-line-number="9"><span class="co">## -3.941 -1.600 -0.182  1.050  5.854 </span></a>
-<a class="sourceLine" id="cb401-10" data-line-number="10"><span class="co">## </span></a>
-<a class="sourceLine" id="cb401-11" data-line-number="11"><span class="co">## Coefficients:</span></a>
-<a class="sourceLine" id="cb401-12" data-line-number="12"><span class="co">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></a>
-<a class="sourceLine" id="cb401-13" data-line-number="13"><span class="co">## (Intercept) 37.22727    1.59879  23.285  &lt; 2e-16 ***</span></a>
-<a class="sourceLine" id="cb401-14" data-line-number="14"><span class="co">## hp          -0.03177    0.00903  -3.519  0.00145 ** </span></a>
-<a class="sourceLine" id="cb401-15" data-line-number="15"><span class="co">## wt          -3.87783    0.63273  -6.129 1.12e-06 ***</span></a>
-<a class="sourceLine" id="cb401-16" data-line-number="16"><span class="co">## ---</span></a>
-<a class="sourceLine" id="cb401-17" data-line-number="17"><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></a>
-<a class="sourceLine" id="cb401-18" data-line-number="18"><span class="co">## </span></a>
-<a class="sourceLine" id="cb401-19" data-line-number="19"><span class="co">## Residual standard error: 2.593 on 29 degrees of freedom</span></a>
-<a class="sourceLine" id="cb401-20" data-line-number="20"><span class="co">## Multiple R-squared:  0.8268, Adjusted R-squared:  0.8148 </span></a>
-<a class="sourceLine" id="cb401-21" data-line-number="21"><span class="co">## F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</span></a></code></pre></div>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb402-1" data-line-number="1">b =<span class="st"> </span><span class="dv">2000</span></a>
-<a class="sourceLine" id="cb402-2" data-line-number="2">oobPredictions =<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow =</span> <span class="kw">nrow</span>(mtcars), <span class="dt">ncol =</span> b)</a>
-<a class="sourceLine" id="cb402-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>b){</a>
-<a class="sourceLine" id="cb402-4" data-line-number="4">  resampleIndices =<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(mtcars), <span class="kw">nrow</span>(mtcars), <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb402-5" data-line-number="5">  <span class="co"># use the set difference to find the out of bag indices</span></a>
-<a class="sourceLine" id="cb402-6" data-line-number="6">  oobIndices =<span class="st"> </span><span class="kw">setdiff</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(mtcars), resampleIndices)</a>
-<a class="sourceLine" id="cb402-7" data-line-number="7">  </a>
-<a class="sourceLine" id="cb402-8" data-line-number="8">  bootstrapMtcars =<span class="st"> </span>mtcars[resampleIndices, ]</a>
-<a class="sourceLine" id="cb402-9" data-line-number="9">  oobMtcars =<span class="st"> </span>mtcars[oobIndices,]</a>
-<a class="sourceLine" id="cb402-10" data-line-number="10">  bootstrapLm =<span class="st"> </span><span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>wt, <span class="dt">data =</span> bootstrapMtcars)</a>
-<a class="sourceLine" id="cb402-11" data-line-number="11">  oobPreds =<span class="st"> </span><span class="kw">predict</span>(bootstrapLm, oobMtcars)</a>
-<a class="sourceLine" id="cb402-12" data-line-number="12">  oobPredictions[oobIndices, i] =<span class="st"> </span>oobPreds</a>
-<a class="sourceLine" id="cb402-13" data-line-number="13">} </a></code></pre></div>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb403-1" data-line-number="1">oobPredictions[, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb403-2" data-line-number="2"><span class="co">##            [,1]     [,2]     [,3]     [,4]      [,5]</span></a>
-<a class="sourceLine" id="cb403-3" data-line-number="3"><span class="co">##  [1,] 22.494587       NA       NA       NA        NA</span></a>
-<a class="sourceLine" id="cb403-4" data-line-number="4"><span class="co">##  [2,]        NA       NA       NA 22.96562 23.440193</span></a>
-<a class="sourceLine" id="cb403-5" data-line-number="5"><span class="co">##  [3,]        NA 26.11981       NA 25.36036        NA</span></a>
-<a class="sourceLine" id="cb403-6" data-line-number="6"><span class="co">##  [4,] 19.798269 22.41944 21.68780 22.00558 22.124690</span></a>
-<a class="sourceLine" id="cb403-7" data-line-number="7"><span class="co">##  [5,]        NA       NA 18.56648       NA 18.649486</span></a>
-<a class="sourceLine" id="cb403-8" data-line-number="8"><span class="co">##  [6,] 18.786115 21.87208       NA       NA        NA</span></a>
-<a class="sourceLine" id="cb403-9" data-line-number="9"><span class="co">##  [7,]        NA       NA       NA       NA        NA</span></a>
-<a class="sourceLine" id="cb403-10" data-line-number="10"><span class="co">##  [8,] 20.853263       NA 23.58794       NA 24.144853</span></a>
-<a class="sourceLine" id="cb403-11" data-line-number="11"><span class="co">##  [9,]        NA       NA       NA 22.91937        NA</span></a>
-<a class="sourceLine" id="cb403-12" data-line-number="12"><span class="co">## [10,]        NA       NA 20.54729 20.73738        NA</span></a>
-<a class="sourceLine" id="cb403-13" data-line-number="13"><span class="co">## [11,]        NA       NA       NA 20.73738        NA</span></a>
-<a class="sourceLine" id="cb403-14" data-line-number="14"><span class="co">## [12,]        NA       NA 16.56916       NA        NA</span></a>
-<a class="sourceLine" id="cb403-15" data-line-number="15"><span class="co">## [13,]        NA       NA 17.54429 17.14356 17.327081</span></a>
-<a class="sourceLine" id="cb403-16" data-line-number="16"><span class="co">## [14,]        NA       NA 17.40089 17.00238        NA</span></a>
-<a class="sourceLine" id="cb403-17" data-line-number="17"><span class="co">## [15,]  8.712622 11.28819 12.23258       NA        NA</span></a>
-<a class="sourceLine" id="cb403-18" data-line-number="18"><span class="co">## [16,]        NA       NA       NA 10.65639  9.370276</span></a>
-<a class="sourceLine" id="cb403-19" data-line-number="19"><span class="co">## [17,]  7.791647       NA       NA       NA        NA</span></a>
-<a class="sourceLine" id="cb403-20" data-line-number="20"><span class="co">## [18,] 25.261098       NA       NA       NA        NA</span></a>
-<a class="sourceLine" id="cb403-21" data-line-number="21"><span class="co">## [19,] 28.186763 30.36620       NA       NA 30.639444</span></a>
-<a class="sourceLine" id="cb403-22" data-line-number="22"><span class="co">## [20,] 26.934760       NA 27.35984       NA        NA</span></a>
-<a class="sourceLine" id="cb403-23" data-line-number="23"><span class="co">## [21,] 23.452033       NA       NA       NA        NA</span></a>
-<a class="sourceLine" id="cb403-24" data-line-number="24"><span class="co">## [22,] 17.631370       NA       NA       NA 19.341744</span></a>
-<a class="sourceLine" id="cb403-25" data-line-number="25"><span class="co">## [23,]        NA 19.78221 19.53314       NA 19.670620</span></a>
-<a class="sourceLine" id="cb403-26" data-line-number="26"><span class="co">## [24,]        NA       NA       NA       NA        NA</span></a>
-<a class="sourceLine" id="cb403-27" data-line-number="27"><span class="co">## [25,] 15.668121       NA       NA       NA        NA</span></a>
-<a class="sourceLine" id="cb403-28" data-line-number="28"><span class="co">## [26,] 26.461979       NA       NA       NA 28.840321</span></a>
-<a class="sourceLine" id="cb403-29" data-line-number="29"><span class="co">## [27,]        NA       NA       NA       NA 27.045361</span></a>
-<a class="sourceLine" id="cb403-30" data-line-number="30"><span class="co">## [28,]        NA       NA 26.45490 26.66537        NA</span></a>
-<a class="sourceLine" id="cb403-31" data-line-number="31"><span class="co">## [29,]        NA 15.13692       NA 14.63539        NA</span></a>
-<a class="sourceLine" id="cb403-32" data-line-number="32"><span class="co">## [30,] 20.539619 20.71671       NA       NA 21.241801</span></a>
-<a class="sourceLine" id="cb403-33" data-line-number="33"><span class="co">## [31,]        NA 10.42526       NA 10.04940 11.735052</span></a>
-<a class="sourceLine" id="cb403-34" data-line-number="34"><span class="co">## [32,]        NA       NA 22.97348       NA 23.847832</span></a></code></pre></div>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb404-1" data-line-number="1"><span class="kw">predict</span>(mpgLm, mtcars[<span class="dv">1</span>,], <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>)</a>
-<a class="sourceLine" id="cb404-2" data-line-number="2"><span class="co">##                fit      lwr      upr</span></a>
-<a class="sourceLine" id="cb404-3" data-line-number="3"><span class="co">## Mazda RX4 23.57233 22.45623 24.68843</span></a></code></pre></div>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb405-1" data-line-number="1"><span class="kw">quantile</span>(oobPredictions[<span class="dv">1</span>,], <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb405-2" data-line-number="2"><span class="co">##     2.5%    97.5% </span></a>
-<a class="sourceLine" id="cb405-3" data-line-number="3"><span class="co">## 22.41650 24.74866</span></a></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb402-1" data-line-number="1">mpgLm =<span class="st"> </span><span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>wt, <span class="dt">data =</span> mtcars)</a>
+<a class="sourceLine" id="cb402-2" data-line-number="2"><span class="kw">summary</span>(mpgLm)</a>
+<a class="sourceLine" id="cb402-3" data-line-number="3"><span class="co">## </span></a>
+<a class="sourceLine" id="cb402-4" data-line-number="4"><span class="co">## Call:</span></a>
+<a class="sourceLine" id="cb402-5" data-line-number="5"><span class="co">## lm(formula = mpg ~ hp + wt, data = mtcars)</span></a>
+<a class="sourceLine" id="cb402-6" data-line-number="6"><span class="co">## </span></a>
+<a class="sourceLine" id="cb402-7" data-line-number="7"><span class="co">## Residuals:</span></a>
+<a class="sourceLine" id="cb402-8" data-line-number="8"><span class="co">##    Min     1Q Median     3Q    Max </span></a>
+<a class="sourceLine" id="cb402-9" data-line-number="9"><span class="co">## -3.941 -1.600 -0.182  1.050  5.854 </span></a>
+<a class="sourceLine" id="cb402-10" data-line-number="10"><span class="co">## </span></a>
+<a class="sourceLine" id="cb402-11" data-line-number="11"><span class="co">## Coefficients:</span></a>
+<a class="sourceLine" id="cb402-12" data-line-number="12"><span class="co">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></a>
+<a class="sourceLine" id="cb402-13" data-line-number="13"><span class="co">## (Intercept) 37.22727    1.59879  23.285  &lt; 2e-16 ***</span></a>
+<a class="sourceLine" id="cb402-14" data-line-number="14"><span class="co">## hp          -0.03177    0.00903  -3.519  0.00145 ** </span></a>
+<a class="sourceLine" id="cb402-15" data-line-number="15"><span class="co">## wt          -3.87783    0.63273  -6.129 1.12e-06 ***</span></a>
+<a class="sourceLine" id="cb402-16" data-line-number="16"><span class="co">## ---</span></a>
+<a class="sourceLine" id="cb402-17" data-line-number="17"><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></a>
+<a class="sourceLine" id="cb402-18" data-line-number="18"><span class="co">## </span></a>
+<a class="sourceLine" id="cb402-19" data-line-number="19"><span class="co">## Residual standard error: 2.593 on 29 degrees of freedom</span></a>
+<a class="sourceLine" id="cb402-20" data-line-number="20"><span class="co">## Multiple R-squared:  0.8268, Adjusted R-squared:  0.8148 </span></a>
+<a class="sourceLine" id="cb402-21" data-line-number="21"><span class="co">## F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</span></a></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb403-1" data-line-number="1">b =<span class="st"> </span><span class="dv">2000</span></a>
+<a class="sourceLine" id="cb403-2" data-line-number="2">oobPredictions =<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow =</span> <span class="kw">nrow</span>(mtcars), <span class="dt">ncol =</span> b)</a>
+<a class="sourceLine" id="cb403-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>b){</a>
+<a class="sourceLine" id="cb403-4" data-line-number="4">  resampleIndices =<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(mtcars), <span class="kw">nrow</span>(mtcars), <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb403-5" data-line-number="5">  <span class="co"># use the set difference to find the out of bag indices</span></a>
+<a class="sourceLine" id="cb403-6" data-line-number="6">  oobIndices =<span class="st"> </span><span class="kw">setdiff</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(mtcars), resampleIndices)</a>
+<a class="sourceLine" id="cb403-7" data-line-number="7">  </a>
+<a class="sourceLine" id="cb403-8" data-line-number="8">  bootstrapMtcars =<span class="st"> </span>mtcars[resampleIndices, ]</a>
+<a class="sourceLine" id="cb403-9" data-line-number="9">  oobMtcars =<span class="st"> </span>mtcars[oobIndices,]</a>
+<a class="sourceLine" id="cb403-10" data-line-number="10">  bootstrapLm =<span class="st"> </span><span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>wt, <span class="dt">data =</span> bootstrapMtcars)</a>
+<a class="sourceLine" id="cb403-11" data-line-number="11">  oobPreds =<span class="st"> </span><span class="kw">predict</span>(bootstrapLm, oobMtcars)</a>
+<a class="sourceLine" id="cb403-12" data-line-number="12">  oobPredictions[oobIndices, i] =<span class="st"> </span>oobPreds</a>
+<a class="sourceLine" id="cb403-13" data-line-number="13">} </a></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb404-1" data-line-number="1">oobPredictions[, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb404-2" data-line-number="2"><span class="co">##            [,1]     [,2]     [,3]     [,4]      [,5]</span></a>
+<a class="sourceLine" id="cb404-3" data-line-number="3"><span class="co">##  [1,] 22.494587       NA       NA       NA        NA</span></a>
+<a class="sourceLine" id="cb404-4" data-line-number="4"><span class="co">##  [2,]        NA       NA       NA 22.96562 23.440193</span></a>
+<a class="sourceLine" id="cb404-5" data-line-number="5"><span class="co">##  [3,]        NA 26.11981       NA 25.36036        NA</span></a>
+<a class="sourceLine" id="cb404-6" data-line-number="6"><span class="co">##  [4,] 19.798269 22.41944 21.68780 22.00558 22.124690</span></a>
+<a class="sourceLine" id="cb404-7" data-line-number="7"><span class="co">##  [5,]        NA       NA 18.56648       NA 18.649486</span></a>
+<a class="sourceLine" id="cb404-8" data-line-number="8"><span class="co">##  [6,] 18.786115 21.87208       NA       NA        NA</span></a>
+<a class="sourceLine" id="cb404-9" data-line-number="9"><span class="co">##  [7,]        NA       NA       NA       NA        NA</span></a>
+<a class="sourceLine" id="cb404-10" data-line-number="10"><span class="co">##  [8,] 20.853263       NA 23.58794       NA 24.144853</span></a>
+<a class="sourceLine" id="cb404-11" data-line-number="11"><span class="co">##  [9,]        NA       NA       NA 22.91937        NA</span></a>
+<a class="sourceLine" id="cb404-12" data-line-number="12"><span class="co">## [10,]        NA       NA 20.54729 20.73738        NA</span></a>
+<a class="sourceLine" id="cb404-13" data-line-number="13"><span class="co">## [11,]        NA       NA       NA 20.73738        NA</span></a>
+<a class="sourceLine" id="cb404-14" data-line-number="14"><span class="co">## [12,]        NA       NA 16.56916       NA        NA</span></a>
+<a class="sourceLine" id="cb404-15" data-line-number="15"><span class="co">## [13,]        NA       NA 17.54429 17.14356 17.327081</span></a>
+<a class="sourceLine" id="cb404-16" data-line-number="16"><span class="co">## [14,]        NA       NA 17.40089 17.00238        NA</span></a>
+<a class="sourceLine" id="cb404-17" data-line-number="17"><span class="co">## [15,]  8.712622 11.28819 12.23258       NA        NA</span></a>
+<a class="sourceLine" id="cb404-18" data-line-number="18"><span class="co">## [16,]        NA       NA       NA 10.65639  9.370276</span></a>
+<a class="sourceLine" id="cb404-19" data-line-number="19"><span class="co">## [17,]  7.791647       NA       NA       NA        NA</span></a>
+<a class="sourceLine" id="cb404-20" data-line-number="20"><span class="co">## [18,] 25.261098       NA       NA       NA        NA</span></a>
+<a class="sourceLine" id="cb404-21" data-line-number="21"><span class="co">## [19,] 28.186763 30.36620       NA       NA 30.639444</span></a>
+<a class="sourceLine" id="cb404-22" data-line-number="22"><span class="co">## [20,] 26.934760       NA 27.35984       NA        NA</span></a>
+<a class="sourceLine" id="cb404-23" data-line-number="23"><span class="co">## [21,] 23.452033       NA       NA       NA        NA</span></a>
+<a class="sourceLine" id="cb404-24" data-line-number="24"><span class="co">## [22,] 17.631370       NA       NA       NA 19.341744</span></a>
+<a class="sourceLine" id="cb404-25" data-line-number="25"><span class="co">## [23,]        NA 19.78221 19.53314       NA 19.670620</span></a>
+<a class="sourceLine" id="cb404-26" data-line-number="26"><span class="co">## [24,]        NA       NA       NA       NA        NA</span></a>
+<a class="sourceLine" id="cb404-27" data-line-number="27"><span class="co">## [25,] 15.668121       NA       NA       NA        NA</span></a>
+<a class="sourceLine" id="cb404-28" data-line-number="28"><span class="co">## [26,] 26.461979       NA       NA       NA 28.840321</span></a>
+<a class="sourceLine" id="cb404-29" data-line-number="29"><span class="co">## [27,]        NA       NA       NA       NA 27.045361</span></a>
+<a class="sourceLine" id="cb404-30" data-line-number="30"><span class="co">## [28,]        NA       NA 26.45490 26.66537        NA</span></a>
+<a class="sourceLine" id="cb404-31" data-line-number="31"><span class="co">## [29,]        NA 15.13692       NA 14.63539        NA</span></a>
+<a class="sourceLine" id="cb404-32" data-line-number="32"><span class="co">## [30,] 20.539619 20.71671       NA       NA 21.241801</span></a>
+<a class="sourceLine" id="cb404-33" data-line-number="33"><span class="co">## [31,]        NA 10.42526       NA 10.04940 11.735052</span></a>
+<a class="sourceLine" id="cb404-34" data-line-number="34"><span class="co">## [32,]        NA       NA 22.97348       NA 23.847832</span></a></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb405-1" data-line-number="1"><span class="kw">predict</span>(mpgLm, mtcars[<span class="dv">1</span>,], <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>)</a>
+<a class="sourceLine" id="cb405-2" data-line-number="2"><span class="co">##                fit      lwr      upr</span></a>
+<a class="sourceLine" id="cb405-3" data-line-number="3"><span class="co">## Mazda RX4 23.57233 22.45623 24.68843</span></a></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb406-1" data-line-number="1"><span class="kw">quantile</span>(oobPredictions[<span class="dv">1</span>,], <span class="kw">c</span>(.<span class="dv">025</span>, <span class="fl">.975</span>), <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb406-2" data-line-number="2"><span class="co">##     2.5%    97.5% </span></a>
+<a class="sourceLine" id="cb406-3" data-line-number="3"><span class="co">## 22.41650 24.74866</span></a></code></pre></div>
 <p>We see the bootstrap confidence interval is very close to the normal theory interval, as was the case above. This isn’t super useful for linear models, but gives us a way to measure uncertainty for models which don’t have a probability model to give us error bars, such as CART.</p>
 <p>Now, we bag cart. We’ll use the very first example.</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb406-1" data-line-number="1">classTree =<span class="st"> </span><span class="kw">tree</span>(Species <span class="op">~</span><span class="st"> </span>Sepal.Length <span class="op">+</span><span class="st"> </span>Sepal.Width <span class="op">+</span><span class="st"> </span>Petal.Length <span class="op">+</span><span class="st"> </span>Petal.Width, <span class="dt">data =</span> iris)</a></code></pre></div>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb407-1" data-line-number="1"><span class="kw">summary</span>(classTree)</a>
-<a class="sourceLine" id="cb407-2" data-line-number="2"><span class="co">## </span></a>
-<a class="sourceLine" id="cb407-3" data-line-number="3"><span class="co">## Classification tree:</span></a>
-<a class="sourceLine" id="cb407-4" data-line-number="4"><span class="co">## tree(formula = Species ~ Sepal.Length + Sepal.Width + Petal.Length + </span></a>
-<a class="sourceLine" id="cb407-5" data-line-number="5"><span class="co">##     Petal.Width, data = iris)</span></a>
-<a class="sourceLine" id="cb407-6" data-line-number="6"><span class="co">## Variables actually used in tree construction:</span></a>
-<a class="sourceLine" id="cb407-7" data-line-number="7"><span class="co">## [1] &quot;Petal.Length&quot; &quot;Petal.Width&quot;  &quot;Sepal.Length&quot;</span></a>
-<a class="sourceLine" id="cb407-8" data-line-number="8"><span class="co">## Number of terminal nodes:  6 </span></a>
-<a class="sourceLine" id="cb407-9" data-line-number="9"><span class="co">## Residual mean deviance:  0.1253 = 18.05 / 144 </span></a>
-<a class="sourceLine" id="cb407-10" data-line-number="10"><span class="co">## Misclassification error rate: 0.02667 = 4 / 150</span></a></code></pre></div>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb408-1" data-line-number="1"><span class="kw">plot</span>(classTree)</a>
-<a class="sourceLine" id="cb408-2" data-line-number="2"><span class="kw">text</span>(classTree)</a></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb407-1" data-line-number="1">classTree =<span class="st"> </span><span class="kw">tree</span>(Species <span class="op">~</span><span class="st"> </span>Sepal.Length <span class="op">+</span><span class="st"> </span>Sepal.Width <span class="op">+</span><span class="st"> </span>Petal.Length <span class="op">+</span><span class="st"> </span>Petal.Width, <span class="dt">data =</span> iris)</a></code></pre></div>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb408-1" data-line-number="1"><span class="kw">summary</span>(classTree)</a>
+<a class="sourceLine" id="cb408-2" data-line-number="2"><span class="co">## </span></a>
+<a class="sourceLine" id="cb408-3" data-line-number="3"><span class="co">## Classification tree:</span></a>
+<a class="sourceLine" id="cb408-4" data-line-number="4"><span class="co">## tree(formula = Species ~ Sepal.Length + Sepal.Width + Petal.Length + </span></a>
+<a class="sourceLine" id="cb408-5" data-line-number="5"><span class="co">##     Petal.Width, data = iris)</span></a>
+<a class="sourceLine" id="cb408-6" data-line-number="6"><span class="co">## Variables actually used in tree construction:</span></a>
+<a class="sourceLine" id="cb408-7" data-line-number="7"><span class="co">## [1] &quot;Petal.Length&quot; &quot;Petal.Width&quot;  &quot;Sepal.Length&quot;</span></a>
+<a class="sourceLine" id="cb408-8" data-line-number="8"><span class="co">## Number of terminal nodes:  6 </span></a>
+<a class="sourceLine" id="cb408-9" data-line-number="9"><span class="co">## Residual mean deviance:  0.1253 = 18.05 / 144 </span></a>
+<a class="sourceLine" id="cb408-10" data-line-number="10"><span class="co">## Misclassification error rate: 0.02667 = 4 / 150</span></a></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb409-1" data-line-number="1"><span class="kw">plot</span>(classTree)</a>
+<a class="sourceLine" id="cb409-2" data-line-number="2"><span class="kw">text</span>(classTree)</a></code></pre></div>
 <p><img src="330-CART_files/figure-html/unnamed-chunk-57-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb409-1" data-line-number="1"><span class="kw">table</span>(<span class="kw">predict</span>(classTree, <span class="dt">type =</span> <span class="st">&#39;class&#39;</span>), iris<span class="op">$</span>Species)</a>
-<a class="sourceLine" id="cb409-2" data-line-number="2"><span class="co">##             </span></a>
-<a class="sourceLine" id="cb409-3" data-line-number="3"><span class="co">##              setosa versicolor virginica</span></a>
-<a class="sourceLine" id="cb409-4" data-line-number="4"><span class="co">##   setosa         50          0         0</span></a>
-<a class="sourceLine" id="cb409-5" data-line-number="5"><span class="co">##   versicolor      0         47         1</span></a>
-<a class="sourceLine" id="cb409-6" data-line-number="6"><span class="co">##   virginica       0          3        49</span></a></code></pre></div>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb410-1" data-line-number="1">b =<span class="st"> </span><span class="dv">2000</span></a>
-<a class="sourceLine" id="cb410-2" data-line-number="2">oobPredictions =<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow =</span> <span class="kw">nrow</span>(iris), <span class="dt">ncol =</span> b)</a>
-<a class="sourceLine" id="cb410-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>b){</a>
-<a class="sourceLine" id="cb410-4" data-line-number="4">  resampleIndices =<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(iris), <span class="kw">nrow</span>(iris), <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb410-5" data-line-number="5">  <span class="co"># use the set difference to find the out of bag indices</span></a>
-<a class="sourceLine" id="cb410-6" data-line-number="6">  oobIndices =<span class="st"> </span><span class="kw">setdiff</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(iris), resampleIndices)</a>
-<a class="sourceLine" id="cb410-7" data-line-number="7">  </a>
-<a class="sourceLine" id="cb410-8" data-line-number="8">  bootstrapIris=<span class="st"> </span>iris[resampleIndices, ]</a>
-<a class="sourceLine" id="cb410-9" data-line-number="9">  oobIris =<span class="st"> </span>iris[oobIndices,]</a>
-<a class="sourceLine" id="cb410-10" data-line-number="10">  bsTree =<span class="st"> </span><span class="kw">tree</span>(Species <span class="op">~</span><span class="st"> </span>Sepal.Length <span class="op">+</span><span class="st"> </span>Sepal.Width <span class="op">+</span><span class="st"> </span>Petal.Length <span class="op">+</span><span class="st"> </span>Petal.Width, <span class="dt">data =</span> bootstrapIris)</a>
-<a class="sourceLine" id="cb410-11" data-line-number="11">  oobPreds =<span class="st"> </span><span class="kw">predict</span>(bsTree, oobIris, <span class="dt">type =</span> <span class="st">&#39;class&#39;</span>)</a>
-<a class="sourceLine" id="cb410-12" data-line-number="12">  oobPredictions[oobIndices, i] =<span class="st"> </span>oobPreds</a>
-<a class="sourceLine" id="cb410-13" data-line-number="13">} </a></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb410-1" data-line-number="1"><span class="kw">table</span>(<span class="kw">predict</span>(classTree, <span class="dt">type =</span> <span class="st">&#39;class&#39;</span>), iris<span class="op">$</span>Species)</a>
+<a class="sourceLine" id="cb410-2" data-line-number="2"><span class="co">##             </span></a>
+<a class="sourceLine" id="cb410-3" data-line-number="3"><span class="co">##              setosa versicolor virginica</span></a>
+<a class="sourceLine" id="cb410-4" data-line-number="4"><span class="co">##   setosa         50          0         0</span></a>
+<a class="sourceLine" id="cb410-5" data-line-number="5"><span class="co">##   versicolor      0         47         1</span></a>
+<a class="sourceLine" id="cb410-6" data-line-number="6"><span class="co">##   virginica       0          3        49</span></a></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb411-1" data-line-number="1">b =<span class="st"> </span><span class="dv">2000</span></a>
+<a class="sourceLine" id="cb411-2" data-line-number="2">oobPredictions =<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dt">nrow =</span> <span class="kw">nrow</span>(iris), <span class="dt">ncol =</span> b)</a>
+<a class="sourceLine" id="cb411-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>b){</a>
+<a class="sourceLine" id="cb411-4" data-line-number="4">  resampleIndices =<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(iris), <span class="kw">nrow</span>(iris), <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb411-5" data-line-number="5">  <span class="co"># use the set difference to find the out of bag indices</span></a>
+<a class="sourceLine" id="cb411-6" data-line-number="6">  oobIndices =<span class="st"> </span><span class="kw">setdiff</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(iris), resampleIndices)</a>
+<a class="sourceLine" id="cb411-7" data-line-number="7">  </a>
+<a class="sourceLine" id="cb411-8" data-line-number="8">  bootstrapIris=<span class="st"> </span>iris[resampleIndices, ]</a>
+<a class="sourceLine" id="cb411-9" data-line-number="9">  oobIris =<span class="st"> </span>iris[oobIndices,]</a>
+<a class="sourceLine" id="cb411-10" data-line-number="10">  bsTree =<span class="st"> </span><span class="kw">tree</span>(Species <span class="op">~</span><span class="st"> </span>Sepal.Length <span class="op">+</span><span class="st"> </span>Sepal.Width <span class="op">+</span><span class="st"> </span>Petal.Length <span class="op">+</span><span class="st"> </span>Petal.Width, <span class="dt">data =</span> bootstrapIris)</a>
+<a class="sourceLine" id="cb411-11" data-line-number="11">  oobPreds =<span class="st"> </span><span class="kw">predict</span>(bsTree, oobIris, <span class="dt">type =</span> <span class="st">&#39;class&#39;</span>)</a>
+<a class="sourceLine" id="cb411-12" data-line-number="12">  oobPredictions[oobIndices, i] =<span class="st"> </span>oobPreds</a>
+<a class="sourceLine" id="cb411-13" data-line-number="13">} </a></code></pre></div>
 <p>Let’s look at some results!</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb411-1" data-line-number="1">oobPredictions[, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb411-2" data-line-number="2"><span class="co">##        [,1] [,2] [,3] [,4] [,5]</span></a>
-<a class="sourceLine" id="cb411-3" data-line-number="3"><span class="co">##   [1,]    1   NA    1   NA    1</span></a>
-<a class="sourceLine" id="cb411-4" data-line-number="4"><span class="co">##   [2,]   NA   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-5" data-line-number="5"><span class="co">##   [3,]   NA    1    1   NA    1</span></a>
-<a class="sourceLine" id="cb411-6" data-line-number="6"><span class="co">##   [4,]    1   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-7" data-line-number="7"><span class="co">##   [5,]   NA   NA    1   NA    1</span></a>
-<a class="sourceLine" id="cb411-8" data-line-number="8"><span class="co">##   [6,]    1   NA   NA   NA    1</span></a>
-<a class="sourceLine" id="cb411-9" data-line-number="9"><span class="co">##   [7,]    1   NA    1    1   NA</span></a>
-<a class="sourceLine" id="cb411-10" data-line-number="10"><span class="co">##   [8,]   NA   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-11" data-line-number="11"><span class="co">##   [9,]   NA   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-12" data-line-number="12"><span class="co">##  [10,]   NA   NA   NA    1   NA</span></a>
-<a class="sourceLine" id="cb411-13" data-line-number="13"><span class="co">##  [11,]   NA   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-14" data-line-number="14"><span class="co">##  [12,]   NA   NA    1   NA    1</span></a>
-<a class="sourceLine" id="cb411-15" data-line-number="15"><span class="co">##  [13,]   NA    1    1   NA   NA</span></a>
-<a class="sourceLine" id="cb411-16" data-line-number="16"><span class="co">##  [14,]   NA   NA    1   NA    1</span></a>
-<a class="sourceLine" id="cb411-17" data-line-number="17"><span class="co">##  [15,]    1    1    1   NA    1</span></a>
-<a class="sourceLine" id="cb411-18" data-line-number="18"><span class="co">##  [16,]    1    1    1   NA    1</span></a>
-<a class="sourceLine" id="cb411-19" data-line-number="19"><span class="co">##  [17,]   NA   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-20" data-line-number="20"><span class="co">##  [18,]   NA   NA   NA   NA    1</span></a>
-<a class="sourceLine" id="cb411-21" data-line-number="21"><span class="co">##  [19,]   NA    1   NA    1    1</span></a>
-<a class="sourceLine" id="cb411-22" data-line-number="22"><span class="co">##  [20,]   NA   NA   NA    1   NA</span></a>
-<a class="sourceLine" id="cb411-23" data-line-number="23"><span class="co">##  [21,]   NA   NA    1   NA    1</span></a>
-<a class="sourceLine" id="cb411-24" data-line-number="24"><span class="co">##  [22,]    1   NA    1    1   NA</span></a>
-<a class="sourceLine" id="cb411-25" data-line-number="25"><span class="co">##  [23,]   NA   NA   NA    1   NA</span></a>
-<a class="sourceLine" id="cb411-26" data-line-number="26"><span class="co">##  [24,]    1    1    1    1   NA</span></a>
-<a class="sourceLine" id="cb411-27" data-line-number="27"><span class="co">##  [25,]   NA   NA    1    1    1</span></a>
-<a class="sourceLine" id="cb411-28" data-line-number="28"><span class="co">##  [26,]    1   NA    1   NA   NA</span></a>
-<a class="sourceLine" id="cb411-29" data-line-number="29"><span class="co">##  [27,]   NA   NA   NA   NA    1</span></a>
-<a class="sourceLine" id="cb411-30" data-line-number="30"><span class="co">##  [28,]   NA    1   NA    1    1</span></a>
-<a class="sourceLine" id="cb411-31" data-line-number="31"><span class="co">##  [29,]   NA   NA   NA    1    1</span></a>
-<a class="sourceLine" id="cb411-32" data-line-number="32"><span class="co">##  [30,]   NA   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-33" data-line-number="33"><span class="co">##  [31,]    1   NA   NA    1   NA</span></a>
-<a class="sourceLine" id="cb411-34" data-line-number="34"><span class="co">##  [32,]   NA    1    1    1    1</span></a>
-<a class="sourceLine" id="cb411-35" data-line-number="35"><span class="co">##  [33,]   NA    1   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-36" data-line-number="36"><span class="co">##  [34,]   NA    1   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-37" data-line-number="37"><span class="co">##  [35,]    1    1   NA   NA    1</span></a>
-<a class="sourceLine" id="cb411-38" data-line-number="38"><span class="co">##  [36,]   NA   NA   NA    1    1</span></a>
-<a class="sourceLine" id="cb411-39" data-line-number="39"><span class="co">##  [37,]    1    1    1    1    1</span></a>
-<a class="sourceLine" id="cb411-40" data-line-number="40"><span class="co">##  [38,]   NA    1   NA    1   NA</span></a>
-<a class="sourceLine" id="cb411-41" data-line-number="41"><span class="co">##  [39,]   NA   NA   NA    1    1</span></a>
-<a class="sourceLine" id="cb411-42" data-line-number="42"><span class="co">##  [40,]    1   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-43" data-line-number="43"><span class="co">##  [41,]   NA   NA    1   NA   NA</span></a>
-<a class="sourceLine" id="cb411-44" data-line-number="44"><span class="co">##  [42,]   NA   NA   NA    1   NA</span></a>
-<a class="sourceLine" id="cb411-45" data-line-number="45"><span class="co">##  [43,]    1    1    1   NA    1</span></a>
-<a class="sourceLine" id="cb411-46" data-line-number="46"><span class="co">##  [44,]    1   NA    1   NA    1</span></a>
-<a class="sourceLine" id="cb411-47" data-line-number="47"><span class="co">##  [45,]    1   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-48" data-line-number="48"><span class="co">##  [46,]   NA   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-49" data-line-number="49"><span class="co">##  [47,]   NA   NA    1    1   NA</span></a>
-<a class="sourceLine" id="cb411-50" data-line-number="50"><span class="co">##  [48,]   NA    1   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-51" data-line-number="51"><span class="co">##  [49,]   NA   NA    1   NA    1</span></a>
-<a class="sourceLine" id="cb411-52" data-line-number="52"><span class="co">##  [50,]   NA    1   NA   NA    1</span></a>
-<a class="sourceLine" id="cb411-53" data-line-number="53"><span class="co">##  [51,]    2   NA   NA    2   NA</span></a>
-<a class="sourceLine" id="cb411-54" data-line-number="54"><span class="co">##  [52,]   NA   NA    2   NA   NA</span></a>
-<a class="sourceLine" id="cb411-55" data-line-number="55"><span class="co">##  [53,]   NA   NA    2   NA    2</span></a>
-<a class="sourceLine" id="cb411-56" data-line-number="56"><span class="co">##  [54,]    2   NA    2    2    2</span></a>
-<a class="sourceLine" id="cb411-57" data-line-number="57"><span class="co">##  [55,]   NA   NA    2   NA   NA</span></a>
-<a class="sourceLine" id="cb411-58" data-line-number="58"><span class="co">##  [56,]    2   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-59" data-line-number="59"><span class="co">##  [57,]   NA   NA   NA    2   NA</span></a>
-<a class="sourceLine" id="cb411-60" data-line-number="60"><span class="co">##  [58,]    2   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-61" data-line-number="61"><span class="co">##  [59,]   NA   NA   NA    2    2</span></a>
-<a class="sourceLine" id="cb411-62" data-line-number="62"><span class="co">##  [60,]   NA   NA   NA   NA    2</span></a>
-<a class="sourceLine" id="cb411-63" data-line-number="63"><span class="co">##  [61,]    2   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-64" data-line-number="64"><span class="co">##  [62,]   NA    2   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-65" data-line-number="65"><span class="co">##  [63,]   NA    2   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-66" data-line-number="66"><span class="co">##  [64,]    2   NA    2   NA   NA</span></a>
-<a class="sourceLine" id="cb411-67" data-line-number="67"><span class="co">##  [65,]   NA   NA   NA   NA    2</span></a>
-<a class="sourceLine" id="cb411-68" data-line-number="68"><span class="co">##  [66,]   NA    2   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-69" data-line-number="69"><span class="co">##  [67,]   NA   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-70" data-line-number="70"><span class="co">##  [68,]   NA   NA   NA   NA    2</span></a>
-<a class="sourceLine" id="cb411-71" data-line-number="71"><span class="co">##  [69,]    2   NA   NA    2   NA</span></a>
-<a class="sourceLine" id="cb411-72" data-line-number="72"><span class="co">##  [70,]   NA    2   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-73" data-line-number="73"><span class="co">##  [71,]   NA   NA   NA    3    3</span></a>
-<a class="sourceLine" id="cb411-74" data-line-number="74"><span class="co">##  [72,]    2   NA   NA    2    2</span></a>
-<a class="sourceLine" id="cb411-75" data-line-number="75"><span class="co">##  [73,]    2   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-76" data-line-number="76"><span class="co">##  [74,]   NA    2   NA    2   NA</span></a>
-<a class="sourceLine" id="cb411-77" data-line-number="77"><span class="co">##  [75,]    2   NA    2    2   NA</span></a>
-<a class="sourceLine" id="cb411-78" data-line-number="78"><span class="co">##  [76,]   NA   NA    2   NA   NA</span></a>
-<a class="sourceLine" id="cb411-79" data-line-number="79"><span class="co">##  [77,]   NA   NA   NA   NA    2</span></a>
-<a class="sourceLine" id="cb411-80" data-line-number="80"><span class="co">##  [78,]   NA   NA    3    3   NA</span></a>
-<a class="sourceLine" id="cb411-81" data-line-number="81"><span class="co">##  [79,]    2   NA    2   NA   NA</span></a>
-<a class="sourceLine" id="cb411-82" data-line-number="82"><span class="co">##  [80,]    2   NA   NA    2   NA</span></a>
-<a class="sourceLine" id="cb411-83" data-line-number="83"><span class="co">##  [81,]   NA    2    2   NA    2</span></a>
-<a class="sourceLine" id="cb411-84" data-line-number="84"><span class="co">##  [82,]    2   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-85" data-line-number="85"><span class="co">##  [83,]   NA   NA    2   NA   NA</span></a>
-<a class="sourceLine" id="cb411-86" data-line-number="86"><span class="co">##  [84,]   NA    3   NA    3   NA</span></a>
-<a class="sourceLine" id="cb411-87" data-line-number="87"><span class="co">##  [85,]   NA    2   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-88" data-line-number="88"><span class="co">##  [86,]    2    3   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-89" data-line-number="89"><span class="co">##  [87,]    2    2    2    2   NA</span></a>
-<a class="sourceLine" id="cb411-90" data-line-number="90"><span class="co">##  [88,]   NA    2   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-91" data-line-number="91"><span class="co">##  [89,]    2   NA    2    2   NA</span></a>
-<a class="sourceLine" id="cb411-92" data-line-number="92"><span class="co">##  [90,]   NA   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-93" data-line-number="93"><span class="co">##  [91,]   NA    2   NA    2   NA</span></a>
-<a class="sourceLine" id="cb411-94" data-line-number="94"><span class="co">##  [92,]   NA   NA   NA    2   NA</span></a>
-<a class="sourceLine" id="cb411-95" data-line-number="95"><span class="co">##  [93,]   NA    2    2   NA   NA</span></a>
-<a class="sourceLine" id="cb411-96" data-line-number="96"><span class="co">##  [94,]   NA    2   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-97" data-line-number="97"><span class="co">##  [95,]   NA   NA   NA    2    2</span></a>
-<a class="sourceLine" id="cb411-98" data-line-number="98"><span class="co">##  [96,]   NA    2    2   NA   NA</span></a>
-<a class="sourceLine" id="cb411-99" data-line-number="99"><span class="co">##  [97,]    2   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-100" data-line-number="100"><span class="co">##  [98,]   NA    2    2   NA    2</span></a>
-<a class="sourceLine" id="cb411-101" data-line-number="101"><span class="co">##  [99,]    2   NA    2   NA    2</span></a>
-<a class="sourceLine" id="cb411-102" data-line-number="102"><span class="co">## [100,]   NA   NA    2   NA   NA</span></a>
-<a class="sourceLine" id="cb411-103" data-line-number="103"><span class="co">## [101,]    3   NA    3   NA   NA</span></a>
-<a class="sourceLine" id="cb411-104" data-line-number="104"><span class="co">## [102,]   NA   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-105" data-line-number="105"><span class="co">## [103,]    3   NA    3   NA    3</span></a>
-<a class="sourceLine" id="cb411-106" data-line-number="106"><span class="co">## [104,]   NA    3    3    3    3</span></a>
-<a class="sourceLine" id="cb411-107" data-line-number="107"><span class="co">## [105,]   NA    3   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-108" data-line-number="108"><span class="co">## [106,]   NA    3   NA   NA    3</span></a>
-<a class="sourceLine" id="cb411-109" data-line-number="109"><span class="co">## [107,]    2   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-110" data-line-number="110"><span class="co">## [108,]   NA    3   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-111" data-line-number="111"><span class="co">## [109,]   NA   NA   NA    3   NA</span></a>
-<a class="sourceLine" id="cb411-112" data-line-number="112"><span class="co">## [110,]    3   NA    3   NA   NA</span></a>
-<a class="sourceLine" id="cb411-113" data-line-number="113"><span class="co">## [111,]    3   NA    3   NA    3</span></a>
-<a class="sourceLine" id="cb411-114" data-line-number="114"><span class="co">## [112,]   NA   NA    3   NA   NA</span></a>
-<a class="sourceLine" id="cb411-115" data-line-number="115"><span class="co">## [113,]   NA   NA   NA   NA    3</span></a>
-<a class="sourceLine" id="cb411-116" data-line-number="116"><span class="co">## [114,]   NA   NA   NA    3    3</span></a>
-<a class="sourceLine" id="cb411-117" data-line-number="117"><span class="co">## [115,]   NA   NA   NA    3   NA</span></a>
-<a class="sourceLine" id="cb411-118" data-line-number="118"><span class="co">## [116,]    3    3   NA    3    3</span></a>
-<a class="sourceLine" id="cb411-119" data-line-number="119"><span class="co">## [117,]   NA    3    3   NA   NA</span></a>
-<a class="sourceLine" id="cb411-120" data-line-number="120"><span class="co">## [118,]    3   NA   NA   NA    3</span></a>
-<a class="sourceLine" id="cb411-121" data-line-number="121"><span class="co">## [119,]    3   NA    3    3    3</span></a>
-<a class="sourceLine" id="cb411-122" data-line-number="122"><span class="co">## [120,]    2   NA    3    3   NA</span></a>
-<a class="sourceLine" id="cb411-123" data-line-number="123"><span class="co">## [121,]   NA    3    3   NA   NA</span></a>
-<a class="sourceLine" id="cb411-124" data-line-number="124"><span class="co">## [122,]   NA    3   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-125" data-line-number="125"><span class="co">## [123,]   NA   NA   NA    3    3</span></a>
-<a class="sourceLine" id="cb411-126" data-line-number="126"><span class="co">## [124,]    3   NA    3   NA   NA</span></a>
-<a class="sourceLine" id="cb411-127" data-line-number="127"><span class="co">## [125,]   NA    3   NA    3   NA</span></a>
-<a class="sourceLine" id="cb411-128" data-line-number="128"><span class="co">## [126,]   NA   NA    3    3   NA</span></a>
-<a class="sourceLine" id="cb411-129" data-line-number="129"><span class="co">## [127,]   NA   NA    3   NA   NA</span></a>
-<a class="sourceLine" id="cb411-130" data-line-number="130"><span class="co">## [128,]   NA    3    3   NA   NA</span></a>
-<a class="sourceLine" id="cb411-131" data-line-number="131"><span class="co">## [129,]   NA   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-132" data-line-number="132"><span class="co">## [130,]    2   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-133" data-line-number="133"><span class="co">## [131,]   NA    3   NA    3   NA</span></a>
-<a class="sourceLine" id="cb411-134" data-line-number="134"><span class="co">## [132,]    3    3   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-135" data-line-number="135"><span class="co">## [133,]   NA   NA    3   NA    3</span></a>
-<a class="sourceLine" id="cb411-136" data-line-number="136"><span class="co">## [134,]    2    3   NA    3    2</span></a>
-<a class="sourceLine" id="cb411-137" data-line-number="137"><span class="co">## [135,]    2   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-138" data-line-number="138"><span class="co">## [136,]   NA    3   NA   NA    3</span></a>
-<a class="sourceLine" id="cb411-139" data-line-number="139"><span class="co">## [137,]   NA   NA   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-140" data-line-number="140"><span class="co">## [138,]   NA    3    3   NA   NA</span></a>
-<a class="sourceLine" id="cb411-141" data-line-number="141"><span class="co">## [139,]    3    3   NA    3    3</span></a>
-<a class="sourceLine" id="cb411-142" data-line-number="142"><span class="co">## [140,]   NA    3   NA    3    3</span></a>
-<a class="sourceLine" id="cb411-143" data-line-number="143"><span class="co">## [141,]   NA   NA    3    3    3</span></a>
-<a class="sourceLine" id="cb411-144" data-line-number="144"><span class="co">## [142,]    3   NA   NA    3   NA</span></a>
-<a class="sourceLine" id="cb411-145" data-line-number="145"><span class="co">## [143,]   NA   NA   NA   NA    3</span></a>
-<a class="sourceLine" id="cb411-146" data-line-number="146"><span class="co">## [144,]   NA   NA    3   NA   NA</span></a>
-<a class="sourceLine" id="cb411-147" data-line-number="147"><span class="co">## [145,]   NA    3   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-148" data-line-number="148"><span class="co">## [146,]    3    3   NA   NA    3</span></a>
-<a class="sourceLine" id="cb411-149" data-line-number="149"><span class="co">## [147,]   NA   NA   NA   NA    3</span></a>
-<a class="sourceLine" id="cb411-150" data-line-number="150"><span class="co">## [148,]   NA   NA    3   NA   NA</span></a>
-<a class="sourceLine" id="cb411-151" data-line-number="151"><span class="co">## [149,]    3    3   NA   NA   NA</span></a>
-<a class="sourceLine" id="cb411-152" data-line-number="152"><span class="co">## [150,]   NA   NA   NA   NA    3</span></a></code></pre></div>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb412-1" data-line-number="1">bsPreds =<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">prob1 =</span> <span class="kw">apply</span>(oobPredictions, <span class="dv">1</span>, <span class="cf">function</span>(x) <span class="kw">sum</span>(x <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)),</a>
-<a class="sourceLine" id="cb412-2" data-line-number="2">                <span class="dt">prob2 =</span> <span class="kw">apply</span>(oobPredictions, <span class="dv">1</span>, <span class="cf">function</span>(x) <span class="kw">sum</span>(x <span class="op">==</span><span class="st"> </span><span class="dv">2</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)),</a>
-<a class="sourceLine" id="cb412-3" data-line-number="3">                <span class="dt">prob3 =</span> <span class="kw">apply</span>(oobPredictions, <span class="dv">1</span>, <span class="cf">function</span>(x) <span class="kw">sum</span>(x <span class="op">==</span><span class="st"> </span><span class="dv">3</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</a>
-<a class="sourceLine" id="cb412-4" data-line-number="4">bsPreds =<span class="st"> </span>bsPreds <span class="op">/</span><span class="st"> </span><span class="kw">rowSums</span>(bsPreds)</a>
-<a class="sourceLine" id="cb412-5" data-line-number="5">bsPreds =<span class="st"> </span><span class="kw">cbind</span>(bsPreds, <span class="dt">Species =</span> iris<span class="op">$</span>Species)</a>
-<a class="sourceLine" id="cb412-6" data-line-number="6">bsPreds[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">51</span><span class="op">:</span><span class="dv">60</span>, <span class="dv">101</span><span class="op">:</span><span class="dv">110</span>), ]</a>
-<a class="sourceLine" id="cb412-7" data-line-number="7"><span class="co">##       prob1       prob2       prob3 Species</span></a>
-<a class="sourceLine" id="cb412-8" data-line-number="8"><span class="co">##  [1,]     1 0.000000000 0.000000000       1</span></a>
-<a class="sourceLine" id="cb412-9" data-line-number="9"><span class="co">##  [2,]     1 0.000000000 0.000000000       1</span></a>
-<a class="sourceLine" id="cb412-10" data-line-number="10"><span class="co">##  [3,]     1 0.000000000 0.000000000       1</span></a>
-<a class="sourceLine" id="cb412-11" data-line-number="11"><span class="co">##  [4,]     1 0.000000000 0.000000000       1</span></a>
-<a class="sourceLine" id="cb412-12" data-line-number="12"><span class="co">##  [5,]     1 0.000000000 0.000000000       1</span></a>
-<a class="sourceLine" id="cb412-13" data-line-number="13"><span class="co">##  [6,]     1 0.000000000 0.000000000       1</span></a>
-<a class="sourceLine" id="cb412-14" data-line-number="14"><span class="co">##  [7,]     1 0.000000000 0.000000000       1</span></a>
-<a class="sourceLine" id="cb412-15" data-line-number="15"><span class="co">##  [8,]     1 0.000000000 0.000000000       1</span></a>
-<a class="sourceLine" id="cb412-16" data-line-number="16"><span class="co">##  [9,]     1 0.000000000 0.000000000       1</span></a>
-<a class="sourceLine" id="cb412-17" data-line-number="17"><span class="co">## [10,]     1 0.000000000 0.000000000       1</span></a>
-<a class="sourceLine" id="cb412-18" data-line-number="18"><span class="co">## [11,]     0 0.998641304 0.001358696       2</span></a>
-<a class="sourceLine" id="cb412-19" data-line-number="19"><span class="co">## [12,]     0 1.000000000 0.000000000       2</span></a>
-<a class="sourceLine" id="cb412-20" data-line-number="20"><span class="co">## [13,]     0 0.556016598 0.443983402       2</span></a>
-<a class="sourceLine" id="cb412-21" data-line-number="21"><span class="co">## [14,]     0 0.995720399 0.004279601       2</span></a>
-<a class="sourceLine" id="cb412-22" data-line-number="22"><span class="co">## [15,]     0 0.985207101 0.014792899       2</span></a>
-<a class="sourceLine" id="cb412-23" data-line-number="23"><span class="co">## [16,]     0 0.998630137 0.001369863       2</span></a>
-<a class="sourceLine" id="cb412-24" data-line-number="24"><span class="co">## [17,]     0 0.882993197 0.117006803       2</span></a>
-<a class="sourceLine" id="cb412-25" data-line-number="25"><span class="co">## [18,]     0 0.995934959 0.004065041       2</span></a>
-<a class="sourceLine" id="cb412-26" data-line-number="26"><span class="co">## [19,]     0 1.000000000 0.000000000       2</span></a>
-<a class="sourceLine" id="cb412-27" data-line-number="27"><span class="co">## [20,]     0 0.998632011 0.001367989       2</span></a>
-<a class="sourceLine" id="cb412-28" data-line-number="28"><span class="co">## [21,]     0 0.000000000 1.000000000       3</span></a>
-<a class="sourceLine" id="cb412-29" data-line-number="29"><span class="co">## [22,]     0 0.002699055 0.997300945       3</span></a>
-<a class="sourceLine" id="cb412-30" data-line-number="30"><span class="co">## [23,]     0 0.000000000 1.000000000       3</span></a>
-<a class="sourceLine" id="cb412-31" data-line-number="31"><span class="co">## [24,]     0 0.001385042 0.998614958       3</span></a>
-<a class="sourceLine" id="cb412-32" data-line-number="32"><span class="co">## [25,]     0 0.000000000 1.000000000       3</span></a>
-<a class="sourceLine" id="cb412-33" data-line-number="33"><span class="co">## [26,]     0 0.000000000 1.000000000       3</span></a>
-<a class="sourceLine" id="cb412-34" data-line-number="34"><span class="co">## [27,]     0 0.848360656 0.151639344       3</span></a>
-<a class="sourceLine" id="cb412-35" data-line-number="35"><span class="co">## [28,]     0 0.001394700 0.998605300       3</span></a>
-<a class="sourceLine" id="cb412-36" data-line-number="36"><span class="co">## [29,]     0 0.001367989 0.998632011       3</span></a>
-<a class="sourceLine" id="cb412-37" data-line-number="37"><span class="co">## [30,]     0 0.000000000 1.000000000       3</span></a></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb412-1" data-line-number="1">oobPredictions[, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb412-2" data-line-number="2"><span class="co">##        [,1] [,2] [,3] [,4] [,5]</span></a>
+<a class="sourceLine" id="cb412-3" data-line-number="3"><span class="co">##   [1,]    1   NA    1   NA    1</span></a>
+<a class="sourceLine" id="cb412-4" data-line-number="4"><span class="co">##   [2,]   NA   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-5" data-line-number="5"><span class="co">##   [3,]   NA    1    1   NA    1</span></a>
+<a class="sourceLine" id="cb412-6" data-line-number="6"><span class="co">##   [4,]    1   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-7" data-line-number="7"><span class="co">##   [5,]   NA   NA    1   NA    1</span></a>
+<a class="sourceLine" id="cb412-8" data-line-number="8"><span class="co">##   [6,]    1   NA   NA   NA    1</span></a>
+<a class="sourceLine" id="cb412-9" data-line-number="9"><span class="co">##   [7,]    1   NA    1    1   NA</span></a>
+<a class="sourceLine" id="cb412-10" data-line-number="10"><span class="co">##   [8,]   NA   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-11" data-line-number="11"><span class="co">##   [9,]   NA   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-12" data-line-number="12"><span class="co">##  [10,]   NA   NA   NA    1   NA</span></a>
+<a class="sourceLine" id="cb412-13" data-line-number="13"><span class="co">##  [11,]   NA   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-14" data-line-number="14"><span class="co">##  [12,]   NA   NA    1   NA    1</span></a>
+<a class="sourceLine" id="cb412-15" data-line-number="15"><span class="co">##  [13,]   NA    1    1   NA   NA</span></a>
+<a class="sourceLine" id="cb412-16" data-line-number="16"><span class="co">##  [14,]   NA   NA    1   NA    1</span></a>
+<a class="sourceLine" id="cb412-17" data-line-number="17"><span class="co">##  [15,]    1    1    1   NA    1</span></a>
+<a class="sourceLine" id="cb412-18" data-line-number="18"><span class="co">##  [16,]    1    1    1   NA    1</span></a>
+<a class="sourceLine" id="cb412-19" data-line-number="19"><span class="co">##  [17,]   NA   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-20" data-line-number="20"><span class="co">##  [18,]   NA   NA   NA   NA    1</span></a>
+<a class="sourceLine" id="cb412-21" data-line-number="21"><span class="co">##  [19,]   NA    1   NA    1    1</span></a>
+<a class="sourceLine" id="cb412-22" data-line-number="22"><span class="co">##  [20,]   NA   NA   NA    1   NA</span></a>
+<a class="sourceLine" id="cb412-23" data-line-number="23"><span class="co">##  [21,]   NA   NA    1   NA    1</span></a>
+<a class="sourceLine" id="cb412-24" data-line-number="24"><span class="co">##  [22,]    1   NA    1    1   NA</span></a>
+<a class="sourceLine" id="cb412-25" data-line-number="25"><span class="co">##  [23,]   NA   NA   NA    1   NA</span></a>
+<a class="sourceLine" id="cb412-26" data-line-number="26"><span class="co">##  [24,]    1    1    1    1   NA</span></a>
+<a class="sourceLine" id="cb412-27" data-line-number="27"><span class="co">##  [25,]   NA   NA    1    1    1</span></a>
+<a class="sourceLine" id="cb412-28" data-line-number="28"><span class="co">##  [26,]    1   NA    1   NA   NA</span></a>
+<a class="sourceLine" id="cb412-29" data-line-number="29"><span class="co">##  [27,]   NA   NA   NA   NA    1</span></a>
+<a class="sourceLine" id="cb412-30" data-line-number="30"><span class="co">##  [28,]   NA    1   NA    1    1</span></a>
+<a class="sourceLine" id="cb412-31" data-line-number="31"><span class="co">##  [29,]   NA   NA   NA    1    1</span></a>
+<a class="sourceLine" id="cb412-32" data-line-number="32"><span class="co">##  [30,]   NA   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-33" data-line-number="33"><span class="co">##  [31,]    1   NA   NA    1   NA</span></a>
+<a class="sourceLine" id="cb412-34" data-line-number="34"><span class="co">##  [32,]   NA    1    1    1    1</span></a>
+<a class="sourceLine" id="cb412-35" data-line-number="35"><span class="co">##  [33,]   NA    1   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-36" data-line-number="36"><span class="co">##  [34,]   NA    1   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-37" data-line-number="37"><span class="co">##  [35,]    1    1   NA   NA    1</span></a>
+<a class="sourceLine" id="cb412-38" data-line-number="38"><span class="co">##  [36,]   NA   NA   NA    1    1</span></a>
+<a class="sourceLine" id="cb412-39" data-line-number="39"><span class="co">##  [37,]    1    1    1    1    1</span></a>
+<a class="sourceLine" id="cb412-40" data-line-number="40"><span class="co">##  [38,]   NA    1   NA    1   NA</span></a>
+<a class="sourceLine" id="cb412-41" data-line-number="41"><span class="co">##  [39,]   NA   NA   NA    1    1</span></a>
+<a class="sourceLine" id="cb412-42" data-line-number="42"><span class="co">##  [40,]    1   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-43" data-line-number="43"><span class="co">##  [41,]   NA   NA    1   NA   NA</span></a>
+<a class="sourceLine" id="cb412-44" data-line-number="44"><span class="co">##  [42,]   NA   NA   NA    1   NA</span></a>
+<a class="sourceLine" id="cb412-45" data-line-number="45"><span class="co">##  [43,]    1    1    1   NA    1</span></a>
+<a class="sourceLine" id="cb412-46" data-line-number="46"><span class="co">##  [44,]    1   NA    1   NA    1</span></a>
+<a class="sourceLine" id="cb412-47" data-line-number="47"><span class="co">##  [45,]    1   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-48" data-line-number="48"><span class="co">##  [46,]   NA   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-49" data-line-number="49"><span class="co">##  [47,]   NA   NA    1    1   NA</span></a>
+<a class="sourceLine" id="cb412-50" data-line-number="50"><span class="co">##  [48,]   NA    1   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-51" data-line-number="51"><span class="co">##  [49,]   NA   NA    1   NA    1</span></a>
+<a class="sourceLine" id="cb412-52" data-line-number="52"><span class="co">##  [50,]   NA    1   NA   NA    1</span></a>
+<a class="sourceLine" id="cb412-53" data-line-number="53"><span class="co">##  [51,]    2   NA   NA    2   NA</span></a>
+<a class="sourceLine" id="cb412-54" data-line-number="54"><span class="co">##  [52,]   NA   NA    2   NA   NA</span></a>
+<a class="sourceLine" id="cb412-55" data-line-number="55"><span class="co">##  [53,]   NA   NA    2   NA    2</span></a>
+<a class="sourceLine" id="cb412-56" data-line-number="56"><span class="co">##  [54,]    2   NA    2    2    2</span></a>
+<a class="sourceLine" id="cb412-57" data-line-number="57"><span class="co">##  [55,]   NA   NA    2   NA   NA</span></a>
+<a class="sourceLine" id="cb412-58" data-line-number="58"><span class="co">##  [56,]    2   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-59" data-line-number="59"><span class="co">##  [57,]   NA   NA   NA    2   NA</span></a>
+<a class="sourceLine" id="cb412-60" data-line-number="60"><span class="co">##  [58,]    2   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-61" data-line-number="61"><span class="co">##  [59,]   NA   NA   NA    2    2</span></a>
+<a class="sourceLine" id="cb412-62" data-line-number="62"><span class="co">##  [60,]   NA   NA   NA   NA    2</span></a>
+<a class="sourceLine" id="cb412-63" data-line-number="63"><span class="co">##  [61,]    2   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-64" data-line-number="64"><span class="co">##  [62,]   NA    2   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-65" data-line-number="65"><span class="co">##  [63,]   NA    2   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-66" data-line-number="66"><span class="co">##  [64,]    2   NA    2   NA   NA</span></a>
+<a class="sourceLine" id="cb412-67" data-line-number="67"><span class="co">##  [65,]   NA   NA   NA   NA    2</span></a>
+<a class="sourceLine" id="cb412-68" data-line-number="68"><span class="co">##  [66,]   NA    2   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-69" data-line-number="69"><span class="co">##  [67,]   NA   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-70" data-line-number="70"><span class="co">##  [68,]   NA   NA   NA   NA    2</span></a>
+<a class="sourceLine" id="cb412-71" data-line-number="71"><span class="co">##  [69,]    2   NA   NA    2   NA</span></a>
+<a class="sourceLine" id="cb412-72" data-line-number="72"><span class="co">##  [70,]   NA    2   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-73" data-line-number="73"><span class="co">##  [71,]   NA   NA   NA    3    3</span></a>
+<a class="sourceLine" id="cb412-74" data-line-number="74"><span class="co">##  [72,]    2   NA   NA    2    2</span></a>
+<a class="sourceLine" id="cb412-75" data-line-number="75"><span class="co">##  [73,]    2   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-76" data-line-number="76"><span class="co">##  [74,]   NA    2   NA    2   NA</span></a>
+<a class="sourceLine" id="cb412-77" data-line-number="77"><span class="co">##  [75,]    2   NA    2    2   NA</span></a>
+<a class="sourceLine" id="cb412-78" data-line-number="78"><span class="co">##  [76,]   NA   NA    2   NA   NA</span></a>
+<a class="sourceLine" id="cb412-79" data-line-number="79"><span class="co">##  [77,]   NA   NA   NA   NA    2</span></a>
+<a class="sourceLine" id="cb412-80" data-line-number="80"><span class="co">##  [78,]   NA   NA    3    3   NA</span></a>
+<a class="sourceLine" id="cb412-81" data-line-number="81"><span class="co">##  [79,]    2   NA    2   NA   NA</span></a>
+<a class="sourceLine" id="cb412-82" data-line-number="82"><span class="co">##  [80,]    2   NA   NA    2   NA</span></a>
+<a class="sourceLine" id="cb412-83" data-line-number="83"><span class="co">##  [81,]   NA    2    2   NA    2</span></a>
+<a class="sourceLine" id="cb412-84" data-line-number="84"><span class="co">##  [82,]    2   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-85" data-line-number="85"><span class="co">##  [83,]   NA   NA    2   NA   NA</span></a>
+<a class="sourceLine" id="cb412-86" data-line-number="86"><span class="co">##  [84,]   NA    3   NA    3   NA</span></a>
+<a class="sourceLine" id="cb412-87" data-line-number="87"><span class="co">##  [85,]   NA    2   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-88" data-line-number="88"><span class="co">##  [86,]    2    3   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-89" data-line-number="89"><span class="co">##  [87,]    2    2    2    2   NA</span></a>
+<a class="sourceLine" id="cb412-90" data-line-number="90"><span class="co">##  [88,]   NA    2   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-91" data-line-number="91"><span class="co">##  [89,]    2   NA    2    2   NA</span></a>
+<a class="sourceLine" id="cb412-92" data-line-number="92"><span class="co">##  [90,]   NA   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-93" data-line-number="93"><span class="co">##  [91,]   NA    2   NA    2   NA</span></a>
+<a class="sourceLine" id="cb412-94" data-line-number="94"><span class="co">##  [92,]   NA   NA   NA    2   NA</span></a>
+<a class="sourceLine" id="cb412-95" data-line-number="95"><span class="co">##  [93,]   NA    2    2   NA   NA</span></a>
+<a class="sourceLine" id="cb412-96" data-line-number="96"><span class="co">##  [94,]   NA    2   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-97" data-line-number="97"><span class="co">##  [95,]   NA   NA   NA    2    2</span></a>
+<a class="sourceLine" id="cb412-98" data-line-number="98"><span class="co">##  [96,]   NA    2    2   NA   NA</span></a>
+<a class="sourceLine" id="cb412-99" data-line-number="99"><span class="co">##  [97,]    2   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-100" data-line-number="100"><span class="co">##  [98,]   NA    2    2   NA    2</span></a>
+<a class="sourceLine" id="cb412-101" data-line-number="101"><span class="co">##  [99,]    2   NA    2   NA    2</span></a>
+<a class="sourceLine" id="cb412-102" data-line-number="102"><span class="co">## [100,]   NA   NA    2   NA   NA</span></a>
+<a class="sourceLine" id="cb412-103" data-line-number="103"><span class="co">## [101,]    3   NA    3   NA   NA</span></a>
+<a class="sourceLine" id="cb412-104" data-line-number="104"><span class="co">## [102,]   NA   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-105" data-line-number="105"><span class="co">## [103,]    3   NA    3   NA    3</span></a>
+<a class="sourceLine" id="cb412-106" data-line-number="106"><span class="co">## [104,]   NA    3    3    3    3</span></a>
+<a class="sourceLine" id="cb412-107" data-line-number="107"><span class="co">## [105,]   NA    3   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-108" data-line-number="108"><span class="co">## [106,]   NA    3   NA   NA    3</span></a>
+<a class="sourceLine" id="cb412-109" data-line-number="109"><span class="co">## [107,]    2   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-110" data-line-number="110"><span class="co">## [108,]   NA    3   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-111" data-line-number="111"><span class="co">## [109,]   NA   NA   NA    3   NA</span></a>
+<a class="sourceLine" id="cb412-112" data-line-number="112"><span class="co">## [110,]    3   NA    3   NA   NA</span></a>
+<a class="sourceLine" id="cb412-113" data-line-number="113"><span class="co">## [111,]    3   NA    3   NA    3</span></a>
+<a class="sourceLine" id="cb412-114" data-line-number="114"><span class="co">## [112,]   NA   NA    3   NA   NA</span></a>
+<a class="sourceLine" id="cb412-115" data-line-number="115"><span class="co">## [113,]   NA   NA   NA   NA    3</span></a>
+<a class="sourceLine" id="cb412-116" data-line-number="116"><span class="co">## [114,]   NA   NA   NA    3    3</span></a>
+<a class="sourceLine" id="cb412-117" data-line-number="117"><span class="co">## [115,]   NA   NA   NA    3   NA</span></a>
+<a class="sourceLine" id="cb412-118" data-line-number="118"><span class="co">## [116,]    3    3   NA    3    3</span></a>
+<a class="sourceLine" id="cb412-119" data-line-number="119"><span class="co">## [117,]   NA    3    3   NA   NA</span></a>
+<a class="sourceLine" id="cb412-120" data-line-number="120"><span class="co">## [118,]    3   NA   NA   NA    3</span></a>
+<a class="sourceLine" id="cb412-121" data-line-number="121"><span class="co">## [119,]    3   NA    3    3    3</span></a>
+<a class="sourceLine" id="cb412-122" data-line-number="122"><span class="co">## [120,]    2   NA    3    3   NA</span></a>
+<a class="sourceLine" id="cb412-123" data-line-number="123"><span class="co">## [121,]   NA    3    3   NA   NA</span></a>
+<a class="sourceLine" id="cb412-124" data-line-number="124"><span class="co">## [122,]   NA    3   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-125" data-line-number="125"><span class="co">## [123,]   NA   NA   NA    3    3</span></a>
+<a class="sourceLine" id="cb412-126" data-line-number="126"><span class="co">## [124,]    3   NA    3   NA   NA</span></a>
+<a class="sourceLine" id="cb412-127" data-line-number="127"><span class="co">## [125,]   NA    3   NA    3   NA</span></a>
+<a class="sourceLine" id="cb412-128" data-line-number="128"><span class="co">## [126,]   NA   NA    3    3   NA</span></a>
+<a class="sourceLine" id="cb412-129" data-line-number="129"><span class="co">## [127,]   NA   NA    3   NA   NA</span></a>
+<a class="sourceLine" id="cb412-130" data-line-number="130"><span class="co">## [128,]   NA    3    3   NA   NA</span></a>
+<a class="sourceLine" id="cb412-131" data-line-number="131"><span class="co">## [129,]   NA   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-132" data-line-number="132"><span class="co">## [130,]    2   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-133" data-line-number="133"><span class="co">## [131,]   NA    3   NA    3   NA</span></a>
+<a class="sourceLine" id="cb412-134" data-line-number="134"><span class="co">## [132,]    3    3   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-135" data-line-number="135"><span class="co">## [133,]   NA   NA    3   NA    3</span></a>
+<a class="sourceLine" id="cb412-136" data-line-number="136"><span class="co">## [134,]    2    3   NA    3    2</span></a>
+<a class="sourceLine" id="cb412-137" data-line-number="137"><span class="co">## [135,]    2   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-138" data-line-number="138"><span class="co">## [136,]   NA    3   NA   NA    3</span></a>
+<a class="sourceLine" id="cb412-139" data-line-number="139"><span class="co">## [137,]   NA   NA   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-140" data-line-number="140"><span class="co">## [138,]   NA    3    3   NA   NA</span></a>
+<a class="sourceLine" id="cb412-141" data-line-number="141"><span class="co">## [139,]    3    3   NA    3    3</span></a>
+<a class="sourceLine" id="cb412-142" data-line-number="142"><span class="co">## [140,]   NA    3   NA    3    3</span></a>
+<a class="sourceLine" id="cb412-143" data-line-number="143"><span class="co">## [141,]   NA   NA    3    3    3</span></a>
+<a class="sourceLine" id="cb412-144" data-line-number="144"><span class="co">## [142,]    3   NA   NA    3   NA</span></a>
+<a class="sourceLine" id="cb412-145" data-line-number="145"><span class="co">## [143,]   NA   NA   NA   NA    3</span></a>
+<a class="sourceLine" id="cb412-146" data-line-number="146"><span class="co">## [144,]   NA   NA    3   NA   NA</span></a>
+<a class="sourceLine" id="cb412-147" data-line-number="147"><span class="co">## [145,]   NA    3   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-148" data-line-number="148"><span class="co">## [146,]    3    3   NA   NA    3</span></a>
+<a class="sourceLine" id="cb412-149" data-line-number="149"><span class="co">## [147,]   NA   NA   NA   NA    3</span></a>
+<a class="sourceLine" id="cb412-150" data-line-number="150"><span class="co">## [148,]   NA   NA    3   NA   NA</span></a>
+<a class="sourceLine" id="cb412-151" data-line-number="151"><span class="co">## [149,]    3    3   NA   NA   NA</span></a>
+<a class="sourceLine" id="cb412-152" data-line-number="152"><span class="co">## [150,]   NA   NA   NA   NA    3</span></a></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb413-1" data-line-number="1">bsPreds =<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">prob1 =</span> <span class="kw">apply</span>(oobPredictions, <span class="dv">1</span>, <span class="cf">function</span>(x) <span class="kw">sum</span>(x <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)),</a>
+<a class="sourceLine" id="cb413-2" data-line-number="2">                <span class="dt">prob2 =</span> <span class="kw">apply</span>(oobPredictions, <span class="dv">1</span>, <span class="cf">function</span>(x) <span class="kw">sum</span>(x <span class="op">==</span><span class="st"> </span><span class="dv">2</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)),</a>
+<a class="sourceLine" id="cb413-3" data-line-number="3">                <span class="dt">prob3 =</span> <span class="kw">apply</span>(oobPredictions, <span class="dv">1</span>, <span class="cf">function</span>(x) <span class="kw">sum</span>(x <span class="op">==</span><span class="st"> </span><span class="dv">3</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</a>
+<a class="sourceLine" id="cb413-4" data-line-number="4">bsPreds =<span class="st"> </span>bsPreds <span class="op">/</span><span class="st"> </span><span class="kw">rowSums</span>(bsPreds)</a>
+<a class="sourceLine" id="cb413-5" data-line-number="5">bsPreds =<span class="st"> </span><span class="kw">cbind</span>(bsPreds, <span class="dt">Species =</span> iris<span class="op">$</span>Species)</a>
+<a class="sourceLine" id="cb413-6" data-line-number="6">bsPreds[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">51</span><span class="op">:</span><span class="dv">60</span>, <span class="dv">101</span><span class="op">:</span><span class="dv">110</span>), ]</a>
+<a class="sourceLine" id="cb413-7" data-line-number="7"><span class="co">##       prob1       prob2       prob3 Species</span></a>
+<a class="sourceLine" id="cb413-8" data-line-number="8"><span class="co">##  [1,]     1 0.000000000 0.000000000       1</span></a>
+<a class="sourceLine" id="cb413-9" data-line-number="9"><span class="co">##  [2,]     1 0.000000000 0.000000000       1</span></a>
+<a class="sourceLine" id="cb413-10" data-line-number="10"><span class="co">##  [3,]     1 0.000000000 0.000000000       1</span></a>
+<a class="sourceLine" id="cb413-11" data-line-number="11"><span class="co">##  [4,]     1 0.000000000 0.000000000       1</span></a>
+<a class="sourceLine" id="cb413-12" data-line-number="12"><span class="co">##  [5,]     1 0.000000000 0.000000000       1</span></a>
+<a class="sourceLine" id="cb413-13" data-line-number="13"><span class="co">##  [6,]     1 0.000000000 0.000000000       1</span></a>
+<a class="sourceLine" id="cb413-14" data-line-number="14"><span class="co">##  [7,]     1 0.000000000 0.000000000       1</span></a>
+<a class="sourceLine" id="cb413-15" data-line-number="15"><span class="co">##  [8,]     1 0.000000000 0.000000000       1</span></a>
+<a class="sourceLine" id="cb413-16" data-line-number="16"><span class="co">##  [9,]     1 0.000000000 0.000000000       1</span></a>
+<a class="sourceLine" id="cb413-17" data-line-number="17"><span class="co">## [10,]     1 0.000000000 0.000000000       1</span></a>
+<a class="sourceLine" id="cb413-18" data-line-number="18"><span class="co">## [11,]     0 0.998641304 0.001358696       2</span></a>
+<a class="sourceLine" id="cb413-19" data-line-number="19"><span class="co">## [12,]     0 1.000000000 0.000000000       2</span></a>
+<a class="sourceLine" id="cb413-20" data-line-number="20"><span class="co">## [13,]     0 0.556016598 0.443983402       2</span></a>
+<a class="sourceLine" id="cb413-21" data-line-number="21"><span class="co">## [14,]     0 0.995720399 0.004279601       2</span></a>
+<a class="sourceLine" id="cb413-22" data-line-number="22"><span class="co">## [15,]     0 0.985207101 0.014792899       2</span></a>
+<a class="sourceLine" id="cb413-23" data-line-number="23"><span class="co">## [16,]     0 0.998630137 0.001369863       2</span></a>
+<a class="sourceLine" id="cb413-24" data-line-number="24"><span class="co">## [17,]     0 0.882993197 0.117006803       2</span></a>
+<a class="sourceLine" id="cb413-25" data-line-number="25"><span class="co">## [18,]     0 0.995934959 0.004065041       2</span></a>
+<a class="sourceLine" id="cb413-26" data-line-number="26"><span class="co">## [19,]     0 1.000000000 0.000000000       2</span></a>
+<a class="sourceLine" id="cb413-27" data-line-number="27"><span class="co">## [20,]     0 0.998632011 0.001367989       2</span></a>
+<a class="sourceLine" id="cb413-28" data-line-number="28"><span class="co">## [21,]     0 0.000000000 1.000000000       3</span></a>
+<a class="sourceLine" id="cb413-29" data-line-number="29"><span class="co">## [22,]     0 0.002699055 0.997300945       3</span></a>
+<a class="sourceLine" id="cb413-30" data-line-number="30"><span class="co">## [23,]     0 0.000000000 1.000000000       3</span></a>
+<a class="sourceLine" id="cb413-31" data-line-number="31"><span class="co">## [24,]     0 0.001385042 0.998614958       3</span></a>
+<a class="sourceLine" id="cb413-32" data-line-number="32"><span class="co">## [25,]     0 0.000000000 1.000000000       3</span></a>
+<a class="sourceLine" id="cb413-33" data-line-number="33"><span class="co">## [26,]     0 0.000000000 1.000000000       3</span></a>
+<a class="sourceLine" id="cb413-34" data-line-number="34"><span class="co">## [27,]     0 0.848360656 0.151639344       3</span></a>
+<a class="sourceLine" id="cb413-35" data-line-number="35"><span class="co">## [28,]     0 0.001394700 0.998605300       3</span></a>
+<a class="sourceLine" id="cb413-36" data-line-number="36"><span class="co">## [29,]     0 0.001367989 0.998632011       3</span></a>
+<a class="sourceLine" id="cb413-37" data-line-number="37"><span class="co">## [30,]     0 0.000000000 1.000000000       3</span></a></code></pre></div>
 <p>Congratulations, we just fit a random forest!</p>
 <p>Let’s see where the model is uncertain.</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb413-1" data-line-number="1">uncertainty =<span class="st"> </span><span class="kw">apply</span>(bsPreds[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], <span class="dv">1</span>, <span class="cf">function</span>(x) <span class="dv">1</span><span class="op">/</span><span class="kw">var</span>(x))</a>
-<a class="sourceLine" id="cb413-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> iris) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Petal.Length, <span class="dt">y =</span> Petal.Width, <span class="dt">col =</span> Species, <span class="dt">size =</span> uncertainty))</a></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb414-1" data-line-number="1">uncertainty =<span class="st"> </span><span class="kw">apply</span>(bsPreds[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], <span class="dv">1</span>, <span class="cf">function</span>(x) <span class="dv">1</span><span class="op">/</span><span class="kw">var</span>(x))</a>
+<a class="sourceLine" id="cb414-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> iris) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Petal.Length, <span class="dt">y =</span> Petal.Width, <span class="dt">col =</span> Species, <span class="dt">size =</span> uncertainty))</a></code></pre></div>
 <p><img src="330-CART_files/figure-html/unnamed-chunk-62-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>As expected, the model is perfectly sure about setosa, but uncertain on the boundary between versicolo and virginica.</p>
 </div>

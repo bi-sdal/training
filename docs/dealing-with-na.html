@@ -442,25 +442,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">15.3</span> Dealing with NA</h2>
 <p>Re-write our function to work with missing values.</p>
 <p>Note you need to make the <code>NA</code> check first.</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" data-line-number="1">k_c &lt;-<span class="st"> </span><span class="cf">function</span>(temp_k) {</a>
-<a class="sourceLine" id="cb246-2" data-line-number="2">    <span class="cf">if</span> (<span class="kw">is.na</span>(temp_k)) {</a>
-<a class="sourceLine" id="cb246-3" data-line-number="3">        <span class="kw">return</span>(<span class="ot">NA</span>)</a>
-<a class="sourceLine" id="cb246-4" data-line-number="4">    } <span class="cf">else</span> <span class="cf">if</span> (temp_k <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</a>
-<a class="sourceLine" id="cb246-5" data-line-number="5">        <span class="kw">warning</span>(<span class="st">&#39;you passed in a negative Kelvin number&#39;</span>)</a>
-<a class="sourceLine" id="cb246-6" data-line-number="6">        <span class="co"># stop()</span></a>
-<a class="sourceLine" id="cb246-7" data-line-number="7">        <span class="kw">return</span>(<span class="ot">NA</span>)</a>
-<a class="sourceLine" id="cb246-8" data-line-number="8">    } <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb246-9" data-line-number="9">        temp_c &lt;-<span class="st"> </span>temp_k <span class="op">-</span><span class="st"> </span><span class="fl">273.15</span></a>
-<a class="sourceLine" id="cb246-10" data-line-number="10">        <span class="kw">return</span>(temp_c)</a>
-<a class="sourceLine" id="cb246-11" data-line-number="11">    }</a>
-<a class="sourceLine" id="cb246-12" data-line-number="12">}</a></code></pre></div>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1"><span class="kw">k_c</span>(<span class="op">-</span><span class="dv">9</span>)</a>
-<a class="sourceLine" id="cb247-2" data-line-number="2"><span class="co">## Warning in k_c(-9): you passed in a negative Kelvin number</span></a>
-<a class="sourceLine" id="cb247-3" data-line-number="3"><span class="co">## [1] NA</span></a></code></pre></div>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1"><span class="kw">k_c</span>(<span class="ot">NA</span>)</a>
-<a class="sourceLine" id="cb248-2" data-line-number="2"><span class="co">## [1] NA</span></a></code></pre></div>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1"><span class="kw">k_c</span>(<span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb249-2" data-line-number="2"><span class="co">## [1] -273.15</span></a></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1">k_c &lt;-<span class="st"> </span><span class="cf">function</span>(temp_k) {</a>
+<a class="sourceLine" id="cb247-2" data-line-number="2">    <span class="cf">if</span> (<span class="kw">is.na</span>(temp_k)) {</a>
+<a class="sourceLine" id="cb247-3" data-line-number="3">        <span class="kw">return</span>(<span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb247-4" data-line-number="4">    } <span class="cf">else</span> <span class="cf">if</span> (temp_k <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb247-5" data-line-number="5">        <span class="kw">warning</span>(<span class="st">&#39;you passed in a negative Kelvin number&#39;</span>)</a>
+<a class="sourceLine" id="cb247-6" data-line-number="6">        <span class="co"># stop()</span></a>
+<a class="sourceLine" id="cb247-7" data-line-number="7">        <span class="kw">return</span>(<span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb247-8" data-line-number="8">    } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb247-9" data-line-number="9">        temp_c &lt;-<span class="st"> </span>temp_k <span class="op">-</span><span class="st"> </span><span class="fl">273.15</span></a>
+<a class="sourceLine" id="cb247-10" data-line-number="10">        <span class="kw">return</span>(temp_c)</a>
+<a class="sourceLine" id="cb247-11" data-line-number="11">    }</a>
+<a class="sourceLine" id="cb247-12" data-line-number="12">}</a></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1"><span class="kw">k_c</span>(<span class="op">-</span><span class="dv">9</span>)</a>
+<a class="sourceLine" id="cb248-2" data-line-number="2"><span class="co">## Warning in k_c(-9): you passed in a negative Kelvin number</span></a>
+<a class="sourceLine" id="cb248-3" data-line-number="3"><span class="co">## [1] NA</span></a></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1"><span class="kw">k_c</span>(<span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb249-2" data-line-number="2"><span class="co">## [1] NA</span></a></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" data-line-number="1"><span class="kw">k_c</span>(<span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb250-2" data-line-number="2"><span class="co">## [1] -273.15</span></a></code></pre></div>
 
 </div>
 <!-- </div> -->

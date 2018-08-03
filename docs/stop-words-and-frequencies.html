@@ -440,53 +440,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="stop-words-and-frequencies" class="section level2">
 <h2><span class="header-section-number">23.3</span> Stop words and Frequencies</h2>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" data-line-number="1">tidy_books <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb326-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(word, <span class="dt">sort =</span> <span class="ot">TRUE</span>) </a>
-<a class="sourceLine" id="cb326-3" data-line-number="3"><span class="co">## # A tibble: 14,520 x 2</span></a>
-<a class="sourceLine" id="cb326-4" data-line-number="4"><span class="co">##    word      n</span></a>
-<a class="sourceLine" id="cb326-5" data-line-number="5"><span class="co">##    &lt;chr&gt; &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb326-6" data-line-number="6"><span class="co">##  1 the   26351</span></a>
-<a class="sourceLine" id="cb326-7" data-line-number="7"><span class="co">##  2 to    24044</span></a>
-<a class="sourceLine" id="cb326-8" data-line-number="8"><span class="co">##  3 and   22515</span></a>
-<a class="sourceLine" id="cb326-9" data-line-number="9"><span class="co">##  4 of    21178</span></a>
-<a class="sourceLine" id="cb326-10" data-line-number="10"><span class="co">##  5 a     13408</span></a>
-<a class="sourceLine" id="cb326-11" data-line-number="11"><span class="co">##  6 her   13055</span></a>
-<a class="sourceLine" id="cb326-12" data-line-number="12"><span class="co">##  7 i     12006</span></a>
-<a class="sourceLine" id="cb326-13" data-line-number="13"><span class="co">##  8 in    11217</span></a>
-<a class="sourceLine" id="cb326-14" data-line-number="14"><span class="co">##  9 was   11204</span></a>
-<a class="sourceLine" id="cb326-15" data-line-number="15"><span class="co">## 10 it    10234</span></a>
-<a class="sourceLine" id="cb326-16" data-line-number="16"><span class="co">## # ... with 14,510 more rows</span></a></code></pre></div>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" data-line-number="1"><span class="kw">data</span>(stop_words)</a>
-<a class="sourceLine" id="cb327-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb327-3" data-line-number="3">tidy_books &lt;-<span class="st"> </span>tidy_books <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb327-4" data-line-number="4"><span class="st">  </span><span class="kw">anti_join</span>(stop_words)</a>
-<a class="sourceLine" id="cb327-5" data-line-number="5"><span class="co">## Joining, by = &quot;word&quot;</span></a></code></pre></div>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb328-1" data-line-number="1">tidy_books <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb328-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(word, <span class="dt">sort =</span> <span class="ot">TRUE</span>) </a>
-<a class="sourceLine" id="cb328-3" data-line-number="3"><span class="co">## # A tibble: 13,914 x 2</span></a>
-<a class="sourceLine" id="cb328-4" data-line-number="4"><span class="co">##    word       n</span></a>
-<a class="sourceLine" id="cb328-5" data-line-number="5"><span class="co">##    &lt;chr&gt;  &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb328-6" data-line-number="6"><span class="co">##  1 miss    1855</span></a>
-<a class="sourceLine" id="cb328-7" data-line-number="7"><span class="co">##  2 time    1337</span></a>
-<a class="sourceLine" id="cb328-8" data-line-number="8"><span class="co">##  3 fanny    862</span></a>
-<a class="sourceLine" id="cb328-9" data-line-number="9"><span class="co">##  4 dear     822</span></a>
-<a class="sourceLine" id="cb328-10" data-line-number="10"><span class="co">##  5 lady     817</span></a>
-<a class="sourceLine" id="cb328-11" data-line-number="11"><span class="co">##  6 sir      806</span></a>
-<a class="sourceLine" id="cb328-12" data-line-number="12"><span class="co">##  7 day      797</span></a>
-<a class="sourceLine" id="cb328-13" data-line-number="13"><span class="co">##  8 emma     787</span></a>
-<a class="sourceLine" id="cb328-14" data-line-number="14"><span class="co">##  9 sister   727</span></a>
-<a class="sourceLine" id="cb328-15" data-line-number="15"><span class="co">## 10 house    699</span></a>
-<a class="sourceLine" id="cb328-16" data-line-number="16"><span class="co">## # ... with 13,904 more rows</span></a></code></pre></div>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb329-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb329-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb329-3" data-line-number="3">tidy_books <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb329-4" data-line-number="4"><span class="st">  </span><span class="kw">count</span>(word, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb329-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(n <span class="op">&gt;</span><span class="st"> </span><span class="dv">600</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb329-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word =</span> <span class="kw">reorder</span>(word, n)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb329-7" data-line-number="7"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(word, n)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb329-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb329-9" data-line-number="9"><span class="st">  </span><span class="kw">xlab</span>(<span class="ot">NULL</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb329-10" data-line-number="10"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" data-line-number="1">tidy_books <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb327-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(word, <span class="dt">sort =</span> <span class="ot">TRUE</span>) </a>
+<a class="sourceLine" id="cb327-3" data-line-number="3"><span class="co">## # A tibble: 14,520 x 2</span></a>
+<a class="sourceLine" id="cb327-4" data-line-number="4"><span class="co">##    word      n</span></a>
+<a class="sourceLine" id="cb327-5" data-line-number="5"><span class="co">##    &lt;chr&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb327-6" data-line-number="6"><span class="co">##  1 the   26351</span></a>
+<a class="sourceLine" id="cb327-7" data-line-number="7"><span class="co">##  2 to    24044</span></a>
+<a class="sourceLine" id="cb327-8" data-line-number="8"><span class="co">##  3 and   22515</span></a>
+<a class="sourceLine" id="cb327-9" data-line-number="9"><span class="co">##  4 of    21178</span></a>
+<a class="sourceLine" id="cb327-10" data-line-number="10"><span class="co">##  5 a     13408</span></a>
+<a class="sourceLine" id="cb327-11" data-line-number="11"><span class="co">##  6 her   13055</span></a>
+<a class="sourceLine" id="cb327-12" data-line-number="12"><span class="co">##  7 i     12006</span></a>
+<a class="sourceLine" id="cb327-13" data-line-number="13"><span class="co">##  8 in    11217</span></a>
+<a class="sourceLine" id="cb327-14" data-line-number="14"><span class="co">##  9 was   11204</span></a>
+<a class="sourceLine" id="cb327-15" data-line-number="15"><span class="co">## 10 it    10234</span></a>
+<a class="sourceLine" id="cb327-16" data-line-number="16"><span class="co">## # ... with 14,510 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb328-1" data-line-number="1"><span class="kw">data</span>(stop_words)</a>
+<a class="sourceLine" id="cb328-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb328-3" data-line-number="3">tidy_books &lt;-<span class="st"> </span>tidy_books <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb328-4" data-line-number="4"><span class="st">  </span><span class="kw">anti_join</span>(stop_words)</a>
+<a class="sourceLine" id="cb328-5" data-line-number="5"><span class="co">## Joining, by = &quot;word&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb329-1" data-line-number="1">tidy_books <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb329-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(word, <span class="dt">sort =</span> <span class="ot">TRUE</span>) </a>
+<a class="sourceLine" id="cb329-3" data-line-number="3"><span class="co">## # A tibble: 13,914 x 2</span></a>
+<a class="sourceLine" id="cb329-4" data-line-number="4"><span class="co">##    word       n</span></a>
+<a class="sourceLine" id="cb329-5" data-line-number="5"><span class="co">##    &lt;chr&gt;  &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb329-6" data-line-number="6"><span class="co">##  1 miss    1855</span></a>
+<a class="sourceLine" id="cb329-7" data-line-number="7"><span class="co">##  2 time    1337</span></a>
+<a class="sourceLine" id="cb329-8" data-line-number="8"><span class="co">##  3 fanny    862</span></a>
+<a class="sourceLine" id="cb329-9" data-line-number="9"><span class="co">##  4 dear     822</span></a>
+<a class="sourceLine" id="cb329-10" data-line-number="10"><span class="co">##  5 lady     817</span></a>
+<a class="sourceLine" id="cb329-11" data-line-number="11"><span class="co">##  6 sir      806</span></a>
+<a class="sourceLine" id="cb329-12" data-line-number="12"><span class="co">##  7 day      797</span></a>
+<a class="sourceLine" id="cb329-13" data-line-number="13"><span class="co">##  8 emma     787</span></a>
+<a class="sourceLine" id="cb329-14" data-line-number="14"><span class="co">##  9 sister   727</span></a>
+<a class="sourceLine" id="cb329-15" data-line-number="15"><span class="co">## 10 house    699</span></a>
+<a class="sourceLine" id="cb329-16" data-line-number="16"><span class="co">## # ... with 13,904 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb330-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb330-3" data-line-number="3">tidy_books <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb330-4" data-line-number="4"><span class="st">  </span><span class="kw">count</span>(word, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb330-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(n <span class="op">&gt;</span><span class="st"> </span><span class="dv">600</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb330-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word =</span> <span class="kw">reorder</span>(word, n)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb330-7" data-line-number="7"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(word, n)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb330-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb330-9" data-line-number="9"><span class="st">  </span><span class="kw">xlab</span>(<span class="ot">NULL</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb330-10" data-line-number="10"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
 <p><img src="180-text_mining_files/figure-html/unnamed-chunk-14-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
             </section>

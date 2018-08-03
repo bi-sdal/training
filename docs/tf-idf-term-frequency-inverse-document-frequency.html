@@ -442,46 +442,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">23.6</span> tf-idf: Term frequency, inverse document frequency</h2>
 <p>what a document is about by looking at the words.</p>
 <p>tf-idf: measure how important a word is to a document in a collection (or corpus) of documents</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb336-2" data-line-number="2"><span class="kw">library</span>(janeaustenr)</a>
-<a class="sourceLine" id="cb336-3" data-line-number="3"><span class="kw">library</span>(tidytext)</a>
-<a class="sourceLine" id="cb336-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb336-5" data-line-number="5">book_words &lt;-<span class="st"> </span><span class="kw">austen_books</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb336-6" data-line-number="6"><span class="st">  </span><span class="kw">unnest_tokens</span>(word, text) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb336-7" data-line-number="7"><span class="st">  </span><span class="kw">count</span>(book, word, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb336-8" data-line-number="8"><span class="st">  </span><span class="kw">ungroup</span>()</a>
-<a class="sourceLine" id="cb336-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb336-10" data-line-number="10">total_words &lt;-<span class="st"> </span>book_words <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb336-11" data-line-number="11"><span class="st">  </span><span class="kw">group_by</span>(book) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb336-12" data-line-number="12"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">total =</span> <span class="kw">sum</span>(n))</a>
-<a class="sourceLine" id="cb336-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb336-14" data-line-number="14">book_words &lt;-<span class="st"> </span><span class="kw">left_join</span>(book_words, total_words)</a>
-<a class="sourceLine" id="cb336-15" data-line-number="15"><span class="co">## Joining, by = &quot;book&quot;</span></a>
-<a class="sourceLine" id="cb336-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb336-17" data-line-number="17">book_words</a>
-<a class="sourceLine" id="cb336-18" data-line-number="18"><span class="co">## # A tibble: 40,379 x 4</span></a>
-<a class="sourceLine" id="cb336-19" data-line-number="19"><span class="co">##    book              word      n  total</span></a>
-<a class="sourceLine" id="cb336-20" data-line-number="20"><span class="co">##    &lt;fct&gt;             &lt;chr&gt; &lt;int&gt;  &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb336-21" data-line-number="21"><span class="co">##  1 Mansfield Park    the    6206 160460</span></a>
-<a class="sourceLine" id="cb336-22" data-line-number="22"><span class="co">##  2 Mansfield Park    to     5475 160460</span></a>
-<a class="sourceLine" id="cb336-23" data-line-number="23"><span class="co">##  3 Mansfield Park    and    5438 160460</span></a>
-<a class="sourceLine" id="cb336-24" data-line-number="24"><span class="co">##  4 Emma              to     5239 160996</span></a>
-<a class="sourceLine" id="cb336-25" data-line-number="25"><span class="co">##  5 Emma              the    5201 160996</span></a>
-<a class="sourceLine" id="cb336-26" data-line-number="26"><span class="co">##  6 Emma              and    4896 160996</span></a>
-<a class="sourceLine" id="cb336-27" data-line-number="27"><span class="co">##  7 Mansfield Park    of     4778 160460</span></a>
-<a class="sourceLine" id="cb336-28" data-line-number="28"><span class="co">##  8 Pride &amp; Prejudice the    4331 122204</span></a>
-<a class="sourceLine" id="cb336-29" data-line-number="29"><span class="co">##  9 Emma              of     4291 160996</span></a>
-<a class="sourceLine" id="cb336-30" data-line-number="30"><span class="co">## 10 Pride &amp; Prejudice to     4162 122204</span></a>
-<a class="sourceLine" id="cb336-31" data-line-number="31"><span class="co">## # ... with 40,369 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb337-2" data-line-number="2"><span class="kw">library</span>(janeaustenr)</a>
+<a class="sourceLine" id="cb337-3" data-line-number="3"><span class="kw">library</span>(tidytext)</a>
+<a class="sourceLine" id="cb337-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb337-5" data-line-number="5">book_words &lt;-<span class="st"> </span><span class="kw">austen_books</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb337-6" data-line-number="6"><span class="st">  </span><span class="kw">unnest_tokens</span>(word, text) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb337-7" data-line-number="7"><span class="st">  </span><span class="kw">count</span>(book, word, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb337-8" data-line-number="8"><span class="st">  </span><span class="kw">ungroup</span>()</a>
+<a class="sourceLine" id="cb337-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb337-10" data-line-number="10">total_words &lt;-<span class="st"> </span>book_words <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb337-11" data-line-number="11"><span class="st">  </span><span class="kw">group_by</span>(book) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb337-12" data-line-number="12"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">total =</span> <span class="kw">sum</span>(n))</a>
+<a class="sourceLine" id="cb337-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb337-14" data-line-number="14">book_words &lt;-<span class="st"> </span><span class="kw">left_join</span>(book_words, total_words)</a>
+<a class="sourceLine" id="cb337-15" data-line-number="15"><span class="co">## Joining, by = &quot;book&quot;</span></a>
+<a class="sourceLine" id="cb337-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb337-17" data-line-number="17">book_words</a>
+<a class="sourceLine" id="cb337-18" data-line-number="18"><span class="co">## # A tibble: 40,379 x 4</span></a>
+<a class="sourceLine" id="cb337-19" data-line-number="19"><span class="co">##    book              word      n  total</span></a>
+<a class="sourceLine" id="cb337-20" data-line-number="20"><span class="co">##    &lt;fct&gt;             &lt;chr&gt; &lt;int&gt;  &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb337-21" data-line-number="21"><span class="co">##  1 Mansfield Park    the    6206 160460</span></a>
+<a class="sourceLine" id="cb337-22" data-line-number="22"><span class="co">##  2 Mansfield Park    to     5475 160460</span></a>
+<a class="sourceLine" id="cb337-23" data-line-number="23"><span class="co">##  3 Mansfield Park    and    5438 160460</span></a>
+<a class="sourceLine" id="cb337-24" data-line-number="24"><span class="co">##  4 Emma              to     5239 160996</span></a>
+<a class="sourceLine" id="cb337-25" data-line-number="25"><span class="co">##  5 Emma              the    5201 160996</span></a>
+<a class="sourceLine" id="cb337-26" data-line-number="26"><span class="co">##  6 Emma              and    4896 160996</span></a>
+<a class="sourceLine" id="cb337-27" data-line-number="27"><span class="co">##  7 Mansfield Park    of     4778 160460</span></a>
+<a class="sourceLine" id="cb337-28" data-line-number="28"><span class="co">##  8 Pride &amp; Prejudice the    4331 122204</span></a>
+<a class="sourceLine" id="cb337-29" data-line-number="29"><span class="co">##  9 Emma              of     4291 160996</span></a>
+<a class="sourceLine" id="cb337-30" data-line-number="30"><span class="co">## 10 Pride &amp; Prejudice to     4162 122204</span></a>
+<a class="sourceLine" id="cb337-31" data-line-number="31"><span class="co">## # ... with 40,369 more rows</span></a></code></pre></div>
 <p>Term frequency (standarized)</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb337-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb337-3" data-line-number="3"><span class="kw">ggplot</span>(book_words, <span class="kw">aes</span>(n<span class="op">/</span>total, <span class="dt">fill =</span> book)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb337-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb337-5" data-line-number="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="ot">NA</span>, <span class="fl">0.0009</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb337-6" data-line-number="6"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>book, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>)</a>
-<a class="sourceLine" id="cb337-7" data-line-number="7"><span class="co">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></a>
-<a class="sourceLine" id="cb337-8" data-line-number="8"><span class="co">## Warning: Removed 896 rows containing non-finite values (stat_bin).</span></a></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb338-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb338-3" data-line-number="3"><span class="kw">ggplot</span>(book_words, <span class="kw">aes</span>(n<span class="op">/</span>total, <span class="dt">fill =</span> book)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb338-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb338-5" data-line-number="5"><span class="st">  </span><span class="kw">xlim</span>(<span class="ot">NA</span>, <span class="fl">0.0009</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb338-6" data-line-number="6"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>book, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>)</a>
+<a class="sourceLine" id="cb338-7" data-line-number="7"><span class="co">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></a>
+<a class="sourceLine" id="cb338-8" data-line-number="8"><span class="co">## Warning: Removed 896 rows containing non-finite values (stat_bin).</span></a></code></pre></div>
 <p><img src="180-text_mining_files/figure-html/unnamed-chunk-22-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Zipf’s law states that the frequency that a word appears is inversely proportional to its rank.</p>
 <p>find the important words for the content of each document by decreasing the weight for commonly used words and increasing the weight for words that are not used very much in a collection or corpus of documents</p>

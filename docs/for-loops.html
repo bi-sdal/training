@@ -441,74 +441,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="for-loops" class="section level2">
 <h2><span class="header-section-number">16.2</span> For loops</h2>
 <p>Temp conversion functions</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1">f_k &lt;-<span class="st"> </span><span class="cf">function</span>(f_temp) {</a>
-<a class="sourceLine" id="cb253-2" data-line-number="2">    ((f_temp <span class="op">-</span><span class="st"> </span><span class="dv">32</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">5</span> <span class="op">/</span><span class="st"> </span><span class="dv">9</span>)) <span class="op">+</span><span class="st"> </span><span class="fl">273.15</span></a>
-<a class="sourceLine" id="cb253-3" data-line-number="3">}</a>
-<a class="sourceLine" id="cb253-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb253-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb253-6" data-line-number="6">k_c &lt;-<span class="st"> </span><span class="cf">function</span>(temp_k) {</a>
-<a class="sourceLine" id="cb253-7" data-line-number="7">    <span class="cf">if</span> (<span class="kw">is.na</span>(temp_k)) {</a>
-<a class="sourceLine" id="cb253-8" data-line-number="8">        <span class="kw">return</span>(<span class="ot">NA</span>)</a>
-<a class="sourceLine" id="cb253-9" data-line-number="9">    } <span class="cf">else</span> <span class="cf">if</span> (temp_k <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</a>
-<a class="sourceLine" id="cb253-10" data-line-number="10">        <span class="kw">warning</span>(<span class="st">&#39;you passed in a negative Kelvin number&#39;</span>)</a>
-<a class="sourceLine" id="cb253-11" data-line-number="11">        <span class="co"># stop()</span></a>
-<a class="sourceLine" id="cb253-12" data-line-number="12">        <span class="kw">return</span>(<span class="ot">NA</span>)</a>
-<a class="sourceLine" id="cb253-13" data-line-number="13">    } <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb253-14" data-line-number="14">        temp_c &lt;-<span class="st"> </span>temp_k <span class="op">-</span><span class="st"> </span><span class="fl">273.15</span></a>
-<a class="sourceLine" id="cb253-15" data-line-number="15">        <span class="kw">return</span>(temp_c)</a>
-<a class="sourceLine" id="cb253-16" data-line-number="16">    }</a>
-<a class="sourceLine" id="cb253-17" data-line-number="17">}</a>
-<a class="sourceLine" id="cb253-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb253-19" data-line-number="19">f_c &lt;-<span class="st"> </span><span class="cf">function</span>(temp_f) {</a>
-<a class="sourceLine" id="cb253-20" data-line-number="20">    temp_k &lt;-<span class="st"> </span><span class="kw">f_k</span>(temp_f)</a>
-<a class="sourceLine" id="cb253-21" data-line-number="21">    temp_c &lt;-<span class="st"> </span><span class="kw">k_c</span>(temp_k)</a>
-<a class="sourceLine" id="cb253-22" data-line-number="22">    <span class="kw">return</span>(temp_c)</a>
-<a class="sourceLine" id="cb253-23" data-line-number="23">}</a></code></pre></div>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1"><span class="cf">for</span> (pizza <span class="cf">in</span> f_values) {</a>
-<a class="sourceLine" id="cb254-2" data-line-number="2">    <span class="kw">print</span>(pizza)</a>
-<a class="sourceLine" id="cb254-3" data-line-number="3">    converted &lt;-<span class="st"> </span><span class="kw">f_c</span>(pizza)</a>
-<a class="sourceLine" id="cb254-4" data-line-number="4">    <span class="kw">print</span>(converted)</a>
-<a class="sourceLine" id="cb254-5" data-line-number="5">}</a>
-<a class="sourceLine" id="cb254-6" data-line-number="6"><span class="co">## [1] 0</span></a>
-<a class="sourceLine" id="cb254-7" data-line-number="7"><span class="co">## [1] -17.77778</span></a>
-<a class="sourceLine" id="cb254-8" data-line-number="8"><span class="co">## [1] 32</span></a>
-<a class="sourceLine" id="cb254-9" data-line-number="9"><span class="co">## [1] 0</span></a>
-<a class="sourceLine" id="cb254-10" data-line-number="10"><span class="co">## [1] 212</span></a>
-<a class="sourceLine" id="cb254-11" data-line-number="11"><span class="co">## [1] 100</span></a>
-<a class="sourceLine" id="cb254-12" data-line-number="12"><span class="co">## [1] -40</span></a>
-<a class="sourceLine" id="cb254-13" data-line-number="13"><span class="co">## [1] -40</span></a></code></pre></div>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" data-line-number="1"><span class="co"># 1:length(f_values)</span></a>
-<a class="sourceLine" id="cb255-2" data-line-number="2"><span class="co"># seq_along(f_values)</span></a>
-<a class="sourceLine" id="cb255-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(f_values)) {</a>
-<a class="sourceLine" id="cb255-4" data-line-number="4">    <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb255-5" data-line-number="5">    val &lt;-<span class="st"> </span>f_values[i]</a>
-<a class="sourceLine" id="cb255-6" data-line-number="6">    <span class="kw">print</span>(val)</a>
-<a class="sourceLine" id="cb255-7" data-line-number="7">    </a>
-<a class="sourceLine" id="cb255-8" data-line-number="8">    converted &lt;-<span class="st"> </span><span class="kw">f_c</span>(val)</a>
-<a class="sourceLine" id="cb255-9" data-line-number="9">    <span class="kw">print</span>(converted)</a>
-<a class="sourceLine" id="cb255-10" data-line-number="10">}</a>
-<a class="sourceLine" id="cb255-11" data-line-number="11"><span class="co">## [1] 1</span></a>
-<a class="sourceLine" id="cb255-12" data-line-number="12"><span class="co">## [1] 0</span></a>
-<a class="sourceLine" id="cb255-13" data-line-number="13"><span class="co">## [1] -17.77778</span></a>
-<a class="sourceLine" id="cb255-14" data-line-number="14"><span class="co">## [1] 2</span></a>
-<a class="sourceLine" id="cb255-15" data-line-number="15"><span class="co">## [1] 32</span></a>
-<a class="sourceLine" id="cb255-16" data-line-number="16"><span class="co">## [1] 0</span></a>
-<a class="sourceLine" id="cb255-17" data-line-number="17"><span class="co">## [1] 3</span></a>
-<a class="sourceLine" id="cb255-18" data-line-number="18"><span class="co">## [1] 212</span></a>
-<a class="sourceLine" id="cb255-19" data-line-number="19"><span class="co">## [1] 100</span></a>
-<a class="sourceLine" id="cb255-20" data-line-number="20"><span class="co">## [1] 4</span></a>
-<a class="sourceLine" id="cb255-21" data-line-number="21"><span class="co">## [1] -40</span></a>
-<a class="sourceLine" id="cb255-22" data-line-number="22"><span class="co">## [1] -40</span></a></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1">f_k &lt;-<span class="st"> </span><span class="cf">function</span>(f_temp) {</a>
+<a class="sourceLine" id="cb254-2" data-line-number="2">    ((f_temp <span class="op">-</span><span class="st"> </span><span class="dv">32</span>) <span class="op">*</span><span class="st"> </span>(<span class="dv">5</span> <span class="op">/</span><span class="st"> </span><span class="dv">9</span>)) <span class="op">+</span><span class="st"> </span><span class="fl">273.15</span></a>
+<a class="sourceLine" id="cb254-3" data-line-number="3">}</a>
+<a class="sourceLine" id="cb254-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb254-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb254-6" data-line-number="6">k_c &lt;-<span class="st"> </span><span class="cf">function</span>(temp_k) {</a>
+<a class="sourceLine" id="cb254-7" data-line-number="7">    <span class="cf">if</span> (<span class="kw">is.na</span>(temp_k)) {</a>
+<a class="sourceLine" id="cb254-8" data-line-number="8">        <span class="kw">return</span>(<span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb254-9" data-line-number="9">    } <span class="cf">else</span> <span class="cf">if</span> (temp_k <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb254-10" data-line-number="10">        <span class="kw">warning</span>(<span class="st">&#39;you passed in a negative Kelvin number&#39;</span>)</a>
+<a class="sourceLine" id="cb254-11" data-line-number="11">        <span class="co"># stop()</span></a>
+<a class="sourceLine" id="cb254-12" data-line-number="12">        <span class="kw">return</span>(<span class="ot">NA</span>)</a>
+<a class="sourceLine" id="cb254-13" data-line-number="13">    } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb254-14" data-line-number="14">        temp_c &lt;-<span class="st"> </span>temp_k <span class="op">-</span><span class="st"> </span><span class="fl">273.15</span></a>
+<a class="sourceLine" id="cb254-15" data-line-number="15">        <span class="kw">return</span>(temp_c)</a>
+<a class="sourceLine" id="cb254-16" data-line-number="16">    }</a>
+<a class="sourceLine" id="cb254-17" data-line-number="17">}</a>
+<a class="sourceLine" id="cb254-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb254-19" data-line-number="19">f_c &lt;-<span class="st"> </span><span class="cf">function</span>(temp_f) {</a>
+<a class="sourceLine" id="cb254-20" data-line-number="20">    temp_k &lt;-<span class="st"> </span><span class="kw">f_k</span>(temp_f)</a>
+<a class="sourceLine" id="cb254-21" data-line-number="21">    temp_c &lt;-<span class="st"> </span><span class="kw">k_c</span>(temp_k)</a>
+<a class="sourceLine" id="cb254-22" data-line-number="22">    <span class="kw">return</span>(temp_c)</a>
+<a class="sourceLine" id="cb254-23" data-line-number="23">}</a></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" data-line-number="1"><span class="cf">for</span> (pizza <span class="cf">in</span> f_values) {</a>
+<a class="sourceLine" id="cb255-2" data-line-number="2">    <span class="kw">print</span>(pizza)</a>
+<a class="sourceLine" id="cb255-3" data-line-number="3">    converted &lt;-<span class="st"> </span><span class="kw">f_c</span>(pizza)</a>
+<a class="sourceLine" id="cb255-4" data-line-number="4">    <span class="kw">print</span>(converted)</a>
+<a class="sourceLine" id="cb255-5" data-line-number="5">}</a>
+<a class="sourceLine" id="cb255-6" data-line-number="6"><span class="co">## [1] 0</span></a>
+<a class="sourceLine" id="cb255-7" data-line-number="7"><span class="co">## [1] -17.77778</span></a>
+<a class="sourceLine" id="cb255-8" data-line-number="8"><span class="co">## [1] 32</span></a>
+<a class="sourceLine" id="cb255-9" data-line-number="9"><span class="co">## [1] 0</span></a>
+<a class="sourceLine" id="cb255-10" data-line-number="10"><span class="co">## [1] 212</span></a>
+<a class="sourceLine" id="cb255-11" data-line-number="11"><span class="co">## [1] 100</span></a>
+<a class="sourceLine" id="cb255-12" data-line-number="12"><span class="co">## [1] -40</span></a>
+<a class="sourceLine" id="cb255-13" data-line-number="13"><span class="co">## [1] -40</span></a></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" data-line-number="1"><span class="co"># 1:length(f_values)</span></a>
+<a class="sourceLine" id="cb256-2" data-line-number="2"><span class="co"># seq_along(f_values)</span></a>
+<a class="sourceLine" id="cb256-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(f_values)) {</a>
+<a class="sourceLine" id="cb256-4" data-line-number="4">    <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb256-5" data-line-number="5">    val &lt;-<span class="st"> </span>f_values[i]</a>
+<a class="sourceLine" id="cb256-6" data-line-number="6">    <span class="kw">print</span>(val)</a>
+<a class="sourceLine" id="cb256-7" data-line-number="7">    </a>
+<a class="sourceLine" id="cb256-8" data-line-number="8">    converted &lt;-<span class="st"> </span><span class="kw">f_c</span>(val)</a>
+<a class="sourceLine" id="cb256-9" data-line-number="9">    <span class="kw">print</span>(converted)</a>
+<a class="sourceLine" id="cb256-10" data-line-number="10">}</a>
+<a class="sourceLine" id="cb256-11" data-line-number="11"><span class="co">## [1] 1</span></a>
+<a class="sourceLine" id="cb256-12" data-line-number="12"><span class="co">## [1] 0</span></a>
+<a class="sourceLine" id="cb256-13" data-line-number="13"><span class="co">## [1] -17.77778</span></a>
+<a class="sourceLine" id="cb256-14" data-line-number="14"><span class="co">## [1] 2</span></a>
+<a class="sourceLine" id="cb256-15" data-line-number="15"><span class="co">## [1] 32</span></a>
+<a class="sourceLine" id="cb256-16" data-line-number="16"><span class="co">## [1] 0</span></a>
+<a class="sourceLine" id="cb256-17" data-line-number="17"><span class="co">## [1] 3</span></a>
+<a class="sourceLine" id="cb256-18" data-line-number="18"><span class="co">## [1] 212</span></a>
+<a class="sourceLine" id="cb256-19" data-line-number="19"><span class="co">## [1] 100</span></a>
+<a class="sourceLine" id="cb256-20" data-line-number="20"><span class="co">## [1] 4</span></a>
+<a class="sourceLine" id="cb256-21" data-line-number="21"><span class="co">## [1] -40</span></a>
+<a class="sourceLine" id="cb256-22" data-line-number="22"><span class="co">## [1] -40</span></a></code></pre></div>
 <div id="pre-allocating-in-a-loop" class="section level3">
 <h3><span class="header-section-number">16.2.1</span> Pre allocating in a loop</h3>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" data-line-number="1"><span class="co"># prepopulate an empty vector</span></a>
-<a class="sourceLine" id="cb256-2" data-line-number="2">converted_values &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="kw">length</span>(f_values))</a>
-<a class="sourceLine" id="cb256-3" data-line-number="3"><span class="cf">for</span> (to_be_converted_position <span class="cf">in</span> <span class="kw">seq_along</span>(f_values)) {</a>
-<a class="sourceLine" id="cb256-4" data-line-number="4">    converted &lt;-<span class="st"> </span><span class="kw">f_c</span>(to_be_converted_position)</a>
-<a class="sourceLine" id="cb256-5" data-line-number="5">    converted_values[to_be_converted_position] &lt;-<span class="st"> </span>converted</a>
-<a class="sourceLine" id="cb256-6" data-line-number="6">}</a></code></pre></div>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1">converted_values</a>
-<a class="sourceLine" id="cb257-2" data-line-number="2"><span class="co">## [1] -17.22222 -16.66667 -16.11111 -15.55556</span></a></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1"><span class="co"># prepopulate an empty vector</span></a>
+<a class="sourceLine" id="cb257-2" data-line-number="2">converted_values &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="kw">length</span>(f_values))</a>
+<a class="sourceLine" id="cb257-3" data-line-number="3"><span class="cf">for</span> (to_be_converted_position <span class="cf">in</span> <span class="kw">seq_along</span>(f_values)) {</a>
+<a class="sourceLine" id="cb257-4" data-line-number="4">    converted &lt;-<span class="st"> </span><span class="kw">f_c</span>(to_be_converted_position)</a>
+<a class="sourceLine" id="cb257-5" data-line-number="5">    converted_values[to_be_converted_position] &lt;-<span class="st"> </span>converted</a>
+<a class="sourceLine" id="cb257-6" data-line-number="6">}</a></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1">converted_values</a>
+<a class="sourceLine" id="cb258-2" data-line-number="2"><span class="co">## [1] -17.22222 -16.66667 -16.11111 -15.55556</span></a></code></pre></div>
 </div>
 </div>
             </section>

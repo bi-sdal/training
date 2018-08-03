@@ -445,53 +445,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>tf: The weight of a term that occurs in a document is simply proportional to the term frequency</li>
 <li>idf: The specificity of a term can be quantified as an inverse function of the number of documents in which it occurs</li>
 </ul>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" data-line-number="1">book_words &lt;-<span class="st"> </span>book_words <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb338-2" data-line-number="2"><span class="st">  </span><span class="kw">bind_tf_idf</span>(word, book, n)</a>
-<a class="sourceLine" id="cb338-3" data-line-number="3">book_words</a>
-<a class="sourceLine" id="cb338-4" data-line-number="4"><span class="co">## # A tibble: 40,379 x 7</span></a>
-<a class="sourceLine" id="cb338-5" data-line-number="5"><span class="co">##    book              word      n  total     tf   idf tf_idf</span></a>
-<a class="sourceLine" id="cb338-6" data-line-number="6"><span class="co">##    &lt;fct&gt;             &lt;chr&gt; &lt;int&gt;  &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb338-7" data-line-number="7"><span class="co">##  1 Mansfield Park    the    6206 160460 0.0387     0      0</span></a>
-<a class="sourceLine" id="cb338-8" data-line-number="8"><span class="co">##  2 Mansfield Park    to     5475 160460 0.0341     0      0</span></a>
-<a class="sourceLine" id="cb338-9" data-line-number="9"><span class="co">##  3 Mansfield Park    and    5438 160460 0.0339     0      0</span></a>
-<a class="sourceLine" id="cb338-10" data-line-number="10"><span class="co">##  4 Emma              to     5239 160996 0.0325     0      0</span></a>
-<a class="sourceLine" id="cb338-11" data-line-number="11"><span class="co">##  5 Emma              the    5201 160996 0.0323     0      0</span></a>
-<a class="sourceLine" id="cb338-12" data-line-number="12"><span class="co">##  6 Emma              and    4896 160996 0.0304     0      0</span></a>
-<a class="sourceLine" id="cb338-13" data-line-number="13"><span class="co">##  7 Mansfield Park    of     4778 160460 0.0298     0      0</span></a>
-<a class="sourceLine" id="cb338-14" data-line-number="14"><span class="co">##  8 Pride &amp; Prejudice the    4331 122204 0.0354     0      0</span></a>
-<a class="sourceLine" id="cb338-15" data-line-number="15"><span class="co">##  9 Emma              of     4291 160996 0.0267     0      0</span></a>
-<a class="sourceLine" id="cb338-16" data-line-number="16"><span class="co">## 10 Pride &amp; Prejudice to     4162 122204 0.0341     0      0</span></a>
-<a class="sourceLine" id="cb338-17" data-line-number="17"><span class="co">## # ... with 40,369 more rows</span></a></code></pre></div>
-<p>Get high tf-idf scores</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" data-line-number="1">book_words <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb339-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>total) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb339-3" data-line-number="3"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(tf_idf))</a>
-<a class="sourceLine" id="cb339-4" data-line-number="4"><span class="co">## # A tibble: 40,379 x 6</span></a>
-<a class="sourceLine" id="cb339-5" data-line-number="5"><span class="co">##    book                word          n      tf   idf  tf_idf</span></a>
-<a class="sourceLine" id="cb339-6" data-line-number="6"><span class="co">##    &lt;fct&gt;               &lt;chr&gt;     &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb339-7" data-line-number="7"><span class="co">##  1 Sense &amp; Sensibility elinor      623 0.00519  1.79 0.00931</span></a>
-<a class="sourceLine" id="cb339-8" data-line-number="8"><span class="co">##  2 Sense &amp; Sensibility marianne    492 0.00410  1.79 0.00735</span></a>
-<a class="sourceLine" id="cb339-9" data-line-number="9"><span class="co">##  3 Mansfield Park      crawford    493 0.00307  1.79 0.00551</span></a>
-<a class="sourceLine" id="cb339-10" data-line-number="10"><span class="co">##  4 Pride &amp; Prejudice   darcy       373 0.00305  1.79 0.00547</span></a>
-<a class="sourceLine" id="cb339-11" data-line-number="11"><span class="co">##  5 Persuasion          elliot      254 0.00304  1.79 0.00544</span></a>
-<a class="sourceLine" id="cb339-12" data-line-number="12"><span class="co">##  6 Emma                emma        786 0.00488  1.10 0.00536</span></a>
-<a class="sourceLine" id="cb339-13" data-line-number="13"><span class="co">##  7 Northanger Abbey    tilney      196 0.00252  1.79 0.00452</span></a>
-<a class="sourceLine" id="cb339-14" data-line-number="14"><span class="co">##  8 Emma                weston      389 0.00242  1.79 0.00433</span></a>
-<a class="sourceLine" id="cb339-15" data-line-number="15"><span class="co">##  9 Pride &amp; Prejudice   bennet      294 0.00241  1.79 0.00431</span></a>
-<a class="sourceLine" id="cb339-16" data-line-number="16"><span class="co">## 10 Persuasion          wentworth   191 0.00228  1.79 0.00409</span></a>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" data-line-number="1">book_words &lt;-<span class="st"> </span>book_words <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb339-2" data-line-number="2"><span class="st">  </span><span class="kw">bind_tf_idf</span>(word, book, n)</a>
+<a class="sourceLine" id="cb339-3" data-line-number="3">book_words</a>
+<a class="sourceLine" id="cb339-4" data-line-number="4"><span class="co">## # A tibble: 40,379 x 7</span></a>
+<a class="sourceLine" id="cb339-5" data-line-number="5"><span class="co">##    book              word      n  total     tf   idf tf_idf</span></a>
+<a class="sourceLine" id="cb339-6" data-line-number="6"><span class="co">##    &lt;fct&gt;             &lt;chr&gt; &lt;int&gt;  &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb339-7" data-line-number="7"><span class="co">##  1 Mansfield Park    the    6206 160460 0.0387     0      0</span></a>
+<a class="sourceLine" id="cb339-8" data-line-number="8"><span class="co">##  2 Mansfield Park    to     5475 160460 0.0341     0      0</span></a>
+<a class="sourceLine" id="cb339-9" data-line-number="9"><span class="co">##  3 Mansfield Park    and    5438 160460 0.0339     0      0</span></a>
+<a class="sourceLine" id="cb339-10" data-line-number="10"><span class="co">##  4 Emma              to     5239 160996 0.0325     0      0</span></a>
+<a class="sourceLine" id="cb339-11" data-line-number="11"><span class="co">##  5 Emma              the    5201 160996 0.0323     0      0</span></a>
+<a class="sourceLine" id="cb339-12" data-line-number="12"><span class="co">##  6 Emma              and    4896 160996 0.0304     0      0</span></a>
+<a class="sourceLine" id="cb339-13" data-line-number="13"><span class="co">##  7 Mansfield Park    of     4778 160460 0.0298     0      0</span></a>
+<a class="sourceLine" id="cb339-14" data-line-number="14"><span class="co">##  8 Pride &amp; Prejudice the    4331 122204 0.0354     0      0</span></a>
+<a class="sourceLine" id="cb339-15" data-line-number="15"><span class="co">##  9 Emma              of     4291 160996 0.0267     0      0</span></a>
+<a class="sourceLine" id="cb339-16" data-line-number="16"><span class="co">## 10 Pride &amp; Prejudice to     4162 122204 0.0341     0      0</span></a>
 <a class="sourceLine" id="cb339-17" data-line-number="17"><span class="co">## # ... with 40,369 more rows</span></a></code></pre></div>
+<p>Get high tf-idf scores</p>
 <div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" data-line-number="1">book_words <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb340-2" data-line-number="2"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(tf_idf)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb340-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word =</span> <span class="kw">factor</span>(word, <span class="dt">levels =</span> <span class="kw">rev</span>(<span class="kw">unique</span>(word)))) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb340-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(book) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb340-5" data-line-number="5"><span class="st">  </span><span class="kw">top_n</span>(<span class="dv">15</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb340-6" data-line-number="6"><span class="st">  </span>ungroup <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb340-7" data-line-number="7"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(word, tf_idf, <span class="dt">fill =</span> book)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb340-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb340-9" data-line-number="9"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="st">&quot;tf-idf&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb340-10" data-line-number="10"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>book, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb340-11" data-line-number="11"><span class="st">  </span><span class="kw">coord_flip</span>()</a>
-<a class="sourceLine" id="cb340-12" data-line-number="12"><span class="co">## Selecting by tf_idf</span></a></code></pre></div>
+<a class="sourceLine" id="cb340-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>total) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb340-3" data-line-number="3"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(tf_idf))</a>
+<a class="sourceLine" id="cb340-4" data-line-number="4"><span class="co">## # A tibble: 40,379 x 6</span></a>
+<a class="sourceLine" id="cb340-5" data-line-number="5"><span class="co">##    book                word          n      tf   idf  tf_idf</span></a>
+<a class="sourceLine" id="cb340-6" data-line-number="6"><span class="co">##    &lt;fct&gt;               &lt;chr&gt;     &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb340-7" data-line-number="7"><span class="co">##  1 Sense &amp; Sensibility elinor      623 0.00519  1.79 0.00931</span></a>
+<a class="sourceLine" id="cb340-8" data-line-number="8"><span class="co">##  2 Sense &amp; Sensibility marianne    492 0.00410  1.79 0.00735</span></a>
+<a class="sourceLine" id="cb340-9" data-line-number="9"><span class="co">##  3 Mansfield Park      crawford    493 0.00307  1.79 0.00551</span></a>
+<a class="sourceLine" id="cb340-10" data-line-number="10"><span class="co">##  4 Pride &amp; Prejudice   darcy       373 0.00305  1.79 0.00547</span></a>
+<a class="sourceLine" id="cb340-11" data-line-number="11"><span class="co">##  5 Persuasion          elliot      254 0.00304  1.79 0.00544</span></a>
+<a class="sourceLine" id="cb340-12" data-line-number="12"><span class="co">##  6 Emma                emma        786 0.00488  1.10 0.00536</span></a>
+<a class="sourceLine" id="cb340-13" data-line-number="13"><span class="co">##  7 Northanger Abbey    tilney      196 0.00252  1.79 0.00452</span></a>
+<a class="sourceLine" id="cb340-14" data-line-number="14"><span class="co">##  8 Emma                weston      389 0.00242  1.79 0.00433</span></a>
+<a class="sourceLine" id="cb340-15" data-line-number="15"><span class="co">##  9 Pride &amp; Prejudice   bennet      294 0.00241  1.79 0.00431</span></a>
+<a class="sourceLine" id="cb340-16" data-line-number="16"><span class="co">## 10 Persuasion          wentworth   191 0.00228  1.79 0.00409</span></a>
+<a class="sourceLine" id="cb340-17" data-line-number="17"><span class="co">## # ... with 40,369 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1">book_words <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb341-2" data-line-number="2"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(tf_idf)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb341-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word =</span> <span class="kw">factor</span>(word, <span class="dt">levels =</span> <span class="kw">rev</span>(<span class="kw">unique</span>(word)))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb341-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(book) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb341-5" data-line-number="5"><span class="st">  </span><span class="kw">top_n</span>(<span class="dv">15</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb341-6" data-line-number="6"><span class="st">  </span>ungroup <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb341-7" data-line-number="7"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(word, tf_idf, <span class="dt">fill =</span> book)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb341-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb341-9" data-line-number="9"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="st">&quot;tf-idf&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb341-10" data-line-number="10"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>book, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb341-11" data-line-number="11"><span class="st">  </span><span class="kw">coord_flip</span>()</a>
+<a class="sourceLine" id="cb341-12" data-line-number="12"><span class="co">## Selecting by tf_idf</span></a></code></pre></div>
 <p><img src="180-text_mining_files/figure-html/unnamed-chunk-25-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
             </section>

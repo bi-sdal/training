@@ -440,22 +440,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="named-vectors" class="section level2">
 <h2><span class="header-section-number">13.5</span> Named vectors</h2>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1">my_named_vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span> =<span class="st"> </span><span class="dv">1</span>, <span class="st">&#39;b&#39;</span> =<span class="st"> </span><span class="dv">2</span>, <span class="st">&#39;c&#39;</span> =<span class="st"> </span><span class="dv">3</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1">my_named_vec[<span class="dv">3</span>]</a>
-<a class="sourceLine" id="cb214-2" data-line-number="2"><span class="co">## c </span></a>
-<a class="sourceLine" id="cb214-3" data-line-number="3"><span class="co">## 3</span></a></code></pre></div>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">my_named_vec[<span class="st">&#39;b&#39;</span>]</a>
-<a class="sourceLine" id="cb215-2" data-line-number="2"><span class="co">## b </span></a>
-<a class="sourceLine" id="cb215-3" data-line-number="3"><span class="co">## 2</span></a></code></pre></div>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1">my_unnamed &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1">my_labels &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]</a></code></pre></div>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1"><span class="kw">names</span>(my_unnamed) &lt;-<span class="st"> </span>my_labels</a></code></pre></div>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1">my_unnamed[<span class="st">&#39;g&#39;</span>]</a>
-<a class="sourceLine" id="cb219-2" data-line-number="2"><span class="co">## g </span></a>
-<a class="sourceLine" id="cb219-3" data-line-number="3"><span class="co">## 7</span></a></code></pre></div>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1">my_unnamed[<span class="dv">7</span>]</a>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1">my_named_vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span> =<span class="st"> </span><span class="dv">1</span>, <span class="st">&#39;b&#39;</span> =<span class="st"> </span><span class="dv">2</span>, <span class="st">&#39;c&#39;</span> =<span class="st"> </span><span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">my_named_vec[<span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb215-2" data-line-number="2"><span class="co">## c </span></a>
+<a class="sourceLine" id="cb215-3" data-line-number="3"><span class="co">## 3</span></a></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1">my_named_vec[<span class="st">&#39;b&#39;</span>]</a>
+<a class="sourceLine" id="cb216-2" data-line-number="2"><span class="co">## b </span></a>
+<a class="sourceLine" id="cb216-3" data-line-number="3"><span class="co">## 2</span></a></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1">my_unnamed &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1">my_labels &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1"><span class="kw">names</span>(my_unnamed) &lt;-<span class="st"> </span>my_labels</a></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1">my_unnamed[<span class="st">&#39;g&#39;</span>]</a>
 <a class="sourceLine" id="cb220-2" data-line-number="2"><span class="co">## g </span></a>
 <a class="sourceLine" id="cb220-3" data-line-number="3"><span class="co">## 7</span></a></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1">my_unnamed[<span class="dv">7</span>]</a>
+<a class="sourceLine" id="cb221-2" data-line-number="2"><span class="co">## g </span></a>
+<a class="sourceLine" id="cb221-3" data-line-number="3"><span class="co">## 7</span></a></code></pre></div>
 </div>
             </section>
 

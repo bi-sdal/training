@@ -442,41 +442,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">24.4</span> Viewing Random Forests</h2>
 <p>The last part of the course will introduce you to the random forest package, some nifty things you can do with it, and some visuals.
 IMPORTANT NOTE!!! This implementation of random forest can’t handle catgegorical predictors directly. You need to convert them to a model matrix. This isn’t that hard, but if you’re not aware of it you can get spurious results</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb414-1" data-line-number="1"><span class="kw">library</span>(randomForest)</a></code></pre></div>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb415-1" data-line-number="1">mtcarsRf =<span class="st"> </span><span class="kw">randomForest</span>(mpg <span class="op">~</span><span class="st"> </span>., <span class="dt">data=</span>mtcars, <span class="dt">importance=</span><span class="ot">TRUE</span>, <span class="dt">proximity=</span><span class="ot">TRUE</span>, <span class="dt">mtry =</span> <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb415-2" data-line-number="2">mtcarsRf</a>
-<a class="sourceLine" id="cb415-3" data-line-number="3"><span class="co">## </span></a>
-<a class="sourceLine" id="cb415-4" data-line-number="4"><span class="co">## Call:</span></a>
-<a class="sourceLine" id="cb415-5" data-line-number="5"><span class="co">##  randomForest(formula = mpg ~ ., data = mtcars, importance = TRUE,      proximity = TRUE, mtry = 4) </span></a>
-<a class="sourceLine" id="cb415-6" data-line-number="6"><span class="co">##                Type of random forest: regression</span></a>
-<a class="sourceLine" id="cb415-7" data-line-number="7"><span class="co">##                      Number of trees: 500</span></a>
-<a class="sourceLine" id="cb415-8" data-line-number="8"><span class="co">## No. of variables tried at each split: 4</span></a>
-<a class="sourceLine" id="cb415-9" data-line-number="9"><span class="co">## </span></a>
-<a class="sourceLine" id="cb415-10" data-line-number="10"><span class="co">##           Mean of squared residuals: 5.424577</span></a>
-<a class="sourceLine" id="cb415-11" data-line-number="11"><span class="co">##                     % Var explained: 84.58</span></a></code></pre></div>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb416-1" data-line-number="1"><span class="kw">plot</span>(mtcarsRf)</a></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb415-1" data-line-number="1"><span class="kw">library</span>(randomForest)</a></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb416-1" data-line-number="1">mtcarsRf =<span class="st"> </span><span class="kw">randomForest</span>(mpg <span class="op">~</span><span class="st"> </span>., <span class="dt">data=</span>mtcars, <span class="dt">importance=</span><span class="ot">TRUE</span>, <span class="dt">proximity=</span><span class="ot">TRUE</span>, <span class="dt">mtry =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb416-2" data-line-number="2">mtcarsRf</a>
+<a class="sourceLine" id="cb416-3" data-line-number="3"><span class="co">## </span></a>
+<a class="sourceLine" id="cb416-4" data-line-number="4"><span class="co">## Call:</span></a>
+<a class="sourceLine" id="cb416-5" data-line-number="5"><span class="co">##  randomForest(formula = mpg ~ ., data = mtcars, importance = TRUE,      proximity = TRUE, mtry = 4) </span></a>
+<a class="sourceLine" id="cb416-6" data-line-number="6"><span class="co">##                Type of random forest: regression</span></a>
+<a class="sourceLine" id="cb416-7" data-line-number="7"><span class="co">##                      Number of trees: 500</span></a>
+<a class="sourceLine" id="cb416-8" data-line-number="8"><span class="co">## No. of variables tried at each split: 4</span></a>
+<a class="sourceLine" id="cb416-9" data-line-number="9"><span class="co">## </span></a>
+<a class="sourceLine" id="cb416-10" data-line-number="10"><span class="co">##           Mean of squared residuals: 5.424577</span></a>
+<a class="sourceLine" id="cb416-11" data-line-number="11"><span class="co">##                     % Var explained: 84.58</span></a></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb417-1" data-line-number="1"><span class="kw">plot</span>(mtcarsRf)</a></code></pre></div>
 <p><img src="330-CART_files/figure-html/unnamed-chunk-65-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Variable importance.</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb417-1" data-line-number="1">varImportance =<span class="st"> </span><span class="kw">importance</span>(mtcarsRf, <span class="dt">type =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb417-2" data-line-number="2">varImportance</a>
-<a class="sourceLine" id="cb417-3" data-line-number="3"><span class="co">##      IncNodePurity</span></a>
-<a class="sourceLine" id="cb417-4" data-line-number="4"><span class="co">## cyl     189.275498</span></a>
-<a class="sourceLine" id="cb417-5" data-line-number="5"><span class="co">## disp    262.391424</span></a>
-<a class="sourceLine" id="cb417-6" data-line-number="6"><span class="co">## hp      205.431608</span></a>
-<a class="sourceLine" id="cb417-7" data-line-number="7"><span class="co">## drat     45.489344</span></a>
-<a class="sourceLine" id="cb417-8" data-line-number="8"><span class="co">## wt      278.369216</span></a>
-<a class="sourceLine" id="cb417-9" data-line-number="9"><span class="co">## qsec     19.915649</span></a>
-<a class="sourceLine" id="cb417-10" data-line-number="10"><span class="co">## vs        9.846512</span></a>
-<a class="sourceLine" id="cb417-11" data-line-number="11"><span class="co">## am        8.995382</span></a>
-<a class="sourceLine" id="cb417-12" data-line-number="12"><span class="co">## gear      9.776913</span></a>
-<a class="sourceLine" id="cb417-13" data-line-number="13"><span class="co">## carb     19.251604</span></a></code></pre></div>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb418-1" data-line-number="1"><span class="kw">layout</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb418-2" data-line-number="2"><span class="kw">varImpPlot</span>(mtcarsRf, <span class="dt">type =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb418-3" data-line-number="3">impvar =<span class="st"> </span><span class="kw">rownames</span>(varImportance)[<span class="kw">order</span>(varImportance[, <span class="dv">1</span>], <span class="dt">decreasing=</span><span class="ot">TRUE</span>)]</a>
-<a class="sourceLine" id="cb418-4" data-line-number="4">colors =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb418-5" data-line-number="5"><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>){</a>
-<a class="sourceLine" id="cb418-6" data-line-number="6">  <span class="kw">partialPlot</span>(mtcarsRf, mtcars, impvar[j], <span class="dt">main =</span> <span class="st">&quot;&quot;</span>,<span class="dt">xlab =</span> impvar[j], <span class="dt">lwd=</span> <span class="dv">3</span>, <span class="dt">cex.lab =</span> <span class="dv">2</span>, <span class="dt">n.pt =</span> <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb418-7" data-line-number="7">}</a></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb418-1" data-line-number="1">varImportance =<span class="st"> </span><span class="kw">importance</span>(mtcarsRf, <span class="dt">type =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb418-2" data-line-number="2">varImportance</a>
+<a class="sourceLine" id="cb418-3" data-line-number="3"><span class="co">##      IncNodePurity</span></a>
+<a class="sourceLine" id="cb418-4" data-line-number="4"><span class="co">## cyl     189.275498</span></a>
+<a class="sourceLine" id="cb418-5" data-line-number="5"><span class="co">## disp    262.391424</span></a>
+<a class="sourceLine" id="cb418-6" data-line-number="6"><span class="co">## hp      205.431608</span></a>
+<a class="sourceLine" id="cb418-7" data-line-number="7"><span class="co">## drat     45.489344</span></a>
+<a class="sourceLine" id="cb418-8" data-line-number="8"><span class="co">## wt      278.369216</span></a>
+<a class="sourceLine" id="cb418-9" data-line-number="9"><span class="co">## qsec     19.915649</span></a>
+<a class="sourceLine" id="cb418-10" data-line-number="10"><span class="co">## vs        9.846512</span></a>
+<a class="sourceLine" id="cb418-11" data-line-number="11"><span class="co">## am        8.995382</span></a>
+<a class="sourceLine" id="cb418-12" data-line-number="12"><span class="co">## gear      9.776913</span></a>
+<a class="sourceLine" id="cb418-13" data-line-number="13"><span class="co">## carb     19.251604</span></a></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb419-1" data-line-number="1"><span class="kw">layout</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb419-2" data-line-number="2"><span class="kw">varImpPlot</span>(mtcarsRf, <span class="dt">type =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb419-3" data-line-number="3">impvar =<span class="st"> </span><span class="kw">rownames</span>(varImportance)[<span class="kw">order</span>(varImportance[, <span class="dv">1</span>], <span class="dt">decreasing=</span><span class="ot">TRUE</span>)]</a>
+<a class="sourceLine" id="cb419-4" data-line-number="4">colors =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb419-5" data-line-number="5"><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>){</a>
+<a class="sourceLine" id="cb419-6" data-line-number="6">  <span class="kw">partialPlot</span>(mtcarsRf, mtcars, impvar[j], <span class="dt">main =</span> <span class="st">&quot;&quot;</span>,<span class="dt">xlab =</span> impvar[j], <span class="dt">lwd=</span> <span class="dv">3</span>, <span class="dt">cex.lab =</span> <span class="dv">2</span>, <span class="dt">n.pt =</span> <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb419-7" data-line-number="7">}</a></code></pre></div>
 <p><img src="330-CART_files/figure-html/unnamed-chunk-67-1.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>A neat output of an RF model is a measure of proximity between rows. Proximity is the proportion of times two observations appear in the same leaf node. This can be very useful in cases where rows contain both continuous and categorical data, a typically difficult situation for most metrics.</p>
 <p>If we do 1 - proximity we can turn this into a distance matrix and do things like multidimensional scaling.</p>

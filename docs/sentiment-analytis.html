@@ -440,23 +440,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="sentiment-analytis" class="section level2">
 <h2><span class="header-section-number">23.5</span> Sentiment Analytis</h2>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" data-line-number="1"><span class="kw">library</span>(tidytext)</a>
-<a class="sourceLine" id="cb330-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb330-3" data-line-number="3">sentiments</a>
-<a class="sourceLine" id="cb330-4" data-line-number="4"><span class="co">## # A tibble: 27,314 x 4</span></a>
-<a class="sourceLine" id="cb330-5" data-line-number="5"><span class="co">##    word        sentiment lexicon score</span></a>
-<a class="sourceLine" id="cb330-6" data-line-number="6"><span class="co">##    &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;   &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb330-7" data-line-number="7"><span class="co">##  1 abacus      trust     nrc        NA</span></a>
-<a class="sourceLine" id="cb330-8" data-line-number="8"><span class="co">##  2 abandon     fear      nrc        NA</span></a>
-<a class="sourceLine" id="cb330-9" data-line-number="9"><span class="co">##  3 abandon     negative  nrc        NA</span></a>
-<a class="sourceLine" id="cb330-10" data-line-number="10"><span class="co">##  4 abandon     sadness   nrc        NA</span></a>
-<a class="sourceLine" id="cb330-11" data-line-number="11"><span class="co">##  5 abandoned   anger     nrc        NA</span></a>
-<a class="sourceLine" id="cb330-12" data-line-number="12"><span class="co">##  6 abandoned   fear      nrc        NA</span></a>
-<a class="sourceLine" id="cb330-13" data-line-number="13"><span class="co">##  7 abandoned   negative  nrc        NA</span></a>
-<a class="sourceLine" id="cb330-14" data-line-number="14"><span class="co">##  8 abandoned   sadness   nrc        NA</span></a>
-<a class="sourceLine" id="cb330-15" data-line-number="15"><span class="co">##  9 abandonment anger     nrc        NA</span></a>
-<a class="sourceLine" id="cb330-16" data-line-number="16"><span class="co">## 10 abandonment fear      nrc        NA</span></a>
-<a class="sourceLine" id="cb330-17" data-line-number="17"><span class="co">## # ... with 27,304 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb331-1" data-line-number="1"><span class="kw">library</span>(tidytext)</a>
+<a class="sourceLine" id="cb331-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb331-3" data-line-number="3">sentiments</a>
+<a class="sourceLine" id="cb331-4" data-line-number="4"><span class="co">## # A tibble: 27,314 x 4</span></a>
+<a class="sourceLine" id="cb331-5" data-line-number="5"><span class="co">##    word        sentiment lexicon score</span></a>
+<a class="sourceLine" id="cb331-6" data-line-number="6"><span class="co">##    &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;   &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb331-7" data-line-number="7"><span class="co">##  1 abacus      trust     nrc        NA</span></a>
+<a class="sourceLine" id="cb331-8" data-line-number="8"><span class="co">##  2 abandon     fear      nrc        NA</span></a>
+<a class="sourceLine" id="cb331-9" data-line-number="9"><span class="co">##  3 abandon     negative  nrc        NA</span></a>
+<a class="sourceLine" id="cb331-10" data-line-number="10"><span class="co">##  4 abandon     sadness   nrc        NA</span></a>
+<a class="sourceLine" id="cb331-11" data-line-number="11"><span class="co">##  5 abandoned   anger     nrc        NA</span></a>
+<a class="sourceLine" id="cb331-12" data-line-number="12"><span class="co">##  6 abandoned   fear      nrc        NA</span></a>
+<a class="sourceLine" id="cb331-13" data-line-number="13"><span class="co">##  7 abandoned   negative  nrc        NA</span></a>
+<a class="sourceLine" id="cb331-14" data-line-number="14"><span class="co">##  8 abandoned   sadness   nrc        NA</span></a>
+<a class="sourceLine" id="cb331-15" data-line-number="15"><span class="co">##  9 abandonment anger     nrc        NA</span></a>
+<a class="sourceLine" id="cb331-16" data-line-number="16"><span class="co">## 10 abandonment fear      nrc        NA</span></a>
+<a class="sourceLine" id="cb331-17" data-line-number="17"><span class="co">## # ... with 27,304 more rows</span></a></code></pre></div>
 <p>3 main sentiment dictionaries (based on single words)</p>
 <ul>
 <li>AFINN from Finn Årup Nielsen
@@ -473,84 +473,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li></li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb331-1" data-line-number="1"><span class="kw">get_sentiments</span>(<span class="st">&quot;afinn&quot;</span>)</a>
-<a class="sourceLine" id="cb331-2" data-line-number="2"><span class="co">## # A tibble: 2,476 x 2</span></a>
-<a class="sourceLine" id="cb331-3" data-line-number="3"><span class="co">##    word       score</span></a>
-<a class="sourceLine" id="cb331-4" data-line-number="4"><span class="co">##    &lt;chr&gt;      &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb331-5" data-line-number="5"><span class="co">##  1 abandon       -2</span></a>
-<a class="sourceLine" id="cb331-6" data-line-number="6"><span class="co">##  2 abandoned     -2</span></a>
-<a class="sourceLine" id="cb331-7" data-line-number="7"><span class="co">##  3 abandons      -2</span></a>
-<a class="sourceLine" id="cb331-8" data-line-number="8"><span class="co">##  4 abducted      -2</span></a>
-<a class="sourceLine" id="cb331-9" data-line-number="9"><span class="co">##  5 abduction     -2</span></a>
-<a class="sourceLine" id="cb331-10" data-line-number="10"><span class="co">##  6 abductions    -2</span></a>
-<a class="sourceLine" id="cb331-11" data-line-number="11"><span class="co">##  7 abhor         -3</span></a>
-<a class="sourceLine" id="cb331-12" data-line-number="12"><span class="co">##  8 abhorred      -3</span></a>
-<a class="sourceLine" id="cb331-13" data-line-number="13"><span class="co">##  9 abhorrent     -3</span></a>
-<a class="sourceLine" id="cb331-14" data-line-number="14"><span class="co">## 10 abhors        -3</span></a>
-<a class="sourceLine" id="cb331-15" data-line-number="15"><span class="co">## # ... with 2,466 more rows</span></a></code></pre></div>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" data-line-number="1"><span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)</a>
-<a class="sourceLine" id="cb332-2" data-line-number="2"><span class="co">## # A tibble: 6,788 x 2</span></a>
-<a class="sourceLine" id="cb332-3" data-line-number="3"><span class="co">##    word        sentiment</span></a>
-<a class="sourceLine" id="cb332-4" data-line-number="4"><span class="co">##    &lt;chr&gt;       &lt;chr&gt;    </span></a>
-<a class="sourceLine" id="cb332-5" data-line-number="5"><span class="co">##  1 2-faced     negative </span></a>
-<a class="sourceLine" id="cb332-6" data-line-number="6"><span class="co">##  2 2-faces     negative </span></a>
-<a class="sourceLine" id="cb332-7" data-line-number="7"><span class="co">##  3 a+          positive </span></a>
-<a class="sourceLine" id="cb332-8" data-line-number="8"><span class="co">##  4 abnormal    negative </span></a>
-<a class="sourceLine" id="cb332-9" data-line-number="9"><span class="co">##  5 abolish     negative </span></a>
-<a class="sourceLine" id="cb332-10" data-line-number="10"><span class="co">##  6 abominable  negative </span></a>
-<a class="sourceLine" id="cb332-11" data-line-number="11"><span class="co">##  7 abominably  negative </span></a>
-<a class="sourceLine" id="cb332-12" data-line-number="12"><span class="co">##  8 abominate   negative </span></a>
-<a class="sourceLine" id="cb332-13" data-line-number="13"><span class="co">##  9 abomination negative </span></a>
-<a class="sourceLine" id="cb332-14" data-line-number="14"><span class="co">## 10 abort       negative </span></a>
-<a class="sourceLine" id="cb332-15" data-line-number="15"><span class="co">## # ... with 6,778 more rows</span></a></code></pre></div>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" data-line-number="1"><span class="kw">get_sentiments</span>(<span class="st">&quot;nrc&quot;</span>)</a>
-<a class="sourceLine" id="cb333-2" data-line-number="2"><span class="co">## # A tibble: 13,901 x 2</span></a>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" data-line-number="1"><span class="kw">get_sentiments</span>(<span class="st">&quot;afinn&quot;</span>)</a>
+<a class="sourceLine" id="cb332-2" data-line-number="2"><span class="co">## # A tibble: 2,476 x 2</span></a>
+<a class="sourceLine" id="cb332-3" data-line-number="3"><span class="co">##    word       score</span></a>
+<a class="sourceLine" id="cb332-4" data-line-number="4"><span class="co">##    &lt;chr&gt;      &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb332-5" data-line-number="5"><span class="co">##  1 abandon       -2</span></a>
+<a class="sourceLine" id="cb332-6" data-line-number="6"><span class="co">##  2 abandoned     -2</span></a>
+<a class="sourceLine" id="cb332-7" data-line-number="7"><span class="co">##  3 abandons      -2</span></a>
+<a class="sourceLine" id="cb332-8" data-line-number="8"><span class="co">##  4 abducted      -2</span></a>
+<a class="sourceLine" id="cb332-9" data-line-number="9"><span class="co">##  5 abduction     -2</span></a>
+<a class="sourceLine" id="cb332-10" data-line-number="10"><span class="co">##  6 abductions    -2</span></a>
+<a class="sourceLine" id="cb332-11" data-line-number="11"><span class="co">##  7 abhor         -3</span></a>
+<a class="sourceLine" id="cb332-12" data-line-number="12"><span class="co">##  8 abhorred      -3</span></a>
+<a class="sourceLine" id="cb332-13" data-line-number="13"><span class="co">##  9 abhorrent     -3</span></a>
+<a class="sourceLine" id="cb332-14" data-line-number="14"><span class="co">## 10 abhors        -3</span></a>
+<a class="sourceLine" id="cb332-15" data-line-number="15"><span class="co">## # ... with 2,466 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" data-line-number="1"><span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>)</a>
+<a class="sourceLine" id="cb333-2" data-line-number="2"><span class="co">## # A tibble: 6,788 x 2</span></a>
 <a class="sourceLine" id="cb333-3" data-line-number="3"><span class="co">##    word        sentiment</span></a>
 <a class="sourceLine" id="cb333-4" data-line-number="4"><span class="co">##    &lt;chr&gt;       &lt;chr&gt;    </span></a>
-<a class="sourceLine" id="cb333-5" data-line-number="5"><span class="co">##  1 abacus      trust    </span></a>
-<a class="sourceLine" id="cb333-6" data-line-number="6"><span class="co">##  2 abandon     fear     </span></a>
-<a class="sourceLine" id="cb333-7" data-line-number="7"><span class="co">##  3 abandon     negative </span></a>
-<a class="sourceLine" id="cb333-8" data-line-number="8"><span class="co">##  4 abandon     sadness  </span></a>
-<a class="sourceLine" id="cb333-9" data-line-number="9"><span class="co">##  5 abandoned   anger    </span></a>
-<a class="sourceLine" id="cb333-10" data-line-number="10"><span class="co">##  6 abandoned   fear     </span></a>
-<a class="sourceLine" id="cb333-11" data-line-number="11"><span class="co">##  7 abandoned   negative </span></a>
-<a class="sourceLine" id="cb333-12" data-line-number="12"><span class="co">##  8 abandoned   sadness  </span></a>
-<a class="sourceLine" id="cb333-13" data-line-number="13"><span class="co">##  9 abandonment anger    </span></a>
-<a class="sourceLine" id="cb333-14" data-line-number="14"><span class="co">## 10 abandonment fear     </span></a>
-<a class="sourceLine" id="cb333-15" data-line-number="15"><span class="co">## # ... with 13,891 more rows</span></a></code></pre></div>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb334-1" data-line-number="1"><span class="kw">library</span>(janeaustenr)</a>
-<a class="sourceLine" id="cb334-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb334-3" data-line-number="3"><span class="kw">library</span>(stringr)</a>
-<a class="sourceLine" id="cb334-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb334-5" data-line-number="5">tidy_books &lt;-<span class="st"> </span><span class="kw">austen_books</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb334-6" data-line-number="6"><span class="st">  </span><span class="kw">group_by</span>(book) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb334-7" data-line-number="7"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">linenumber =</span> <span class="kw">row_number</span>(),</a>
-<a class="sourceLine" id="cb334-8" data-line-number="8">         <span class="dt">chapter =</span> <span class="kw">cumsum</span>(<span class="kw">str_detect</span>(text, <span class="kw">regex</span>(<span class="st">&quot;^chapter [</span><span class="ch">\\</span><span class="st">divxlc]&quot;</span>, </a>
-<a class="sourceLine" id="cb334-9" data-line-number="9">                                                 <span class="dt">ignore_case =</span> <span class="ot">TRUE</span>)))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb334-10" data-line-number="10"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb334-11" data-line-number="11"><span class="st">  </span><span class="kw">unnest_tokens</span>(word, text)</a></code></pre></div>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" data-line-number="1">nrc_joy &lt;-<span class="st"> </span><span class="kw">get_sentiments</span>(<span class="st">&quot;nrc&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb335-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(sentiment <span class="op">==</span><span class="st"> &quot;joy&quot;</span>)</a>
-<a class="sourceLine" id="cb335-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb335-4" data-line-number="4">tidy_books <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb335-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(book <span class="op">==</span><span class="st"> &quot;Emma&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb335-6" data-line-number="6"><span class="st">  </span><span class="kw">inner_join</span>(nrc_joy) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb335-7" data-line-number="7"><span class="st">  </span><span class="kw">count</span>(word, <span class="dt">sort =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb335-8" data-line-number="8"><span class="co">## Joining, by = &quot;word&quot;</span></a>
-<a class="sourceLine" id="cb335-9" data-line-number="9"><span class="co">## # A tibble: 303 x 2</span></a>
-<a class="sourceLine" id="cb335-10" data-line-number="10"><span class="co">##    word        n</span></a>
-<a class="sourceLine" id="cb335-11" data-line-number="11"><span class="co">##    &lt;chr&gt;   &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb335-12" data-line-number="12"><span class="co">##  1 good      359</span></a>
-<a class="sourceLine" id="cb335-13" data-line-number="13"><span class="co">##  2 young     192</span></a>
-<a class="sourceLine" id="cb335-14" data-line-number="14"><span class="co">##  3 friend    166</span></a>
-<a class="sourceLine" id="cb335-15" data-line-number="15"><span class="co">##  4 hope      143</span></a>
-<a class="sourceLine" id="cb335-16" data-line-number="16"><span class="co">##  5 happy     125</span></a>
-<a class="sourceLine" id="cb335-17" data-line-number="17"><span class="co">##  6 love      117</span></a>
-<a class="sourceLine" id="cb335-18" data-line-number="18"><span class="co">##  7 deal       92</span></a>
-<a class="sourceLine" id="cb335-19" data-line-number="19"><span class="co">##  8 found      92</span></a>
-<a class="sourceLine" id="cb335-20" data-line-number="20"><span class="co">##  9 present    89</span></a>
-<a class="sourceLine" id="cb335-21" data-line-number="21"><span class="co">## 10 kind       82</span></a>
-<a class="sourceLine" id="cb335-22" data-line-number="22"><span class="co">## # ... with 293 more rows</span></a></code></pre></div>
+<a class="sourceLine" id="cb333-5" data-line-number="5"><span class="co">##  1 2-faced     negative </span></a>
+<a class="sourceLine" id="cb333-6" data-line-number="6"><span class="co">##  2 2-faces     negative </span></a>
+<a class="sourceLine" id="cb333-7" data-line-number="7"><span class="co">##  3 a+          positive </span></a>
+<a class="sourceLine" id="cb333-8" data-line-number="8"><span class="co">##  4 abnormal    negative </span></a>
+<a class="sourceLine" id="cb333-9" data-line-number="9"><span class="co">##  5 abolish     negative </span></a>
+<a class="sourceLine" id="cb333-10" data-line-number="10"><span class="co">##  6 abominable  negative </span></a>
+<a class="sourceLine" id="cb333-11" data-line-number="11"><span class="co">##  7 abominably  negative </span></a>
+<a class="sourceLine" id="cb333-12" data-line-number="12"><span class="co">##  8 abominate   negative </span></a>
+<a class="sourceLine" id="cb333-13" data-line-number="13"><span class="co">##  9 abomination negative </span></a>
+<a class="sourceLine" id="cb333-14" data-line-number="14"><span class="co">## 10 abort       negative </span></a>
+<a class="sourceLine" id="cb333-15" data-line-number="15"><span class="co">## # ... with 6,778 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb334-1" data-line-number="1"><span class="kw">get_sentiments</span>(<span class="st">&quot;nrc&quot;</span>)</a>
+<a class="sourceLine" id="cb334-2" data-line-number="2"><span class="co">## # A tibble: 13,901 x 2</span></a>
+<a class="sourceLine" id="cb334-3" data-line-number="3"><span class="co">##    word        sentiment</span></a>
+<a class="sourceLine" id="cb334-4" data-line-number="4"><span class="co">##    &lt;chr&gt;       &lt;chr&gt;    </span></a>
+<a class="sourceLine" id="cb334-5" data-line-number="5"><span class="co">##  1 abacus      trust    </span></a>
+<a class="sourceLine" id="cb334-6" data-line-number="6"><span class="co">##  2 abandon     fear     </span></a>
+<a class="sourceLine" id="cb334-7" data-line-number="7"><span class="co">##  3 abandon     negative </span></a>
+<a class="sourceLine" id="cb334-8" data-line-number="8"><span class="co">##  4 abandon     sadness  </span></a>
+<a class="sourceLine" id="cb334-9" data-line-number="9"><span class="co">##  5 abandoned   anger    </span></a>
+<a class="sourceLine" id="cb334-10" data-line-number="10"><span class="co">##  6 abandoned   fear     </span></a>
+<a class="sourceLine" id="cb334-11" data-line-number="11"><span class="co">##  7 abandoned   negative </span></a>
+<a class="sourceLine" id="cb334-12" data-line-number="12"><span class="co">##  8 abandoned   sadness  </span></a>
+<a class="sourceLine" id="cb334-13" data-line-number="13"><span class="co">##  9 abandonment anger    </span></a>
+<a class="sourceLine" id="cb334-14" data-line-number="14"><span class="co">## 10 abandonment fear     </span></a>
+<a class="sourceLine" id="cb334-15" data-line-number="15"><span class="co">## # ... with 13,891 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" data-line-number="1"><span class="kw">library</span>(janeaustenr)</a>
+<a class="sourceLine" id="cb335-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb335-3" data-line-number="3"><span class="kw">library</span>(stringr)</a>
+<a class="sourceLine" id="cb335-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb335-5" data-line-number="5">tidy_books &lt;-<span class="st"> </span><span class="kw">austen_books</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb335-6" data-line-number="6"><span class="st">  </span><span class="kw">group_by</span>(book) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb335-7" data-line-number="7"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">linenumber =</span> <span class="kw">row_number</span>(),</a>
+<a class="sourceLine" id="cb335-8" data-line-number="8">         <span class="dt">chapter =</span> <span class="kw">cumsum</span>(<span class="kw">str_detect</span>(text, <span class="kw">regex</span>(<span class="st">&quot;^chapter [</span><span class="ch">\\</span><span class="st">divxlc]&quot;</span>, </a>
+<a class="sourceLine" id="cb335-9" data-line-number="9">                                                 <span class="dt">ignore_case =</span> <span class="ot">TRUE</span>)))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb335-10" data-line-number="10"><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb335-11" data-line-number="11"><span class="st">  </span><span class="kw">unnest_tokens</span>(word, text)</a></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" data-line-number="1">nrc_joy &lt;-<span class="st"> </span><span class="kw">get_sentiments</span>(<span class="st">&quot;nrc&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb336-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(sentiment <span class="op">==</span><span class="st"> &quot;joy&quot;</span>)</a>
+<a class="sourceLine" id="cb336-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb336-4" data-line-number="4">tidy_books <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb336-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(book <span class="op">==</span><span class="st"> &quot;Emma&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb336-6" data-line-number="6"><span class="st">  </span><span class="kw">inner_join</span>(nrc_joy) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb336-7" data-line-number="7"><span class="st">  </span><span class="kw">count</span>(word, <span class="dt">sort =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb336-8" data-line-number="8"><span class="co">## Joining, by = &quot;word&quot;</span></a>
+<a class="sourceLine" id="cb336-9" data-line-number="9"><span class="co">## # A tibble: 303 x 2</span></a>
+<a class="sourceLine" id="cb336-10" data-line-number="10"><span class="co">##    word        n</span></a>
+<a class="sourceLine" id="cb336-11" data-line-number="11"><span class="co">##    &lt;chr&gt;   &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb336-12" data-line-number="12"><span class="co">##  1 good      359</span></a>
+<a class="sourceLine" id="cb336-13" data-line-number="13"><span class="co">##  2 young     192</span></a>
+<a class="sourceLine" id="cb336-14" data-line-number="14"><span class="co">##  3 friend    166</span></a>
+<a class="sourceLine" id="cb336-15" data-line-number="15"><span class="co">##  4 hope      143</span></a>
+<a class="sourceLine" id="cb336-16" data-line-number="16"><span class="co">##  5 happy     125</span></a>
+<a class="sourceLine" id="cb336-17" data-line-number="17"><span class="co">##  6 love      117</span></a>
+<a class="sourceLine" id="cb336-18" data-line-number="18"><span class="co">##  7 deal       92</span></a>
+<a class="sourceLine" id="cb336-19" data-line-number="19"><span class="co">##  8 found      92</span></a>
+<a class="sourceLine" id="cb336-20" data-line-number="20"><span class="co">##  9 present    89</span></a>
+<a class="sourceLine" id="cb336-21" data-line-number="21"><span class="co">## 10 kind       82</span></a>
+<a class="sourceLine" id="cb336-22" data-line-number="22"><span class="co">## # ... with 293 more rows</span></a></code></pre></div>
 </div>
             </section>
 

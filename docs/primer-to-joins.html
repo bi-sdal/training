@@ -440,49 +440,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="primer-to-joins" class="section level2">
 <h2><span class="header-section-number">7.3</span> Primer to joins</h2>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb101-2" data-line-number="2"><span class="co">## </span></a>
-<a class="sourceLine" id="cb101-3" data-line-number="3"><span class="co">## Attaching package: &#39;dplyr&#39;</span></a>
-<a class="sourceLine" id="cb101-4" data-line-number="4"><span class="co">## The following objects are masked from &#39;package:stats&#39;:</span></a>
-<a class="sourceLine" id="cb101-5" data-line-number="5"><span class="co">## </span></a>
-<a class="sourceLine" id="cb101-6" data-line-number="6"><span class="co">##     filter, lag</span></a>
-<a class="sourceLine" id="cb101-7" data-line-number="7"><span class="co">## The following objects are masked from &#39;package:base&#39;:</span></a>
-<a class="sourceLine" id="cb101-8" data-line-number="8"><span class="co">## </span></a>
-<a class="sourceLine" id="cb101-9" data-line-number="9"><span class="co">##     intersect, setdiff, setequal, union</span></a>
-<a class="sourceLine" id="cb101-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb101-11" data-line-number="11"><span class="co"># use double colon to specify which library you are getting a function from</span></a>
-<a class="sourceLine" id="cb101-12" data-line-number="12"><span class="co"># base::union()</span></a></code></pre></div>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">table4a_tidy</a>
-<a class="sourceLine" id="cb102-2" data-line-number="2"><span class="co">## # A tibble: 6 x 3</span></a>
-<a class="sourceLine" id="cb102-3" data-line-number="3"><span class="co">##   country     year   cases</span></a>
-<a class="sourceLine" id="cb102-4" data-line-number="4"><span class="co">##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb102-5" data-line-number="5"><span class="co">## 1 Afghanistan 2000    2666</span></a>
-<a class="sourceLine" id="cb102-6" data-line-number="6"><span class="co">## 2 Brazil      2000   80488</span></a>
-<a class="sourceLine" id="cb102-7" data-line-number="7"><span class="co">## 3 China       2000  213766</span></a>
-<a class="sourceLine" id="cb102-8" data-line-number="8"><span class="co">## 4 Afghanistan 1999     745</span></a>
-<a class="sourceLine" id="cb102-9" data-line-number="9"><span class="co">## 5 Brazil      1999   37737</span></a>
-<a class="sourceLine" id="cb102-10" data-line-number="10"><span class="co">## 6 China       1999  212258</span></a></code></pre></div>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1">table4b_tidy</a>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb102-2" data-line-number="2"><span class="co">## </span></a>
+<a class="sourceLine" id="cb102-3" data-line-number="3"><span class="co">## Attaching package: &#39;dplyr&#39;</span></a>
+<a class="sourceLine" id="cb102-4" data-line-number="4"><span class="co">## The following objects are masked from &#39;package:stats&#39;:</span></a>
+<a class="sourceLine" id="cb102-5" data-line-number="5"><span class="co">## </span></a>
+<a class="sourceLine" id="cb102-6" data-line-number="6"><span class="co">##     filter, lag</span></a>
+<a class="sourceLine" id="cb102-7" data-line-number="7"><span class="co">## The following objects are masked from &#39;package:base&#39;:</span></a>
+<a class="sourceLine" id="cb102-8" data-line-number="8"><span class="co">## </span></a>
+<a class="sourceLine" id="cb102-9" data-line-number="9"><span class="co">##     intersect, setdiff, setequal, union</span></a>
+<a class="sourceLine" id="cb102-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb102-11" data-line-number="11"><span class="co"># use double colon to specify which library you are getting a function from</span></a>
+<a class="sourceLine" id="cb102-12" data-line-number="12"><span class="co"># base::union()</span></a></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1">table4a_tidy</a>
 <a class="sourceLine" id="cb103-2" data-line-number="2"><span class="co">## # A tibble: 6 x 3</span></a>
-<a class="sourceLine" id="cb103-3" data-line-number="3"><span class="co">##   country     year  population</span></a>
-<a class="sourceLine" id="cb103-4" data-line-number="4"><span class="co">##   &lt;chr&gt;       &lt;chr&gt;      &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb103-5" data-line-number="5"><span class="co">## 1 Afghanistan 1999    19987071</span></a>
-<a class="sourceLine" id="cb103-6" data-line-number="6"><span class="co">## 2 Brazil      1999   172006362</span></a>
-<a class="sourceLine" id="cb103-7" data-line-number="7"><span class="co">## 3 China       1999  1272915272</span></a>
-<a class="sourceLine" id="cb103-8" data-line-number="8"><span class="co">## 4 Afghanistan 2000    20595360</span></a>
-<a class="sourceLine" id="cb103-9" data-line-number="9"><span class="co">## 5 Brazil      2000   174504898</span></a>
-<a class="sourceLine" id="cb103-10" data-line-number="10"><span class="co">## 6 China       2000  1280428583</span></a></code></pre></div>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1"><span class="kw">left_join</span>(<span class="dt">x =</span> table4a_tidy, <span class="dt">y =</span> table4b_tidy)</a>
-<a class="sourceLine" id="cb104-2" data-line-number="2"><span class="co">## Joining, by = c(&quot;country&quot;, &quot;year&quot;)</span></a>
-<a class="sourceLine" id="cb104-3" data-line-number="3"><span class="co">## # A tibble: 6 x 4</span></a>
-<a class="sourceLine" id="cb104-4" data-line-number="4"><span class="co">##   country     year   cases population</span></a>
-<a class="sourceLine" id="cb104-5" data-line-number="5"><span class="co">##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;      &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb104-6" data-line-number="6"><span class="co">## 1 Afghanistan 2000    2666   20595360</span></a>
-<a class="sourceLine" id="cb104-7" data-line-number="7"><span class="co">## 2 Brazil      2000   80488  174504898</span></a>
-<a class="sourceLine" id="cb104-8" data-line-number="8"><span class="co">## 3 China       2000  213766 1280428583</span></a>
-<a class="sourceLine" id="cb104-9" data-line-number="9"><span class="co">## 4 Afghanistan 1999     745   19987071</span></a>
-<a class="sourceLine" id="cb104-10" data-line-number="10"><span class="co">## 5 Brazil      1999   37737  172006362</span></a>
-<a class="sourceLine" id="cb104-11" data-line-number="11"><span class="co">## 6 China       1999  212258 1272915272</span></a></code></pre></div>
+<a class="sourceLine" id="cb103-3" data-line-number="3"><span class="co">##   country     year   cases</span></a>
+<a class="sourceLine" id="cb103-4" data-line-number="4"><span class="co">##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb103-5" data-line-number="5"><span class="co">## 1 Afghanistan 2000    2666</span></a>
+<a class="sourceLine" id="cb103-6" data-line-number="6"><span class="co">## 2 Brazil      2000   80488</span></a>
+<a class="sourceLine" id="cb103-7" data-line-number="7"><span class="co">## 3 China       2000  213766</span></a>
+<a class="sourceLine" id="cb103-8" data-line-number="8"><span class="co">## 4 Afghanistan 1999     745</span></a>
+<a class="sourceLine" id="cb103-9" data-line-number="9"><span class="co">## 5 Brazil      1999   37737</span></a>
+<a class="sourceLine" id="cb103-10" data-line-number="10"><span class="co">## 6 China       1999  212258</span></a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">table4b_tidy</a>
+<a class="sourceLine" id="cb104-2" data-line-number="2"><span class="co">## # A tibble: 6 x 3</span></a>
+<a class="sourceLine" id="cb104-3" data-line-number="3"><span class="co">##   country     year  population</span></a>
+<a class="sourceLine" id="cb104-4" data-line-number="4"><span class="co">##   &lt;chr&gt;       &lt;chr&gt;      &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb104-5" data-line-number="5"><span class="co">## 1 Afghanistan 1999    19987071</span></a>
+<a class="sourceLine" id="cb104-6" data-line-number="6"><span class="co">## 2 Brazil      1999   172006362</span></a>
+<a class="sourceLine" id="cb104-7" data-line-number="7"><span class="co">## 3 China       1999  1272915272</span></a>
+<a class="sourceLine" id="cb104-8" data-line-number="8"><span class="co">## 4 Afghanistan 2000    20595360</span></a>
+<a class="sourceLine" id="cb104-9" data-line-number="9"><span class="co">## 5 Brazil      2000   174504898</span></a>
+<a class="sourceLine" id="cb104-10" data-line-number="10"><span class="co">## 6 China       2000  1280428583</span></a></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1"><span class="kw">left_join</span>(<span class="dt">x =</span> table4a_tidy, <span class="dt">y =</span> table4b_tidy)</a>
+<a class="sourceLine" id="cb105-2" data-line-number="2"><span class="co">## Joining, by = c(&quot;country&quot;, &quot;year&quot;)</span></a>
+<a class="sourceLine" id="cb105-3" data-line-number="3"><span class="co">## # A tibble: 6 x 4</span></a>
+<a class="sourceLine" id="cb105-4" data-line-number="4"><span class="co">##   country     year   cases population</span></a>
+<a class="sourceLine" id="cb105-5" data-line-number="5"><span class="co">##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;      &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb105-6" data-line-number="6"><span class="co">## 1 Afghanistan 2000    2666   20595360</span></a>
+<a class="sourceLine" id="cb105-7" data-line-number="7"><span class="co">## 2 Brazil      2000   80488  174504898</span></a>
+<a class="sourceLine" id="cb105-8" data-line-number="8"><span class="co">## 3 China       2000  213766 1280428583</span></a>
+<a class="sourceLine" id="cb105-9" data-line-number="9"><span class="co">## 4 Afghanistan 1999     745   19987071</span></a>
+<a class="sourceLine" id="cb105-10" data-line-number="10"><span class="co">## 5 Brazil      1999   37737  172006362</span></a>
+<a class="sourceLine" id="cb105-11" data-line-number="11"><span class="co">## 6 China       1999  212258 1272915272</span></a></code></pre></div>
 </div>
             </section>
 

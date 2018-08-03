@@ -440,28 +440,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="lubridate" class="section level2">
 <h2><span class="header-section-number">11.1</span> lubridate</h2>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1"><span class="kw">library</span>(lubridate)</a>
-<a class="sourceLine" id="cb167-2" data-line-number="2"><span class="co">## </span></a>
-<a class="sourceLine" id="cb167-3" data-line-number="3"><span class="co">## Attaching package: &#39;lubridate&#39;</span></a>
-<a class="sourceLine" id="cb167-4" data-line-number="4"><span class="co">## The following object is masked from &#39;package:base&#39;:</span></a>
-<a class="sourceLine" id="cb167-5" data-line-number="5"><span class="co">## </span></a>
-<a class="sourceLine" id="cb167-6" data-line-number="6"><span class="co">##     date</span></a></code></pre></div>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1"><span class="kw">ymd</span>(<span class="st">&#39;2018-06-06&#39;</span>)</a>
-<a class="sourceLine" id="cb168-2" data-line-number="2"><span class="co">## [1] &quot;2018-06-06&quot;</span></a></code></pre></div>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1">dt_str &lt;-<span class="st"> &#39;2018-06-06&#39;</span></a>
-<a class="sourceLine" id="cb169-2" data-line-number="2"><span class="kw">class</span>(dt_str)</a>
-<a class="sourceLine" id="cb169-3" data-line-number="3"><span class="co">## [1] &quot;character&quot;</span></a></code></pre></div>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" data-line-number="1">dt_dt &lt;-<span class="st"> </span><span class="kw">ymd</span>(dt_str)</a>
-<a class="sourceLine" id="cb170-2" data-line-number="2"><span class="kw">class</span>(dt_dt)</a>
-<a class="sourceLine" id="cb170-3" data-line-number="3"><span class="co">## [1] &quot;Date&quot;</span></a></code></pre></div>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1"><span class="kw">mdy</span>(<span class="st">&#39;June 6, 2018&#39;</span>)</a>
-<a class="sourceLine" id="cb171-2" data-line-number="2"><span class="co">## [1] &quot;2018-06-06&quot;</span></a></code></pre></div>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1"><span class="kw">dmy</span>(<span class="st">&#39;06-06-2018&#39;</span>)</a>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1"><span class="kw">library</span>(lubridate)</a>
+<a class="sourceLine" id="cb168-2" data-line-number="2"><span class="co">## </span></a>
+<a class="sourceLine" id="cb168-3" data-line-number="3"><span class="co">## Attaching package: &#39;lubridate&#39;</span></a>
+<a class="sourceLine" id="cb168-4" data-line-number="4"><span class="co">## The following object is masked from &#39;package:base&#39;:</span></a>
+<a class="sourceLine" id="cb168-5" data-line-number="5"><span class="co">## </span></a>
+<a class="sourceLine" id="cb168-6" data-line-number="6"><span class="co">##     date</span></a></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1"><span class="kw">ymd</span>(<span class="st">&#39;2018-06-06&#39;</span>)</a>
+<a class="sourceLine" id="cb169-2" data-line-number="2"><span class="co">## [1] &quot;2018-06-06&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" data-line-number="1">dt_str &lt;-<span class="st"> &#39;2018-06-06&#39;</span></a>
+<a class="sourceLine" id="cb170-2" data-line-number="2"><span class="kw">class</span>(dt_str)</a>
+<a class="sourceLine" id="cb170-3" data-line-number="3"><span class="co">## [1] &quot;character&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1">dt_dt &lt;-<span class="st"> </span><span class="kw">ymd</span>(dt_str)</a>
+<a class="sourceLine" id="cb171-2" data-line-number="2"><span class="kw">class</span>(dt_dt)</a>
+<a class="sourceLine" id="cb171-3" data-line-number="3"><span class="co">## [1] &quot;Date&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1"><span class="kw">mdy</span>(<span class="st">&#39;June 6, 2018&#39;</span>)</a>
 <a class="sourceLine" id="cb172-2" data-line-number="2"><span class="co">## [1] &quot;2018-06-06&quot;</span></a></code></pre></div>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" data-line-number="1"><span class="kw">ymd</span>(<span class="dv">20190606</span>)</a>
-<a class="sourceLine" id="cb173-2" data-line-number="2"><span class="co">## [1] &quot;2019-06-06&quot;</span></a></code></pre></div>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1"><span class="kw">ymd_hms</span>(<span class="st">&#39;2018-06-06 10:33:55&#39;</span>, <span class="dt">tz =</span> <span class="st">&#39;EDT&#39;</span>)</a>
-<a class="sourceLine" id="cb174-2" data-line-number="2"><span class="co">## [1] &quot;2018-06-06 14:33:55 EDT&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" data-line-number="1"><span class="kw">dmy</span>(<span class="st">&#39;06-06-2018&#39;</span>)</a>
+<a class="sourceLine" id="cb173-2" data-line-number="2"><span class="co">## [1] &quot;2018-06-06&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1"><span class="kw">ymd</span>(<span class="dv">20190606</span>)</a>
+<a class="sourceLine" id="cb174-2" data-line-number="2"><span class="co">## [1] &quot;2019-06-06&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" data-line-number="1"><span class="kw">ymd_hms</span>(<span class="st">&#39;2018-06-06 10:33:55&#39;</span>, <span class="dt">tz =</span> <span class="st">&#39;EDT&#39;</span>)</a>
+<a class="sourceLine" id="cb175-2" data-line-number="2"><span class="co">## [1] &quot;2018-06-06 14:33:55 EDT&quot;</span></a></code></pre></div>
 </div>
             </section>
 

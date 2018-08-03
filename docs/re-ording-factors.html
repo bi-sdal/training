@@ -440,41 +440,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="re-ording-factors" class="section level2">
 <h2><span class="header-section-number">10.4</span> Re-ording factors</h2>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb159-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb159-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb159-4" data-line-number="4">relig_summary &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb159-5" data-line-number="5"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">group_by</span>(relig) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb159-6" data-line-number="6"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">summarize</span>(</a>
-<a class="sourceLine" id="cb159-7" data-line-number="7">        <span class="dt">tvhours =</span> <span class="kw">mean</span>(tvhours, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb159-8" data-line-number="8">        <span class="dt">age =</span> <span class="kw">mean</span>(age, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb159-9" data-line-number="9">        <span class="dt">n =</span> <span class="kw">n</span>()</a>
-<a class="sourceLine" id="cb159-10" data-line-number="10">    )</a>
-<a class="sourceLine" id="cb159-11" data-line-number="11">relig_summary</a>
-<a class="sourceLine" id="cb159-12" data-line-number="12"><span class="co">## # A tibble: 15 x 4</span></a>
-<a class="sourceLine" id="cb159-13" data-line-number="13"><span class="co">##    relig                   tvhours   age     n</span></a>
-<a class="sourceLine" id="cb159-14" data-line-number="14"><span class="co">##    &lt;fct&gt;                     &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb159-15" data-line-number="15"><span class="co">##  1 No answer                  2.72  49.5    93</span></a>
-<a class="sourceLine" id="cb159-16" data-line-number="16"><span class="co">##  2 Don&#39;t know                 4.62  35.9    15</span></a>
-<a class="sourceLine" id="cb159-17" data-line-number="17"><span class="co">##  3 Inter-nondenominational    2.87  40.0   109</span></a>
-<a class="sourceLine" id="cb159-18" data-line-number="18"><span class="co">##  4 Native american            3.46  38.9    23</span></a>
-<a class="sourceLine" id="cb159-19" data-line-number="19"><span class="co">##  5 Christian                  2.79  40.1   689</span></a>
-<a class="sourceLine" id="cb159-20" data-line-number="20"><span class="co">##  6 Orthodox-christian         2.42  50.4    95</span></a>
-<a class="sourceLine" id="cb159-21" data-line-number="21"><span class="co">##  7 Moslem/islam               2.44  37.6   104</span></a>
-<a class="sourceLine" id="cb159-22" data-line-number="22"><span class="co">##  8 Other eastern              1.67  45.9    32</span></a>
-<a class="sourceLine" id="cb159-23" data-line-number="23"><span class="co">##  9 Hinduism                   1.89  37.7    71</span></a>
-<a class="sourceLine" id="cb159-24" data-line-number="24"><span class="co">## 10 Buddhism                   2.38  44.7   147</span></a>
-<a class="sourceLine" id="cb159-25" data-line-number="25"><span class="co">## 11 Other                      2.73  41.0   224</span></a>
-<a class="sourceLine" id="cb159-26" data-line-number="26"><span class="co">## 12 None                       2.71  41.2  3523</span></a>
-<a class="sourceLine" id="cb159-27" data-line-number="27"><span class="co">## 13 Jewish                     2.52  52.4   388</span></a>
-<a class="sourceLine" id="cb159-28" data-line-number="28"><span class="co">## 14 Catholic                   2.96  46.9  5124</span></a>
-<a class="sourceLine" id="cb159-29" data-line-number="29"><span class="co">## 15 Protestant                 3.15  49.9 10846</span></a></code></pre></div>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1"><span class="kw">ggplot</span>(relig_summary, <span class="kw">aes</span>(<span class="dt">x =</span> tvhours, <span class="dt">y =</span> relig)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb160-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb160-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb160-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb160-4" data-line-number="4">relig_summary &lt;-<span class="st"> </span>gss_cat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb160-5" data-line-number="5"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">group_by</span>(relig) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb160-6" data-line-number="6"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">summarize</span>(</a>
+<a class="sourceLine" id="cb160-7" data-line-number="7">        <span class="dt">tvhours =</span> <span class="kw">mean</span>(tvhours, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb160-8" data-line-number="8">        <span class="dt">age =</span> <span class="kw">mean</span>(age, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb160-9" data-line-number="9">        <span class="dt">n =</span> <span class="kw">n</span>()</a>
+<a class="sourceLine" id="cb160-10" data-line-number="10">    )</a>
+<a class="sourceLine" id="cb160-11" data-line-number="11">relig_summary</a>
+<a class="sourceLine" id="cb160-12" data-line-number="12"><span class="co">## # A tibble: 15 x 4</span></a>
+<a class="sourceLine" id="cb160-13" data-line-number="13"><span class="co">##    relig                   tvhours   age     n</span></a>
+<a class="sourceLine" id="cb160-14" data-line-number="14"><span class="co">##    &lt;fct&gt;                     &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb160-15" data-line-number="15"><span class="co">##  1 No answer                  2.72  49.5    93</span></a>
+<a class="sourceLine" id="cb160-16" data-line-number="16"><span class="co">##  2 Don&#39;t know                 4.62  35.9    15</span></a>
+<a class="sourceLine" id="cb160-17" data-line-number="17"><span class="co">##  3 Inter-nondenominational    2.87  40.0   109</span></a>
+<a class="sourceLine" id="cb160-18" data-line-number="18"><span class="co">##  4 Native american            3.46  38.9    23</span></a>
+<a class="sourceLine" id="cb160-19" data-line-number="19"><span class="co">##  5 Christian                  2.79  40.1   689</span></a>
+<a class="sourceLine" id="cb160-20" data-line-number="20"><span class="co">##  6 Orthodox-christian         2.42  50.4    95</span></a>
+<a class="sourceLine" id="cb160-21" data-line-number="21"><span class="co">##  7 Moslem/islam               2.44  37.6   104</span></a>
+<a class="sourceLine" id="cb160-22" data-line-number="22"><span class="co">##  8 Other eastern              1.67  45.9    32</span></a>
+<a class="sourceLine" id="cb160-23" data-line-number="23"><span class="co">##  9 Hinduism                   1.89  37.7    71</span></a>
+<a class="sourceLine" id="cb160-24" data-line-number="24"><span class="co">## 10 Buddhism                   2.38  44.7   147</span></a>
+<a class="sourceLine" id="cb160-25" data-line-number="25"><span class="co">## 11 Other                      2.73  41.0   224</span></a>
+<a class="sourceLine" id="cb160-26" data-line-number="26"><span class="co">## 12 None                       2.71  41.2  3523</span></a>
+<a class="sourceLine" id="cb160-27" data-line-number="27"><span class="co">## 13 Jewish                     2.52  52.4   388</span></a>
+<a class="sourceLine" id="cb160-28" data-line-number="28"><span class="co">## 14 Catholic                   2.96  46.9  5124</span></a>
+<a class="sourceLine" id="cb160-29" data-line-number="29"><span class="co">## 15 Protestant                 3.15  49.9 10846</span></a></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1"><span class="kw">ggplot</span>(relig_summary, <span class="kw">aes</span>(<span class="dt">x =</span> tvhours, <span class="dt">y =</span> relig)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb161-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="070-factors_files/figure-html/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1"><span class="kw">ggplot</span>(relig_summary, <span class="kw">aes</span>(<span class="dt">x =</span> tvhours,</a>
-<a class="sourceLine" id="cb161-2" data-line-number="2">                          <span class="dt">y =</span> <span class="kw">fct_reorder</span>(relig, tvhours))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb161-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1"><span class="kw">ggplot</span>(relig_summary, <span class="kw">aes</span>(<span class="dt">x =</span> tvhours,</a>
+<a class="sourceLine" id="cb162-2" data-line-number="2">                          <span class="dt">y =</span> <span class="kw">fct_reorder</span>(relig, tvhours))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb162-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="070-factors_files/figure-html/unnamed-chunk-13-1.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
             </section>

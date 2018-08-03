@@ -441,22 +441,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="stemming" class="section level2">
 <h2><span class="header-section-number">23.9</span> Stemming</h2>
 <p><a href="https://cran.r-project.org/web/packages/corpus/vignettes/stemmer.html" class="uri">https://cran.r-project.org/web/packages/corpus/vignettes/stemmer.html</a></p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" data-line-number="1"><span class="kw">library</span>(corpus)</a></code></pre></div>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb349-1" data-line-number="1">text &lt;-<span class="st"> &quot;love loving lovingly loved lover lovely love&quot;</span></a>
-<a class="sourceLine" id="cb349-2" data-line-number="2"><span class="kw">text_tokens</span>(text, <span class="dt">stemmer =</span> <span class="st">&quot;en&quot;</span>) <span class="co"># english stemmer</span></a>
-<a class="sourceLine" id="cb349-3" data-line-number="3"><span class="co">## [[1]]</span></a>
-<a class="sourceLine" id="cb349-4" data-line-number="4"><span class="co">## [1] &quot;love&quot;  &quot;love&quot;  &quot;love&quot;  &quot;love&quot;  &quot;lover&quot; &quot;love&quot;  &quot;love&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb349-1" data-line-number="1"><span class="kw">library</span>(corpus)</a></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" data-line-number="1">text &lt;-<span class="st"> &quot;love loving lovingly loved lover lovely love&quot;</span></a>
+<a class="sourceLine" id="cb350-2" data-line-number="2"><span class="kw">text_tokens</span>(text, <span class="dt">stemmer =</span> <span class="st">&quot;en&quot;</span>) <span class="co"># english stemmer</span></a>
+<a class="sourceLine" id="cb350-3" data-line-number="3"><span class="co">## [[1]]</span></a>
+<a class="sourceLine" id="cb350-4" data-line-number="4"><span class="co">## [1] &quot;love&quot;  &quot;love&quot;  &quot;love&quot;  &quot;love&quot;  &quot;lover&quot; &quot;love&quot;  &quot;love&quot;</span></a></code></pre></div>
 <p>Using <code>tm</code></p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" data-line-number="1"><span class="kw">library</span>(tm)</a>
-<a class="sourceLine" id="cb350-2" data-line-number="2"><span class="co">## Loading required package: NLP</span></a>
-<a class="sourceLine" id="cb350-3" data-line-number="3"><span class="co">## </span></a>
-<a class="sourceLine" id="cb350-4" data-line-number="4"><span class="co">## Attaching package: &#39;NLP&#39;</span></a>
-<a class="sourceLine" id="cb350-5" data-line-number="5"><span class="co">## The following object is masked from &#39;package:ggplot2&#39;:</span></a>
-<a class="sourceLine" id="cb350-6" data-line-number="6"><span class="co">## </span></a>
-<a class="sourceLine" id="cb350-7" data-line-number="7"><span class="co">##     annotate</span></a></code></pre></div>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" data-line-number="1">complicate &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;complicated&quot;</span>, <span class="st">&quot;complication&quot;</span>, <span class="st">&quot;complicatedly&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" data-line-number="1"><span class="kw">stemDocument</span>(complicate)</a>
-<a class="sourceLine" id="cb352-2" data-line-number="2"><span class="co">## [1] &quot;complic&quot; &quot;complic&quot; &quot;complic&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" data-line-number="1"><span class="kw">library</span>(tm)</a>
+<a class="sourceLine" id="cb351-2" data-line-number="2"><span class="co">## Loading required package: NLP</span></a>
+<a class="sourceLine" id="cb351-3" data-line-number="3"><span class="co">## </span></a>
+<a class="sourceLine" id="cb351-4" data-line-number="4"><span class="co">## Attaching package: &#39;NLP&#39;</span></a>
+<a class="sourceLine" id="cb351-5" data-line-number="5"><span class="co">## The following object is masked from &#39;package:ggplot2&#39;:</span></a>
+<a class="sourceLine" id="cb351-6" data-line-number="6"><span class="co">## </span></a>
+<a class="sourceLine" id="cb351-7" data-line-number="7"><span class="co">##     annotate</span></a></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" data-line-number="1">complicate &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;complicated&quot;</span>, <span class="st">&quot;complication&quot;</span>, <span class="st">&quot;complicatedly&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb353-1" data-line-number="1"><span class="kw">stemDocument</span>(complicate)</a>
+<a class="sourceLine" id="cb353-2" data-line-number="2"><span class="co">## [1] &quot;complic&quot; &quot;complic&quot; &quot;complic&quot;</span></a></code></pre></div>
 
 </div>
 <!-- </div> -->

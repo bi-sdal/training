@@ -445,42 +445,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Corpus: These types of objects typically contain raw strings annotated with additional metadata and details.</li>
 <li>Document-term matrix: This is a sparse matrix describing a collection (i.e., a corpus) of documents with one row for each document and one column for each term. The value in the matrix is typically word count or tf-idf (see Chapter 3).</li>
 </ul>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" data-line-number="1"><span class="kw">library</span>(tibble)</a></code></pre></div>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" data-line-number="1">text &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;I&#39;m your basic average girl&quot;</span>,</a>
-<a class="sourceLine" id="cb318-2" data-line-number="2">          <span class="st">&quot;And I&#39;m here to save the world&quot;</span>,</a>
-<a class="sourceLine" id="cb318-3" data-line-number="3">          <span class="st">&quot;You can&#39;t stop me&quot;</span>,</a>
-<a class="sourceLine" id="cb318-4" data-line-number="4">          <span class="st">&quot;Cause I&#39;m Kim Pos-si-ble&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" data-line-number="1">text</a>
-<a class="sourceLine" id="cb319-2" data-line-number="2"><span class="co">## [1] &quot;I&#39;m your basic average girl&quot;    &quot;And I&#39;m here to save the world&quot;</span></a>
-<a class="sourceLine" id="cb319-3" data-line-number="3"><span class="co">## [3] &quot;You can&#39;t stop me&quot;              &quot;Cause I&#39;m Kim Pos-si-ble&quot;</span></a></code></pre></div>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" data-line-number="1">text_df &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">line =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">text =</span> text)</a>
-<a class="sourceLine" id="cb320-2" data-line-number="2">text_df</a>
-<a class="sourceLine" id="cb320-3" data-line-number="3"><span class="co">## # A tibble: 4 x 2</span></a>
-<a class="sourceLine" id="cb320-4" data-line-number="4"><span class="co">##    line text                          </span></a>
-<a class="sourceLine" id="cb320-5" data-line-number="5"><span class="co">##   &lt;int&gt; &lt;chr&gt;                         </span></a>
-<a class="sourceLine" id="cb320-6" data-line-number="6"><span class="co">## 1     1 I&#39;m your basic average girl   </span></a>
-<a class="sourceLine" id="cb320-7" data-line-number="7"><span class="co">## 2     2 And I&#39;m here to save the world</span></a>
-<a class="sourceLine" id="cb320-8" data-line-number="8"><span class="co">## 3     3 You can&#39;t stop me             </span></a>
-<a class="sourceLine" id="cb320-9" data-line-number="9"><span class="co">## 4     4 Cause I&#39;m Kim Pos-si-ble</span></a></code></pre></div>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb321-1" data-line-number="1"><span class="kw">library</span>(tidytext)</a>
-<a class="sourceLine" id="cb321-2" data-line-number="2"><span class="kw">library</span>(magrittr)</a>
-<a class="sourceLine" id="cb321-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb321-4" data-line-number="4">text_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb321-5" data-line-number="5"><span class="st">  </span><span class="kw">unnest_tokens</span>(word, text)</a>
-<a class="sourceLine" id="cb321-6" data-line-number="6"><span class="co">## # A tibble: 22 x 2</span></a>
-<a class="sourceLine" id="cb321-7" data-line-number="7"><span class="co">##     line word   </span></a>
-<a class="sourceLine" id="cb321-8" data-line-number="8"><span class="co">##    &lt;int&gt; &lt;chr&gt;  </span></a>
-<a class="sourceLine" id="cb321-9" data-line-number="9"><span class="co">##  1     1 i&#39;m    </span></a>
-<a class="sourceLine" id="cb321-10" data-line-number="10"><span class="co">##  2     1 your   </span></a>
-<a class="sourceLine" id="cb321-11" data-line-number="11"><span class="co">##  3     1 basic  </span></a>
-<a class="sourceLine" id="cb321-12" data-line-number="12"><span class="co">##  4     1 average</span></a>
-<a class="sourceLine" id="cb321-13" data-line-number="13"><span class="co">##  5     1 girl   </span></a>
-<a class="sourceLine" id="cb321-14" data-line-number="14"><span class="co">##  6     2 and    </span></a>
-<a class="sourceLine" id="cb321-15" data-line-number="15"><span class="co">##  7     2 i&#39;m    </span></a>
-<a class="sourceLine" id="cb321-16" data-line-number="16"><span class="co">##  8     2 here   </span></a>
-<a class="sourceLine" id="cb321-17" data-line-number="17"><span class="co">##  9     2 to     </span></a>
-<a class="sourceLine" id="cb321-18" data-line-number="18"><span class="co">## 10     2 save   </span></a>
-<a class="sourceLine" id="cb321-19" data-line-number="19"><span class="co">## # ... with 12 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" data-line-number="1"><span class="kw">library</span>(tibble)</a></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" data-line-number="1">text &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;I&#39;m your basic average girl&quot;</span>,</a>
+<a class="sourceLine" id="cb319-2" data-line-number="2">          <span class="st">&quot;And I&#39;m here to save the world&quot;</span>,</a>
+<a class="sourceLine" id="cb319-3" data-line-number="3">          <span class="st">&quot;You can&#39;t stop me&quot;</span>,</a>
+<a class="sourceLine" id="cb319-4" data-line-number="4">          <span class="st">&quot;Cause I&#39;m Kim Pos-si-ble&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" data-line-number="1">text</a>
+<a class="sourceLine" id="cb320-2" data-line-number="2"><span class="co">## [1] &quot;I&#39;m your basic average girl&quot;    &quot;And I&#39;m here to save the world&quot;</span></a>
+<a class="sourceLine" id="cb320-3" data-line-number="3"><span class="co">## [3] &quot;You can&#39;t stop me&quot;              &quot;Cause I&#39;m Kim Pos-si-ble&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb321-1" data-line-number="1">text_df &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">line =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">text =</span> text)</a>
+<a class="sourceLine" id="cb321-2" data-line-number="2">text_df</a>
+<a class="sourceLine" id="cb321-3" data-line-number="3"><span class="co">## # A tibble: 4 x 2</span></a>
+<a class="sourceLine" id="cb321-4" data-line-number="4"><span class="co">##    line text                          </span></a>
+<a class="sourceLine" id="cb321-5" data-line-number="5"><span class="co">##   &lt;int&gt; &lt;chr&gt;                         </span></a>
+<a class="sourceLine" id="cb321-6" data-line-number="6"><span class="co">## 1     1 I&#39;m your basic average girl   </span></a>
+<a class="sourceLine" id="cb321-7" data-line-number="7"><span class="co">## 2     2 And I&#39;m here to save the world</span></a>
+<a class="sourceLine" id="cb321-8" data-line-number="8"><span class="co">## 3     3 You can&#39;t stop me             </span></a>
+<a class="sourceLine" id="cb321-9" data-line-number="9"><span class="co">## 4     4 Cause I&#39;m Kim Pos-si-ble</span></a></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" data-line-number="1"><span class="kw">library</span>(tidytext)</a>
+<a class="sourceLine" id="cb322-2" data-line-number="2"><span class="kw">library</span>(magrittr)</a>
+<a class="sourceLine" id="cb322-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb322-4" data-line-number="4">text_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb322-5" data-line-number="5"><span class="st">  </span><span class="kw">unnest_tokens</span>(word, text)</a>
+<a class="sourceLine" id="cb322-6" data-line-number="6"><span class="co">## # A tibble: 22 x 2</span></a>
+<a class="sourceLine" id="cb322-7" data-line-number="7"><span class="co">##     line word   </span></a>
+<a class="sourceLine" id="cb322-8" data-line-number="8"><span class="co">##    &lt;int&gt; &lt;chr&gt;  </span></a>
+<a class="sourceLine" id="cb322-9" data-line-number="9"><span class="co">##  1     1 i&#39;m    </span></a>
+<a class="sourceLine" id="cb322-10" data-line-number="10"><span class="co">##  2     1 your   </span></a>
+<a class="sourceLine" id="cb322-11" data-line-number="11"><span class="co">##  3     1 basic  </span></a>
+<a class="sourceLine" id="cb322-12" data-line-number="12"><span class="co">##  4     1 average</span></a>
+<a class="sourceLine" id="cb322-13" data-line-number="13"><span class="co">##  5     1 girl   </span></a>
+<a class="sourceLine" id="cb322-14" data-line-number="14"><span class="co">##  6     2 and    </span></a>
+<a class="sourceLine" id="cb322-15" data-line-number="15"><span class="co">##  7     2 i&#39;m    </span></a>
+<a class="sourceLine" id="cb322-16" data-line-number="16"><span class="co">##  8     2 here   </span></a>
+<a class="sourceLine" id="cb322-17" data-line-number="17"><span class="co">##  9     2 to     </span></a>
+<a class="sourceLine" id="cb322-18" data-line-number="18"><span class="co">## 10     2 save   </span></a>
+<a class="sourceLine" id="cb322-19" data-line-number="19"><span class="co">## # ... with 12 more rows</span></a></code></pre></div>
 </div>
             </section>
 

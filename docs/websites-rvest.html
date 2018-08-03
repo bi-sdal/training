@@ -444,120 +444,120 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="http://www.imdb.com/chart/top?ref_=nv_mv_250_6" class="uri">http://www.imdb.com/chart/top?ref_=nv_mv_250_6</a></p>
 <p><a href="http://selectorgadget.com/" class="uri">http://selectorgadget.com/</a></p>
 <p>CSS class and id</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" data-line-number="1"><span class="kw">library</span>(rvest)</a>
-<a class="sourceLine" id="cb310-2" data-line-number="2"><span class="co">## Loading required package: xml2</span></a>
-<a class="sourceLine" id="cb310-3" data-line-number="3"><span class="co">## </span></a>
-<a class="sourceLine" id="cb310-4" data-line-number="4"><span class="co">## Attaching package: &#39;rvest&#39;</span></a>
-<a class="sourceLine" id="cb310-5" data-line-number="5"><span class="co">## The following object is masked from &#39;package:XML&#39;:</span></a>
-<a class="sourceLine" id="cb310-6" data-line-number="6"><span class="co">## </span></a>
-<a class="sourceLine" id="cb310-7" data-line-number="7"><span class="co">##     xml</span></a></code></pre></div>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" data-line-number="1">lego_movie &lt;-<span class="st"> </span><span class="kw">read_html</span>(<span class="st">&quot;http://www.imdb.com/title/tt1490017/&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" data-line-number="1"><span class="co"># Rating</span></a>
-<a class="sourceLine" id="cb312-2" data-line-number="2">lego_movie <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb312-3" data-line-number="3"><span class="st">  </span><span class="kw">html_node</span>(<span class="st">&quot;strong span&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb312-4" data-line-number="4"><span class="st">  </span><span class="kw">html_text</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb312-5" data-line-number="5"><span class="st">  </span><span class="kw">as.numeric</span>()</a>
-<a class="sourceLine" id="cb312-6" data-line-number="6"><span class="co">## [1] 7.8</span></a></code></pre></div>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" data-line-number="1"><span class="co"># First page of actors</span></a>
-<a class="sourceLine" id="cb313-2" data-line-number="2">lego_movie <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb313-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;.itemprop .itemprop&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb313-4" data-line-number="4"><span class="st">  </span><span class="kw">html_text</span>()</a>
-<a class="sourceLine" id="cb313-5" data-line-number="5"><span class="co">##  [1] &quot;Will Arnett&quot;     &quot;Elizabeth Banks&quot; &quot;Craig Berry&quot;    </span></a>
-<a class="sourceLine" id="cb313-6" data-line-number="6"><span class="co">##  [4] &quot;Alison Brie&quot;     &quot;David Burrows&quot;   &quot;Anthony Daniels&quot;</span></a>
-<a class="sourceLine" id="cb313-7" data-line-number="7"><span class="co">##  [7] &quot;Charlie Day&quot;     &quot;Amanda Farinos&quot;  &quot;Keith Ferguson&quot; </span></a>
-<a class="sourceLine" id="cb313-8" data-line-number="8"><span class="co">## [10] &quot;Will Ferrell&quot;    &quot;Will Forte&quot;      &quot;Dave Franco&quot;    </span></a>
-<a class="sourceLine" id="cb313-9" data-line-number="9"><span class="co">## [13] &quot;Morgan Freeman&quot;  &quot;Todd Hansen&quot;     &quot;Jonah Hill&quot;</span></a></code></pre></div>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" data-line-number="1">lego_movie <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb314-2" data-line-number="2"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;table&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb314-3" data-line-number="3"><span class="st">  </span>.[[<span class="dv">1</span>]] <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb314-4" data-line-number="4"><span class="st">  </span><span class="kw">html_table</span>()</a>
-<a class="sourceLine" id="cb314-5" data-line-number="5"><span class="co">##                                   X1                                X2</span></a>
-<a class="sourceLine" id="cb314-6" data-line-number="6"><span class="co">## 1  Cast overview, first billed only: Cast overview, first billed only:</span></a>
-<a class="sourceLine" id="cb314-7" data-line-number="7"><span class="co">## 2                                                          Will Arnett</span></a>
-<a class="sourceLine" id="cb314-8" data-line-number="8"><span class="co">## 3                                                      Elizabeth Banks</span></a>
-<a class="sourceLine" id="cb314-9" data-line-number="9"><span class="co">## 4                                                          Craig Berry</span></a>
-<a class="sourceLine" id="cb314-10" data-line-number="10"><span class="co">## 5                                                          Alison Brie</span></a>
-<a class="sourceLine" id="cb314-11" data-line-number="11"><span class="co">## 6                                                        David Burrows</span></a>
-<a class="sourceLine" id="cb314-12" data-line-number="12"><span class="co">## 7                                                      Anthony Daniels</span></a>
-<a class="sourceLine" id="cb314-13" data-line-number="13"><span class="co">## 8                                                          Charlie Day</span></a>
-<a class="sourceLine" id="cb314-14" data-line-number="14"><span class="co">## 9                                                       Amanda Farinos</span></a>
-<a class="sourceLine" id="cb314-15" data-line-number="15"><span class="co">## 10                                                      Keith Ferguson</span></a>
-<a class="sourceLine" id="cb314-16" data-line-number="16"><span class="co">## 11                                                        Will Ferrell</span></a>
-<a class="sourceLine" id="cb314-17" data-line-number="17"><span class="co">## 12                                                          Will Forte</span></a>
-<a class="sourceLine" id="cb314-18" data-line-number="18"><span class="co">## 13                                                         Dave Franco</span></a>
-<a class="sourceLine" id="cb314-19" data-line-number="19"><span class="co">## 14                                                      Morgan Freeman</span></a>
-<a class="sourceLine" id="cb314-20" data-line-number="20"><span class="co">## 15                                                         Todd Hansen</span></a>
-<a class="sourceLine" id="cb314-21" data-line-number="21"><span class="co">## 16                                                          Jonah Hill</span></a>
-<a class="sourceLine" id="cb314-22" data-line-number="22"><span class="co">##                                   X3</span></a>
-<a class="sourceLine" id="cb314-23" data-line-number="23"><span class="co">## 1  Cast overview, first billed only:</span></a>
-<a class="sourceLine" id="cb314-24" data-line-number="24"><span class="co">## 2                                ...</span></a>
-<a class="sourceLine" id="cb314-25" data-line-number="25"><span class="co">## 3                                ...</span></a>
-<a class="sourceLine" id="cb314-26" data-line-number="26"><span class="co">## 4                                ...</span></a>
-<a class="sourceLine" id="cb314-27" data-line-number="27"><span class="co">## 5                                ...</span></a>
-<a class="sourceLine" id="cb314-28" data-line-number="28"><span class="co">## 6                                ...</span></a>
-<a class="sourceLine" id="cb314-29" data-line-number="29"><span class="co">## 7                                ...</span></a>
-<a class="sourceLine" id="cb314-30" data-line-number="30"><span class="co">## 8                                ...</span></a>
-<a class="sourceLine" id="cb314-31" data-line-number="31"><span class="co">## 9                                ...</span></a>
-<a class="sourceLine" id="cb314-32" data-line-number="32"><span class="co">## 10                               ...</span></a>
-<a class="sourceLine" id="cb314-33" data-line-number="33"><span class="co">## 11                               ...</span></a>
-<a class="sourceLine" id="cb314-34" data-line-number="34"><span class="co">## 12                               ...</span></a>
-<a class="sourceLine" id="cb314-35" data-line-number="35"><span class="co">## 13                               ...</span></a>
-<a class="sourceLine" id="cb314-36" data-line-number="36"><span class="co">## 14                               ...</span></a>
-<a class="sourceLine" id="cb314-37" data-line-number="37"><span class="co">## 15                               ...</span></a>
-<a class="sourceLine" id="cb314-38" data-line-number="38"><span class="co">## 16                               ...</span></a>
-<a class="sourceLine" id="cb314-39" data-line-number="39"><span class="co">##                                                                                                         X4</span></a>
-<a class="sourceLine" id="cb314-40" data-line-number="40"><span class="co">## 1                                                                        Cast overview, first billed only:</span></a>
-<a class="sourceLine" id="cb314-41" data-line-number="41"><span class="co">## 2                                                  Batman /  \n            Bruce Wayne \n  \n  \n  (voice)</span></a>
-<a class="sourceLine" id="cb314-42" data-line-number="42"><span class="co">## 3                                                      Wyldstyle /  \n            Lucy \n  \n  \n  (voice)</span></a>
-<a class="sourceLine" id="cb314-43" data-line-number="43"><span class="co">## 4                                             Blake /  \n            Additional Voices \n  \n  \n  (voice)</span></a>
-<a class="sourceLine" id="cb314-44" data-line-number="44"><span class="co">## 5                                                                             Unikitty \n  \n  \n  (voice)</span></a>
-<a class="sourceLine" id="cb314-45" data-line-number="45"><span class="co">## 6                                       Octan Robot /  \n            Additional Voices \n  \n  \n  (voice)</span></a>
-<a class="sourceLine" id="cb314-46" data-line-number="46"><span class="co">## 7                                                                                C-3PO \n  \n  \n  (voice)</span></a>
-<a class="sourceLine" id="cb314-47" data-line-number="47"><span class="co">## 8                                                                                Benny \n  \n  \n  (voice)</span></a>
-<a class="sourceLine" id="cb314-48" data-line-number="48"><span class="co">## 9                                                                                  Mom \n  \n  \n  (voice)</span></a>
-<a class="sourceLine" id="cb314-49" data-line-number="49"><span class="co">## 10                                                                            Han Solo \n  \n  \n  (voice)</span></a>
-<a class="sourceLine" id="cb314-50" data-line-number="50"><span class="co">## 11 Lord Business /  \n            President Business /  \n            The Man Upstairs \n  \n  \n  (voice)</span></a>
-<a class="sourceLine" id="cb314-51" data-line-number="51"><span class="co">## 12                                                  Abraham Lincoln \n  \n  \n  (voice) (as Orville Forte)</span></a>
-<a class="sourceLine" id="cb314-52" data-line-number="52"><span class="co">## 13                                                                               Wally \n  \n  \n  (voice)</span></a>
-<a class="sourceLine" id="cb314-53" data-line-number="53"><span class="co">## 14                                                                           Vitruvius \n  \n  \n  (voice)</span></a>
-<a class="sourceLine" id="cb314-54" data-line-number="54"><span class="co">## 15                                          Gandalf /  \n            Additional Voices \n  \n  \n  (voice)</span></a>
-<a class="sourceLine" id="cb314-55" data-line-number="55"><span class="co">## 16                                                                       Green Lantern \n  \n  \n  (voice)</span></a></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" data-line-number="1"><span class="kw">library</span>(rvest)</a>
+<a class="sourceLine" id="cb311-2" data-line-number="2"><span class="co">## Loading required package: xml2</span></a>
+<a class="sourceLine" id="cb311-3" data-line-number="3"><span class="co">## </span></a>
+<a class="sourceLine" id="cb311-4" data-line-number="4"><span class="co">## Attaching package: &#39;rvest&#39;</span></a>
+<a class="sourceLine" id="cb311-5" data-line-number="5"><span class="co">## The following object is masked from &#39;package:XML&#39;:</span></a>
+<a class="sourceLine" id="cb311-6" data-line-number="6"><span class="co">## </span></a>
+<a class="sourceLine" id="cb311-7" data-line-number="7"><span class="co">##     xml</span></a></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" data-line-number="1">lego_movie &lt;-<span class="st"> </span><span class="kw">read_html</span>(<span class="st">&quot;http://www.imdb.com/title/tt1490017/&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" data-line-number="1"><span class="co"># Rating</span></a>
+<a class="sourceLine" id="cb313-2" data-line-number="2">lego_movie <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb313-3" data-line-number="3"><span class="st">  </span><span class="kw">html_node</span>(<span class="st">&quot;strong span&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb313-4" data-line-number="4"><span class="st">  </span><span class="kw">html_text</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb313-5" data-line-number="5"><span class="st">  </span><span class="kw">as.numeric</span>()</a>
+<a class="sourceLine" id="cb313-6" data-line-number="6"><span class="co">## [1] 7.8</span></a></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" data-line-number="1"><span class="co"># First page of actors</span></a>
+<a class="sourceLine" id="cb314-2" data-line-number="2">lego_movie <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb314-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;.itemprop .itemprop&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb314-4" data-line-number="4"><span class="st">  </span><span class="kw">html_text</span>()</a>
+<a class="sourceLine" id="cb314-5" data-line-number="5"><span class="co">##  [1] &quot;Will Arnett&quot;     &quot;Elizabeth Banks&quot; &quot;Craig Berry&quot;    </span></a>
+<a class="sourceLine" id="cb314-6" data-line-number="6"><span class="co">##  [4] &quot;Alison Brie&quot;     &quot;David Burrows&quot;   &quot;Anthony Daniels&quot;</span></a>
+<a class="sourceLine" id="cb314-7" data-line-number="7"><span class="co">##  [7] &quot;Charlie Day&quot;     &quot;Amanda Farinos&quot;  &quot;Keith Ferguson&quot; </span></a>
+<a class="sourceLine" id="cb314-8" data-line-number="8"><span class="co">## [10] &quot;Will Ferrell&quot;    &quot;Will Forte&quot;      &quot;Dave Franco&quot;    </span></a>
+<a class="sourceLine" id="cb314-9" data-line-number="9"><span class="co">## [13] &quot;Morgan Freeman&quot;  &quot;Todd Hansen&quot;     &quot;Jonah Hill&quot;</span></a></code></pre></div>
 <div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" data-line-number="1">lego_movie <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb315-2" data-line-number="2"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;.primary_photo , .ellipsis, .character, #titleCast .itemprop, #titleCast .loadlate&quot;</span>)</a>
-<a class="sourceLine" id="cb315-3" data-line-number="3"><span class="co">## {xml_nodeset (87)}</span></a>
-<a class="sourceLine" id="cb315-4" data-line-number="4"><span class="co">##  [1] &lt;td class=&quot;primary_photo&quot;&gt;\n&lt;a href=&quot;/name/nm0004715/?ref_=tt_cl_i1 ...</span></a>
-<a class="sourceLine" id="cb315-5" data-line-number="5"><span class="co">##  [2] &lt;img height=&quot;44&quot; width=&quot;32&quot; alt=&quot;Will Arnett&quot; title=&quot;Will Arnett&quot; s ...</span></a>
-<a class="sourceLine" id="cb315-6" data-line-number="6"><span class="co">##  [3] &lt;td class=&quot;itemprop&quot; itemprop=&quot;actor&quot; itemscope itemtype=&quot;http://sc ...</span></a>
-<a class="sourceLine" id="cb315-7" data-line-number="7"><span class="co">##  [4] &lt;span class=&quot;itemprop&quot; itemprop=&quot;name&quot;&gt;Will Arnett&lt;/span&gt;</span></a>
-<a class="sourceLine" id="cb315-8" data-line-number="8"><span class="co">##  [5] &lt;td class=&quot;ellipsis&quot;&gt;\n              ...\n          &lt;/td&gt;</span></a>
-<a class="sourceLine" id="cb315-9" data-line-number="9"><span class="co">##  [6] &lt;td class=&quot;character&quot;&gt;\n            &lt;a href=&quot;/title/tt1490017/chara ...</span></a>
-<a class="sourceLine" id="cb315-10" data-line-number="10"><span class="co">##  [7] &lt;td class=&quot;primary_photo&quot;&gt;\n&lt;a href=&quot;/name/nm0006969/?ref_=tt_cl_i2 ...</span></a>
-<a class="sourceLine" id="cb315-11" data-line-number="11"><span class="co">##  [8] &lt;img height=&quot;44&quot; width=&quot;32&quot; alt=&quot;Elizabeth Banks&quot; title=&quot;Elizabeth  ...</span></a>
-<a class="sourceLine" id="cb315-12" data-line-number="12"><span class="co">##  [9] &lt;td class=&quot;itemprop&quot; itemprop=&quot;actor&quot; itemscope itemtype=&quot;http://sc ...</span></a>
-<a class="sourceLine" id="cb315-13" data-line-number="13"><span class="co">## [10] &lt;span class=&quot;itemprop&quot; itemprop=&quot;name&quot;&gt;Elizabeth Banks&lt;/span&gt;</span></a>
-<a class="sourceLine" id="cb315-14" data-line-number="14"><span class="co">## [11] &lt;td class=&quot;ellipsis&quot;&gt;\n              ...\n          &lt;/td&gt;</span></a>
-<a class="sourceLine" id="cb315-15" data-line-number="15"><span class="co">## [12] &lt;td class=&quot;character&quot;&gt;\n            &lt;a href=&quot;/title/tt1490017/chara ...</span></a>
-<a class="sourceLine" id="cb315-16" data-line-number="16"><span class="co">## [13] &lt;td class=&quot;primary_photo&quot;&gt;\n&lt;a href=&quot;/name/nm1911947/?ref_=tt_cl_i3 ...</span></a>
-<a class="sourceLine" id="cb315-17" data-line-number="17"><span class="co">## [14] &lt;td class=&quot;itemprop&quot; itemprop=&quot;actor&quot; itemscope itemtype=&quot;http://sc ...</span></a>
-<a class="sourceLine" id="cb315-18" data-line-number="18"><span class="co">## [15] &lt;span class=&quot;itemprop&quot; itemprop=&quot;name&quot;&gt;Craig Berry&lt;/span&gt;</span></a>
-<a class="sourceLine" id="cb315-19" data-line-number="19"><span class="co">## [16] &lt;td class=&quot;ellipsis&quot;&gt;\n              ...\n          &lt;/td&gt;</span></a>
-<a class="sourceLine" id="cb315-20" data-line-number="20"><span class="co">## [17] &lt;td class=&quot;character&quot;&gt;\n            Blake /  \n            Addition ...</span></a>
-<a class="sourceLine" id="cb315-21" data-line-number="21"><span class="co">## [18] &lt;td class=&quot;primary_photo&quot;&gt;\n&lt;a href=&quot;/name/nm1555340/?ref_=tt_cl_i4 ...</span></a>
-<a class="sourceLine" id="cb315-22" data-line-number="22"><span class="co">## [19] &lt;img height=&quot;44&quot; width=&quot;32&quot; alt=&quot;Alison Brie&quot; title=&quot;Alison Brie&quot; s ...</span></a>
-<a class="sourceLine" id="cb315-23" data-line-number="23"><span class="co">## [20] &lt;td class=&quot;itemprop&quot; itemprop=&quot;actor&quot; itemscope itemtype=&quot;http://sc ...</span></a>
-<a class="sourceLine" id="cb315-24" data-line-number="24"><span class="co">## ...</span></a></code></pre></div>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" data-line-number="1"><span class="co"># more manual way</span></a>
-<a class="sourceLine" id="cb316-2" data-line-number="2">lego_movie <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb316-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;table&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb316-4" data-line-number="4"><span class="st">  </span>.[[<span class="dv">1</span>]] <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb316-5" data-line-number="5"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;tr&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb316-6" data-line-number="6"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;span&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb316-7" data-line-number="7"><span class="st">  </span><span class="kw">html_text</span>()</a>
-<a class="sourceLine" id="cb316-8" data-line-number="8"><span class="co">##  [1] &quot;Will Arnett&quot;     &quot;Elizabeth Banks&quot; &quot;Craig Berry&quot;    </span></a>
-<a class="sourceLine" id="cb316-9" data-line-number="9"><span class="co">##  [4] &quot;Alison Brie&quot;     &quot;David Burrows&quot;   &quot;Anthony Daniels&quot;</span></a>
-<a class="sourceLine" id="cb316-10" data-line-number="10"><span class="co">##  [7] &quot;Charlie Day&quot;     &quot;Amanda Farinos&quot;  &quot;Keith Ferguson&quot; </span></a>
-<a class="sourceLine" id="cb316-11" data-line-number="11"><span class="co">## [10] &quot;Will Ferrell&quot;    &quot;Will Forte&quot;      &quot;Dave Franco&quot;    </span></a>
-<a class="sourceLine" id="cb316-12" data-line-number="12"><span class="co">## [13] &quot;Morgan Freeman&quot;  &quot;Todd Hansen&quot;     &quot;Jonah Hill&quot;</span></a></code></pre></div>
+<a class="sourceLine" id="cb315-2" data-line-number="2"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;table&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb315-3" data-line-number="3"><span class="st">  </span>.[[<span class="dv">1</span>]] <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb315-4" data-line-number="4"><span class="st">  </span><span class="kw">html_table</span>()</a>
+<a class="sourceLine" id="cb315-5" data-line-number="5"><span class="co">##                                   X1                                X2</span></a>
+<a class="sourceLine" id="cb315-6" data-line-number="6"><span class="co">## 1  Cast overview, first billed only: Cast overview, first billed only:</span></a>
+<a class="sourceLine" id="cb315-7" data-line-number="7"><span class="co">## 2                                                          Will Arnett</span></a>
+<a class="sourceLine" id="cb315-8" data-line-number="8"><span class="co">## 3                                                      Elizabeth Banks</span></a>
+<a class="sourceLine" id="cb315-9" data-line-number="9"><span class="co">## 4                                                          Craig Berry</span></a>
+<a class="sourceLine" id="cb315-10" data-line-number="10"><span class="co">## 5                                                          Alison Brie</span></a>
+<a class="sourceLine" id="cb315-11" data-line-number="11"><span class="co">## 6                                                        David Burrows</span></a>
+<a class="sourceLine" id="cb315-12" data-line-number="12"><span class="co">## 7                                                      Anthony Daniels</span></a>
+<a class="sourceLine" id="cb315-13" data-line-number="13"><span class="co">## 8                                                          Charlie Day</span></a>
+<a class="sourceLine" id="cb315-14" data-line-number="14"><span class="co">## 9                                                       Amanda Farinos</span></a>
+<a class="sourceLine" id="cb315-15" data-line-number="15"><span class="co">## 10                                                      Keith Ferguson</span></a>
+<a class="sourceLine" id="cb315-16" data-line-number="16"><span class="co">## 11                                                        Will Ferrell</span></a>
+<a class="sourceLine" id="cb315-17" data-line-number="17"><span class="co">## 12                                                          Will Forte</span></a>
+<a class="sourceLine" id="cb315-18" data-line-number="18"><span class="co">## 13                                                         Dave Franco</span></a>
+<a class="sourceLine" id="cb315-19" data-line-number="19"><span class="co">## 14                                                      Morgan Freeman</span></a>
+<a class="sourceLine" id="cb315-20" data-line-number="20"><span class="co">## 15                                                         Todd Hansen</span></a>
+<a class="sourceLine" id="cb315-21" data-line-number="21"><span class="co">## 16                                                          Jonah Hill</span></a>
+<a class="sourceLine" id="cb315-22" data-line-number="22"><span class="co">##                                   X3</span></a>
+<a class="sourceLine" id="cb315-23" data-line-number="23"><span class="co">## 1  Cast overview, first billed only:</span></a>
+<a class="sourceLine" id="cb315-24" data-line-number="24"><span class="co">## 2                                ...</span></a>
+<a class="sourceLine" id="cb315-25" data-line-number="25"><span class="co">## 3                                ...</span></a>
+<a class="sourceLine" id="cb315-26" data-line-number="26"><span class="co">## 4                                ...</span></a>
+<a class="sourceLine" id="cb315-27" data-line-number="27"><span class="co">## 5                                ...</span></a>
+<a class="sourceLine" id="cb315-28" data-line-number="28"><span class="co">## 6                                ...</span></a>
+<a class="sourceLine" id="cb315-29" data-line-number="29"><span class="co">## 7                                ...</span></a>
+<a class="sourceLine" id="cb315-30" data-line-number="30"><span class="co">## 8                                ...</span></a>
+<a class="sourceLine" id="cb315-31" data-line-number="31"><span class="co">## 9                                ...</span></a>
+<a class="sourceLine" id="cb315-32" data-line-number="32"><span class="co">## 10                               ...</span></a>
+<a class="sourceLine" id="cb315-33" data-line-number="33"><span class="co">## 11                               ...</span></a>
+<a class="sourceLine" id="cb315-34" data-line-number="34"><span class="co">## 12                               ...</span></a>
+<a class="sourceLine" id="cb315-35" data-line-number="35"><span class="co">## 13                               ...</span></a>
+<a class="sourceLine" id="cb315-36" data-line-number="36"><span class="co">## 14                               ...</span></a>
+<a class="sourceLine" id="cb315-37" data-line-number="37"><span class="co">## 15                               ...</span></a>
+<a class="sourceLine" id="cb315-38" data-line-number="38"><span class="co">## 16                               ...</span></a>
+<a class="sourceLine" id="cb315-39" data-line-number="39"><span class="co">##                                                                                                         X4</span></a>
+<a class="sourceLine" id="cb315-40" data-line-number="40"><span class="co">## 1                                                                        Cast overview, first billed only:</span></a>
+<a class="sourceLine" id="cb315-41" data-line-number="41"><span class="co">## 2                                                  Batman /  \n            Bruce Wayne \n  \n  \n  (voice)</span></a>
+<a class="sourceLine" id="cb315-42" data-line-number="42"><span class="co">## 3                                                      Wyldstyle /  \n            Lucy \n  \n  \n  (voice)</span></a>
+<a class="sourceLine" id="cb315-43" data-line-number="43"><span class="co">## 4                                             Blake /  \n            Additional Voices \n  \n  \n  (voice)</span></a>
+<a class="sourceLine" id="cb315-44" data-line-number="44"><span class="co">## 5                                                                             Unikitty \n  \n  \n  (voice)</span></a>
+<a class="sourceLine" id="cb315-45" data-line-number="45"><span class="co">## 6                                       Octan Robot /  \n            Additional Voices \n  \n  \n  (voice)</span></a>
+<a class="sourceLine" id="cb315-46" data-line-number="46"><span class="co">## 7                                                                                C-3PO \n  \n  \n  (voice)</span></a>
+<a class="sourceLine" id="cb315-47" data-line-number="47"><span class="co">## 8                                                                                Benny \n  \n  \n  (voice)</span></a>
+<a class="sourceLine" id="cb315-48" data-line-number="48"><span class="co">## 9                                                                                  Mom \n  \n  \n  (voice)</span></a>
+<a class="sourceLine" id="cb315-49" data-line-number="49"><span class="co">## 10                                                                            Han Solo \n  \n  \n  (voice)</span></a>
+<a class="sourceLine" id="cb315-50" data-line-number="50"><span class="co">## 11 Lord Business /  \n            President Business /  \n            The Man Upstairs \n  \n  \n  (voice)</span></a>
+<a class="sourceLine" id="cb315-51" data-line-number="51"><span class="co">## 12                                                  Abraham Lincoln \n  \n  \n  (voice) (as Orville Forte)</span></a>
+<a class="sourceLine" id="cb315-52" data-line-number="52"><span class="co">## 13                                                                               Wally \n  \n  \n  (voice)</span></a>
+<a class="sourceLine" id="cb315-53" data-line-number="53"><span class="co">## 14                                                                           Vitruvius \n  \n  \n  (voice)</span></a>
+<a class="sourceLine" id="cb315-54" data-line-number="54"><span class="co">## 15                                          Gandalf /  \n            Additional Voices \n  \n  \n  (voice)</span></a>
+<a class="sourceLine" id="cb315-55" data-line-number="55"><span class="co">## 16                                                                       Green Lantern \n  \n  \n  (voice)</span></a></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" data-line-number="1">lego_movie <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb316-2" data-line-number="2"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;.primary_photo , .ellipsis, .character, #titleCast .itemprop, #titleCast .loadlate&quot;</span>)</a>
+<a class="sourceLine" id="cb316-3" data-line-number="3"><span class="co">## {xml_nodeset (87)}</span></a>
+<a class="sourceLine" id="cb316-4" data-line-number="4"><span class="co">##  [1] &lt;td class=&quot;primary_photo&quot;&gt;\n&lt;a href=&quot;/name/nm0004715/?ref_=tt_cl_i1 ...</span></a>
+<a class="sourceLine" id="cb316-5" data-line-number="5"><span class="co">##  [2] &lt;img height=&quot;44&quot; width=&quot;32&quot; alt=&quot;Will Arnett&quot; title=&quot;Will Arnett&quot; s ...</span></a>
+<a class="sourceLine" id="cb316-6" data-line-number="6"><span class="co">##  [3] &lt;td class=&quot;itemprop&quot; itemprop=&quot;actor&quot; itemscope itemtype=&quot;http://sc ...</span></a>
+<a class="sourceLine" id="cb316-7" data-line-number="7"><span class="co">##  [4] &lt;span class=&quot;itemprop&quot; itemprop=&quot;name&quot;&gt;Will Arnett&lt;/span&gt;</span></a>
+<a class="sourceLine" id="cb316-8" data-line-number="8"><span class="co">##  [5] &lt;td class=&quot;ellipsis&quot;&gt;\n              ...\n          &lt;/td&gt;</span></a>
+<a class="sourceLine" id="cb316-9" data-line-number="9"><span class="co">##  [6] &lt;td class=&quot;character&quot;&gt;\n            &lt;a href=&quot;/title/tt1490017/chara ...</span></a>
+<a class="sourceLine" id="cb316-10" data-line-number="10"><span class="co">##  [7] &lt;td class=&quot;primary_photo&quot;&gt;\n&lt;a href=&quot;/name/nm0006969/?ref_=tt_cl_i2 ...</span></a>
+<a class="sourceLine" id="cb316-11" data-line-number="11"><span class="co">##  [8] &lt;img height=&quot;44&quot; width=&quot;32&quot; alt=&quot;Elizabeth Banks&quot; title=&quot;Elizabeth  ...</span></a>
+<a class="sourceLine" id="cb316-12" data-line-number="12"><span class="co">##  [9] &lt;td class=&quot;itemprop&quot; itemprop=&quot;actor&quot; itemscope itemtype=&quot;http://sc ...</span></a>
+<a class="sourceLine" id="cb316-13" data-line-number="13"><span class="co">## [10] &lt;span class=&quot;itemprop&quot; itemprop=&quot;name&quot;&gt;Elizabeth Banks&lt;/span&gt;</span></a>
+<a class="sourceLine" id="cb316-14" data-line-number="14"><span class="co">## [11] &lt;td class=&quot;ellipsis&quot;&gt;\n              ...\n          &lt;/td&gt;</span></a>
+<a class="sourceLine" id="cb316-15" data-line-number="15"><span class="co">## [12] &lt;td class=&quot;character&quot;&gt;\n            &lt;a href=&quot;/title/tt1490017/chara ...</span></a>
+<a class="sourceLine" id="cb316-16" data-line-number="16"><span class="co">## [13] &lt;td class=&quot;primary_photo&quot;&gt;\n&lt;a href=&quot;/name/nm1911947/?ref_=tt_cl_i3 ...</span></a>
+<a class="sourceLine" id="cb316-17" data-line-number="17"><span class="co">## [14] &lt;td class=&quot;itemprop&quot; itemprop=&quot;actor&quot; itemscope itemtype=&quot;http://sc ...</span></a>
+<a class="sourceLine" id="cb316-18" data-line-number="18"><span class="co">## [15] &lt;span class=&quot;itemprop&quot; itemprop=&quot;name&quot;&gt;Craig Berry&lt;/span&gt;</span></a>
+<a class="sourceLine" id="cb316-19" data-line-number="19"><span class="co">## [16] &lt;td class=&quot;ellipsis&quot;&gt;\n              ...\n          &lt;/td&gt;</span></a>
+<a class="sourceLine" id="cb316-20" data-line-number="20"><span class="co">## [17] &lt;td class=&quot;character&quot;&gt;\n            Blake /  \n            Addition ...</span></a>
+<a class="sourceLine" id="cb316-21" data-line-number="21"><span class="co">## [18] &lt;td class=&quot;primary_photo&quot;&gt;\n&lt;a href=&quot;/name/nm1555340/?ref_=tt_cl_i4 ...</span></a>
+<a class="sourceLine" id="cb316-22" data-line-number="22"><span class="co">## [19] &lt;img height=&quot;44&quot; width=&quot;32&quot; alt=&quot;Alison Brie&quot; title=&quot;Alison Brie&quot; s ...</span></a>
+<a class="sourceLine" id="cb316-23" data-line-number="23"><span class="co">## [20] &lt;td class=&quot;itemprop&quot; itemprop=&quot;actor&quot; itemscope itemtype=&quot;http://sc ...</span></a>
+<a class="sourceLine" id="cb316-24" data-line-number="24"><span class="co">## ...</span></a></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" data-line-number="1"><span class="co"># more manual way</span></a>
+<a class="sourceLine" id="cb317-2" data-line-number="2">lego_movie <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb317-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;table&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb317-4" data-line-number="4"><span class="st">  </span>.[[<span class="dv">1</span>]] <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb317-5" data-line-number="5"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;tr&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb317-6" data-line-number="6"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;span&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb317-7" data-line-number="7"><span class="st">  </span><span class="kw">html_text</span>()</a>
+<a class="sourceLine" id="cb317-8" data-line-number="8"><span class="co">##  [1] &quot;Will Arnett&quot;     &quot;Elizabeth Banks&quot; &quot;Craig Berry&quot;    </span></a>
+<a class="sourceLine" id="cb317-9" data-line-number="9"><span class="co">##  [4] &quot;Alison Brie&quot;     &quot;David Burrows&quot;   &quot;Anthony Daniels&quot;</span></a>
+<a class="sourceLine" id="cb317-10" data-line-number="10"><span class="co">##  [7] &quot;Charlie Day&quot;     &quot;Amanda Farinos&quot;  &quot;Keith Ferguson&quot; </span></a>
+<a class="sourceLine" id="cb317-11" data-line-number="11"><span class="co">## [10] &quot;Will Ferrell&quot;    &quot;Will Forte&quot;      &quot;Dave Franco&quot;    </span></a>
+<a class="sourceLine" id="cb317-12" data-line-number="12"><span class="co">## [13] &quot;Morgan Freeman&quot;  &quot;Todd Hansen&quot;     &quot;Jonah Hill&quot;</span></a></code></pre></div>
 </div>
             </section>
 

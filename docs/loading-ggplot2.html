@@ -440,23 +440,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="loading-ggplot2" class="section level2">
 <h2><span class="header-section-number">4.1</span> Loading ggplot2</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co"># mpg dataset from the ggplot2 library</span></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2">mpg</a>
-<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">## # A tibble: 234 x 11</span></a>
-<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">##    manufacturer model    displ  year   cyl trans   drv     cty   hwy fl   </span></a>
-<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="co">##    &lt;chr&gt;        &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;</span></a>
-<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="co">##  1 audi         a4         1.8  1999     4 auto(l… f        18    29 p    </span></a>
-<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="co">##  2 audi         a4         1.8  1999     4 manual… f        21    29 p    </span></a>
-<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="co">##  3 audi         a4         2    2008     4 manual… f        20    31 p    </span></a>
-<a class="sourceLine" id="cb15-9" data-line-number="9"><span class="co">##  4 audi         a4         2    2008     4 auto(a… f        21    30 p    </span></a>
-<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="co">##  5 audi         a4         2.8  1999     6 auto(l… f        16    26 p    </span></a>
-<a class="sourceLine" id="cb15-11" data-line-number="11"><span class="co">##  6 audi         a4         2.8  1999     6 manual… f        18    26 p    </span></a>
-<a class="sourceLine" id="cb15-12" data-line-number="12"><span class="co">##  7 audi         a4         3.1  2008     6 auto(a… f        18    27 p    </span></a>
-<a class="sourceLine" id="cb15-13" data-line-number="13"><span class="co">##  8 audi         a4 quat…   1.8  1999     4 manual… 4        18    26 p    </span></a>
-<a class="sourceLine" id="cb15-14" data-line-number="14"><span class="co">##  9 audi         a4 quat…   1.8  1999     4 auto(l… 4        16    25 p    </span></a>
-<a class="sourceLine" id="cb15-15" data-line-number="15"><span class="co">## 10 audi         a4 quat…   2    2008     4 manual… 4        20    28 p    </span></a>
-<a class="sourceLine" id="cb15-16" data-line-number="16"><span class="co">## # ... with 224 more rows, and 1 more variable: class &lt;chr&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co"># mpg dataset from the ggplot2 library</span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">mpg</a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="co">## # A tibble: 234 x 11</span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="co">##    manufacturer model    displ  year   cyl trans   drv     cty   hwy fl   </span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="co">##    &lt;chr&gt;        &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co">##  1 audi         a4         1.8  1999     4 auto(l… f        18    29 p    </span></a>
+<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="co">##  2 audi         a4         1.8  1999     4 manual… f        21    29 p    </span></a>
+<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="co">##  3 audi         a4         2    2008     4 manual… f        20    31 p    </span></a>
+<a class="sourceLine" id="cb16-9" data-line-number="9"><span class="co">##  4 audi         a4         2    2008     4 auto(a… f        21    30 p    </span></a>
+<a class="sourceLine" id="cb16-10" data-line-number="10"><span class="co">##  5 audi         a4         2.8  1999     6 auto(l… f        16    26 p    </span></a>
+<a class="sourceLine" id="cb16-11" data-line-number="11"><span class="co">##  6 audi         a4         2.8  1999     6 manual… f        18    26 p    </span></a>
+<a class="sourceLine" id="cb16-12" data-line-number="12"><span class="co">##  7 audi         a4         3.1  2008     6 auto(a… f        18    27 p    </span></a>
+<a class="sourceLine" id="cb16-13" data-line-number="13"><span class="co">##  8 audi         a4 quat…   1.8  1999     4 manual… 4        18    26 p    </span></a>
+<a class="sourceLine" id="cb16-14" data-line-number="14"><span class="co">##  9 audi         a4 quat…   1.8  1999     4 auto(l… 4        16    25 p    </span></a>
+<a class="sourceLine" id="cb16-15" data-line-number="15"><span class="co">## 10 audi         a4 quat…   2    2008     4 manual… 4        20    28 p    </span></a>
+<a class="sourceLine" id="cb16-16" data-line-number="16"><span class="co">## # ... with 224 more rows, and 1 more variable: class &lt;chr&gt;</span></a></code></pre></div>
 </div>
             </section>
 

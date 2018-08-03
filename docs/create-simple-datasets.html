@@ -440,42 +440,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="create-simple-datasets" class="section level2">
 <h2><span class="header-section-number">8.1</span> Create simple datasets</h2>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="kw">library</span>(tibble)</a>
-<a class="sourceLine" id="cb110-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb110-3" data-line-number="3"><span class="co">## </span></a>
-<a class="sourceLine" id="cb110-4" data-line-number="4"><span class="co">## Attaching package: &#39;dplyr&#39;</span></a>
-<a class="sourceLine" id="cb110-5" data-line-number="5"><span class="co">## The following objects are masked from &#39;package:stats&#39;:</span></a>
-<a class="sourceLine" id="cb110-6" data-line-number="6"><span class="co">## </span></a>
-<a class="sourceLine" id="cb110-7" data-line-number="7"><span class="co">##     filter, lag</span></a>
-<a class="sourceLine" id="cb110-8" data-line-number="8"><span class="co">## The following objects are masked from &#39;package:base&#39;:</span></a>
-<a class="sourceLine" id="cb110-9" data-line-number="9"><span class="co">## </span></a>
-<a class="sourceLine" id="cb110-10" data-line-number="10"><span class="co">##     intersect, setdiff, setequal, union</span></a></code></pre></div>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
-<a class="sourceLine" id="cb111-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_x,</a>
-<a class="sourceLine" id="cb111-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</a>
-<a class="sourceLine" id="cb111-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</a>
-<a class="sourceLine" id="cb111-5" data-line-number="5">    <span class="dv">3</span>, <span class="st">&quot;x3&quot;</span></a>
-<a class="sourceLine" id="cb111-6" data-line-number="6">)</a>
-<a class="sourceLine" id="cb111-7" data-line-number="7">x</a>
-<a class="sourceLine" id="cb111-8" data-line-number="8"><span class="co">## # A tibble: 3 x 2</span></a>
-<a class="sourceLine" id="cb111-9" data-line-number="9"><span class="co">##     key val_x</span></a>
-<a class="sourceLine" id="cb111-10" data-line-number="10"><span class="co">##   &lt;dbl&gt; &lt;chr&gt;</span></a>
-<a class="sourceLine" id="cb111-11" data-line-number="11"><span class="co">## 1     1 x1   </span></a>
-<a class="sourceLine" id="cb111-12" data-line-number="12"><span class="co">## 2     2 x2   </span></a>
-<a class="sourceLine" id="cb111-13" data-line-number="13"><span class="co">## 3     3 x3</span></a></code></pre></div>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
-<a class="sourceLine" id="cb112-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_y,</a>
-<a class="sourceLine" id="cb112-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</a>
-<a class="sourceLine" id="cb112-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</a>
-<a class="sourceLine" id="cb112-5" data-line-number="5">    <span class="dv">4</span>, <span class="st">&quot;y3&quot;</span></a>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="kw">library</span>(tibble)</a>
+<a class="sourceLine" id="cb111-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb111-3" data-line-number="3"><span class="co">## </span></a>
+<a class="sourceLine" id="cb111-4" data-line-number="4"><span class="co">## Attaching package: &#39;dplyr&#39;</span></a>
+<a class="sourceLine" id="cb111-5" data-line-number="5"><span class="co">## The following objects are masked from &#39;package:stats&#39;:</span></a>
+<a class="sourceLine" id="cb111-6" data-line-number="6"><span class="co">## </span></a>
+<a class="sourceLine" id="cb111-7" data-line-number="7"><span class="co">##     filter, lag</span></a>
+<a class="sourceLine" id="cb111-8" data-line-number="8"><span class="co">## The following objects are masked from &#39;package:base&#39;:</span></a>
+<a class="sourceLine" id="cb111-9" data-line-number="9"><span class="co">## </span></a>
+<a class="sourceLine" id="cb111-10" data-line-number="10"><span class="co">##     intersect, setdiff, setequal, union</span></a></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb112-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_x,</a>
+<a class="sourceLine" id="cb112-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</a>
+<a class="sourceLine" id="cb112-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</a>
+<a class="sourceLine" id="cb112-5" data-line-number="5">    <span class="dv">3</span>, <span class="st">&quot;x3&quot;</span></a>
 <a class="sourceLine" id="cb112-6" data-line-number="6">)</a>
-<a class="sourceLine" id="cb112-7" data-line-number="7">y</a>
+<a class="sourceLine" id="cb112-7" data-line-number="7">x</a>
 <a class="sourceLine" id="cb112-8" data-line-number="8"><span class="co">## # A tibble: 3 x 2</span></a>
-<a class="sourceLine" id="cb112-9" data-line-number="9"><span class="co">##     key val_y</span></a>
+<a class="sourceLine" id="cb112-9" data-line-number="9"><span class="co">##     key val_x</span></a>
 <a class="sourceLine" id="cb112-10" data-line-number="10"><span class="co">##   &lt;dbl&gt; &lt;chr&gt;</span></a>
-<a class="sourceLine" id="cb112-11" data-line-number="11"><span class="co">## 1     1 y1   </span></a>
-<a class="sourceLine" id="cb112-12" data-line-number="12"><span class="co">## 2     2 y2   </span></a>
-<a class="sourceLine" id="cb112-13" data-line-number="13"><span class="co">## 3     4 y3</span></a></code></pre></div>
+<a class="sourceLine" id="cb112-11" data-line-number="11"><span class="co">## 1     1 x1   </span></a>
+<a class="sourceLine" id="cb112-12" data-line-number="12"><span class="co">## 2     2 x2   </span></a>
+<a class="sourceLine" id="cb112-13" data-line-number="13"><span class="co">## 3     3 x3</span></a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb113-2" data-line-number="2">    <span class="op">~</span>key, <span class="op">~</span>val_y,</a>
+<a class="sourceLine" id="cb113-3" data-line-number="3">    <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</a>
+<a class="sourceLine" id="cb113-4" data-line-number="4">    <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</a>
+<a class="sourceLine" id="cb113-5" data-line-number="5">    <span class="dv">4</span>, <span class="st">&quot;y3&quot;</span></a>
+<a class="sourceLine" id="cb113-6" data-line-number="6">)</a>
+<a class="sourceLine" id="cb113-7" data-line-number="7">y</a>
+<a class="sourceLine" id="cb113-8" data-line-number="8"><span class="co">## # A tibble: 3 x 2</span></a>
+<a class="sourceLine" id="cb113-9" data-line-number="9"><span class="co">##     key val_y</span></a>
+<a class="sourceLine" id="cb113-10" data-line-number="10"><span class="co">##   &lt;dbl&gt; &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb113-11" data-line-number="11"><span class="co">## 1     1 y1   </span></a>
+<a class="sourceLine" id="cb113-12" data-line-number="12"><span class="co">## 2     2 y2   </span></a>
+<a class="sourceLine" id="cb113-13" data-line-number="13"><span class="co">## 3     4 y3</span></a></code></pre></div>
 </div>
             </section>
 

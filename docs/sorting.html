@@ -440,16 +440,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="sorting" class="section level2">
 <h2><span class="header-section-number">10.2</span> Sorting</h2>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1"><span class="kw">sort</span>(x1)</a>
-<a class="sourceLine" id="cb152-2" data-line-number="2"><span class="co">## [1] &quot;F&quot; &quot;M&quot; &quot;R&quot; &quot;S&quot; &quot;T&quot; &quot;U&quot; &quot;W&quot;</span></a></code></pre></div>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1">proper_order &lt;-<span class="st"> </span>x1</a></code></pre></div>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1">cat1 &lt;-<span class="st"> </span><span class="kw">factor</span>(x1, <span class="dt">levels =</span> proper_order)</a>
-<a class="sourceLine" id="cb154-2" data-line-number="2">cat1</a>
-<a class="sourceLine" id="cb154-3" data-line-number="3"><span class="co">## [1] M T W R F S U</span></a>
-<a class="sourceLine" id="cb154-4" data-line-number="4"><span class="co">## Levels: M T W R F S U</span></a></code></pre></div>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1"><span class="kw">sort</span>(cat1)</a>
-<a class="sourceLine" id="cb155-2" data-line-number="2"><span class="co">## [1] M T W R F S U</span></a>
-<a class="sourceLine" id="cb155-3" data-line-number="3"><span class="co">## Levels: M T W R F S U</span></a></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1"><span class="kw">sort</span>(x1)</a>
+<a class="sourceLine" id="cb153-2" data-line-number="2"><span class="co">## [1] &quot;F&quot; &quot;M&quot; &quot;R&quot; &quot;S&quot; &quot;T&quot; &quot;U&quot; &quot;W&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1">proper_order &lt;-<span class="st"> </span>x1</a></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1">cat1 &lt;-<span class="st"> </span><span class="kw">factor</span>(x1, <span class="dt">levels =</span> proper_order)</a>
+<a class="sourceLine" id="cb155-2" data-line-number="2">cat1</a>
+<a class="sourceLine" id="cb155-3" data-line-number="3"><span class="co">## [1] M T W R F S U</span></a>
+<a class="sourceLine" id="cb155-4" data-line-number="4"><span class="co">## Levels: M T W R F S U</span></a></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1"><span class="kw">sort</span>(cat1)</a>
+<a class="sourceLine" id="cb156-2" data-line-number="2"><span class="co">## [1] M T W R F S U</span></a>
+<a class="sourceLine" id="cb156-3" data-line-number="3"><span class="co">## Levels: M T W R F S U</span></a></code></pre></div>
 </div>
             </section>
 

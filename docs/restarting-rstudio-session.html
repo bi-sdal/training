@@ -450,8 +450,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Open a terminal</li>
 <li><code>ssh</code> into lightfoot: <code>ssh pid@lightfoot.vbi.vt.edu</code></li>
-<li>Look for your rstudio process by runing: <code>ps aux | grep &lt;YOUR PID&gt; | grep rstudio</code>
-<code>bash  &gt; ps aux | grep chend | grep rstudio chend    163630  0.3  0.0 743120 100936 ?       Sl   09:51   0:04 /usr/lib/rstudio-server/bin/rsession -u chend --launcher-token 59FDC2A5 chend    182064  0.0  0.0 112708   968 pts/0    S+   10:14   0:00 grep --color=auto rstudio</code></li>
+<li>Look for your rstudio process by runing: <code>ps aux | grep &lt;YOUR PID&gt; | grep rstudio</code></li>
+</ol>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="op">&gt;</span> <span class="fu">ps</span> aux <span class="kw">|</span> <span class="fu">grep</span> chend <span class="kw">|</span> <span class="fu">grep</span> rstudio</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="ex">chend</span>    163630  0.3  0.0 743120 100936 ?       Sl   09:51   0:04 /usr/lib/rstudio-server/bin/rsession -u chend --launcher-token 59FDC2A5</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="ex">chend</span>    182064  0.0  0.0 112708   968 pts/0    S+   10:14   0:00 grep --color=auto rstudio</a></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
 <li>Note which process rstudio is running on by looking at the 2nd column in the output (next to your pid),
 in this example the process number is <code>163630</code></li>
 <li>Stop the process: <code>kill -9 &lt;Process number here&gt;</code></li>

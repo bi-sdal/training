@@ -8,7 +8,8 @@ Session > Restart R (Ctrl + Shift + F10)
 
 ### From the terminal
 
-When RStudio locks up and you need to restart it
+When RStudio locks up and you need to restart it.
+Note you will need to be on the VPN if you are not on the VT wireless.
 
 1. Open a terminal
 2. `ssh` into lightfoot: `ssh pid@lightfoot.vbi.vt.edu`

@@ -1,5 +1,4 @@
 
-
 # RStudio
 
 ## Restarting RStudio Session
@@ -10,7 +9,8 @@ Session > Restart R (Ctrl + Shift + F10)
 
 ### From the terminal
 
-When RStudio locks up and you need to restart it
+When RStudio locks up and you need to restart it.
+Note you will need to be on the VPN if you are not on the VT wireless.
 
 1. Open a terminal
 2. `ssh` into lightfoot: `ssh pid@lightfoot.vbi.vt.edu`
@@ -33,14 +33,14 @@ To do this first click the 3 dots in the files panel to manually input a directo
 
 <div class="figure" style="text-align: center">
 <img src="./figs/manual_folder_dir/01-3_dots.png" alt="Go to a specific directory" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-3)Go to a specific directory</p>
+<p class="caption">(\#fig:unnamed-chunk-2)Go to a specific directory</p>
 </div>
 
 Then you can manually navigate into a different path.
 
 <div class="figure" style="text-align: center">
 <img src="./figs/manual_folder_dir/02-projects_dir.png" alt="Manually input directory" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-4)Manually input directory</p>
+<p class="caption">(\#fig:unnamed-chunk-3)Manually input directory</p>
 </div>
 
 This example specifically shows navigating to the `/home/sdal/projects` directory.

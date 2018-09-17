@@ -147,7 +147,7 @@ Notes:
 
 - you can find our project template `.gitignore` file here: https://github.com/bi-sdal/project_template/blob/master/gitignore
 
-## Getting a project repository
+## Join a project repository (GitLab)
 
 All of our code exist on a GitLab server (https://devlab.vbi.vt.edu)
 
@@ -241,3 +241,5 @@ Make sure you check this every time you start working.
 ```{r, echo=FALSE}
 knitr::include_graphics(path = "./figs/get_repo/070-check_project.png")
 ```
+
+## Start a project repository (GitLab)

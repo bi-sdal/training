@@ -223,7 +223,7 @@ git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch <PATH
 [2]: https://www.datacamp.com/courses/working-with-the-rstudio-ide-part-2
 [3]: http://swcarpentry.github.io/git-novice/
 [4]: https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf
-[5]: http://swcarpentry.github.io/git-novice/reference/
+[5]: http://swcarpentry.github.io/git-novice/reference.html
 [6]: http://happygitwithr.com/
 [7]: http://ndpsoftware.com/git-cheatsheet.html
 [8]: https://learngitbranching.js.org/
